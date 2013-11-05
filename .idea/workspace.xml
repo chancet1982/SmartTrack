@@ -1,82 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1970cc3f-af84-40d3-8ff1-0a3d74cec46d" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/SmartTrack.iml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/encodings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change type="DELETED" beforePath="C:\Projects\SmartTrack\SmartTrack\WEB\MihaiBugReport.html" afterPath="" />
-      <change type="DELETED" beforePath="C:\Projects\SmartTrack\SmartTrack\WEB\MihaiBugReportv2.html" afterPath="" />
-      <change type="DELETED" beforePath="C:\Projects\SmartTrack\SmartTrack\WEB\SamsPlayground.html" afterPath="" />
-      <change type="DELETED" beforePath="C:\Projects\SmartTrack\SmartTrack\WEB\WEB-INF\web.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Projects\SmartTrack\SmartTrack\WEB\create-user.html" afterPath="" />
-      <change type="DELETED" beforePath="C:\Projects\SmartTrack\SmartTrack\WEB\css\desktop.ini" afterPath="" />
-      <change type="DELETED" beforePath="C:\Projects\SmartTrack\SmartTrack\WEB\css\jquery-ui\desktop.ini" afterPath="" />
-      <change type="DELETED" beforePath="C:\Projects\SmartTrack\SmartTrack\WEB\css\jquery-ui\images\animated-overlay.gif" afterPath="" />
-      <change type="DELETED" beforePath="C:\Projects\SmartTrack\SmartTrack\WEB\css\jquery-ui\images\desktop.ini" afterPath="" />
-      <change type="DELETED" beforePath="C:\Projects\SmartTrack\SmartTrack\WEB\css\jquery-ui\images\ui-bg_diagonals-thick_18_b81900_40x40.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Projects\SmartTrack\SmartTrack\WEB\css\jquery-ui\images\ui-bg_diagonals-thick_20_666666_40x40.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Projects\SmartTrack\SmartTrack\WEB\css\jquery-ui\images\ui-bg_flat_10_000000_40x100.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Projects\SmartTrack\SmartTrack\WEB\css\jquery-ui\images\ui-bg_glass_100_f6f6f6_1x400.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Projects\SmartTrack\SmartTrack\WEB\css\jquery-ui\images\ui-bg_glass_100_fdf5ce_1x400.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Projects\SmartTrack\SmartTrack\WEB\css\jquery-ui\images\ui-bg_glass_65_ffffff_1x400.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Projects\SmartTrack\SmartTrack\WEB\css\jquery-ui\images\ui-bg_gloss-wave_35_f6a828_500x100.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Projects\SmartTrack\SmartTrack\WEB\css\jquery-ui\images\ui-bg_highlight-soft_100_eeeeee_1x100.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Projects\SmartTrack\SmartTrack\WEB\css\jquery-ui\images\ui-bg_highlight-soft_75_ffe45c_1x100.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Projects\SmartTrack\SmartTrack\WEB\css\jquery-ui\images\ui-icons_222222_256x240.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Projects\SmartTrack\SmartTrack\WEB\css\jquery-ui\images\ui-icons_228ef1_256x240.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Projects\SmartTrack\SmartTrack\WEB\css\jquery-ui\images\ui-icons_ef8c08_256x240.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Projects\SmartTrack\SmartTrack\WEB\css\jquery-ui\images\ui-icons_ffd27a_256x240.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Projects\SmartTrack\SmartTrack\WEB\css\jquery-ui\images\ui-icons_ffffff_256x240.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Projects\SmartTrack\SmartTrack\WEB\css\jquery-ui\jquery-ui-1.10.3.custom.css" afterPath="" />
-      <change type="DELETED" beforePath="C:\Projects\SmartTrack\SmartTrack\WEB\css\jquery-ui\jquery-ui-1.10.3.custom.min.css" afterPath="" />
-      <change type="DELETED" beforePath="C:\Projects\SmartTrack\SmartTrack\WEB\css\reset.css" afterPath="" />
-      <change type="DELETED" beforePath="C:\Projects\SmartTrack\SmartTrack\WEB\desktop.ini" afterPath="" />
-      <change type="DELETED" beforePath="C:\Projects\SmartTrack\SmartTrack\WEB\form-validation.html" afterPath="" />
-      <change type="DELETED" beforePath="C:\Projects\SmartTrack\SmartTrack\WEB\images\desktop.ini" afterPath="" />
-      <change type="DELETED" beforePath="C:\Projects\SmartTrack\SmartTrack\WEB\images\ico-sprites.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Projects\SmartTrack\SmartTrack\WEB\images\ico-toggle.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Projects\SmartTrack\SmartTrack\WEB\images\ico-user.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Projects\SmartTrack\SmartTrack\WEB\images\site-logo.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Projects\SmartTrack\SmartTrack\WEB\images\texture-chrome-dark.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Projects\SmartTrack\SmartTrack\WEB\images\texture-chrome-light.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Projects\SmartTrack\SmartTrack\WEB\images\texture-fill-hard-dark.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Projects\SmartTrack\SmartTrack\WEB\images\texture-fill-hard-light.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Projects\SmartTrack\SmartTrack\WEB\images\texture-fill-soft-dark.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Projects\SmartTrack\SmartTrack\WEB\images\texture-fill-soft-light.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Projects\SmartTrack\SmartTrack\WEB\images\texture-gradient-down-dark.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Projects\SmartTrack\SmartTrack\WEB\images\texture-gradient-down-light.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Projects\SmartTrack\SmartTrack\WEB\images\texture-gradient-up-dark.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Projects\SmartTrack\SmartTrack\WEB\images\texture-gradient-up-light.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Projects\SmartTrack\SmartTrack\WEB\images\texture-stripes-thick-dark.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Projects\SmartTrack\SmartTrack\WEB\images\texture-stripes-thick-light.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Projects\SmartTrack\SmartTrack\WEB\images\texture-stripes-thin-dark.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Projects\SmartTrack\SmartTrack\WEB\images\texture-stripes-thin-light.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Projects\SmartTrack\SmartTrack\WEB\includes\desktop.ini" afterPath="" />
-      <change type="DELETED" beforePath="C:\Projects\SmartTrack\SmartTrack\WEB\index.html" afterPath="" />
-      <change type="DELETED" beforePath="C:\Projects\SmartTrack\SmartTrack\WEB\index.jsp" afterPath="" />
-      <change type="DELETED" beforePath="C:\Projects\SmartTrack\SmartTrack\WEB\js\PIE.htc" afterPath="" />
-      <change type="DELETED" beforePath="C:\Projects\SmartTrack\SmartTrack\WEB\js\PIE.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Projects\SmartTrack\SmartTrack\WEB\js\desktop.ini" afterPath="" />
-      <change type="DELETED" beforePath="C:\Projects\SmartTrack\SmartTrack\WEB\js\functions.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Projects\SmartTrack\SmartTrack\WEB\js\html5shiv-printshiv.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Projects\SmartTrack\SmartTrack\WEB\js\html5shiv.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Projects\SmartTrack\SmartTrack\WEB\js\jquery-ui.min.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Projects\SmartTrack\SmartTrack\WEB\js\jquery.min.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Projects\SmartTrack\SmartTrack\WEB\js\less.min.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Projects\SmartTrack\SmartTrack\WEB\js\selectivizr.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Projects\SmartTrack\SmartTrack\WEB\less\desktop.ini" afterPath="" />
-      <change type="DELETED" beforePath="C:\Projects\SmartTrack\SmartTrack\WEB\less\main.less" afterPath="" />
-      <change type="DELETED" beforePath="C:\Projects\SmartTrack\SmartTrack\WEB\less\parameters.less" afterPath="" />
-      <change type="DELETED" beforePath="C:\Projects\SmartTrack\SmartTrack\WEB\login.html" afterPath="" />
-      <change type="DELETED" beforePath="C:\Projects\SmartTrack\SmartTrack\WEB\new-bug.html" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SmartTrack/SmartTrack.iml" afterPath="$PROJECT_DIR$/SmartTrack/SmartTrack.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-    </list>
+    <list default="true" id="1970cc3f-af84-40d3-8ff1-0a3d74cec46d" name="Default" comment="" />
     <ignored path="SmartTrack.iws" />
     <ignored path=".idea/workspace.xml" />
     <file path="/Dummy.txt" changelist="1970cc3f-af84-40d3-8ff1-0a3d74cec46d" time="1383653516206" ignored="false" />
@@ -144,7 +69,7 @@
       <file leaf-file-name="index.jsp" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/web/index.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="14" selection-start="279" selection-end="279" vertical-scroll-proportion="0.5538847">
+            <state line="7" column="39" selection-start="176" selection-end="183" vertical-scroll-proportion="0.2982456">
               <folding />
             </state>
           </provider>
@@ -423,7 +348,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="403" y="107" width="1491" height="830" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
@@ -444,7 +369,7 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24982505" sideWeight="0.6701337" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24982505" sideWeight="0.6701337" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32986626" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -520,7 +445,7 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/web/index.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="14" selection-start="279" selection-end="279" vertical-scroll-proportion="0.5538847">
+        <state line="7" column="39" selection-start="176" selection-end="183" vertical-scroll-proportion="0.2982456">
           <folding />
         </state>
       </provider>
