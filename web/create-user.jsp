@@ -5,8 +5,6 @@
   Time: 17:18
   To change this template use File | Settings | File Templates.
 --%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -33,7 +31,7 @@
         </li>
         <li>
             <label>Type in password</label>
-            <input type="password" name="userPassword" class="required">
+            <input type="text" name="userPassword" class="required">
         </li>
         <li>
             <label>Repeat password</label>

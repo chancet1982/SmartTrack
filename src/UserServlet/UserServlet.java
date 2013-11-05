@@ -59,16 +59,16 @@ public class UserServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         UserBean user = new UserBean();
-        user.setFirstname(request.getParameter("userName"));
+        user.setUsername(request.getParameter("userName"));
         user.setFirstname(request.getParameter("firstName"));
         user.setLastname(request.getParameter("lastName"));
         user.setUseremail(request.getParameter("userEmail"));
         user.setUsersalt("TOBECHANGEDWITHRANDOM");
         user.setUserpassword(request.getParameter("userPassword"));
+        System.out.println("in the servlet:" + request.getParameter("userPassword"));
         user.setIshandler(true);
         user.setIsmanager(true);
         user.setIsreporter(true);
-        System.out.println("in the servlet");
         dao.addUser(user);
 
         //String userid = request.getParameter("userID");

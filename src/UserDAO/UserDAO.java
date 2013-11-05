@@ -22,7 +22,7 @@ public class UserDAO {
         System.out.println("in the DAO");
         try {
             PreparedStatement preparedStatement = connection
-                    .prepareStatement("INSERT INTO users-table(user-name,first-name,last-name,user-email, user-salt,user-password) values (? , ? , ? , ? , ? , ?  )");
+                .prepareStatement("INSERT INTO `users-table`(`user-name`,`first-name`,`last-name`,`user-email`, `user-salt`,`user-password`) VALUES (? , ? , ? , ? , ? , ?  )");
             // Parameters start with 1
             preparedStatement.setString(1, user.getUsername());
             preparedStatement.setString(2, user.getFirstname());
@@ -30,7 +30,7 @@ public class UserDAO {
             preparedStatement.setString(4, user.getUseremail());
             preparedStatement.setString(5, user.getUsersalt());
             preparedStatement.setString(6, user.getUserpassword());
-
+            System.out.println("in the DAO: " + user.getUserpassword());
             preparedStatement.executeUpdate();
 
         } catch (SQLException e) {
@@ -41,7 +41,7 @@ public class UserDAO {
     public void deleteUser(int userId) {
         try {
             PreparedStatement preparedStatement = connection
-                    .prepareStatement("DELETE FROM users-table where user-id=?");
+                    .prepareStatement("DELETE FROM `users-table` WHERE `user-id`=?");
             // Parameters start with 1
             preparedStatement.setInt(1, userId);
             preparedStatement.executeUpdate();
@@ -54,7 +54,7 @@ public class UserDAO {
     public void updateUser(UserBean user) {
         try {
             PreparedStatement preparedStatement = connection
-                    .prepareStatement("UPDATE users-table SET user-name=?, first-name=?, last-name=?,  user-email=?, user-salt=?, user-password=?, is-handler=?,is-manager=?,is-reporter=?, WHERE user-id=?");
+                    .prepareStatement("UPDATE `users-table` SET `user-name`=?, `first-name`=?, `last-name`=?,  `user-email`=?, `user-salt`=?, `user-password`=?, `is-handler`=?,`is-manager`=?,`is-reporter`=?, WHERE `user-id`=?");
             // Parameters start with 1
             preparedStatement.setString(1, user.getUsername());
             preparedStatement.setString(2, user.getFirstname());
@@ -76,7 +76,7 @@ public class UserDAO {
         List<UserBean> users = new ArrayList<UserBean>();
         try {
             Statement statement = connection.createStatement();
-            ResultSet rs = statement.executeQuery("SELECT * FROM users");
+            ResultSet rs = statement.executeQuery("SELECT * FROM `users-table`");
             while (rs.next()) {
                 UserBean user = new UserBean();
                 user.setUserid(rs.getInt("user-id"));
@@ -97,7 +97,7 @@ public class UserDAO {
         UserBean user = new UserBean();
         try {
             PreparedStatement preparedStatement = connection.
-                    prepareStatement("SELECT * FROM users WHERE userid=?");
+                    prepareStatement("SELECT * FROM `users-table` WHERE `user-id`=?");
             preparedStatement.setInt(1, userId);
             ResultSet rs = preparedStatement.executeQuery();
 
