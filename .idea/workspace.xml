@@ -1,13 +1,86 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="db52814e-24b3-46b4-8176-759ca3c4c297" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/artifacts/SmartTrack_war_exploded.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/SmartTrack/WEB/WEB-INF/web.xml" />
+    <list default="true" id="1970cc3f-af84-40d3-8ff1-0a3d74cec46d" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/SmartTrack.iml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/encodings.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
+      <change type="DELETED" beforePath="C:\Projects\SmartTrack\SmartTrack\WEB\MihaiBugReport.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\Projects\SmartTrack\SmartTrack\WEB\MihaiBugReportv2.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\Projects\SmartTrack\SmartTrack\WEB\SamsPlayground.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\Projects\SmartTrack\SmartTrack\WEB\WEB-INF\web.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Projects\SmartTrack\SmartTrack\WEB\create-user.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\Projects\SmartTrack\SmartTrack\WEB\css\desktop.ini" afterPath="" />
+      <change type="DELETED" beforePath="C:\Projects\SmartTrack\SmartTrack\WEB\css\jquery-ui\desktop.ini" afterPath="" />
+      <change type="DELETED" beforePath="C:\Projects\SmartTrack\SmartTrack\WEB\css\jquery-ui\images\animated-overlay.gif" afterPath="" />
+      <change type="DELETED" beforePath="C:\Projects\SmartTrack\SmartTrack\WEB\css\jquery-ui\images\desktop.ini" afterPath="" />
+      <change type="DELETED" beforePath="C:\Projects\SmartTrack\SmartTrack\WEB\css\jquery-ui\images\ui-bg_diagonals-thick_18_b81900_40x40.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Projects\SmartTrack\SmartTrack\WEB\css\jquery-ui\images\ui-bg_diagonals-thick_20_666666_40x40.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Projects\SmartTrack\SmartTrack\WEB\css\jquery-ui\images\ui-bg_flat_10_000000_40x100.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Projects\SmartTrack\SmartTrack\WEB\css\jquery-ui\images\ui-bg_glass_100_f6f6f6_1x400.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Projects\SmartTrack\SmartTrack\WEB\css\jquery-ui\images\ui-bg_glass_100_fdf5ce_1x400.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Projects\SmartTrack\SmartTrack\WEB\css\jquery-ui\images\ui-bg_glass_65_ffffff_1x400.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Projects\SmartTrack\SmartTrack\WEB\css\jquery-ui\images\ui-bg_gloss-wave_35_f6a828_500x100.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Projects\SmartTrack\SmartTrack\WEB\css\jquery-ui\images\ui-bg_highlight-soft_100_eeeeee_1x100.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Projects\SmartTrack\SmartTrack\WEB\css\jquery-ui\images\ui-bg_highlight-soft_75_ffe45c_1x100.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Projects\SmartTrack\SmartTrack\WEB\css\jquery-ui\images\ui-icons_222222_256x240.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Projects\SmartTrack\SmartTrack\WEB\css\jquery-ui\images\ui-icons_228ef1_256x240.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Projects\SmartTrack\SmartTrack\WEB\css\jquery-ui\images\ui-icons_ef8c08_256x240.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Projects\SmartTrack\SmartTrack\WEB\css\jquery-ui\images\ui-icons_ffd27a_256x240.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Projects\SmartTrack\SmartTrack\WEB\css\jquery-ui\images\ui-icons_ffffff_256x240.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Projects\SmartTrack\SmartTrack\WEB\css\jquery-ui\jquery-ui-1.10.3.custom.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\Projects\SmartTrack\SmartTrack\WEB\css\jquery-ui\jquery-ui-1.10.3.custom.min.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\Projects\SmartTrack\SmartTrack\WEB\css\reset.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\Projects\SmartTrack\SmartTrack\WEB\desktop.ini" afterPath="" />
+      <change type="DELETED" beforePath="C:\Projects\SmartTrack\SmartTrack\WEB\form-validation.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\Projects\SmartTrack\SmartTrack\WEB\images\desktop.ini" afterPath="" />
+      <change type="DELETED" beforePath="C:\Projects\SmartTrack\SmartTrack\WEB\images\ico-sprites.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Projects\SmartTrack\SmartTrack\WEB\images\ico-toggle.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Projects\SmartTrack\SmartTrack\WEB\images\ico-user.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Projects\SmartTrack\SmartTrack\WEB\images\site-logo.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Projects\SmartTrack\SmartTrack\WEB\images\texture-chrome-dark.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Projects\SmartTrack\SmartTrack\WEB\images\texture-chrome-light.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Projects\SmartTrack\SmartTrack\WEB\images\texture-fill-hard-dark.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Projects\SmartTrack\SmartTrack\WEB\images\texture-fill-hard-light.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Projects\SmartTrack\SmartTrack\WEB\images\texture-fill-soft-dark.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Projects\SmartTrack\SmartTrack\WEB\images\texture-fill-soft-light.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Projects\SmartTrack\SmartTrack\WEB\images\texture-gradient-down-dark.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Projects\SmartTrack\SmartTrack\WEB\images\texture-gradient-down-light.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Projects\SmartTrack\SmartTrack\WEB\images\texture-gradient-up-dark.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Projects\SmartTrack\SmartTrack\WEB\images\texture-gradient-up-light.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Projects\SmartTrack\SmartTrack\WEB\images\texture-stripes-thick-dark.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Projects\SmartTrack\SmartTrack\WEB\images\texture-stripes-thick-light.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Projects\SmartTrack\SmartTrack\WEB\images\texture-stripes-thin-dark.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Projects\SmartTrack\SmartTrack\WEB\images\texture-stripes-thin-light.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Projects\SmartTrack\SmartTrack\WEB\includes\desktop.ini" afterPath="" />
+      <change type="DELETED" beforePath="C:\Projects\SmartTrack\SmartTrack\WEB\index.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\Projects\SmartTrack\SmartTrack\WEB\index.jsp" afterPath="" />
+      <change type="DELETED" beforePath="C:\Projects\SmartTrack\SmartTrack\WEB\js\PIE.htc" afterPath="" />
+      <change type="DELETED" beforePath="C:\Projects\SmartTrack\SmartTrack\WEB\js\PIE.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Projects\SmartTrack\SmartTrack\WEB\js\desktop.ini" afterPath="" />
+      <change type="DELETED" beforePath="C:\Projects\SmartTrack\SmartTrack\WEB\js\functions.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Projects\SmartTrack\SmartTrack\WEB\js\html5shiv-printshiv.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Projects\SmartTrack\SmartTrack\WEB\js\html5shiv.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Projects\SmartTrack\SmartTrack\WEB\js\jquery-ui.min.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Projects\SmartTrack\SmartTrack\WEB\js\jquery.min.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Projects\SmartTrack\SmartTrack\WEB\js\less.min.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Projects\SmartTrack\SmartTrack\WEB\js\selectivizr.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Projects\SmartTrack\SmartTrack\WEB\less\desktop.ini" afterPath="" />
+      <change type="DELETED" beforePath="C:\Projects\SmartTrack\SmartTrack\WEB\less\main.less" afterPath="" />
+      <change type="DELETED" beforePath="C:\Projects\SmartTrack\SmartTrack\WEB\less\parameters.less" afterPath="" />
+      <change type="DELETED" beforePath="C:\Projects\SmartTrack\SmartTrack\WEB\login.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\Projects\SmartTrack\SmartTrack\WEB\new-bug.html" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SmartTrack/SmartTrack.iml" afterPath="$PROJECT_DIR$/SmartTrack/SmartTrack.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="SmartTrack.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="db52814e-24b3-46b4-8176-759ca3c4c297" time="1383647063956" ignored="false" />
+    <file path="/Dummy.txt" changelist="1970cc3f-af84-40d3-8ff1-0a3d74cec46d" time="1383653516206" ignored="false" />
+    <file path="/index.jsp" changelist="1970cc3f-af84-40d3-8ff1-0a3d74cec46d" time="1383653588184" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,6 +139,19 @@
   <component name="FavoritesManager">
     <favorites_list name="SmartTrack" />
   </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file leaf-file-name="index.jsp" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/web/index.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="13" column="14" selection-start="279" selection-end="279" vertical-scroll-proportion="0.5538847">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
   <component name="FindManager">
     <FindUsagesManager>
       <setting name="OPEN_NEW_TAB" value="false" />
@@ -79,86 +165,20 @@
       <MyDateState />
     </option>
   </component>
+  <component name="IdeDocumentHistory">
+    <option name="changedFiles">
+      <list>
+        <option value="$PROJECT_DIR$/web/index.jsp" />
+      </list>
+    </option>
+  </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="399" />
+    <option name="x" value="403" />
     <option name="y" value="107" />
-    <option name="width" value="1495" />
+    <option name="width" value="1491" />
     <option name="height" value="830" />
   </component>
-  <component name="ProjectInspectionProfilesVisibleTreeState">
-    <entry key="Project Default">
-      <profile-state>
-        <expanded-state>
-          <State>
-            <id />
-          </State>
-          <State>
-            <id>AOP</id>
-          </State>
-          <State>
-            <id>Android Lint</id>
-          </State>
-          <State>
-            <id>CDI(Contexts and Dependency Injection) issues</id>
-          </State>
-          <State>
-            <id>CSS</id>
-          </State>
-          <State>
-            <id>Cloning issues</id>
-          </State>
-          <State>
-            <id>Code maturity issues</id>
-          </State>
-          <State>
-            <id>Encapsulation issues</id>
-          </State>
-          <State>
-            <id>Facelet format detection</id>
-          </State>
-          <State>
-            <id>Imports</id>
-          </State>
-          <State>
-            <id>JBoss Seam issues</id>
-          </State>
-          <State>
-            <id>JUnit issues</id>
-          </State>
-          <State>
-            <id>Java language level issues</id>
-          </State>
-          <State>
-            <id>Java language level migration aids</id>
-          </State>
-          <State>
-            <id>Logging issues</id>
-          </State>
-          <State>
-            <id>OSGi</id>
-          </State>
-          <State>
-            <id>Probable bugs</id>
-          </State>
-          <State>
-            <id>RELAX NG</id>
-          </State>
-          <State>
-            <id>SQL</id>
-          </State>
-          <State>
-            <id>Security issues</id>
-          </State>
-        </expanded-state>
-        <selected-state>
-          <State>
-            <id>Abstraction issues</id>
-          </State>
-        </selected-state>
-      </profile-state>
-    </entry>
-  </component>
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+  <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
     <OptionsSetting value="true" id="Remove" />
     <OptionsSetting value="true" id="Checkout" />
@@ -186,24 +206,7 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="PackagesPane">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SmartTrack" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SmartTrack" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Libraries" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewLibrariesNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -222,29 +225,37 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SmartTrack" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SmartTrack" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="project.structure.last.edited" value="Project" />
     <property name="GoToFile.includeJavaFiles" value="false" />
-    <property name="project.structure.proportion" value="0.15" />
-    <property name="options.splitter.main.proportions" value="0.3" />
-    <property name="MemberChooser.sorted" value="false" />
-    <property name="options.lastSelected" value="Errors" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Documents/GitHub/SmartTrack" />
-    <property name="project.structure.side.proportion" value="0.2" />
-    <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="recentsLimit" value="5" />
+    <property name="MemberChooser.sorted" value="false" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Documents/GitHub/SmartTrack" />
     <property name="MemberChooser.showClasses" value="true" />
     <property name="GoToClass.includeLibraries" value="false" />
-    <property name="options.splitter.details.proportions" value="0.2" />
-    <property name="options.searchVisible" value="true" />
+    <property name="MemberChooser.copyJavadoc" value="false" />
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Tomcat Server.Tomcat 7.0">
     <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
       <module name="" />
       <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m" />
@@ -315,6 +326,13 @@
       <envs />
       <method />
     </configuration>
+    <configuration default="true" type="JavascriptDebugSession" factoryName="Remote" singleton="true">
+      <JSRemoteDebuggerConfigurationSettings>
+        <option name="engineId" />
+        <option name="fileUrl" />
+      </JSRemoteDebuggerConfigurationSettings>
+      <method />
+    </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="" />
@@ -336,59 +354,85 @@
       <patterns />
       <method />
     </configuration>
-    <list size="0" />
+    <configuration default="true" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local">
+      <deployment />
+      <server-settings />
+      <predefined_log_file id="Tomcat" enabled="true" />
+      <predefined_log_file id="Tomcat Catalina" enabled="true" />
+      <predefined_log_file id="Tomcat Manager" enabled="false" />
+      <predefined_log_file id="Tomcat Host Manager" enabled="false" />
+      <predefined_log_file id="Tomcat Localhost Access" enabled="false" />
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <method />
+    </configuration>
+    <configuration default="false" name="Tomcat 7.0" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 7.0">
+      <deployment>
+        <artifact name="SmartTrack:war exploded">
+          <settings>
+            <option name="CONTEXT_PATH" value="/" />
+          </settings>
+        </artifact>
+      </deployment>
+      <server-settings>
+        <option name="BASE_DIRECTORY_NAME" value="Tomcat_7_0_SmartTrack" />
+      </server-settings>
+      <predefined_log_file id="Tomcat" enabled="true" />
+      <predefined_log_file id="Tomcat Catalina" enabled="true" />
+      <predefined_log_file id="Tomcat Manager" enabled="false" />
+      <predefined_log_file id="Tomcat Host Manager" enabled="false" />
+      <predefined_log_file id="Tomcat Localhost Access" enabled="false" />
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Run">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <method>
+        <option name="BuildArtifacts" enabled="true">
+          <artifact name="SmartTrack:war exploded" />
+        </option>
+      </method>
+    </configuration>
+    <list size="1">
+      <item index="0" class="java.lang.String" itemvalue="Tomcat Server.Tomcat 7.0" />
+    </list>
     <configuration name="&lt;template&gt;" type="WebApp" default="true" selected="false">
       <Host>localhost</Host>
       <Port>5050</Port>
     </configuration>
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
-  <component name="SvnConfiguration" maxAnnotateRevisions="500" myUseAcceleration="nothing" myAutoUpdateAfterCommit="false" cleanupOnStartRun="false" SSL_PROTOCOLS="all">
-    <option name="USER" value="" />
-    <option name="PASSWORD" value="" />
-    <option name="mySSHConnectionTimeout" value="30000" />
-    <option name="mySSHReadTimeout" value="30000" />
-    <option name="LAST_MERGED_REVISION" />
-    <option name="MERGE_DRY_RUN" value="false" />
-    <option name="MERGE_DIFF_USE_ANCESTRY" value="true" />
-    <option name="UPDATE_LOCK_ON_DEMAND" value="false" />
-    <option name="IGNORE_SPACES_IN_MERGE" value="false" />
-    <option name="CHECK_NESTED_FOR_QUICK_MERGE" value="false" />
-    <option name="IGNORE_SPACES_IN_ANNOTATE" value="true" />
-    <option name="SHOW_MERGE_SOURCES_IN_ANNOTATE" value="true" />
-    <option name="FORCE_UPDATE" value="false" />
-    <option name="IGNORE_EXTERNALS" value="false" />
-    <myIsUseDefaultProxy>false</myIsUseDefaultProxy>
-  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="db52814e-24b3-46b4-8176-759ca3c4c297" name="Default" comment="" />
-      <created>1383645885252</created>
-      <updated>1383645885252</updated>
+      <changelist id="1970cc3f-af84-40d3-8ff1-0a3d74cec46d" name="Default" comment="" />
+      <created>1383653505192</created>
+      <updated>1383653505192</updated>
     </task>
-    <task id="LOCAL-00001" summary="java">
-      <created>1383646195307</created>
-      <updated>1383646195307</updated>
-    </task>
-    <task id="LOCAL-00002" summary="adding web support">
-      <created>1383647065775</created>
-      <updated>1383647065775</updated>
-    </task>
-    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="399" y="107" width="1495" height="830" extended-state="0" />
-    <editor active="false" />
+    <frame x="403" y="107" width="1491" height="830" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32986626" sideWeight="0.49965107" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32986626" sideWeight="0.5003489" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
@@ -400,8 +444,8 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24982554" sideWeight="0.6701337" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24982505" sideWeight="0.6701337" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32986626" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -451,7 +495,7 @@
     <option name="WRAP_WHEN_TYPING_REACHES_RIGHT_MARGIN" value="false" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="adding web support" />
+    <option name="LAST_COMMIT_MESSAGE" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -465,8 +509,6 @@
     <option name="UPDATE_FILTER_BY_SCOPE" value="false" />
     <option name="SHOW_FILE_HISTORY_AS_TREE" value="false" />
     <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.6" />
-    <MESSAGE value="java" />
-    <MESSAGE value="adding web support" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -475,92 +517,14 @@
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
     <option name="FILTER_TARGETS" value="false" />
   </component>
-  <component name="masterDetails">
-    <states>
-      <state key="ArtifactsStructureConfigurable.UI">
-        <settings>
-          <artifact-editor />
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="FacetStructureConfigurable.UI">
-        <settings>
-          <last-edited>No facets are configured</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="GlobalLibrariesConfigurable.UI">
-        <settings>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="JdkListConfigurable.UI">
-        <settings>
-          <last-edited>1.7</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="ModuleStructureConfigurable.UI">
-        <settings>
-          <last-edited>SmartTrack</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-                <option value="0.5" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="ProjectJDKs.UI">
-        <settings>
-          <last-edited>1.7</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="ProjectLibrariesConfigurable.UI">
-        <settings>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-    </states>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/web/index.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="14" selection-start="279" selection-end="279" vertical-scroll-proportion="0.5538847">
+          <folding />
+        </state>
+      </provider>
+    </entry>
   </component>
 </project>
 
