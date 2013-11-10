@@ -1,12 +1,5 @@
 package UserDB;
 
-/**
- * Created with IntelliJ IDEA.
- * User: mn
- * Date: 05-11-13
- * Time: 16:41
- * To change this template use File | Settings | File Templates.
- */
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;

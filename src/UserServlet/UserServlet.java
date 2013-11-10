@@ -1,12 +1,5 @@
 package UserServlet;
 
-/**
- * Created with IntelliJ IDEA.
- * User: mn
- * Date: 05-11-13
- * Time: 17:06
- * To change this template use File | Settings | File Templates.
- */
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -59,11 +52,9 @@ public class UserServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         UserBean user = new UserBean();
-        user.setUsername(request.getParameter("userName"));
         user.setFirstname(request.getParameter("firstName"));
         user.setLastname(request.getParameter("lastName"));
         user.setUseremail(request.getParameter("userEmail"));
-        user.setUsersalt("TOBECHANGEDWITHRANDOM");
         user.setUserpassword(request.getParameter("userPassword"));
         System.out.println("in the servlet:" + request.getParameter("userPassword"));
         user.setIshandler(true);

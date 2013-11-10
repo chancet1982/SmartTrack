@@ -1,8 +1,14 @@
 package UserBean;
 
+import Utilities.PasswordHash;
+
+import java.security.NoSuchAlgorithmException;
+import java.security.spec.InvalidKeySpecException;
 import java.util.Date;
+import Utilities.*;
 
 public class UserBean {
+    PasswordHash passwordHash = new PasswordHash();
 
     private int userid;
 
@@ -54,8 +60,9 @@ public class UserBean {
         this.usersalt = usersalt;
     }
 
-    public String getUserpassword() {
-        return userpassword;
+    public String getUserpassword() throws InvalidKeySpecException, NoSuchAlgorithmException {
+        String hash = passwordHash.createHash(userpassword);
+        return hash;
     }
 
     public void setUserpassword(String userpassword) {

@@ -13,10 +13,7 @@
 <body>
 <form action="UserServlet" method="POST">
     <ul>
-        <li>
-            <label>Username</label>
-            <input type="text" name="userName" class="required">
-        </li>
+
         <li>
             <label>First name</label>
             <input type="text" name="firstName" class="required">

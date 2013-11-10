@@ -1,5 +1,7 @@
 package UserDAO;
 
+import java.security.NoSuchAlgorithmException;
+import java.security.spec.InvalidKeySpecException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -18,22 +20,26 @@ public class UserDAO {
         connection = UserDB.getConnection();
     }
 
-    public void addUser(UserBean user) {
+    public void addUser(UserBean user)  {
         System.out.println("in the DAO");
         try {
             PreparedStatement preparedStatement = connection
-                .prepareStatement("INSERT INTO `users-table`(`user-name`,`first-name`,`last-name`,`user-email`, `user-salt`,`user-password`) VALUES (? , ? , ? , ? , ? , ?  )");
+                .prepareStatement("INSERT INTO usersTable(firstName , lastName , userEmail , userPassword) VALUES (?,?,?,?)");
+
             // Parameters start with 1
-            preparedStatement.setString(1, user.getUsername());
-            preparedStatement.setString(2, user.getFirstname());
-            preparedStatement.setString(3, user.getLastname());
-            preparedStatement.setString(4, user.getUseremail());
-            preparedStatement.setString(5, user.getUsersalt());
-            preparedStatement.setString(6, user.getUserpassword());
-            System.out.println("in the DAO: " + user.getUserpassword());
+              System.out.println( user.getUserpassword() );
+            preparedStatement.setString(1, user.getFirstname());
+            preparedStatement.setString(2, user.getLastname());
+            preparedStatement.setString(3, user.getUseremail());
+            preparedStatement.setString(4, user.getUserpassword());
+
             preparedStatement.executeUpdate();
 
         } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        } catch (InvalidKeySpecException e) {
             e.printStackTrace();
         }
     }
@@ -41,7 +47,7 @@ public class UserDAO {
     public void deleteUser(int userId) {
         try {
             PreparedStatement preparedStatement = connection
-                    .prepareStatement("DELETE FROM `users-table` WHERE `user-id`=?");
+                    .prepareStatement("DELETE FROM usersTable WHERE id=?");
             // Parameters start with 1
             preparedStatement.setInt(1, userId);
             preparedStatement.executeUpdate();
@@ -69,6 +75,10 @@ public class UserDAO {
 
         } catch (SQLException e) {
             e.printStackTrace();
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        } catch (InvalidKeySpecException e) {
+            e.printStackTrace();
         }
     }
 
@@ -76,14 +86,13 @@ public class UserDAO {
         List<UserBean> users = new ArrayList<UserBean>();
         try {
             Statement statement = connection.createStatement();
-            ResultSet rs = statement.executeQuery("SELECT * FROM `users-table`");
+            ResultSet rs = statement.executeQuery("SELECT * FROM usersTable");
             while (rs.next()) {
                 UserBean user = new UserBean();
-                user.setUserid(rs.getInt("user-id"));
-                user.setUsername(rs.getString("user-name"));
-                user.setFirstname(rs.getString("first-name"));
-                user.setLastname(rs.getString("last-name"));
-                user.setUseremail(rs.getString("user-email"));
+                user.setUserid(rs.getInt("id"));
+                user.setFirstname(rs.getString("firstName"));
+                user.setLastname(rs.getString("lastName"));
+                user.setUseremail(rs.getString("userEmail"));
                 users.add(user);
             }
         } catch (SQLException e) {
