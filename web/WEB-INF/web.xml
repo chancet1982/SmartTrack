@@ -14,8 +14,18 @@
         <servlet-name>UserServlet</servlet-name>
         <servlet-class>UserServlet.UserServlet</servlet-class>
     </servlet>
+    <servlet>
+        <description></description>
+        <display-name>Login</display-name>
+        <servlet-name>Login</servlet-name>
+        <servlet-class>UserServlet.Login</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>UserServlet</servlet-name>
         <url-pattern>/UserServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Login</servlet-name>
+        <url-pattern>/Login</url-pattern>
     </servlet-mapping>
 </web-app>

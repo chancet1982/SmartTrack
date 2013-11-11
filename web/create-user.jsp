@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: mn
-  Date: 05-11-13
-  Time: 17:18
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -28,7 +21,7 @@
         </li>
         <li>
             <label>Type in password</label>
-            <input type="text" name="userPassword" class="required">
+            <input type="password" name="userPassword" class="required">
         </li>
         <li>
             <label>Repeat password</label>

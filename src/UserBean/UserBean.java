@@ -9,7 +9,6 @@ import Utilities.*;
 
 public class UserBean {
     PasswordHash passwordHash = new PasswordHash();
-
     private int userid;
 
     public int getUserid() {
