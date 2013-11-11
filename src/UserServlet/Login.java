@@ -83,9 +83,14 @@ public class Login extends HttpServlet {
         try {
             if( passwordHash.validatePassword(password, hashedDBPassword) ){
                 System.out.println("Success - password correct");
-                Cookie userCookie = new Cookie(createHashEmail(email), hashedDBPassword );
-                userCookie.setMaxAge(60*60*24); //Store cookie for 1 year
-                response.addCookie(userCookie);
+                Cookie emailCookie = new Cookie("mail" , createHashEmail(email) );
+                Cookie pwdCookie = new Cookie( "pwd" , hashedDBPassword );
+
+                emailCookie.setMaxAge(60*60*24); //1day cookie
+                pwdCookie.setMaxAge(60*60*24);
+                response.addCookie(emailCookie);
+                response.addCookie(pwdCookie);
+
             }else{
                 System.out.println("Fail - password incorrect");
             }
