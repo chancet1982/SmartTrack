@@ -7,7 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
-<%@include file="includes/document-head.jsp" %>
+<%@include file="includes/documentHead.jsp" %>
   <body>
   <%
       Cookie cookie = null;
@@ -15,14 +15,9 @@
       // Get an array of Cookies associated with this domain
       cookies = request.getCookies();
       if( cookies != null ){
-          out.println("<h2> Found Cookies Name and Value</h2>");
-          for (int i = 0; i < cookies.length; i++){
-              cookie = cookies[i];
-              out.print("Name : " + cookie.getName( ) + ",  ");
-              out.print("Value: " + cookie.getValue( )+" <br/>");
-          }
+        validateCookie();
       }else{
-          out.println("<h2>No cookies founds</h2>");
+          <c:redirect url="login.jsp"/>
       }
   %>
   </body>
