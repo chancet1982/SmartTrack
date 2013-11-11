@@ -83,7 +83,7 @@ public class Login extends HttpServlet {
         try {
             if( passwordHash.validatePassword(password, hashedDBPassword) ){
                 System.out.println("Success - password correct");
-                Cookie emailCookie = new Cookie("mail" , createHashEmail(email) );
+                Cookie emailCookie = new Cookie("uid" , createHashEmail(email) );
                 Cookie pwdCookie = new Cookie( "pwd" , hashedDBPassword );
 
                 emailCookie.setMaxAge(60*60*24); //1day cookie
@@ -98,8 +98,7 @@ public class Login extends HttpServlet {
         catch (NoSuchAlgorithmException e) {e.printStackTrace();}
         catch (InvalidKeySpecException e) {e.printStackTrace();}
 
-        RequestDispatcher view = request.getRequestDispatcher(LIST_USER);
-        request.setAttribute("users", dao.getAllUsers());
+        RequestDispatcher view = request.getRequestDispatcher("afterLogin.jsp");
         view.forward(request, response);
     }
 }
