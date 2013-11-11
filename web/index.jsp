@@ -18,9 +18,9 @@
 
     if (uid != null && !uid.isEmpty() && pwd != null && !pwd.isEmpty()) {
         System.out.println("Should validate cookie");
-        response.sendRedirect("Login?action='validateCookie'&userName='uid'&userPassword='pwd'");
+        response.sendRedirect("Login?action=validateCookie");
     } else {
         System.out.println("Should redirect to login");
-        response.sendRedirect("Login?action='redirecttologin'");
+        response.sendRedirect("login.jsp");
     }
     %>

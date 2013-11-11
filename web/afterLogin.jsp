@@ -16,7 +16,7 @@
             <div class="toggle collapse"><span class="icon"></span></div>
             <h1>Sidebar</h1>
         </div>
-        <h1>Login to our system</h1>
+        <h1>You have successfully logged into the user</h1>
         <div class="box color-light round-corners shadow padding" style="padding:8px;">
         </div>
     </div>
