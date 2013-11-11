@@ -18,7 +18,7 @@
             <h1>Sidebar</h1>
         </div>
         <h1>User Management</h1>
-        <div class="box color-light round-corners shadow padding clearfix" style="padding:8px;">
+        <div class="box color-light round-corners shadow padding clearfix">
             <table border=1>
                 <thead>
                 <tr>

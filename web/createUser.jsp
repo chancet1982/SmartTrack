@@ -15,7 +15,7 @@
             <h1>Sidebar</h1>
         </div>
         <h1>Login to our system</h1>
-        <div class="box color-light round-corners shadow padding" style="padding:8px;">
+        <div class="box color-light round-corners shadow padding">
             <form action="UserServlet" method="POST">
                 <ul>
                     <li>

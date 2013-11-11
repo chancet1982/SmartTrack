@@ -20,8 +20,9 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" scope="PROVIDED" name="Tomcat 7.0" level="application_server_libraries" />
-    <orderEntry type="library" name="jQuery-2.0.0" level="application" />
-    <orderEntry type="library" name="jstl:jstl:1.2" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="jstl:jstl:1.2" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="jQuery-2.0.0" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="jQuery UI-1.10.2" level="application" />
   </component>
 </module>
 

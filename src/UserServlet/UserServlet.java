@@ -17,7 +17,7 @@ import UserBean.*;
 public class UserServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
     private static String INSERT_OR_EDIT = "/user.jsp";
-    private static String LIST_USER = "/index.jsp";
+    private static String LIST_USER = "/assignUserRoles.jsp";
     private UserDAO dao;
 
     public UserServlet() {
@@ -39,7 +39,7 @@ public class UserServlet extends HttpServlet {
             int userId = Integer.parseInt(request.getParameter("userId"));
             UserBean user = dao.getUserById(userId);
             request.setAttribute("user", user);
-        } else if (action.equalsIgnoreCase("listUser")){
+        } else if (action.equalsIgnoreCase("listUsers")){
             forward = LIST_USER;
             request.setAttribute("users", dao.getAllUsers());
         } else {

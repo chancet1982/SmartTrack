@@ -7,17 +7,21 @@
     <div class="site-width clearfix">
         <div id="site-logo"></div>
         <div id="site-navigation" class="clearfix">
+            <ul>
+                <li><a href="UserServlet?action=ListUsers">Maintain Users</a></li>
+            </ul>
         </div>
     </div>
 </div>
 <div id="site-content">
     <div class="site-width clearfix">
-        <div class="sidebar right toggleable collapsed clearfix ">
+        <div class="sidebar right toggleable collapsed clearfix">
             <div class="toggle collapse"><span class="icon"></span></div>
             <h1>Sidebar</h1>
         </div>
-        <h1>You have successfully logged into the user</h1>
+        <h1>You are now logged in</h1>
         <div class="box color-light round-corners shadow padding" style="padding:8px;">
+            <p>What would you like to do next?</p>
         </div>
     </div>
 </div>

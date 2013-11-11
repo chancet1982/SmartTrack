@@ -5,22 +5,24 @@
     Cookie[] cookies;
 
     cookies = request.getCookies();
-    for (int i = 0; i < cookies.length; i++) {
-        if (cookies[i].getName().equals("uid")) {
-            System.out.println("there is a UID cookie");
-            uid = cookies[i].getValue();
+    if (cookies.length > 0){
+        for (int i = 0; i < cookies.length; i++) {
+            if (cookies[i].getName().equals("uid")) {
+                System.out.println("there is a UID cookie");
+                uid = cookies[i].getValue();
+            }
+            if (cookies[i].getName().equals("pwd")) {
+                System.out.println("there is a PWD cookie");
+                pwd = cookies[i].getValue();
+            }
         }
-        if (cookies[i].getName().equals("pwd")) {
-            System.out.println("there is a PWD cookie");
-            pwd = cookies[i].getValue();
-        }
+    } else {
+        System.out.println("No Cookies found...");
     }
 
     if (uid != null && !uid.isEmpty() && pwd != null && !pwd.isEmpty()) {
-        System.out.println("Should validate cookie");
         response.sendRedirect("Login?action=validateCookie");
     } else {
-        System.out.println("Should redirect to login");
         response.sendRedirect("login.jsp");
     }
     %>
