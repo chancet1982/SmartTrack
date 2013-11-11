@@ -75,7 +75,6 @@ public class Login extends HttpServlet {
             preparedStatement.setString(1,email);
             ResultSet rs = preparedStatement.executeQuery();
             if (rs.next()) {hashedDBPassword = rs.getString("userPassword");}
-            session.setAttribute("userEmail",email);
         }
         catch (SQLException e) {e.printStackTrace();}
 
@@ -90,15 +89,17 @@ public class Login extends HttpServlet {
                 pwdCookie.setMaxAge(60*60*24);
                 response.addCookie(emailCookie);
                 response.addCookie(pwdCookie);
+                RequestDispatcher view = request.getRequestDispatcher("afterLogin.jsp");
+                view.forward(request, response);
 
             }else{
                 System.out.println("Fail - password incorrect");
+                RequestDispatcher view = request.getRequestDispatcher("login.jsp");
+                view.forward(request, response);
             }
         }
         catch (NoSuchAlgorithmException e) {e.printStackTrace();}
         catch (InvalidKeySpecException e) {e.printStackTrace();}
 
-        RequestDispatcher view = request.getRequestDispatcher("afterLogin.jsp");
-        view.forward(request, response);
     }
 }
