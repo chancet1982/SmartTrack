@@ -106,7 +106,7 @@ public class UserDAO {
         UserBean user = new UserBean();
         try {
             PreparedStatement preparedStatement = connection.
-                    prepareStatement("SELECT * FROM `users-table` WHERE `user-id`=?");
+                    prepareStatement("SELECT * FROM `usersTable` WHERE `user-id`=?");
             preparedStatement.setInt(1, userId);
             ResultSet rs = preparedStatement.executeQuery();
 
