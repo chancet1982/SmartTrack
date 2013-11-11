@@ -125,4 +125,5 @@ $(document).ready(function() {
 	$('input[type="text"] , input[type="password"]').focusout(function(){ 
 		$(this).stop(true, true).switchClass('hover', 'normal', 300);
 	});
+
 });

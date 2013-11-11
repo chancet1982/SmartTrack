@@ -1,5 +1,3 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
 <%@include file="includes/documentHead.jsp" %>
 
 <body>
@@ -18,7 +16,7 @@
         </div>
         <h1>Login to our system</h1>
         <div class="box color-light round-corners shadow padding" style="padding:8px;">
-            <div class="items-row cols-2">
+            <div class="items-row cols-2 clearfix">
                 <div class="item column-1">
                     <h2>Already have an Account?</h2>
                     <form method="POST" action="Login">
@@ -33,7 +31,7 @@
                 </div>
                 <div class="item column-2">
                     <h2>Dont have an Account?</h2>
-                    <a href="createUser.jsp">Create new user</a>
+                    <a href="createUser.jsp" class="button">Create new user</a>
                 </div>
             </div>
         </div>

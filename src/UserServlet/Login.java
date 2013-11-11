@@ -24,13 +24,11 @@ import static Utilities.PasswordHash.createHashEmail;
 
 public class Login extends HttpServlet {
     private static final long serialVersionUID = 1L;
-    private static String INSERT_OR_EDIT = "/user.jsp";
-    private static String LIST_USER = "/index.html";
+    private static String LOGIN_URL = "/login.jsp";
     private UserDAO dao;
     PasswordHash passwordHash = new PasswordHash();
 
     private Connection connection;
-
     public Login() {
         super();
         dao = new UserDAO();
@@ -39,23 +37,14 @@ public class Login extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String forward="";
+
         String action = request.getParameter("action");
 
-        if (action.equalsIgnoreCase("delete")){
-            int userId = Integer.parseInt(request.getParameter("userId"));
-            dao.deleteUser(userId);
-            forward = LIST_USER;
-            request.setAttribute("users", dao.getAllUsers());
-        } else if (action.equalsIgnoreCase("edit")){
-            forward = INSERT_OR_EDIT;
-            int userId = Integer.parseInt(request.getParameter("userId"));
-            UserBean user = dao.getUserById(userId);
-            request.setAttribute("user", user);
-        } else if (action.equalsIgnoreCase("listUser")){
-            forward = LIST_USER;
-            request.setAttribute("users", dao.getAllUsers());
-        } else {
-            forward = INSERT_OR_EDIT;
+        if (action.equalsIgnoreCase("validatecookie")){
+            System.out.println("Should validate a cookie");
+        } else if (action.equalsIgnoreCase("redirecttologin")) {
+            System.out.println("Should redirect IN THE SERVLET");
+            forward = LOGIN_URL;
         }
 
         RequestDispatcher view = request.getRequestDispatcher(forward);
@@ -63,7 +52,6 @@ public class Login extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
         String email = request.getParameter("userEmail");
         String password = request.getParameter("userPassword");
         String hashedDBPassword = "" ;

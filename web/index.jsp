@@ -1,24 +1,26 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: mn
-  Date: 05-11-13
-  Time: 13:11
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-<%@include file="includes/documentHead.jsp" %>
-  <body>
-  <%
-      Cookie cookie = null;
-      Cookie[] cookies = null;
-      // Get an array of Cookies associated with this domain
-      cookies = request.getCookies();
-      if( cookies != null ){
-        validateCookie();
-      }else{
-          <c:redirect url="login.jsp"/>
-      }
-  %>
-  </body>
-</html>
+    <%
+    System.out.println("Im in the index.jsp");
+    String pwd = null, uid = null;
+    Cookie[] cookies;
+
+    cookies = request.getCookies();
+    for (int i = 0; i < cookies.length; i++) {
+        if (cookies[i].getName().equals("uid")) {
+            System.out.println("there is a UID cookie");
+            uid = cookies[i].getValue();
+        }
+        if (cookies[i].getName().equals("pwd")) {
+            System.out.println("there is a PWD cookie");
+            pwd = cookies[i].getValue();
+        }
+    }
+
+    if (uid != null && !uid.isEmpty() && pwd != null && !pwd.isEmpty()) {
+        System.out.println("Should validate cookie");
+        response.sendRedirect("Login?action='validateCookie'&userName='uid'&userPassword='pwd'");
+    } else {
+        System.out.println("Should redirect to login");
+        response.sendRedirect("Login?action='redirecttologin'");
+    }
+    %>
