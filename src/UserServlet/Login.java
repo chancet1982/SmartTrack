@@ -13,14 +13,14 @@ import java.util.Date;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.*;
 
 import UserDAO.*;
 import UserBean.*;
 import UserDB.*;
 import Utilities.PasswordHash;
+
+import static Utilities.PasswordHash.createHashEmail;
 
 public class Login extends HttpServlet {
     private static final long serialVersionUID = 1L;
@@ -63,34 +63,35 @@ public class Login extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        UserBean user = new UserBean();
 
         String email = request.getParameter("userEmail");
         String password = request.getParameter("userPassword");
         String hashedDBPassword = "" ;
+        HttpSession session = request.getSession();
 
-
+        //Fetch password from DB
         try {
-            PreparedStatement preparedStatement = connection.
-                    prepareStatement("SELECT * FROM usersTable WHERE userEmail=?");
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM usersTable WHERE userEmail=?");
             preparedStatement.setString(1,email);
             ResultSet rs = preparedStatement.executeQuery();
+            if (rs.next()) {hashedDBPassword = rs.getString("userPassword");}
+            session.setAttribute("userEmail",email);
+        }
+        catch (SQLException e) {e.printStackTrace();}
 
-            if (rs.next()) {
-                hashedDBPassword = rs.getString("userPassword");
-            }
-
-        }catch (SQLException e) {e.printStackTrace();}
-
+        //Validate password
         try {
             if( passwordHash.validatePassword(password, hashedDBPassword) ){
-            System.out.println("Success - password correct");}else{
-            System.out.println("Fail - password incorrect");}
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
-        } catch (InvalidKeySpecException e) {
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+                System.out.println("Success - password correct");
+                Cookie userCookie = new Cookie(createHashEmail(email), hashedDBPassword );
+                userCookie.setMaxAge(60*60*24); //Store cookie for 1 year
+                response.addCookie(userCookie);
+            }else{
+                System.out.println("Fail - password incorrect");
+            }
         }
+        catch (NoSuchAlgorithmException e) {e.printStackTrace();}
+        catch (InvalidKeySpecException e) {e.printStackTrace();}
 
         RequestDispatcher view = request.getRequestDispatcher(LIST_USER);
         request.setAttribute("users", dao.getAllUsers());

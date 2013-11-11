@@ -53,6 +53,34 @@ public class PasswordHash{
     }
 
     /**
+     * Returns a salted PBKDF2 hash of the password.
+     *
+     * @param   password    the password to hash
+     * @return              a salted PBKDF2 hash of the password
+     */
+    public static String createHashEmail(String password)
+            throws NoSuchAlgorithmException, InvalidKeySpecException
+    {
+        return createHashEmail(password.toCharArray());
+    }
+
+    /**
+     * Returns a salted PBKDF2 hash of the password.
+     *
+     * @param   password    the password to hash
+     * @return              a salted PBKDF2 hash of the password
+     */
+    public static String createHashEmail(char[] password)
+            throws NoSuchAlgorithmException, InvalidKeySpecException
+    {
+        byte[] salt = new byte[]{ 50, 111, 8, 53, 86, 35, -19, -47 };
+
+        // Hash the password
+        byte[] hash = pbkdf2(password, salt, PBKDF2_ITERATIONS, HASH_BYTE_SIZE);
+        // format iterations:salt:hash
+        return toHex(hash);
+    }
+    /**
      * Validates a password using a hash.
      *
      * @param   password        the password to check
