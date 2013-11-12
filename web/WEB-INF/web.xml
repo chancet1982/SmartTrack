@@ -24,6 +24,16 @@
         <servlet-name>UserServlet</servlet-name>
         <url-pattern>/UserServlet</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <description></description>
+        <display-name>CompanyServlet</display-name>
+        <servlet-name>CompanyServlet</servlet-name>
+        <servlet-class>UserServlet.CompanyServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CompanyServlet</servlet-name>
+        <url-pattern>/CompanyServlet</url-pattern>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>Login</servlet-name>
         <url-pattern>/Login</url-pattern>
