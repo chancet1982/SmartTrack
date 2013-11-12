@@ -1,6 +1,7 @@
 <%@include file="includes/documentHead.jsp" %>
 
 <body>
+
 <div id="site-header">
     <div class="site-width clearfix">
         <div id="site-logo"></div>
@@ -35,6 +36,15 @@
                         <input type="password" name="password2" class="required">
                     </li>
                     <li>
+                        <select id="selectCompany">
+                        </select>
+                        <button id="addCompany" type="button">add company</button>
+                        <div id="addCompanyDialog"  title="Input new company name">
+                            <input id="addCompanyName" >
+                            <button id="okDialogCompany" type="button">OK</button>
+                        </div>
+                    </li>
+                    <li>
                         <input type="submit" value="Submit">
                     </li>
                 </ul>
@@ -42,5 +52,47 @@
         </div>
     </div>
 </div>
+<script type="text/javascript">
+    $(document).ready(function(){
+//    $("#selectCompany").one(function(){
+        $.ajax({
+            type: "POST",
+            url: "/CompanyServlet",
+            success: function(data) {
+                $('#selectCompany').show();
+                $('#selectCompany').append(data);
+                console.log("ajax");
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                console.log(xhr.status);
+                console.log(thrownError);
+            }
+        });
+
+//    });
+    });
+    $( "#addCompanyDialog" ).dialog({
+        autoOpen: false
+//        buttons: {
+//            "OK": function() {
+//                $( this ).dialog( "close" );
+//                $( this ).click(function(){
+//                    console.log("in the add dialg");
+//                    newCompanyName = addCompanyName.val();
+//                    $("#selectCompany").append("<option>"+ newCompanyName +"<option>");
+//                });
+//            }
+        //}
+    });
+    $("#addCompany").click(function() {
+        $( "#addCompanyDialog" ).dialog( "open" );
+    });
+    $("#okDialogCompany").click(function() {
+        $( "#addCompanyDialog" ).dialog( "close" );
+            console.log("in the add dialg");
+            newCompanyName = $("#addCompanyName").val();
+            $("#selectCompany").append("<option>"+ newCompanyName +"</option>")
+    });
+</script>
 </body>
 </html>
