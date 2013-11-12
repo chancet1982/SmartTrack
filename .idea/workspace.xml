@@ -2,11 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1970cc3f-af84-40d3-8ff1-0a3d74cec46d" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SmartTrack.iml" afterPath="$PROJECT_DIR$/SmartTrack.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/artifacts/SmartTrack_war_exploded.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/SmartTrack_war_exploded.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/includes/documentHead.jsp" afterPath="$PROJECT_DIR$/web/includes/documentHead.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="SmartTrack.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="1970cc3f-af84-40d3-8ff1-0a3d74cec46d" time="1384214340190" ignored="false" />
+    <file path="/Dummy.txt" changelist="1970cc3f-af84-40d3-8ff1-0a3d74cec46d" time="1384214357749" ignored="false" />
     <file path="/index.jsp" changelist="1970cc3f-af84-40d3-8ff1-0a3d74cec46d" time="1384211991853" ignored="false" />
     <file path="/UserBean.java" changelist="1970cc3f-af84-40d3-8ff1-0a3d74cec46d" time="1383665747727" ignored="false" />
     <file path="/UserDAO.java" changelist="1970cc3f-af84-40d3-8ff1-0a3d74cec46d" time="1384197176941" ignored="false" />
@@ -94,7 +97,26 @@
     <favorites_list name="SmartTrack" />
   </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf>
+      <file leaf-file-name="assignUserRoles.jsp" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/web/assignUserRoles.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="15" column="22" selection-start="462" selection-end="462" vertical-scroll-proportion="-0.2566735">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="documentHead.jsp" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/includes/documentHead.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="2" column="64" selection-start="194" selection-end="194" vertical-scroll-proportion="-1.3076923">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -117,17 +139,17 @@
         <option value="$PROJECT_DIR$/src/db.properties" />
         <option value="$PROJECT_DIR$/src/Utilities/PasswordHash.java" />
         <option value="$PROJECT_DIR$/src/UserServlet/Login.java" />
-        <option value="$PROJECT_DIR$/web/includes/documentHead.jsp" />
         <option value="$PROJECT_DIR$/src/UserDAO/UserDAO.java" />
         <option value="$PROJECT_DIR$/web/index.jsp" />
         <option value="$PROJECT_DIR$/web/AssignUserRoles.jsp" />
-        <option value="$PROJECT_DIR$/web/assignUserRoles.jsp" />
         <option value="$PROJECT_DIR$/web/createUser.jsp" />
         <option value="$PROJECT_DIR$/src/UserServlet/UserServlet.java" />
         <option value="$PROJECT_DIR$/web/afterLogin.jsp" />
         <option value="$PROJECT_DIR$/web/htmlbackup/login.html" />
         <option value="$PROJECT_DIR$/web/login.jsp" />
         <option value="$PROJECT_DIR$/web/less/main.less" />
+        <option value="$PROJECT_DIR$/web/assignUserRoles.jsp" />
+        <option value="$PROJECT_DIR$/web/includes/documentHead.jsp" />
       </list>
     </option>
   </component>
@@ -212,6 +234,24 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="includes" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SmartTrack" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SmartTrack" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -258,7 +298,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="Libraries" />
     <property name="GoToFile.includeJavaFiles" value="false" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="options.splitter.main.proportions" value="0.3" />
@@ -266,7 +306,7 @@
     <property name="MemberChooser.sorted" value="false" />
     <property name="recentsLimit" value="5" />
     <property name="options.lastSelected" value="project.propVCSSupport.Mappings" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/web/WEB-INF/lib/jstl.jar!/" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/web/WEB-INF/lib/standard.jar!/" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
@@ -516,7 +556,11 @@
       <created>1384214350352</created>
       <updated>1384214350352</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Made some cleanup and found the source of the problem. JSTL libraries not working as they should.">
+      <created>1384214362087</created>
+      <updated>1384214362087</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -541,9 +585,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1456" height="876" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
-      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24930362" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24930362" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32962137" sideWeight="0.67270666" order="3" side_tool="false" content_ui="tabs" />
@@ -640,13 +684,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/web/includes/documentHead.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="53" selection-start="1035" selection-end="1035" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/UserBean/UserBean.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="101" column="25" selection-start="2225" selection-end="2225" vertical-scroll-proportion="0.0">
@@ -696,13 +733,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/assignUserRoles.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="74" selection-start="757" selection-end="757" vertical-scroll-proportion="0.31848553">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/index.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state line="18" column="12" selection-start="664" selection-end="664" vertical-scroll-proportion="0.6815145">
@@ -748,6 +778,20 @@
     <entry file="file://$PROJECT_DIR$/web/less/main.less">
       <provider selected="true" editor-type-id="text-editor">
         <state line="171" column="25" selection-start="3211" selection-end="3211" vertical-scroll-proportion="0.4294737">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/includes/documentHead.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="64" selection-start="194" selection-end="194" vertical-scroll-proportion="-1.3076923">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/assignUserRoles.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="22" selection-start="462" selection-end="462" vertical-scroll-proportion="-0.2566735">
           <folding />
         </state>
       </provider>
@@ -819,7 +863,7 @@
       </state>
       <state key="ProjectLibrariesConfigurable.UI">
         <settings>
-          <last-edited>jstl:jstl:1.2</last-edited>
+          <last-edited />
           <splitter-proportions>
             <option name="proportions">
               <list>
