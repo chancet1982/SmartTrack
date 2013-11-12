@@ -21,10 +21,16 @@ public class UserDAO {
     }
 
     public void addUser(UserBean user)  {
-        System.out.println("in the DAO");
         try {
-            PreparedStatement preparedStatement = connection
-                .prepareStatement("CREATE DATABASE IF NOT EXISTS indexDB; INSERT INTO usersTable(firstName , lastName , userEmail , userPassword) VALUES (?,?,?,?)");
+            System.out.println("connection is: " + connection);
+            Statement statement = connection.createStatement();
+
+            statement.executeUpdate("CREATE DATABASE IF NOT EXISTS indexDB;");
+            statement.executeUpdate("use indexDB;");
+            statement.executeUpdate("CREATE TABLE IF NOT EXISTS indexDB.usersTable(id int(11) NOT NULL AUTO_INCREMENT,`companyID` varchar(45) DEFAULT NULL,`firstName` varchar(45) DEFAULT NULL,`lastName` varchar(45) DEFAULT NULL,`userEmail` varchar(100) DEFAULT NULL,`userPassword` varchar(105) DEFAULT NULL,`handler` int(1) NOT NULL DEFAULT 0,`manager` int(1) NOT NULL DEFAULT 0,`reporter` int(1) NOT NULL DEFAULT 0, PRIMARY KEY (`id`)) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;");
+
+            System.out.println("Created database and table in case they do not exists");
+            PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO usersTable(firstName , lastName , userEmail , userPassword) VALUES (?,?,?,?)");
 
             // Parameters start with 1
               System.out.println( user.getUserpassword() );

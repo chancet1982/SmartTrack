@@ -2,10 +2,10 @@
     <%
     System.out.println("Im in the index.jsp");
     String pwd = null, uid = null;
-    Cookie[] cookies;
-
+    Cookie cookie = null;
+    Cookie[] cookies = null;
     cookies = request.getCookies();
-    if (cookies.length > 0){
+    if( cookies != null )  {
         for (int i = 0; i < cookies.length; i++) {
             if (cookies[i].getName().equals("uid")) {
                 System.out.println("there is a UID cookie");
