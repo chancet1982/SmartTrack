@@ -1,4 +1,4 @@
-package UserBean;
+package Beans;
 
 public class CompanyBean {
     private String companyName;

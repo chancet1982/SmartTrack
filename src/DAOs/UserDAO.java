@@ -1,4 +1,4 @@
-package UserDAO;
+package DAOs;
 
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
@@ -9,8 +9,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import UserBean.*;
-import UserDB.*;
+import Beans.*;
+import DB.*;
 
 public class UserDAO {
 
@@ -28,10 +28,10 @@ public class UserDAO {
 
             statement.executeUpdate("CREATE DATABASE IF NOT EXISTS indexDB;");
             statement.executeUpdate("use indexDB;");
-            statement.executeUpdate("CREATE TABLE IF NOT EXISTS indexDB.usersTable(id int(11) NOT NULL AUTO_INCREMENT,`companyID` varchar(45) DEFAULT NULL,`firstName` varchar(45) DEFAULT NULL,`lastName` varchar(45) DEFAULT NULL,`userEmail` varchar(100) DEFAULT NULL,`userPassword` varchar(105) DEFAULT NULL,`handler` int(1) NOT NULL DEFAULT 0,`manager` int(1) NOT NULL DEFAULT 0,`reporter` int(1) NOT NULL DEFAULT 0, PRIMARY KEY (`id`)) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;");
+            statement.executeUpdate("CREATE TABLE IF NOT EXISTS indexDB.usersTable(id int(11) NOT NULL AUTO_INCREMENT,`companyID` varchar(45) DEFAULT NULL,`firstName` varchar(45) DEFAULT NULL,`lastName` varchar(45) DEFAULT NULL,`userEmail` varchar(100) DEFAULT NULL,`userPassword` varchar(105) DEFAULT NULL,`handler` int(1) NOT NULL DEFAULT 0,`manager` int(1) NOT NULL DEFAULT 0,`reporter` int(1) NOT NULL DEFAULT 0, PRIMARY KEY (`id`)) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;");
 
             System.out.println("Created database and table in case they do not exists");
-            PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO usersTable(firstName , lastName , userEmail , userPassword) VALUES (?,?,?,?)");
+            PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO indexdb.usersTable(firstName , lastName , userEmail , userPassword) VALUES (?,?,?,?)");
 
             // Parameters start with 1
               System.out.println( user.getUserpassword() );
@@ -54,7 +54,7 @@ public class UserDAO {
     public void deleteUser(int userId) {
         try {
             PreparedStatement preparedStatement = connection
-                    .prepareStatement("DELETE FROM usersTable WHERE id=?");
+                    .prepareStatement("DELETE FROM indexdb.usersTable WHERE id=?");
             // Parameters start with 1
             preparedStatement.setInt(1, userId);
             preparedStatement.executeUpdate();
@@ -67,7 +67,7 @@ public class UserDAO {
     public void updateUser(UserBean user) {
         try {
             PreparedStatement preparedStatement = connection
-                    .prepareStatement("UPDATE `users-table` SET `user-name`=?, `first-name`=?, `last-name`=?,  `user-email`=?, `user-salt`=?, `user-password`=?, `is-handler`=?,`is-manager`=?,`is-reporter`=?, WHERE `user-id`=?");
+                    .prepareStatement("UPDATE indexdb.usersTable SET `user-name`=?, `first-name`=?, `last-name`=?,  `user-email`=?, `user-salt`=?, `user-password`=?, `is-handler`=?,`is-manager`=?,`is-reporter`=?, WHERE `user-id`=?");
             // Parameters start with 1
             preparedStatement.setString(1, user.getUsername());
             preparedStatement.setString(2, user.getFirstname());
@@ -93,7 +93,7 @@ public class UserDAO {
         List<UserBean> users = new ArrayList<UserBean>();
         try {
             Statement statement = connection.createStatement();
-            ResultSet rs = statement.executeQuery("SELECT * FROM usersTable");
+            ResultSet rs = statement.executeQuery("SELECT * FROM indexdb.usersTable");
             while (rs.next()) {
                 UserBean user = new UserBean();
                 user.setUserid(rs.getInt("id"));
@@ -113,7 +113,7 @@ public class UserDAO {
         UserBean user = new UserBean();
         try {
             PreparedStatement preparedStatement = connection.
-                    prepareStatement("SELECT * FROM `usersTable` WHERE `user-id`=?");
+                    prepareStatement("SELECT * FROM indexdb.usersTable WHERE id=?");
             preparedStatement.setInt(1, userId);
             ResultSet rs = preparedStatement.executeQuery();
 

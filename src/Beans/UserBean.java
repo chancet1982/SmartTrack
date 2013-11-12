@@ -1,11 +1,9 @@
-package UserBean;
+package Beans;
 
 import Utilities.PasswordHash;
 
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
-import java.util.Date;
-import Utilities.*;
 
 public class UserBean {
     PasswordHash passwordHash = new PasswordHash();

@@ -1,4 +1,4 @@
-package UserServlet;
+package Servlets;
 
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
@@ -7,17 +7,12 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.*;
 
-import UserDAO.*;
-import UserBean.*;
-import UserDB.*;
+import DAOs.*;
+import DB.*;
 import Utilities.PasswordHash;
 
 import static Utilities.PasswordHash.createHashEmail;
@@ -59,7 +54,7 @@ public class Login extends HttpServlet {
 
             //Fetch password from DB
             try {
-                PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM usersTable WHERE userEmail=?");
+                PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM indexdb.usersTable WHERE userEmail=?");
                 preparedStatement.setString(1,email);
                 ResultSet rs = preparedStatement.executeQuery();
                 if (rs.next()) {hashedDBPassword = rs.getString("userPassword");} else {
@@ -87,7 +82,7 @@ public class Login extends HttpServlet {
 
         //Fetch password from DB
         try {
-            PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM usersTable WHERE userEmail=?");
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM indexdb.usersTable WHERE userEmail=?");
             preparedStatement.setString(1,email);
             ResultSet rs = preparedStatement.executeQuery();
             if (rs.next()) {hashedDBPassword = rs.getString("userPassword");}

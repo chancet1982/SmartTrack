@@ -1,10 +1,8 @@
-package UserDAO;
+package DAOs;
 
-import UserBean.*;
-import UserDB.*;
+import Beans.*;
+import DB.*;
 
-import java.security.NoSuchAlgorithmException;
-import java.security.spec.InvalidKeySpecException;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -35,7 +33,7 @@ public class CompanyDAO {
 
             //get new company ID
             int newCompanyID = 0;
-            rs = statement.executeQuery("SELECT MAX(companyID) FROM indexDB.companiesTable");
+            rs = statement.executeQuery("SELECT MAX IF EXISTS(companyID) FROM indexDB.companiesTable");
             if (rs != null) {
                 while (rs.next()) {newCompanyID = rs.getInt("companyID") ;}
             }

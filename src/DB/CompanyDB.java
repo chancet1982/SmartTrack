@@ -1,4 +1,4 @@
-package UserDB;
+package DB;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -8,9 +8,36 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Properties;
 
-public class UserDB {
+public class CompanyDB {
 
     private static Connection connection = null;
+
+    public static Connection getIndexConnection(String url) {
+        if (connection != null)
+            return connection;
+        else {
+            try {
+                Properties prop = new Properties();
+                InputStream inputStream = UserDB.class.getClassLoader().getResourceAsStream("/db.properties");
+                prop.load(inputStream);
+                String driver = prop.getProperty("driver");
+                String user = prop.getProperty("user");
+                String password = prop.getProperty("password");
+                Class.forName(driver);
+                connection = DriverManager.getConnection(url, user, password);
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return connection;
+        }
+
+    }
 
     public static Connection getConnection() {
         if (connection != null)
@@ -39,4 +66,5 @@ public class UserDB {
         }
 
     }
+
 }

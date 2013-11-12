@@ -9,27 +9,24 @@
         <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>
     <servlet>
-        <description></description>
         <display-name>UserServlet</display-name>
         <servlet-name>UserServlet</servlet-name>
-        <servlet-class>UserServlet.UserServlet</servlet-class>
+        <servlet-class>Servlets.UserServlet</servlet-class>
     </servlet>
     <servlet>
-        <description></description>
+        <display-name>CompanyServlet</display-name>
+        <servlet-name>CompanyServlet</servlet-name>
+        <servlet-class>Servlets.CompanyServlet</servlet-class>
+    </servlet>
+    <servlet>
         <display-name>Login</display-name>
         <servlet-name>Login</servlet-name>
-        <servlet-class>UserServlet.Login</servlet-class>
+        <servlet-class>Servlets.Login</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>UserServlet</servlet-name>
         <url-pattern>/UserServlet</url-pattern>
     </servlet-mapping>
-    <servlet>
-        <description></description>
-        <display-name>CompanyServlet</display-name>
-        <servlet-name>CompanyServlet</servlet-name>
-        <servlet-class>UserServlet.CompanyServlet</servlet-class>
-    </servlet>
     <servlet-mapping>
         <servlet-name>CompanyServlet</servlet-name>
         <url-pattern>/CompanyServlet</url-pattern>
