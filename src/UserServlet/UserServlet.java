@@ -17,12 +17,15 @@ import UserBean.*;
 public class UserServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
     private static String INSERT_OR_EDIT = "/user.jsp";
-    private static String LIST_USER = "/AssignUserRoles.jsp";
+    private static String LIST_USER = "/assignUserRoles.jsp";
     private UserDAO dao;
+    private CompanyDAO companydao;
 
     public UserServlet() {
         super();
         dao = new UserDAO();
+        companydao = new CompanyDAO();
+
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -52,10 +55,12 @@ public class UserServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         UserBean user = new UserBean();
+        CompanyBean company = new CompanyBean();
         user.setFirstname(request.getParameter("firstName"));
         user.setLastname(request.getParameter("lastName"));
         user.setUseremail(request.getParameter("userEmail"));
         user.setUserpassword(request.getParameter("userPassword"));
+        company.setCompanyName(request.getParameter("companyName"));
         System.out.println("in the servlet:" + request.getParameter("userPassword"));
         user.setIshandler(true);
         user.setIsmanager(true);
@@ -64,6 +69,7 @@ public class UserServlet extends HttpServlet {
         String userid = request.getParameter("userID");
         if(userid == null || userid.isEmpty()) {
             dao.addUser(user);
+            companydao.addCompany(company);
         } else {
             user.setUserid(Integer.parseInt(userid));
             dao.updateUser(user);

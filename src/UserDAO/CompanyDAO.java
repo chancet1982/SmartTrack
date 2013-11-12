@@ -11,43 +11,37 @@ import java.util.List;
 
 public class CompanyDAO {
 
-    private Connection connection , connection2;
+    private Connection connection;
 
     public CompanyDAO() {
     }
 
     public void addCompany(CompanyBean company)  {
 
-        connection= CompanyDB.getIndexConnection("jdbc:mysql://localhost:3306/companiesDB");
-        connection2 = CompanyDB.getConnection("jdbc:mysql://localhost:3306");
-//TO THINK ABOUT
-//        Statement statement = null;
-//        try {
-
-//            }
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
+        connection= CompanyDB.getConnection();
 
         try {
-            PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO companiesTable(name) VALUES (?)");
+            //check if index database exists and creates one if NOT
+            ResultSet rs = null;
+            Statement statement = connection.createStatement();
+            statement.executeUpdate("CREATE DATABASE IF NOT EXISTS indexDB;");
+            statement.executeUpdate("use indexDB;");
+            statement.executeUpdate("CREATE TABLE IF NOT EXISTS indexDB.companiesTable(companyID int(11) NOT NULL AUTO_INCREMENT,companyName varchar(45) DEFAULT NULL UNIQUE, PRIMARY KEY (companyID)) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;");
 
-            // Parameters start with 1
-            preparedStatement.setString(1, company.getCompanyName());
+            //add new company to the index database
+            PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO indexDB.companiesTable(companyName) VALUES (?)");
             preparedStatement.setString(1, company.getCompanyName());
             preparedStatement.executeUpdate();
 
-            Statement statement;
+            //get new company ID
             int newCompanyID = 0;
-            statement = connection.createStatement();
-            ResultSet rs = statement.executeQuery("SELECT MAX(companyID) FROM companiesTable");
-
-            while (rs.next()) {
-                newCompanyID = rs.getInt("id");
+            rs = statement.executeQuery("SELECT MAX(companyID) FROM indexDB.companiesTable");
+            if (rs != null) {
+                while (rs.next()) {newCompanyID = rs.getInt("companyID") ;}
             }
 
-            Statement stm = connection2.createStatement();
-            stm.executeUpdate("CREATE DATABASE `company" + newCompanyID +"`");
+            Statement stm = connection.createStatement();
+            stm.executeUpdate("CREATE DATABASE company" + newCompanyID);
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -55,11 +49,11 @@ public class CompanyDAO {
     }
 
     public List<String> getAllCompanies()  {
-        connection= CompanyDB.getIndexConnection("jdbc:mysql://localhost:3306/companiesDB");
+        connection = CompanyDB.getConnection();
         List<String> companies = new ArrayList<String>();
         try {
             Statement statement = connection.createStatement();
-            ResultSet rs = statement.executeQuery("SELECT * FROM companiesTable");
+            ResultSet rs = statement.executeQuery("SELECT * FROM indexDB.companiesTable");
             while (rs.next()) {
                 companies.add(rs.getString("companyName"));
             }

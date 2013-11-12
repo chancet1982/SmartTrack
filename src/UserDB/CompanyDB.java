@@ -12,7 +12,7 @@ public class CompanyDB {
 
     private static Connection connection = null;
 
-    public static Connection getConnection(String url) {
+    public static Connection getIndexConnection(String url) {
         if (connection != null)
             return connection;
         else {
@@ -39,7 +39,7 @@ public class CompanyDB {
 
     }
 
-    public static Connection getIndexConnection(String url) {
+    public static Connection getConnection() {
         if (connection != null)
             return connection;
         else {
@@ -48,6 +48,7 @@ public class CompanyDB {
                 InputStream inputStream = UserDB.class.getClassLoader().getResourceAsStream("/db.properties");
                 prop.load(inputStream);
                 String driver = prop.getProperty("driver");
+                String url = prop.getProperty("url");
                 String user = prop.getProperty("user");
                 String password = prop.getProperty("password");
                 Class.forName(driver);
