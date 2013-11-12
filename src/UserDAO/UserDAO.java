@@ -24,7 +24,7 @@ public class UserDAO {
         System.out.println("in the DAO");
         try {
             PreparedStatement preparedStatement = connection
-                .prepareStatement("INSERT INTO usersTable(firstName , lastName , userEmail , userPassword) VALUES (?,?,?,?)");
+                .prepareStatement("CREATE DATABASE IF NOT EXISTS indexDB; INSERT INTO usersTable(firstName , lastName , userEmail , userPassword) VALUES (?,?,?,?)");
 
             // Parameters start with 1
               System.out.println( user.getUserpassword() );

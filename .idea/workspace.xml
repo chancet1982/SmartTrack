@@ -2,13 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1970cc3f-af84-40d3-8ff1-0a3d74cec46d" name="Default" comment="">
-      <change type="MOVED" beforePath="C:\Users\chanc_000\IdeaProjects\SmartTrack\web\AssignUserRoles.jsp" afterPath="$PROJECT_DIR$/web/assignUserRoles.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/less/main.less" afterPath="$PROJECT_DIR$/web/less/main.less" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/addUser.jsp" />
+      <change type="MOVED" beforePath="C:\Users\sm\IdeaProjects\SmartTrack\web\AssignUserRoles.jsp" afterPath="$PROJECT_DIR$/web/assignUserRoles.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/UserDAO/UserDAO.java" afterPath="$PROJECT_DIR$/src/UserDAO/UserDAO.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/UserServlet/UserServlet.java" afterPath="$PROJECT_DIR$/src/UserServlet/UserServlet.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/afterLogin.jsp" afterPath="$PROJECT_DIR$/web/afterLogin.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/createUser.jsp" afterPath="$PROJECT_DIR$/web/createUser.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="SmartTrack.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="1970cc3f-af84-40d3-8ff1-0a3d74cec46d" time="1384214819341" ignored="false" />
+    <file path="/Dummy.txt" changelist="1970cc3f-af84-40d3-8ff1-0a3d74cec46d" time="1384245442927" ignored="false" />
     <file path="/index.jsp" changelist="1970cc3f-af84-40d3-8ff1-0a3d74cec46d" time="1384211991853" ignored="false" />
     <file path="/UserBean.java" changelist="1970cc3f-af84-40d3-8ff1-0a3d74cec46d" time="1383665747727" ignored="false" />
     <file path="/UserDAO.java" changelist="1970cc3f-af84-40d3-8ff1-0a3d74cec46d" time="1384197176941" ignored="false" />
@@ -20,7 +24,7 @@
     <file path="/CompanyDB.java" changelist="1970cc3f-af84-40d3-8ff1-0a3d74cec46d" time="1384176878548" ignored="false" />
     <file path="/Login.java" changelist="1970cc3f-af84-40d3-8ff1-0a3d74cec46d" time="1384189769174" ignored="false" />
     <file path="/PasswordHash.java" changelist="1970cc3f-af84-40d3-8ff1-0a3d74cec46d" time="1384184072466" ignored="false" />
-    <file path="/afterLogin.jsp" changelist="1970cc3f-af84-40d3-8ff1-0a3d74cec46d" time="1384213789176" ignored="false" />
+    <file path="/afterLogin.jsp" changelist="1970cc3f-af84-40d3-8ff1-0a3d74cec46d" time="1384244758912" ignored="false" />
     <file path="/AssignUserRoles.jsp" changelist="1970cc3f-af84-40d3-8ff1-0a3d74cec46d" time="1384199434835" ignored="false" />
     <file path="/documentHead.jsp" changelist="1970cc3f-af84-40d3-8ff1-0a3d74cec46d" time="1384195564214" ignored="false" />
     <file path="/injection.groovy" changelist="1970cc3f-af84-40d3-8ff1-0a3d74cec46d" time="1384195597047" ignored="false" />
@@ -28,6 +32,8 @@
     <file path="/login.jsp" changelist="1970cc3f-af84-40d3-8ff1-0a3d74cec46d" time="1384214154361" ignored="false" />
     <file path="/main.less" changelist="1970cc3f-af84-40d3-8ff1-0a3d74cec46d" time="1384215023284" ignored="false" />
     <file path="/assignUserRoles.jsp" changelist="1970cc3f-af84-40d3-8ff1-0a3d74cec46d" time="1384214885731" ignored="false" />
+    <file path="/createUser.jsp" changelist="1970cc3f-af84-40d3-8ff1-0a3d74cec46d" time="1384244590589" ignored="false" />
+    <file path="/addUser.jsp" changelist="1970cc3f-af84-40d3-8ff1-0a3d74cec46d" time="1384244657229" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,7 +58,6 @@
     <sortChildren value="false" />
   </component>
   <component name="DebuggerManager">
-    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_any default_suspend_policy="SuspendAll" default_condition_enabled="true">
       <breakpoint>
         <option name="NOTIFY_CAUGHT" value="true" />
@@ -89,6 +94,7 @@
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
     </breakpoint_any>
+    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_rules />
     <ui_properties />
   </component>
@@ -98,28 +104,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="assignUserRoles.jsp" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/assignUserRoles.jsp">
+      <file leaf-file-name="UserServlet.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/UserServlet/UserServlet.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="19" column="18" selection-start="611" selection-end="611" vertical-scroll-proportion="-4.6923075">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="main.less" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/web/less/main.less">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="286" column="5" selection-start="5588" selection-end="5588" vertical-scroll-proportion="0.28421053">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="documentHead.jsp" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/includes/documentHead.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="64" selection-start="194" selection-end="194" vertical-scroll-proportion="-1.3076923">
+            <state line="19" column="31" selection-start="579" selection-end="579" vertical-scroll-proportion="0.18535826">
               <folding />
             </state>
           </provider>
@@ -143,7 +131,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/UserDB/UserDB.java" />
         <option value="$PROJECT_DIR$/src/UserDB/CompanyDB.java" />
         <option value="$PROJECT_DIR$/src/db.properties" />
         <option value="$PROJECT_DIR$/src/Utilities/PasswordHash.java" />
@@ -151,22 +138,23 @@
         <option value="$PROJECT_DIR$/src/UserDAO/UserDAO.java" />
         <option value="$PROJECT_DIR$/web/index.jsp" />
         <option value="$PROJECT_DIR$/web/AssignUserRoles.jsp" />
-        <option value="$PROJECT_DIR$/web/createUser.jsp" />
-        <option value="$PROJECT_DIR$/src/UserServlet/UserServlet.java" />
-        <option value="$PROJECT_DIR$/web/afterLogin.jsp" />
         <option value="$PROJECT_DIR$/web/htmlbackup/login.html" />
         <option value="$PROJECT_DIR$/web/login.jsp" />
         <option value="$PROJECT_DIR$/web/includes/documentHead.jsp" />
-        <option value="$PROJECT_DIR$/web/assignUserRoles.jsp" />
         <option value="$PROJECT_DIR$/web/less/main.less" />
+        <option value="$PROJECT_DIR$/web/createUser.jsp" />
+        <option value="$PROJECT_DIR$/web/afterLogin.jsp" />
+        <option value="$PROJECT_DIR$/web/addUser.jsp" />
+        <option value="$PROJECT_DIR$/web/assignUserRoles.jsp" />
+        <option value="$PROJECT_DIR$/src/UserServlet/UserServlet.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1456" />
-    <option name="height" value="876" />
+    <option name="x" value="104" />
+    <option name="y" value="190" />
+    <option name="width" value="1491" />
+    <option name="height" value="830" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -181,7 +169,7 @@
     <ConfirmationsSetting value="0" id="Remove" />
   </component>
   <component name="ProjectReloadState">
-    <option name="STATE" value="2" />
+    <option name="STATE" value="0" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1" splitterProportion="0.5">
@@ -196,7 +184,7 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -247,7 +235,25 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="less" />
+              <option name="myItemId" value="WEB-INF" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SmartTrack" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SmartTrack" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="includes" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -265,13 +271,31 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SmartTrack" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SmartTrack" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="UserServlet" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="GoToFile.includeJavaFiles" value="false" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="options.splitter.main.proportions" value="0.3" />
@@ -285,13 +309,13 @@
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="restartRequiresConfirmation" value="true" />
-    <property name="MemberChooser.showClasses" value="true" />
-    <property name="FullScreen" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
+    <property name="FullScreen" value="false" />
+    <property name="MemberChooser.showClasses" value="true" />
     <property name="GoToClass.includeLibraries" value="false" />
-    <property name="options.splitter.details.proportions" value="0.2" />
-    <property name="options.searchVisible" value="true" />
     <property name="Downloaded.Files.Path" value="C:\Projects\SmartTrack" />
+    <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
   </component>
   <component name="RunManager" selected="Tomcat Server.Tomcat 7.0">
     <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
@@ -306,19 +330,6 @@
       <option name="SHMEM_ADDRESS" value="javadebug" />
       <option name="HOST" value="localhost" />
       <option name="PORT" value="5005" />
-      <method />
-    </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
@@ -347,6 +358,19 @@
       <envs />
       <properties />
       <listeners />
+      <method />
+    </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -561,7 +585,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1456" height="876" extended-state="6" />
+    <frame x="104" y="190" width="1491" height="830" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24930362" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -575,7 +599,6 @@
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.12665685" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32925472" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="CDI" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3964365" sideWeight="0.28652322" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32925472" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -583,12 +606,13 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32925472" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19153515" sideWeight="0.6977716" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.30222842" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19131044" sideWeight="0.6996997" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3003003" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32925472" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -662,20 +686,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/UserBean/UserBean.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="101" column="25" selection-start="2225" selection-end="2225" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="30" selection-start="215" selection-end="215" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/UserServlet/Login.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="66" column="20" selection-start="2250" selection-end="2255" vertical-scroll-proportion="0.0265625">
@@ -685,9 +695,7 @@
     </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.7.0_45/src.zip!/java/lang/Thread.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="743" column="0" selection-start="27685" selection-end="27685" vertical-scroll-proportion="0.3326316">
-          <folding />
-        </state>
+        <state line="743" column="0" selection-start="27685" selection-end="27685" vertical-scroll-proportion="0.3326316" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web/sessionLogin.jsp">
@@ -704,13 +712,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/UserServlet/UserServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="55" selection-start="603" selection-end="603" vertical-scroll-proportion="0.2505263">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/index.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state line="18" column="12" selection-start="664" selection-end="664" vertical-scroll-proportion="0.6815145">
@@ -718,58 +719,71 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/createUser.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="65" selection-start="585" selection-end="585" vertical-scroll-proportion="0.64365256">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/htmlbackup/login.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="0" selection-start="391" selection-end="391" vertical-scroll-proportion="-2.8846154">
-          <folding />
-        </state>
+        <state line="14" column="0" selection-start="391" selection-end="391" vertical-scroll-proportion="-2.8846154" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web/htmlbackup/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="96" column="33" selection-start="3590" selection-end="3604" vertical-scroll-proportion="0.56792873">
-          <folding />
-        </state>
+        <state line="96" column="33" selection-start="3590" selection-end="3604" vertical-scroll-proportion="0.56792873" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/afterLogin.jsp">
+    <entry file="file://$PROJECT_DIR$/web/less/main.less">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="0" selection-start="944" selection-end="944" vertical-scroll-proportion="0.62138087">
-          <folding />
-        </state>
+        <state line="286" column="5" selection-start="5588" selection-end="5588" vertical-scroll-proportion="0.038636364" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SmartTrack.iml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="24" column="10" selection-start="1084" selection-end="1084" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web/login.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="41" selection-start="1144" selection-end="1144" vertical-scroll-proportion="0.7126949">
+        <state line="11" column="9" selection-start="269" selection-end="269" vertical-scroll-proportion="-7.1923075">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/includes/documentHead.jsp">
+    <entry file="file://$PROJECT_DIR$/web/createUser.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="64" selection-start="194" selection-end="194" vertical-scroll-proportion="-1.3076923">
+        <state line="5" column="27" selection-start="143" selection-end="143" vertical-scroll-proportion="0.13843648">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/addUser.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="17" selection-start="471" selection-end="471" vertical-scroll-proportion="0.30456027">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web/assignUserRoles.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="18" selection-start="611" selection-end="611" vertical-scroll-proportion="-4.6923075">
+        <state line="15" column="27" selection-start="505" selection-end="505" vertical-scroll-proportion="0.615942">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/less/main.less">
+    <entry file="file://$PROJECT_DIR$/web/afterLogin.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="286" column="5" selection-start="5588" selection-end="5588" vertical-scroll-proportion="0.28421053">
+        <state line="3" column="16" selection-start="213" selection-end="213" vertical-scroll-proportion="0.123188406">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/includes/documentHead.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="23" column="35" selection-start="1067" selection-end="1067" vertical-scroll-proportion="0.9444444">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/UserServlet/UserServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="31" selection-start="579" selection-end="579" vertical-scroll-proportion="0.18535826">
           <folding />
         </state>
       </provider>

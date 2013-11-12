@@ -60,16 +60,16 @@ public class UserServlet extends HttpServlet {
         user.setIshandler(true);
         user.setIsmanager(true);
         user.setIsreporter(true);
-        dao.addUser(user);
 
-        //String userid = request.getParameter("userID");
-        //if(userid == null || userid.isEmpty()) {
-        //} else {
-        //    user.setUserid(Integer.parseInt(userid));
-        //    dao.updateUser(user);
-        //}
+        String userid = request.getParameter("userID");
+        if(userid == null || userid.isEmpty()) {
+            dao.addUser(user);
+        } else {
+            user.setUserid(Integer.parseInt(userid));
+            dao.updateUser(user);
+        }
         RequestDispatcher view = request.getRequestDispatcher(LIST_USER);
-        request.setAttribute("users", dao.getAllUsers());
+        //request.setAttribute("users", dao.getAllUsers());
         view.forward(request, response);
     }
 }
