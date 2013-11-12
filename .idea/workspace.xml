@@ -2,14 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1970cc3f-af84-40d3-8ff1-0a3d74cec46d" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SmartTrack.iml" afterPath="$PROJECT_DIR$/SmartTrack.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/artifacts/SmartTrack_war_exploded.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/SmartTrack_war_exploded.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/includes/documentHead.jsp" afterPath="$PROJECT_DIR$/web/includes/documentHead.jsp" />
+      <change type="MOVED" beforePath="C:\Users\chanc_000\IdeaProjects\SmartTrack\web\AssignUserRoles.jsp" afterPath="$PROJECT_DIR$/web/assignUserRoles.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/less/main.less" afterPath="$PROJECT_DIR$/web/less/main.less" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="SmartTrack.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="1970cc3f-af84-40d3-8ff1-0a3d74cec46d" time="1384214357749" ignored="false" />
+    <file path="/Dummy.txt" changelist="1970cc3f-af84-40d3-8ff1-0a3d74cec46d" time="1384214819341" ignored="false" />
     <file path="/index.jsp" changelist="1970cc3f-af84-40d3-8ff1-0a3d74cec46d" time="1384211991853" ignored="false" />
     <file path="/UserBean.java" changelist="1970cc3f-af84-40d3-8ff1-0a3d74cec46d" time="1383665747727" ignored="false" />
     <file path="/UserDAO.java" changelist="1970cc3f-af84-40d3-8ff1-0a3d74cec46d" time="1384197176941" ignored="false" />
@@ -27,7 +26,8 @@
     <file path="/injection.groovy" changelist="1970cc3f-af84-40d3-8ff1-0a3d74cec46d" time="1384195597047" ignored="false" />
     <file path="/Dummy.regexp" changelist="1970cc3f-af84-40d3-8ff1-0a3d74cec46d" time="1384195597047" ignored="false" />
     <file path="/login.jsp" changelist="1970cc3f-af84-40d3-8ff1-0a3d74cec46d" time="1384214154361" ignored="false" />
-    <file path="/main.less" changelist="1970cc3f-af84-40d3-8ff1-0a3d74cec46d" time="1384214279353" ignored="false" />
+    <file path="/main.less" changelist="1970cc3f-af84-40d3-8ff1-0a3d74cec46d" time="1384215023284" ignored="false" />
+    <file path="/assignUserRoles.jsp" changelist="1970cc3f-af84-40d3-8ff1-0a3d74cec46d" time="1384214885731" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -98,10 +98,19 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="assignUserRoles.jsp" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="assignUserRoles.jsp" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/assignUserRoles.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="15" column="22" selection-start="462" selection-end="462" vertical-scroll-proportion="-0.2566735">
+            <state line="19" column="18" selection-start="611" selection-end="611" vertical-scroll-proportion="-4.6923075">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="main.less" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/web/less/main.less">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="286" column="5" selection-start="5588" selection-end="5588" vertical-scroll-proportion="0.28421053">
               <folding />
             </state>
           </provider>
@@ -147,9 +156,9 @@
         <option value="$PROJECT_DIR$/web/afterLogin.jsp" />
         <option value="$PROJECT_DIR$/web/htmlbackup/login.html" />
         <option value="$PROJECT_DIR$/web/login.jsp" />
-        <option value="$PROJECT_DIR$/web/less/main.less" />
-        <option value="$PROJECT_DIR$/web/assignUserRoles.jsp" />
         <option value="$PROJECT_DIR$/web/includes/documentHead.jsp" />
+        <option value="$PROJECT_DIR$/web/assignUserRoles.jsp" />
+        <option value="$PROJECT_DIR$/web/less/main.less" />
       </list>
     </option>
   </component>
@@ -238,7 +247,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="includes" />
+              <option name="myItemId" value="less" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -253,42 +262,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SmartTrack" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SmartTrack" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="UserServlet" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SmartTrack" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SmartTrack" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="UserDAO" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -560,7 +533,11 @@
       <created>1384214362087</created>
       <updated>1384214362087</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Made some cleanup and found the source of the problem. JSTL is actually now working!!!">
+      <created>1384214828065</created>
+      <updated>1384214828065</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -587,7 +564,7 @@
     <frame x="-8" y="-8" width="1456" height="876" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24930362" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24930362" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32962137" sideWeight="0.67270666" order="3" side_tool="false" content_ui="tabs" />
@@ -606,8 +583,8 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32925472" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19153515" sideWeight="0.75069636" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.30222842" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19153515" sideWeight="0.6977716" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.30222842" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -657,7 +634,7 @@
     <option name="WRAP_WHEN_TYPING_REACHES_RIGHT_MARGIN" value="false" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Made some cleanup and found the source of the problem. JSTL libraries not working as they should." />
+    <option name="LAST_COMMIT_MESSAGE" value="Made some cleanup and found the source of the problem. JSTL is actually now working!!!" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -675,6 +652,7 @@
     <MESSAGE value="stuff happened" />
     <MESSAGE value="It Works mothefucka!!!!" />
     <MESSAGE value="Made some cleanup and found the source of the problem. JSTL libraries not working as they should." />
+    <MESSAGE value="Made some cleanup and found the source of the problem. JSTL is actually now working!!!" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -775,13 +753,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/less/main.less">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="171" column="25" selection-start="3211" selection-end="3211" vertical-scroll-proportion="0.4294737">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/includes/documentHead.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state line="2" column="64" selection-start="194" selection-end="194" vertical-scroll-proportion="-1.3076923">
@@ -791,7 +762,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/web/assignUserRoles.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="22" selection-start="462" selection-end="462" vertical-scroll-proportion="-0.2566735">
+        <state line="19" column="18" selection-start="611" selection-end="611" vertical-scroll-proportion="-4.6923075">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/less/main.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="286" column="5" selection-start="5588" selection-end="5588" vertical-scroll-proportion="0.28421053">
           <folding />
         </state>
       </provider>

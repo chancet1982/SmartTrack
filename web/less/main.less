@@ -278,7 +278,15 @@ z-index:2;
 	left:0px;
 	right:0px;
 	overflow:auto;
-	
+    table {
+      width:100%;
+
+      th {color:@color-accent;}
+
+      tr:nth-child(odd) { background-color:@color-white; }
+      tr:nth-child(even) { background-color:darken(@color-white,10%) }
+    }
+
 	.site-width {
 		width:97%;
 		max-width:97%;
