@@ -39,4 +39,31 @@ public class CompanyDB {
 
     }
 
+    public static Connection getIndexConnection(String url) {
+        if (connection != null)
+            return connection;
+        else {
+            try {
+                Properties prop = new Properties();
+                InputStream inputStream = UserDB.class.getClassLoader().getResourceAsStream("/db.properties");
+                prop.load(inputStream);
+                String driver = prop.getProperty("driver");
+                String user = prop.getProperty("user");
+                String password = prop.getProperty("password");
+                Class.forName(driver);
+                connection = DriverManager.getConnection(url, user, password);
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return connection;
+        }
+
+    }
+
 }

@@ -17,7 +17,7 @@ import UserBean.*;
 public class UserServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
     private static String INSERT_OR_EDIT = "/user.jsp";
-    private static String LIST_USER = "/assignUserRoles.jsp";
+    private static String LIST_USER = "/AssignUserRoles.jsp";
     private UserDAO dao;
 
     public UserServlet() {
