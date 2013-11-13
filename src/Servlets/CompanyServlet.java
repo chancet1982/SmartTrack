@@ -25,7 +25,6 @@ public class CompanyServlet extends HttpServlet {
 
         for (int i=0;i<existingCompanies.size();i++) {
             out.println("<option>" + existingCompanies.get(i) + "</option>");
-            System.out.println("option add"+ existingCompanies);
         }
     }
 

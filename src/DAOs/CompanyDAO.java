@@ -26,6 +26,8 @@ public class CompanyDAO {
             statement.executeUpdate("use indexDB;");
             statement.executeUpdate("CREATE TABLE IF NOT EXISTS indexDB.companiesTable(companyID int(11) NOT NULL AUTO_INCREMENT,companyName varchar(45) DEFAULT NULL UNIQUE, PRIMARY KEY (companyID)) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;");
 
+            ResultSet existingUser = statement.executeQuery("SELECT * FROM FROM indexDB.companiesTable WHERE companyName = ''");
+
             //add new company to the index database
             PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO indexDB.companiesTable(companyName) VALUES (?)");
             preparedStatement.setString(1, company.getCompanyName());
@@ -33,13 +35,10 @@ public class CompanyDAO {
 
             //get new company ID
             int newCompanyID = 0;
-            rs = statement.executeQuery("SELECT MAX IF EXISTS(companyID) FROM indexDB.companiesTable");
-            if (rs != null) {
-                while (rs.next()) {newCompanyID = rs.getInt("companyID") ;}
-            }
-
-            Statement stm = connection.createStatement();
-            stm.executeUpdate("CREATE DATABASE company" + newCompanyID);
+            rs = statement.executeQuery("SELECT MAX(companyID) FROM indexDB.companiesTable");
+            if (rs.next()) {newCompanyID = rs.getInt(1);}
+            statement.executeUpdate("GRANT ALL PRIVILEGES ON *.* TO admin@localhost WITH GRANT OPTION");
+            statement.executeUpdate("CREATE DATABASE IF NOT EXISTS company" + newCompanyID);
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -51,6 +50,10 @@ public class CompanyDAO {
         List<String> companies = new ArrayList<String>();
         try {
             Statement statement = connection.createStatement();
+            statement.executeUpdate("CREATE DATABASE IF NOT EXISTS indexDB;");
+            statement.executeUpdate("use indexDB;");
+            statement.executeUpdate("CREATE TABLE IF NOT EXISTS indexDB.companiesTable(companyID int(11) NOT NULL AUTO_INCREMENT,companyName varchar(45) DEFAULT NULL UNIQUE, PRIMARY KEY (companyID)) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;");
+
             ResultSet rs = statement.executeQuery("SELECT * FROM indexDB.companiesTable");
             while (rs.next()) {
                 companies.add(rs.getString("companyName"));

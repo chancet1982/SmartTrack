@@ -16,10 +16,6 @@
 </div>
 <div id="site-content">
     <div class="site-width clearfix">
-        <div class="sidebar right toggleable collapsed clearfix ">
-            <div class="toggle collapse"><span class="icon"></span></div>
-            <h1>Sidebar</h1>
-        </div>
         <h1>User Management</h1>
         <div class="box color-light round-corners shadow padding clearfix">
             <table>

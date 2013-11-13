@@ -54,14 +54,12 @@
 </div>
 <script type="text/javascript">
     $(document).ready(function(){
-//    $("#selectCompany").one(function(){
         $.ajax({
             type: "POST",
             url: "/CompanyServlet",
             success: function(data) {
                 $('#selectCompany').show();
                 $('#selectCompany').append(data);
-                console.log("ajax");
             },
             error: function (xhr, ajaxOptions, thrownError) {
                 console.log(xhr.status);
@@ -69,29 +67,37 @@
             }
         });
 
-//    });
     });
+
+    //create dialog
     $( "#addCompanyDialog" ).dialog({
-        autoOpen: false
-//        buttons: {
-//            "OK": function() {
-//                $( this ).dialog( "close" );
-//                $( this ).click(function(){
-//                    console.log("in the add dialg");
-//                    newCompanyName = addCompanyName.val();
-//                    $("#selectCompany").append("<option>"+ newCompanyName +"<option>");
-//                });
-//            }
-        //}
+        autoOpen: false,
+        modal: true,
+        draggable: false
     });
+
+    //open dialog
     $("#addCompany").click(function() {
         $( "#addCompanyDialog" ).dialog( "open" );
     });
+
+    //press OK in the dialog (verify if )
     $("#okDialogCompany").click(function() {
-        $( "#addCompanyDialog" ).dialog( "close" );
+        var unique = true;
+        for( i=0 ; i< $('#selectCompany option').length ; i++){
+            if( $('#selectCompany').val() == $("#addCompanyName").val() && $('#selectCompany option').length > 0){
+                unique = false;}else{
+                unique = true;}
+        }
+        if(unique == true){
+            $( "#addCompanyDialog" ).dialog( "close" );
             console.log("in the add dialg");
             newCompanyName = $("#addCompanyName").val();
             $("#selectCompany").append("<option>"+ newCompanyName +"</option>")
+            $("#selectCompany option:last").attr("selected","selected");
+        }else{
+            console.log("not unique");
+        }
     });
 </script>
 </body>
