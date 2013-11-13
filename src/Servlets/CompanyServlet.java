@@ -21,10 +21,11 @@ public class CompanyServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         CompanyBean user = new CompanyBean();
         PrintWriter out = response.getWriter();
-        List<String> existingCompanies = dao.getAllCompanies();
+        List<String> existingCompaniesNames = dao.getAllCompaniesNames();
+        List<String> existingCompaniesIDs = dao.getAllCompaniesIDs();
 
-        for (int i=0;i<existingCompanies.size();i++) {
-            out.println("<option>" + existingCompanies.get(i) + "</option>");
+        for (int i=0;i<existingCompaniesNames.size();i++) {
+            out.println("<option value="+ existingCompaniesIDs.get(i) + ":" + existingCompaniesNames.get(i) +">" + existingCompaniesNames.get(i) + "</option>");
         }
     }
 

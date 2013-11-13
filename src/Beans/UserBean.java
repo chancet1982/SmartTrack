@@ -89,6 +89,13 @@ public class UserBean {
     public void setIsreporter(boolean isreporter) {
         this.isreporter = isreporter;
     }
+    public String getCompanyID() {
+        return companyID;
+    }
+
+    public void setCompanyID(String usercompany) {
+        this.companyID = usercompany;
+    }
 
     private String username;
     private String firstname;
@@ -96,6 +103,7 @@ public class UserBean {
     private String useremail;
     private String usersalt;
     private String userpassword;
+    private String companyID;
     private boolean ishandler;
     private boolean ismanager;
     private boolean isreporter;

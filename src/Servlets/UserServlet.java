@@ -53,11 +53,21 @@ public class UserServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         UserBean user = new UserBean();
         CompanyBean company = new CompanyBean();
+
         user.setFirstname(request.getParameter("firstName"));
         user.setLastname(request.getParameter("lastName"));
         user.setUseremail(request.getParameter("userEmail"));
         user.setUserpassword(request.getParameter("userPassword"));
-        company.setCompanyName(request.getParameter("companyName"));
+
+        // Split the info into parameters
+        String[] companyInfo = (request.getParameter("companyInfo")).split(":");
+        if(companyInfo.length>1){
+            user.setCompanyID(request.getParameter(companyInfo[0]));
+            company.setCompanyName(request.getParameter(companyInfo[1]));
+        }else{
+            company.setCompanyName(request.getParameter(companyInfo[1]));
+            user.setCompanyID(user.getCompanyID());
+        }
         System.out.println("in the servlet:" + request.getParameter("userPassword"));
         user.setIshandler(true);
         user.setIsmanager(true);

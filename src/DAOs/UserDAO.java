@@ -31,14 +31,15 @@ public class UserDAO {
             statement.executeUpdate("CREATE TABLE IF NOT EXISTS indexDB.usersTable(id int(11) NOT NULL AUTO_INCREMENT,`companyID` varchar(45) DEFAULT NULL,`firstName` varchar(45) DEFAULT NULL,`lastName` varchar(45) DEFAULT NULL,`userEmail` varchar(100) DEFAULT NULL,`userPassword` varchar(105) DEFAULT NULL,`handler` int(1) NOT NULL DEFAULT 0,`manager` int(1) NOT NULL DEFAULT 0,`reporter` int(1) NOT NULL DEFAULT 0, PRIMARY KEY (`id`)) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;");
 
             System.out.println("Created database and table in case they do not exists");
-            PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO indexdb.usersTable(firstName , lastName , userEmail , userPassword) VALUES (?,?,?,?)");
+            PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO indexdb.usersTable(companyID , firstName , lastName , userEmail , userPassword) VALUES (?,?,?,?,?)");
 
             // Parameters start with 1
               System.out.println( user.getUserpassword() );
-            preparedStatement.setString(1, user.getFirstname());
-            preparedStatement.setString(2, user.getLastname());
-            preparedStatement.setString(3, user.getUseremail());
-            preparedStatement.setString(4, user.getUserpassword());
+            preparedStatement.setString(1, user.getCompanyID());
+            preparedStatement.setString(2, user.getFirstname());
+            preparedStatement.setString(3, user.getLastname());
+            preparedStatement.setString(4, user.getUseremail());
+            preparedStatement.setString(5, user.getUserpassword());
 
             preparedStatement.executeUpdate();
 

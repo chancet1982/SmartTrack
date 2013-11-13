@@ -36,7 +36,7 @@
                         <input type="password" name="password2" class="required">
                     </li>
                     <li>
-                        <select id="selectCompany" name="companyName">
+                        <select id="selectCompany" name="companyInfo">
                         </select>
                         <button id="addCompany" type="button">add company</button>
                         <div id="addCompanyDialog"  title="Input new company name">
