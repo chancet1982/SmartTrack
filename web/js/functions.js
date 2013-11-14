@@ -4,15 +4,15 @@ var mouse_is_inside = false;
 function validateForm() {
 	$('form').each(function() {
 		var $formValid = true;
-
 		$(this).find('input.required').each(function (index, element) {
 			if($(element).hasClass("invalid")) $formValid = false;
 		});		
-
-		if (!$formValid) $(this).find('input[type="submit"]').addClass('inactive')
-		else $(this).find('input[type="submit"]').removeClass('inactive');		
-
-	});			
+		if (!$formValid) {
+            $(this).find('input[type="submit"]').addClass('inactive').bind('click');
+        } else {
+            $(this).find('input[type="submit"]').removeClass('inactive').unbind('click');
+        }
+	});
 }
 
 /*------------Do things on window resize------------*/
@@ -96,7 +96,7 @@ $(document).ready(function() {
 	//Add invalid to empty required inputs
 	
 	//Deactivate inactive links
-	$('a.inactive').click(function(e) {
+	$('.inactive').click(function(e) {
 		e.preventDefault();
 	});
 

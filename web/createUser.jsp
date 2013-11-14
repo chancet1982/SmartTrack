@@ -25,19 +25,21 @@
                     </li>
                     <li>
                         <label>Type in E-mail address</label>
-                        <input type="text" name="userEmail" data-servlet="/UserServlet?action=verifyUnique" class="required unique invalid">
+                        <input type="text" name="userEmail" data-servlet="/UserServlet?action=verifyUnique" class="required unique invalid email">
+                        <span class="message box error hidden">Email is already registered and must be unique</span>
                     </li>
                     <li>
                         <label>Type in password</label>
-                        <input type="password" name="userPassword" class="required">
+                        <input type="password" name="userPassword" class="required password">
                     </li>
                     <li>
                         <label>Repeat password</label>
-                        <input type="password" name="password2" class="required">
+                        <input type="password" name="password2" class="required repeat-password">
                     </li>
                     <li>
                         <label>Type in your company name</label>
                         <input type="text" name="companyName" data-servlet="/CompanyServlet?action=verifyUnique" class="required unique invalid">
+                        <span class="message box error hidden">Company already exists, you cannot add a user to an existing company</span>
                     </li>
                     <li>
                         <input type="submit" value="Submit">
@@ -53,8 +55,7 @@ $(document).ready(function(){
         inputValue = $(this).val();
         inputName = $(this).attr("name");
         servletName = $(this).attr("data-servlet");
-        this2 = $(this);
-
+        thisInput = $(this);
         $.ajax({
             type: "GET",
             url: servletName,
@@ -63,11 +64,11 @@ $(document).ready(function(){
             success: function(data) {
                 console.log(data.isUnique);
                 if(data.isUnique == "true"){
-                    this2.removeClass("invalid");
-                    this2.addClass("valid");
+                    thisInput.removeClass("not-unique").addClass("unique");
+                    thisInput.next().addClass("hidden");
                 }else{
-                    this2.addClass("invalid");
-                    this2.removeClass("valid");
+                    thisInput.addClass("unique").removeClass("not-unique");
+                    thisInput.next().removeClass("hidden");
                 }
             },
             error: function (xhr, ajaxOptions, thrownError) {
@@ -79,19 +80,19 @@ $(document).ready(function(){
 });
 
     //create dialog
-    $( "#addCompanyDialog" ).dialog({
+    /*$( "#addCompanyDialog" ).dialog({
         autoOpen: false,
         modal: true,
         draggable: false
-    });
+    });*/
 
     //open dialog
-    $("#addCompany").click(function() {
+    /*$("#addCompany").click(function() {
         $( "#addCompanyDialog" ).dialog( "open" );
-    });
+    });*/
 
     //press OK in the dialog (verify if )
-    $("#okDialogCompany").click(function() {
+    /*$("#okDialogCompany").click(function() {
         var unique = true;
         for( i=0 ; i< $('#selectCompany option').length ; i++){
             if( $('#selectCompany').val() == $("#addCompanyName").val() && $('#selectCompany option').length > 0){
@@ -107,7 +108,7 @@ $(document).ready(function(){
         }else{
             console.log("not unique");
         }
-    });
+    });  */
 </script>
 </body>
 </html>

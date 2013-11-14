@@ -23,9 +23,6 @@ public class UserDAO {
     public void addUser(UserBean user)  {
         try {
 
-            System.out.println("connection is: " + connection);
-            Statement statement = connection.createStatement();
-
             PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO indexdb.usersTable(companyID , firstName , lastName , userEmail , userPassword) VALUES (?,?,?,?,?)");
 
             // Parameters start with 1
@@ -63,17 +60,15 @@ public class UserDAO {
     public void updateUser(UserBean user) {
         try {
             PreparedStatement preparedStatement = connection
-                    .prepareStatement("UPDATE indexdb.usersTable SET `user-name`=?, `first-name`=?, `last-name`=?,  `user-email`=?, `user-salt`=?, `user-password`=?, `is-handler`=?,`is-manager`=?,`is-reporter`=?, WHERE `user-id`=?");
+                    .prepareStatement("UPDATE indexdb.usersTable SET firstName=?, lastName=?,userEmail=?,  userPassword=?, isHandler=?,isManager=?,isReporter=?, WHERE id=?");
             // Parameters start with 1
-            preparedStatement.setString(1, user.getUsername());
-            preparedStatement.setString(2, user.getFirstname());
-            preparedStatement.setString(3, user.getLastname());
-            preparedStatement.setString(4, user.getUseremail());
-            preparedStatement.setString(5, user.getUsersalt());
-            preparedStatement.setString(6, user.getUserpassword());
-            preparedStatement.setBoolean(7, user.isIshandler());
-            preparedStatement.setBoolean(8, user.isIsmanager());
-            preparedStatement.setBoolean(9, user.isIsreporter());
+            preparedStatement.setString(1, user.getFirstname());
+            preparedStatement.setString(2, user.getLastname());
+            preparedStatement.setString(3, user.getUseremail());
+            preparedStatement.setString(4, user.getUserpassword());
+            preparedStatement.setBoolean(5, user.isIshandler());
+            preparedStatement.setBoolean(6, user.isIsmanager());
+            preparedStatement.setBoolean(7, user.isIsreporter());
             preparedStatement.executeUpdate();
 
         } catch (SQLException e) {
@@ -114,11 +109,10 @@ public class UserDAO {
             ResultSet rs = preparedStatement.executeQuery();
 
             if (rs.next()) {
-                user.setUserid(rs.getInt("user-id"));
-                user.setUsername(rs.getString("user-name"));
-                user.setFirstname(rs.getString("first-name"));
-                user.setLastname(rs.getString("last-name"));
-                user.setUseremail(rs.getString("user-email"));
+                user.setUserid(rs.getInt("id"));
+                user.setFirstname(rs.getString("firstName"));
+                user.setLastname(rs.getString("lastName"));
+                user.setUseremail(rs.getString("userEmail"));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -135,8 +129,6 @@ public class UserDAO {
             ResultSet rs = preparedStatement.executeQuery();
             if ( !rs.next() ) {
                 isUnique = true;
-            }else{
-                isUnique = false;
             }
 
         } catch (SQLException e) {

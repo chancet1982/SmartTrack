@@ -106,7 +106,7 @@ public class Login extends HttpServlet {
 
             }else{
                 System.out.println("Fail - password incorrect");
-                response.sendRedirect("afterLogin.jsp?message='error'");
+                response.sendRedirect("login.jsp?message='error'");
                 //RequestDispatcher view = request.getRequestDispatcher("login.jsp");
                 //view.forward(request, response);
             }

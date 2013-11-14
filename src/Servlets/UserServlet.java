@@ -14,8 +14,9 @@ import Beans.*;
 
 public class UserServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
-    private static String INSERT_OR_EDIT = "/user.jsp";
+    private static String EDIT = "/user.jsp";
     private static String LIST_USER = "/assignUserRoles.jsp";
+    private static String INSERT = "/assignUserRoles.jsp";
     private UserDAO dao;
     private CompanyDAO companydao;
 
@@ -36,7 +37,7 @@ public class UserServlet extends HttpServlet {
             forward = LIST_USER;
             request.setAttribute("users", dao.getAllUsers());
         } else if (action.equalsIgnoreCase("edit")){
-            forward = INSERT_OR_EDIT;
+            forward = EDIT;
             int userId = Integer.parseInt(request.getParameter("userId"));
             UserBean user = dao.getUserById(userId);
             request.setAttribute("user", user);
@@ -58,7 +59,7 @@ public class UserServlet extends HttpServlet {
             }
 
         }else{
-            forward = INSERT_OR_EDIT;
+            forward = EDIT;
         }
 
         //RequestDispatcher view = request.getRequestDispatcher(forward);
@@ -96,7 +97,7 @@ public class UserServlet extends HttpServlet {
             user.setUserid(Integer.parseInt(userid));
             dao.updateUser(user);
         }
-        RequestDispatcher view = request.getRequestDispatcher(LIST_USER);
+        RequestDispatcher view = request.getRequestDispatcher(INSERT);
         //request.setAttribute("users", dao.getAllUsers());
         view.forward(request, response);
     }
