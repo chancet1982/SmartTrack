@@ -34,7 +34,7 @@ public class UserDAO {
             PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO indexdb.usersTable(companyID , firstName , lastName , userEmail , userPassword) VALUES (?,?,?,?,?)");
 
             // Parameters start with 1
-              System.out.println( user.getUserpassword() );
+            System.out.println( user.getUserpassword() );
             preparedStatement.setString(1, user.getCompanyID());
             preparedStatement.setString(2, user.getFirstname());
             preparedStatement.setString(3, user.getLastname());
@@ -130,5 +130,24 @@ public class UserDAO {
         }
 
         return user;
+    }
+
+    public boolean emailExists(String email) {
+        System.out.println(email);
+        boolean emailExists = false;
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM indexdb.usersTable WHERE userEmail=?");
+            preparedStatement.setString(1 , email);
+            ResultSet rs = preparedStatement.executeQuery();
+            if ( !rs.next() ) {
+                emailExists = false;
+            }else{
+                emailExists = true;
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return emailExists;
     }
 }

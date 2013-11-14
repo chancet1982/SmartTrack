@@ -25,7 +25,7 @@
                     </li>
                     <li>
                         <label>Type in E-mail address</label>
-                        <input type="text" name="userEmail" class="required">
+                        <input type="text" name="userEmail" class="required unique">
                     </li>
                     <li>
                         <label>Type in password</label>
@@ -36,7 +36,7 @@
                         <input type="password" name="password2" class="required">
                     </li>
                     <li>
-                        <select id="selectCompany" name="companyInfo">
+                        <select id="selectCompany" name="companyInfo" class="unique">
                         </select>
                         <button id="addCompany" type="button">add company</button>
                         <div id="addCompanyDialog"  title="Input new company name">
@@ -53,21 +53,30 @@
     </div>
 </div>
 <script type="text/javascript">
-    $(document).ready(function(){
+$(document).ready(function(){
+    $(".unique").on("keyup" , function(){
+        email = $(this).val();
         $.ajax({
-            type: "POST",
-            url: "/CompanyServlet",
+            type: "GET",
+            url: "/UserServlet?action=verifyUnique",
+            data:{ "email" : email } ,
+            dataType: "json",
             success: function(data) {
-                $('#selectCompany').show();
-                $('#selectCompany').append(data);
+                console.log(data[0].value);
+
+//                if(data=="false"){
+//                    console.log("data is false");
+//                }else{
+//                    console.log("data is true");
+//                }
             },
             error: function (xhr, ajaxOptions, thrownError) {
                 console.log(xhr.status);
                 console.log(thrownError);
             }
         });
-
     });
+});
 
     //create dialog
     $( "#addCompanyDialog" ).dialog({

@@ -1,6 +1,7 @@
 package Servlets;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -42,7 +43,21 @@ public class UserServlet extends HttpServlet {
         } else if (action.equalsIgnoreCase("listUsers")){
             forward = LIST_USER;
             request.setAttribute("users", dao.getAllUsers());
-        } else {
+        } else if (action.equalsIgnoreCase("verifyUnique")){
+
+            response.setContentType("application/json");
+            PrintWriter out = response.getWriter();
+            if( dao.emailExists(request.getParameter("email"))== true ){
+                System.out.println("{\"isUnique\":\"true\"}");
+                String temp = "{\"isUnique\":\"true\"}";
+                out.write(temp);
+            }else{
+                System.out.println("{\"isUnique\":\"false\"}");
+                String temp = "{\"isUnique\":\"false\"}";
+                out.write(temp);
+            }
+
+        }else{
             forward = INSERT_OR_EDIT;
         }
 
@@ -59,15 +74,15 @@ public class UserServlet extends HttpServlet {
         user.setUseremail(request.getParameter("userEmail"));
         user.setUserpassword(request.getParameter("userPassword"));
 
-        // Split the info into parameters
-        String[] companyInfo = (request.getParameter("companyInfo")).split(":");
-        if(companyInfo.length>1){
-            user.setCompanyID(request.getParameter(companyInfo[0]));
-            company.setCompanyName(request.getParameter(companyInfo[1]));
-        }else{
-            company.setCompanyName(request.getParameter(companyInfo[1]));
-            user.setCompanyID(user.getCompanyID());
-        }
+//        // Split the info into parameters
+//        String[] companyInfo = (request.getParameter("companyInfo")).split(":");
+//        if(companyInfo.length>1){
+//            user.setCompanyID(request.getParameter(companyInfo[0]));
+//            company.setCompanyName(request.getParameter(companyInfo[1]));
+//        }else{
+//            company.setCompanyName(request.getParameter(companyInfo[1]));
+//            user.setCompanyID(user.getCompanyID());
+//        }
         System.out.println("in the servlet:" + request.getParameter("userPassword"));
         user.setIshandler(true);
         user.setIsmanager(true);
