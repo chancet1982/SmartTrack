@@ -62,7 +62,7 @@ $(document).ready(function(){
             data:{ "email" : email } ,
             dataType: "json",
             success: function(data) {
-                console.log(data[0].value);
+                console.log(data.isUnique);
 
 //                if(data=="false"){
 //                    console.log("data is false");

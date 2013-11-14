@@ -61,8 +61,8 @@ public class UserServlet extends HttpServlet {
             forward = INSERT_OR_EDIT;
         }
 
-        RequestDispatcher view = request.getRequestDispatcher(forward);
-        view.forward(request, response);
+        //RequestDispatcher view = request.getRequestDispatcher(forward);
+        //view.forward(request, response);
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
