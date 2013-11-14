@@ -12,21 +12,16 @@ public class CompanyDAO {
     private Connection connection;
 
     public CompanyDAO() {
+        connection= CompanyDB.getConnection();
     }
 
     public void addCompany(CompanyBean company)  {
 
-        connection= CompanyDB.getConnection();
 
         try {
             //check if index database exists and creates one if NOT
             ResultSet rs = null;
             Statement statement = connection.createStatement();
-            statement.executeUpdate("CREATE DATABASE IF NOT EXISTS indexDB;");
-            statement.executeUpdate("use indexDB;");
-            statement.executeUpdate("CREATE TABLE IF NOT EXISTS indexDB.companiesTable(companyID int(11) NOT NULL AUTO_INCREMENT,companyName varchar(45) DEFAULT NULL UNIQUE, PRIMARY KEY (companyID)) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;");
-
-            System.out.println(company.getCompanyName());
 
             ResultSet existingUser = statement.executeQuery("SELECT * FROM indexDB.companiesTable WHERE companyName=\'"+ company.getCompanyName() + "\'");
             System.out.println(existingUser.first());
@@ -56,9 +51,6 @@ public class CompanyDAO {
         List<String> companyNames = new ArrayList<String>();
         try {
             Statement statement = connection.createStatement();
-            statement.executeUpdate("CREATE DATABASE IF NOT EXISTS indexDB;");
-            statement.executeUpdate("use indexDB;");
-            statement.executeUpdate("CREATE TABLE IF NOT EXISTS indexDB.companiesTable(companyID int(11) NOT NULL AUTO_INCREMENT,companyName varchar(45) DEFAULT NULL UNIQUE, PRIMARY KEY (companyID)) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;");
 
             ResultSet rs = statement.executeQuery("SELECT * FROM indexDB.companiesTable");
             while (rs.next()) {
@@ -75,9 +67,6 @@ public class CompanyDAO {
         List<String> companyIDs = new ArrayList<String>();
         try {
             Statement statement = connection.createStatement();
-            statement.executeUpdate("CREATE DATABASE IF NOT EXISTS indexDB;");
-            statement.executeUpdate("use indexDB;");
-            statement.executeUpdate("CREATE TABLE IF NOT EXISTS indexDB.companiesTable(companyID int(11) NOT NULL AUTO_INCREMENT,companyName varchar(45) DEFAULT NULL UNIQUE, PRIMARY KEY (companyID)) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;");
 
             ResultSet rs = statement.executeQuery("SELECT * FROM indexDB.companiesTable");
             while (rs.next()) {
@@ -89,4 +78,22 @@ public class CompanyDAO {
         return companyIDs;
     }
 
+    public boolean isFieldUnique(String inputValue, String inputName) {
+        boolean isUnique = false;
+        System.out.println(inputValue + " in companyDAO -----" + inputName);
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM indexdb.companiesTable WHERE "+inputName+"=?");
+            preparedStatement.setString(1 , inputValue);
+            ResultSet rs = preparedStatement.executeQuery();
+            if ( !rs.next() ) {
+                isUnique = true;
+            }else{
+                isUnique = false;
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return isUnique;
+    }
 }

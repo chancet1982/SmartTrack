@@ -47,7 +47,7 @@ public class UserServlet extends HttpServlet {
 
             response.setContentType("application/json");
             PrintWriter out = response.getWriter();
-            if( dao.emailExists(request.getParameter("email"))== true ){
+            if( dao.isFieldUnique(request.getParameter("inputValue") , request.getParameter("inputName")) == true ){
                 System.out.println("{\"isUnique\":\"true\"}");
                 String temp = "{\"isUnique\":\"true\"}";
                 out.write(temp);

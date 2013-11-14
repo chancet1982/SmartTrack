@@ -18,6 +18,27 @@ public class CompanyServlet extends HttpServlet {
         dao = new CompanyDAO();
     }
 
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        System.out.println("in the companyServlet");
+        String action = request.getParameter("action");
+
+        System.out.println(request.getParameter("inputValue") +" ========== "+ request.getParameter("inputName"));
+        if (action.equalsIgnoreCase("verifyUnique")){
+
+            response.setContentType("application/json");
+            PrintWriter out = response.getWriter();
+            if( dao.isFieldUnique(request.getParameter("inputValue") , request.getParameter("inputName")) == true ){
+                System.out.println("{\"isUnique\":\"true\"}");
+                String temp = "{\"isUnique\":\"true\"}";
+                out.write(temp);
+            }else{
+                System.out.println("{\"isUnique\":\"false\"}");
+                String temp = "{\"isUnique\":\"false\"}";
+                out.write(temp);
+            }
+        }
+    }
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         CompanyBean user = new CompanyBean();
         PrintWriter out = response.getWriter();

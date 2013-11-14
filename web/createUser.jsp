@@ -25,7 +25,7 @@
                     </li>
                     <li>
                         <label>Type in E-mail address</label>
-                        <input type="text" name="userEmail" class="required unique">
+                        <input type="text" name="userEmail" data-servlet="/UserServlet?action=verifyUnique" class="required unique invalid">
                     </li>
                     <li>
                         <label>Type in password</label>
@@ -36,13 +36,8 @@
                         <input type="password" name="password2" class="required">
                     </li>
                     <li>
-                        <select id="selectCompany" name="companyInfo" class="unique">
-                        </select>
-                        <button id="addCompany" type="button">add company</button>
-                        <div id="addCompanyDialog"  title="Input new company name">
-                            <input id="addCompanyName" >
-                            <button id="okDialogCompany" type="button">OK</button>
-                        </div>
+                        <label>Type in your company name</label>
+                        <input type="text" name="companyName" data-servlet="/CompanyServlet?action=verifyUnique" class="required unique invalid">
                     </li>
                     <li>
                         <input type="submit" value="Submit">
@@ -55,20 +50,25 @@
 <script type="text/javascript">
 $(document).ready(function(){
     $(".unique").on("keyup" , function(){
-        email = $(this).val();
+        inputValue = $(this).val();
+        inputName = $(this).attr("name");
+        servletName = $(this).attr("data-servlet");
+        this2 = $(this);
+
         $.ajax({
             type: "GET",
-            url: "/UserServlet?action=verifyUnique",
-            data:{ "email" : email } ,
+            url: servletName,
+            data:{ "inputValue" : inputValue , "inputName" : inputName},
             dataType: "json",
             success: function(data) {
                 console.log(data.isUnique);
-
-//                if(data=="false"){
-//                    console.log("data is false");
-//                }else{
-//                    console.log("data is true");
-//                }
+                if(data.isUnique == "true"){
+                    this2.removeClass("invalid");
+                    this2.addClass("valid");
+                }else{
+                    this2.addClass("invalid");
+                    this2.removeClass("valid");
+                }
             },
             error: function (xhr, ajaxOptions, thrownError) {
                 console.log(xhr.status);

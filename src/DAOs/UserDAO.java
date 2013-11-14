@@ -26,11 +26,6 @@ public class UserDAO {
             System.out.println("connection is: " + connection);
             Statement statement = connection.createStatement();
 
-            statement.executeUpdate("CREATE DATABASE IF NOT EXISTS indexDB;");
-            statement.executeUpdate("use indexDB;");
-            statement.executeUpdate("CREATE TABLE IF NOT EXISTS indexDB.usersTable(id int(11) NOT NULL AUTO_INCREMENT,`companyID` varchar(45) DEFAULT NULL,`firstName` varchar(45) DEFAULT NULL,`lastName` varchar(45) DEFAULT NULL,`userEmail` varchar(100) DEFAULT NULL,`userPassword` varchar(105) DEFAULT NULL,`handler` int(1) NOT NULL DEFAULT 0,`manager` int(1) NOT NULL DEFAULT 0,`reporter` int(1) NOT NULL DEFAULT 0, PRIMARY KEY (`id`)) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;");
-
-            System.out.println("Created database and table in case they do not exists");
             PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO indexdb.usersTable(companyID , firstName , lastName , userEmail , userPassword) VALUES (?,?,?,?,?)");
 
             // Parameters start with 1
@@ -123,7 +118,7 @@ public class UserDAO {
                 user.setUsername(rs.getString("user-name"));
                 user.setFirstname(rs.getString("first-name"));
                 user.setLastname(rs.getString("last-name"));
-                user.setUseremail(rs.getString("user-email"));;
+                user.setUseremail(rs.getString("user-email"));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -132,22 +127,21 @@ public class UserDAO {
         return user;
     }
 
-    public boolean emailExists(String email) {
-        System.out.println(email);
-        boolean emailExists = false;
+        public boolean isFieldUnique(String inputValue, String inputName) {
+        boolean isUnique = false;
         try {
-            PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM indexdb.usersTable WHERE userEmail=?");
-            preparedStatement.setString(1 , email);
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM indexdb.usersTable WHERE "+inputName+"=?");
+            preparedStatement.setString(1 , inputValue);
             ResultSet rs = preparedStatement.executeQuery();
             if ( !rs.next() ) {
-                emailExists = false;
+                isUnique = true;
             }else{
-                emailExists = true;
+                isUnique = false;
             }
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return emailExists;
+        return isUnique;
     }
 }
