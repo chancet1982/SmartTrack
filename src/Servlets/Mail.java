@@ -11,26 +11,19 @@ import javax.activation.*;
 
 public class Mail extends HttpServlet{
 
-    public void doGet(HttpServletRequest request,
-                      HttpServletResponse response)
-            throws ServletException, IOException
-    {
-        // Recipient's email ID needs to be mentioned.
-        String to = "chancet1982@gmail.com";
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+        String to = request.getParameter("to");
+        String CompanyName = request.getParameter("CompanyName");
+        //to = "chancet1982@gmail.com";
 
         // Sender's email ID needs to be mentioned
         String from = "web@gmail.com";
-
-        // Assuming you are sending email from localhost
         String host = "localhost";
 
-        // Get system properties
+        // Get system properties and create mail server
         Properties properties = System.getProperties();
-
-        // Setup mail server
         properties.setProperty("mail.smtp.host", host);
-
-        // Get the default Session object.
         Session session = Session.getDefaultInstance(properties);
 
         // Set response content type
@@ -40,17 +33,14 @@ public class Mail extends HttpServlet{
         try{
             // Create a default MimeMessage object.
             MimeMessage message = new MimeMessage(session);
-            // Set From: header field of the header.
             message.setFrom(new InternetAddress(from));
-            // Set To: header field of the header.
-            message.addRecipient(Message.RecipientType.TO,
-                    new InternetAddress(to));
-            // Set Subject: header field
-            message.setSubject("This is the Subject Line!");
+            message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
+            message.setSubject("You were just invited to join: " + CompanyName + "On SmartTrack a smarter bug tracking system");
 
             // Send the actual HTML message, as big as you like
-            message.setContent("<h1>This is actual message</h1>",
+            message.setContent("<a href='localhost://invitedUser.jsp?email="+to+"&companyName="+CompanyName+"'>Click Here to join!</a>",
                     "text/html" );
+
             // Send message
             Transport.send(message);
             String title = "Send Email";
