@@ -19,7 +19,6 @@ public class CompanyDAO {
 
 
         try {
-            //check if index database exists and creates one if NOT
             ResultSet rs = null;
             Statement statement = connection.createStatement();
 
@@ -80,15 +79,12 @@ public class CompanyDAO {
 
     public boolean isFieldUnique(String inputValue, String inputName) {
         boolean isUnique = false;
-        System.out.println(inputValue + " in companyDAO -----" + inputName);
         try {
             PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM indexdb.companiesTable WHERE "+inputName+"=?");
             preparedStatement.setString(1 , inputValue);
             ResultSet rs = preparedStatement.executeQuery();
             if ( !rs.next() ) {
                 isUnique = true;
-            }else{
-                isUnique = false;
             }
 
         } catch (SQLException e) {

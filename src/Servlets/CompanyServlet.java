@@ -22,17 +22,14 @@ public class CompanyServlet extends HttpServlet {
         System.out.println("in the companyServlet");
         String action = request.getParameter("action");
 
-        System.out.println(request.getParameter("inputValue") +" ========== "+ request.getParameter("inputName"));
         if (action.equalsIgnoreCase("verifyUnique")){
 
             response.setContentType("application/json");
             PrintWriter out = response.getWriter();
             if( dao.isFieldUnique(request.getParameter("inputValue") , request.getParameter("inputName")) == true ){
-                System.out.println("{\"isUnique\":\"true\"}");
                 String temp = "{\"isUnique\":\"true\"}";
                 out.write(temp);
             }else{
-                System.out.println("{\"isUnique\":\"false\"}");
                 String temp = "{\"isUnique\":\"false\"}";
                 out.write(temp);
             }

@@ -1,6 +1,5 @@
 package DB;
 
-import DAOs.UserDAO;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
@@ -15,7 +14,6 @@ public class UserDB {
     private static Connection connection = null;
 
     public static Connection getConnection() {
-
         UserDB userDB = new UserDB();
 
         if (connection != null)
@@ -32,6 +30,7 @@ public class UserDB {
                 Class.forName(driver);
                 connection = DriverManager.getConnection(url, user, password);
                 userDB.createDatabase();
+
             } catch (ClassNotFoundException e) {
                 e.printStackTrace();
             } catch (SQLException e) {
@@ -43,8 +42,8 @@ public class UserDB {
             }
             return connection;
         }
-
     }
+
     public void createDatabase(){
 
         connection = getConnection();
@@ -54,7 +53,7 @@ public class UserDB {
             statement.executeUpdate("use indexDB;");
             statement.executeUpdate("CREATE TABLE IF NOT EXISTS indexDB.usersTable(id int(11) NOT NULL AUTO_INCREMENT,`companyID` varchar(45) DEFAULT NULL,`firstName` varchar(45) DEFAULT NULL,`lastName` varchar(45) DEFAULT NULL,`userEmail` varchar(100) DEFAULT NULL,`userPassword` varchar(105) DEFAULT NULL,`handler` int(1) NOT NULL DEFAULT 0,`manager` int(1) NOT NULL DEFAULT 0,`reporter` int(1) NOT NULL DEFAULT 0, PRIMARY KEY (`id`)) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;");
         } catch (SQLException e) {
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+            e.printStackTrace();
         }
     }
 }
