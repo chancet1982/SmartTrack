@@ -73,19 +73,19 @@ public class UserBean {
     public void setIsreporter(boolean isreporter) {
         this.isreporter = isreporter;
     }
-    public String getCompanyID() {
-        return companyID;
+    public String getCompanyName() {
+        return companyName;
     }
 
-    public void setCompanyID(String usercompany) {
-        this.companyID = usercompany;
+    public void setCompanyName(String usercompany) {
+        this.companyName = usercompany;
     }
 
     private String firstname;
     private String lastname;
     private String useremail;
     private String userpassword;
-    private String companyID;
+    private String companyName;
     private boolean ishandler;
     private boolean ismanager;
     private boolean isreporter;

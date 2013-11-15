@@ -17,28 +17,21 @@ public class CompanyDAO {
 
     public void addCompany(CompanyBean company)  {
 
-
         try {
-            ResultSet rs = null;
+            ResultSet rs ;
             Statement statement = connection.createStatement();
 
-            ResultSet existingUser = statement.executeQuery("SELECT * FROM indexDB.companiesTable WHERE companyName=\'"+ company.getCompanyName() + "\'");
-            System.out.println(existingUser.first());
-            if (existingUser.next() == false){
-                //add new company to the index database
-                PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO indexDB.companiesTable(companyName) VALUES (?)");
-                preparedStatement.setString(1, company.getCompanyName());
-                preparedStatement.executeUpdate();
+            //add new company to the index database
+            PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO indexDB.companiesTable(companyName) VALUES (?)");
+            preparedStatement.setString(1, company.getCompanyName());
+            preparedStatement.executeUpdate();
 
-                //get new company ID
-                int newCompanyID = 0;
-                rs = statement.executeQuery("SELECT MAX(companyID) FROM indexDB.companiesTable");
-                if (rs.next()) {newCompanyID = rs.getInt(1);}
-//                statement.executeUpdate("GRANT ALL PRIVILEGES ON *.* TO admin@localhost WITH GRANT OPTION");
-                statement.executeUpdate("CREATE DATABASE IF NOT EXISTS company" + newCompanyID);
-            }else{
-                existingUser.getString("companyID");
-            }
+            //get new company ID
+            int newCompanyID = 0;
+            rs = statement.executeQuery("SELECT MAX(companyID) FROM indexDB.companiesTable");
+            if (rs.next()) {newCompanyID = rs.getInt(1);}
+//          statement.executeUpdate("GRANT ALL PRIVILEGES ON *.* TO admin@localhost WITH GRANT OPTION");
+            statement.executeUpdate("CREATE DATABASE IF NOT EXISTS company" + newCompanyID);
 
         } catch (SQLException e) {
             e.printStackTrace();

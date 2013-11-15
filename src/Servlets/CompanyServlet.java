@@ -35,16 +35,4 @@ public class CompanyServlet extends HttpServlet {
             }
         }
     }
-
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        CompanyBean user = new CompanyBean();
-        PrintWriter out = response.getWriter();
-        List<String> existingCompaniesNames = dao.getAllCompaniesNames();
-        List<String> existingCompaniesIDs = dao.getAllCompaniesIDs();
-
-        for (int i=0;i<existingCompaniesNames.size();i++) {
-            out.println("<option value="+ existingCompaniesIDs.get(i) + ":" + existingCompaniesNames.get(i) +">" + existingCompaniesNames.get(i) + "</option>");
-        }
-    }
-
 }

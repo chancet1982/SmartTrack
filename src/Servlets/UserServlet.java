@@ -24,7 +24,6 @@ public class UserServlet extends HttpServlet {
         super();
         dao = new UserDAO();
         companydao = new CompanyDAO();
-
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -36,14 +35,20 @@ public class UserServlet extends HttpServlet {
             dao.deleteUser(userId);
             forward = LIST_USER;
             request.setAttribute("users", dao.getAllUsers());
+            RequestDispatcher view = request.getRequestDispatcher(forward);
+            view.forward(request, response);
         } else if (action.equalsIgnoreCase("edit")){
             forward = EDIT;
             int userId = Integer.parseInt(request.getParameter("userId"));
             UserBean user = dao.getUserById(userId);
             request.setAttribute("user", user);
+            RequestDispatcher view = request.getRequestDispatcher(forward);
+            view.forward(request, response);
         } else if (action.equalsIgnoreCase("listUsers")){
             forward = LIST_USER;
             request.setAttribute("users", dao.getAllUsers());
+            RequestDispatcher view = request.getRequestDispatcher(forward);
+            view.forward(request, response);
         } else if (action.equalsIgnoreCase("verifyUnique")){
 
             response.setContentType("application/json");
@@ -60,10 +65,9 @@ public class UserServlet extends HttpServlet {
 
         }else{
             forward = EDIT;
+            RequestDispatcher view = request.getRequestDispatcher(forward);
+            view.forward(request, response);
         }
-
-        //RequestDispatcher view = request.getRequestDispatcher(forward);
-        //view.forward(request, response);
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -74,17 +78,10 @@ public class UserServlet extends HttpServlet {
         user.setLastname(request.getParameter("lastName"));
         user.setUseremail(request.getParameter("userEmail"));
         user.setUserpassword(request.getParameter("userPassword"));
+        user.setCompanyName(request.getParameter("companyName"));
+        company.setCompanyName(request.getParameter("companyName"));
 
-//        // Split the info into parameters
-//        String[] companyInfo = (request.getParameter("companyInfo")).split(":");
-//        if(companyInfo.length>1){
-//            user.setCompanyID(request.getParameter(companyInfo[0]));
-//            company.setCompanyName(request.getParameter(companyInfo[1]));
-//        }else{
-//            company.setCompanyName(request.getParameter(companyInfo[1]));
-//            user.setCompanyID(user.getCompanyID());
-//        }
-        System.out.println("in the servlet:" + request.getParameter("userPassword"));
+        System.out.println("in the servlet:===========================" + request.getParameter("companyName"));
         user.setIshandler(true);
         user.setIsmanager(true);
         user.setIsreporter(true);

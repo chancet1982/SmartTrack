@@ -23,11 +23,11 @@ public class UserDAO {
     public void addUser(UserBean user)  {
         try {
 
-            PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO indexdb.usersTable(companyID , firstName , lastName , userEmail , userPassword) VALUES (?,?,?,?,?)");
+            PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO indexdb.usersTable(companyName , firstName , lastName , userEmail , userPassword) VALUES (?,?,?,?,?)");
 
             // Parameters start with 1
             System.out.println( user.getUserpassword() );
-            preparedStatement.setString(1, user.getCompanyID());
+            preparedStatement.setString(1, user.getCompanyName());
             preparedStatement.setString(2, user.getFirstname());
             preparedStatement.setString(3, user.getLastname());
             preparedStatement.setString(4, user.getUseremail());

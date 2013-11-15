@@ -79,36 +79,6 @@ $(document).ready(function(){
     });
 });
 
-    //create dialog
-    /*$( "#addCompanyDialog" ).dialog({
-        autoOpen: false,
-        modal: true,
-        draggable: false
-    });*/
-
-    //open dialog
-    /*$("#addCompany").click(function() {
-        $( "#addCompanyDialog" ).dialog( "open" );
-    });*/
-
-    //press OK in the dialog (verify if )
-    /*$("#okDialogCompany").click(function() {
-        var unique = true;
-        for( i=0 ; i< $('#selectCompany option').length ; i++){
-            if( $('#selectCompany').val() == $("#addCompanyName").val() && $('#selectCompany option').length > 0){
-                unique = false;}else{
-                unique = true;}
-        }
-        if(unique == true){
-            $( "#addCompanyDialog" ).dialog( "close" );
-            console.log("in the add dialg");
-            newCompanyName = $("#addCompanyName").val();
-            $("#selectCompany").append("<option>"+ newCompanyName +"</option>")
-            $("#selectCompany option:last").attr("selected","selected");
-        }else{
-            console.log("not unique");
-        }
-    });  */
 </script>
 </body>
 </html>
