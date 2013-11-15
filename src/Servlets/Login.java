@@ -85,34 +85,38 @@ public class Login extends HttpServlet {
             PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM indexdb.usersTable WHERE userEmail=?");
             preparedStatement.setString(1,email);
             ResultSet rs = preparedStatement.executeQuery();
-            if (rs.next()) {hashedDBPassword = rs.getString("userPassword");}
+            if (rs.next()) {
+                hashedDBPassword = rs.getString("userPassword");
+            } else {
+                hashedDBPassword = null;
+            }
         }
         catch (SQLException e) {e.printStackTrace();}
 
         //Validate password
         try {
-            if( passwordHash.validatePassword(password, hashedDBPassword) ){
-                System.out.println("Success - password correct");
-                Cookie emailCookie = new Cookie("uid" , email);
-                Cookie pwdCookie = new Cookie( "pwd" , hashedDBPassword );
+            if (password!=null && hashedDBPassword != null) {
+                if( passwordHash.validatePassword(password, hashedDBPassword) ){
+                    System.out.println("Success - password correct");
+                    Cookie emailCookie = new Cookie("uid" , email);
+                    Cookie pwdCookie = new Cookie( "pwd" , hashedDBPassword );
 
-                emailCookie.setMaxAge(60*60*24); //1day cookie
-                pwdCookie.setMaxAge(60*60*24);
-                response.addCookie(emailCookie);
-                response.addCookie(pwdCookie);
-                //RequestDispatcher view = request.getRequestDispatcher("afterLogin.jsp");
-                //view.forward(request, response);
-                response.sendRedirect("afterLogin.jsp");
+                    emailCookie.setMaxAge(60*60*24); //1day cookie
+                    pwdCookie.setMaxAge(60*60*24);
+                    response.addCookie(emailCookie);
+                    response.addCookie(pwdCookie);
+                    response.sendRedirect("afterLogin.jsp");
 
-            }else{
-                System.out.println("Fail - password incorrect");
-                response.sendRedirect("login.jsp?message='error'");
-                //RequestDispatcher view = request.getRequestDispatcher("login.jsp");
-                //view.forward(request, response);
+                }else{
+                    System.out.println("Fail - password incorrect");
+                    response.sendRedirect("login.jsp?message='Passwords Mismatch'");
+                }
+            } else {
+                response.sendRedirect("login.jsp?message='No Password'");
             }
+
         }
         catch (NoSuchAlgorithmException e) {e.printStackTrace();}
         catch (InvalidKeySpecException e) {e.printStackTrace();}
-
     }
 }

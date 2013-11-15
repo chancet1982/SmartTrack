@@ -11,6 +11,8 @@
                 <li><a href="afterLogin.jsp">Home</a></li>
                 <li><a href="UserServlet?action=ListUsers">Maintain Users</a></li>
                 <li><a href="ProjectServlet?action=ListProjects">Maintain Projects</a></li>
+                <li><a href="SendEMail">Send Mail</a></li>
+
             </ul>
         </div>
     </div>
