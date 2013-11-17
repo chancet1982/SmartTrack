@@ -39,11 +39,9 @@ public class CompanyDAO {
     }
 
     public List<String> getAllCompaniesNames()  {
-        connection = CompanyDB.getConnection();
         List<String> companyNames = new ArrayList<String>();
         try {
             Statement statement = connection.createStatement();
-
             ResultSet rs = statement.executeQuery("SELECT * FROM indexDB.companiesTable");
             while (rs.next()) {
                 companyNames.add(rs.getString("companyName"));
@@ -55,7 +53,6 @@ public class CompanyDAO {
     }
 
     public List<String> getAllCompaniesIDs()  {
-        connection = CompanyDB.getConnection();
         List<String> companyIDs = new ArrayList<String>();
         try {
             Statement statement = connection.createStatement();
@@ -73,6 +70,7 @@ public class CompanyDAO {
     public boolean isFieldUnique(String inputValue, String inputName) {
         boolean isUnique = false;
         try {
+            connection= CompanyDB.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM indexdb.companiesTable WHERE "+inputName+"=?");
             preparedStatement.setString(1 , inputValue);
             ResultSet rs = preparedStatement.executeQuery();

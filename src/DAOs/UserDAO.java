@@ -121,6 +121,27 @@ public class UserDAO {
         return user;
     }
 
+    public UserBean getUserByEmail(String email) {
+        UserBean user = new UserBean();
+        try {
+            PreparedStatement preparedStatement = connection.
+                    prepareStatement("SELECT * FROM indexdb.usersTable WHERE userEmail=?");
+            preparedStatement.setString(1, email);
+            ResultSet rs = preparedStatement.executeQuery();
+
+            if (rs.next()) {
+                user.setUserid(rs.getInt("id"));
+                user.setFirstname(rs.getString("firstName"));
+                user.setLastname(rs.getString("lastName"));
+                user.setUseremail(rs.getString("userEmail"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return user;
+    }
+
         public boolean isFieldUnique(String inputValue, String inputName) {
         boolean isUnique = false;
         try {
