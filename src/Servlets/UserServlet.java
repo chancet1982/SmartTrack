@@ -14,7 +14,7 @@ import Beans.*;
 
 public class UserServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
-    private static String EDIT = "/user.jsp";
+    private static String EDIT = "/editUser.jsp";
     private static String LIST_USER = "/assignUserRoles.jsp";
     private static String INSERT = "/assignUserRoles.jsp";
     private UserDAO dao;
@@ -85,9 +85,11 @@ public class UserServlet extends HttpServlet {
 
         String userid = request.getParameter("userID");
         if(userid == null || userid.isEmpty()) {
+            System.out.print("Creating new user");
             dao.addUser(user);
             companydao.addCompany(company);
         } else {
+            System.out.print("Trying to update user");
             user.setUserid(Integer.parseInt(userid));
             dao.updateUser(user);
         }

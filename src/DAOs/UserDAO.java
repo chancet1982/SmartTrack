@@ -60,7 +60,7 @@ public class UserDAO {
     public void updateUser(UserBean user) {
         try {
             PreparedStatement preparedStatement = connection
-                    .prepareStatement("UPDATE indexdb.usersTable SET firstName=?, lastName=?,userEmail=?,  userPassword=?, isHandler=?,isManager=?,isReporter=?, WHERE id=?");
+                    .prepareStatement("UPDATE indexdb.usersTable SET firstName=?, lastName=?, userEmail=?, userPassword=?, handler=?, manager=?, reporter=? WHERE id=?");
             // Parameters start with 1
             preparedStatement.setString(1, user.getFirstname());
             preparedStatement.setString(2, user.getLastname());
@@ -69,8 +69,8 @@ public class UserDAO {
             preparedStatement.setBoolean(5, user.isIshandler());
             preparedStatement.setBoolean(6, user.isIsmanager());
             preparedStatement.setBoolean(7, user.isIsreporter());
+            preparedStatement.setInt(8, user.getUserid());
             preparedStatement.executeUpdate();
-
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (NoSuchAlgorithmException e) {
@@ -110,9 +110,13 @@ public class UserDAO {
 
             if (rs.next()) {
                 user.setUserid(rs.getInt("id"));
+                user.setUserpassword(rs.getString("userPassword"));
                 user.setFirstname(rs.getString("firstName"));
                 user.setLastname(rs.getString("lastName"));
                 user.setUseremail(rs.getString("userEmail"));
+                user.setIshandler(rs.getBoolean("isHandler"));
+                user.setIsmanager(rs.getBoolean("isManager"));
+                user.setIsreporter(rs.getBoolean("isReporter"));
             }
         } catch (SQLException e) {
             e.printStackTrace();
