@@ -5,58 +5,64 @@ import java.io.*;
 import java.util.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
-import javax.mail.*;
-import javax.mail.internet.*;
-import javax.activation.*;
+import java.util.Properties;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 
 public class Mail extends HttpServlet{
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+        //final String username = "chancet1982@gmail.com";
+        //final String password = "SMRI19820713";
+
+        String from = "info@smarttrack.com";
         String to = request.getParameter("to");
         String CompanyName = request.getParameter("CompanyName");
-        //to = "chancet1982@gmail.com";
+        //String to = "chancet1982@gmail.com";
+        Properties props = new Properties();
 
-        // Sender's email ID needs to be mentioned
-        String from = "web@gmail.com";
-        String host = "localhost";
+        InputStream inputStream = Mail.class.getClassLoader().getResourceAsStream("/mail.properties");
+        props.load(inputStream);
 
-        // Get system properties and create mail server
-        Properties properties = System.getProperties();
-        properties.setProperty("mail.smtp.host", host);
-        Session session = Session.getDefaultInstance(properties);
+        final String username = props.getProperty("username");
+        final String password = props.getProperty("password");
 
-        // Set response content type
-        response.setContentType("text/html");
-        PrintWriter out = response.getWriter();
+        props.put("mail.smtp.host", "smtp.gmail.com");
+        props.put("mail.smtp.socketFactory.port", "465");
+        props.put("mail.smtp.socketFactory.class",
+                "javax.net.ssl.SSLSocketFactory");
+        props.put("mail.smtp.auth", "true");
+        props.put("mail.smtp.port", "465");
 
-        try{
-            // Create a default MimeMessage object.
-            MimeMessage message = new MimeMessage(session);
+        Session session = Session.getDefaultInstance(props,
+                new javax.mail.Authenticator() {
+                    protected PasswordAuthentication getPasswordAuthentication() {
+                        return new PasswordAuthentication(username,password);
+                    }
+                });
+
+        try {
+
+            Message message = new MimeMessage(session);
             message.setFrom(new InternetAddress(from));
-            message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
-            message.setSubject("You were just invited to join: " + CompanyName + "On SmartTrack a smarter bug tracking system");
+            message.setRecipients(Message.RecipientType.TO,
+                    InternetAddress.parse(to));
+            message.setSubject("Smarttrack Invitation");
+            message.setContent("<h1>You have been invited to use Smarttrack</h1><p>click the link below to join</p><a HREF=''>Click to join</a>" , "text/html; charset=utf-8");
 
-            // Send the actual HTML message, as big as you like
-            message.setContent("<a href='localhost://invitedUser.jsp?email="+to+"&companyName="+CompanyName+"'>Click Here to join!</a>",
-                    "text/html" );
-
-            // Send message
             Transport.send(message);
-            String title = "Send Email";
-            String res = "Sent message successfully....";
-            String docType =
-                    "<!doctype html public \"-//w3c//dtd html 4.0 " +
-                            "transitional//en\">\n";
-            out.println(docType +
-                    "<html>\n" +
-                    "<head><title>" + title + "</title></head>\n" +
-                    "<body bgcolor=\"#f0f0f0\">\n" +
-                    "<h1 align=\"center\">" + title + "</h1>\n" +
-                    "<p align=\"center\">" + res + "</p>\n" +
-                    "</body></html>");
-        }catch (MessagingException mex) {
-            mex.printStackTrace();
+
+            System.out.println("Done");
+            response.sendRedirect("afterLogin.jsp?message=Success");
+
+        } catch (MessagingException e) {
+            throw new RuntimeException(e);
         }
     }
 }
