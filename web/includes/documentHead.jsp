@@ -30,7 +30,7 @@
     <script type="text/javascript" src="js/less.min.js"></script>
 
     <!-- Web Fonts -->
-    <link href='http://fonts.googleapis.com/css?family=Damion' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Montserrat+Alternates' rel='stylesheet' type='text/css'>
 
     <!-- JavaScript -->
     <script type="text/javascript" src="js/jquery.min.js"></script>
