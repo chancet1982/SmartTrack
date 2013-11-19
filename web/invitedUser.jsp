@@ -11,10 +11,18 @@
 </div>
 <div id="site-content">
     <div class="site-width clearfix">
-        <h1>Just fill in the following and you're ready to go</h1>
+        <h1>Just fill in your name and password and you should be ready to go.</h1>
         <div class="box color-light round-corners shadow padding">
             <form action="UserServlet" method="POST">
                 <ul>
+                    <li>
+                        <label>Type in your company name</label>
+                        <input type="text" name="companyName">
+                    </li>
+                    <li>
+                        <label>Your E-mail address</label>
+                        <input type="text" name="userEmail">
+                    </li>
                     <li>
                         <label>First name</label>
                         <input type="text" name="firstName" class="required">
@@ -24,22 +32,12 @@
                         <input type="text" name="lastName" class="required">
                     </li>
                     <li>
-                        <label>Your E-mail address</label>
-                        <span></span>
-
-                    </li>
-                    <li>
                         <label>Type in password</label>
                         <input type="password" name="userPassword" class="required password">
                     </li>
                     <li>
                         <label>Repeat password</label>
                         <input type="password" name="password2" class="required repeat-password">
-                    </li>
-                    <li>
-                        <label>Type in your company name</label>
-                        <input type="text" name="companyName" data-servlet="/CompanyServlet?action=verifyUnique" class="required unique invalid">
-                        <span class="message box error hidden">Company already exists, you cannot add a user to an existing company</span>
                     </li>
                     <li>
                         <input type="submit" value="Submit">
@@ -51,64 +49,16 @@
 </div>
 <script type="text/javascript">
 $(document).ready(function(){
-    $(".unique").on("keyup" , function(){
-        inputValue = $(this).val();
-        inputName = $(this).attr("name");
-        servletName = $(this).attr("data-servlet");
-        thisInput = $(this);
-        $.ajax({
-            type: "GET",
-            url: servletName,
-            data:{ "inputValue" : inputValue , "inputName" : inputName},
-            dataType: "json",
-            success: function(data) {
-                console.log(data.isUnique);
-                if(data.isUnique == "true"){
-                    thisInput.removeClass("not-unique").addClass("unique");
-                    thisInput.next().addClass("hidden");
-                }else{
-                    thisInput.addClass("unique").removeClass("not-unique");
-                    thisInput.next().removeClass("hidden");
-                }
-            },
-            error: function (xhr, ajaxOptions, thrownError) {
-                console.log(xhr.status);
-                console.log(thrownError);
-            }
-        });
-    });
+
+    $.urlParam = function(name){
+        var results = new RegExp('[\\?&]' + name + '=([^&#]*)').exec(window.location.href);
+        return results[1] || 0;
+    }
+
+    $( "input[name='companyName']" ).val($.urlParam('companyName')).attr('readonly','readonly');
+    $( "input[name='userEmail']" ).val($.urlParam('userEmail')).attr('readonly','readonly');
 });
 
-    //create dialog
-    /*$( "#addCompanyDialog" ).dialog({
-        autoOpen: false,
-        modal: true,
-        draggable: false
-    });*/
-
-    //open dialog
-    /*$("#addCompany").click(function() {
-        $( "#addCompanyDialog" ).dialog( "open" );
-    });*/
-
-    //press OK in the dialog (verify if )
-    /*$("#okDialogCompany").click(function() {
-        var unique = true;
-        for( i=0 ; i< $('#selectCompany option').length ; i++){
-            if( $('#selectCompany').val() == $("#addCompanyName").val() && $('#selectCompany option').length > 0){
-                unique = false;}else{
-                unique = true;}
-        }
-        if(unique == true){
-            $( "#addCompanyDialog" ).dialog( "close" );
-            console.log("in the add dialg");
-            newCompanyName = $("#addCompanyName").val();
-            $("#selectCompany").append("<option>"+ newCompanyName +"</option>")
-            $("#selectCompany option:last").attr("selected","selected");
-        }else{
-            console.log("not unique");
-        }
-    });  */
 </script>
 </body>
 </html>

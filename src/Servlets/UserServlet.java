@@ -20,7 +20,7 @@ public class UserServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
     private static String EDIT = "/editUser.jsp";
     private static String LIST_USER = "/assignUserRoles.jsp";
-    private static String INSERT = "/UserServlet?action=listUsers";
+    private static String INSERT = "/afterLogin.jsp";
     private UserDAO dao;
     private CompanyDAO companydao;
     PasswordHash passwordHash = new PasswordHash();

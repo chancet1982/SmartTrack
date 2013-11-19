@@ -21,9 +21,19 @@ public class MailServlet extends HttpServlet{
         //final String password = "SMRI19820713";
 
         String from = "info@smarttrack.com";
-        String to = request.getParameter("to");
-        String CompanyName = request.getParameter("CompanyName");
-        //String to = "chancet1982@gmail.com";
+        String toEmail = request.getParameter("userEmail");
+        System.out.println("Send to: " + toEmail);
+        String CompanyName = null;
+
+        Cookie[] cookies;
+
+        cookies = request.getCookies();
+        for (int i = 0; i < cookies.length; i++) {
+            if (cookies[i].getName().equals("cid")) {
+                CompanyName = cookies[i].getValue();
+            }
+        }
+
         Properties props = new Properties();
 
         InputStream inputStream = MailServlet.class.getClassLoader().getResourceAsStream("/mail.properties");
@@ -51,9 +61,11 @@ public class MailServlet extends HttpServlet{
             Message message = new MimeMessage(session);
             message.setFrom(new InternetAddress(from));
             message.setRecipients(Message.RecipientType.TO,
-                    InternetAddress.parse(to));
+                    InternetAddress.parse(toEmail));
             message.setSubject("Smarttrack Invitation");
-            message.setContent("<h1>You have been invited to use Smarttrack</h1><p>click the link below to join</p><a HREF=''>Click to join</a>" , "text/html; charset=utf-8");
+            message.setContent( "<h1>You have been invited to use Smartrack</h1>" +
+                                "<p>Someone from "+ CompanyName +" wants you to join </p>" +
+                                "<a href=http://localhost:8081/invitedUser.jsp?companyName=" + CompanyName + "&userEmail=" + toEmail + ">Click to join us</a>" , "text/html; charset=utf-8");
 
             Transport.send(message);
 

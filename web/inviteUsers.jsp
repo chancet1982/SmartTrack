@@ -20,10 +20,6 @@
             <form action="MailServlet" method="GET">
                 <ul>
                     <li>
-                        <label>Company Name (should get the current user's company via AJAX and use that)</label>
-                        <input type="text" name="companyName">
-                    </li>
-                    <li>
                         <label>Type in E-mail address</label>
                         <input type="text" name="userEmail" class="required">
                     </li>
