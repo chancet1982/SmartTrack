@@ -20,7 +20,7 @@ public class UserServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
     private static String EDIT = "/editUser.jsp";
     private static String LIST_USER = "/assignUserRoles.jsp";
-    private static String INSERT = "/assignUserRoles.jsp";
+    private static String INSERT = "/UserServlet?action=listUsers";
     private UserDAO dao;
     private CompanyDAO companydao;
     PasswordHash passwordHash = new PasswordHash();
@@ -119,9 +119,8 @@ public class UserServlet extends HttpServlet {
             System.out.print("Trying to update user");
             user.setUserid(Integer.parseInt(userid));
             dao.updateUser(user);
+            RequestDispatcher view = request.getRequestDispatcher(INSERT);
+            view.forward(request, response);
         }
-        RequestDispatcher view = request.getRequestDispatcher(INSERT);
-        //request.setAttribute("users", dao.getAllUsers());
-        view.forward(request, response);
     }
 }
