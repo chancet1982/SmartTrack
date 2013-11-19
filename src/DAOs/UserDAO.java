@@ -1,7 +1,5 @@
 package DAOs;
 
-import java.security.NoSuchAlgorithmException;
-import java.security.spec.InvalidKeySpecException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -77,6 +75,25 @@ public class UserDAO {
         try {
             Statement statement = connection.createStatement();
             ResultSet rs = statement.executeQuery("SELECT * FROM indexdb.usersTable");
+            while (rs.next()) {
+                UserBean user = new UserBean();
+                user.setUserid(rs.getInt("id"));
+                user.setFirstname(rs.getString("firstName"));
+                user.setLastname(rs.getString("lastName"));
+                user.setUseremail(rs.getString("userEmail"));
+                users.add(user);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return users;
+    }
+    public List<UserBean> getAllUsersFromCompany(String companyName) {
+        List<UserBean> users = new ArrayList<UserBean>();
+        try {
+            Statement statement = connection.createStatement();
+            ResultSet rs = statement.executeQuery("SELECT * FROM indexdb.usersTable WHERE companyName='" + companyName + "'");
             while (rs.next()) {
                 UserBean user = new UserBean();
                 user.setUserid(rs.getInt("id"));

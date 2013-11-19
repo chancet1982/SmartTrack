@@ -23,16 +23,15 @@ public class CompanyDAO {
             String newCompanyName = company.getCompanyName();
 
             statement.executeUpdate("CREATE DATABASE IF NOT EXISTS " + newCompanyName);
-            statement.executeUpdate("CREATE TABLE IF NOT EXISTS "+ newCompanyName + ".projectTable(projectID int(11) NOT NULL AUTO_INCREMENT,projectName varchar(45) DEFAULT NULL UNIQUE,projectVersion decimal(4,2), PRIMARY KEY (projectID)) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;");
+            statement.executeUpdate("CREATE TABLE IF NOT EXISTS "+ newCompanyName + ".projectTable(projectID int(11) NOT NULL AUTO_INCREMENT,projectName varchar(45) DEFAULT NULL UNIQUE,projectVersion varchar(10), PRIMARY KEY (projectID)) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;");
             statement.executeUpdate("CREATE TABLE IF NOT EXISTS "+ newCompanyName + ".projectAssign(userID int(11) NOT NULL , PRIMARY KEY (userID)) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;");
 
             //populate the projectAssign table with all existing users
-            //TODO filter out users that do not belong to the existing company
             UserDAO userDAO = new UserDAO();
-            List<UserBean> users = userDAO.getAllUsers();
+            List<UserBean> users = userDAO.getAllUsersFromCompany(newCompanyName);
             for(int i=0; i<users.size(); i++){
                 int thisUserID = (users.get(i)).getUserid();
-                statement.executeUpdate("INSERT INTO "+ newCompanyName +".projectAssign(userID) VALUES("+ thisUserID +")");
+                statement.executeUpdate( "INSERT INTO "+ newCompanyName +".projectAssign(userID) VALUES("+ thisUserID +")" );
             }
 
         } catch (SQLException e) {
