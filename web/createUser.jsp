@@ -38,7 +38,7 @@
                     </li>
                     <li>
                         <label>Type in your company name</label>
-                        <input type="text" name="companyName" data-servlet="/CompanyServlet?action=verifyUnique" class="required unique invalid">
+                        <input type="text" name="companyName" data-servlet="/UserServlet?action=verifyUnique" class="required unique invalid">
                         <span class="message box error hidden">Company already exists, you cannot add a user to an existing company</span>
                     </li>
                     <li>
@@ -49,37 +49,5 @@
         </div>
     </div>
 </div>
-
-<script type="text/javascript">
-$(document).ready(function(){
-    $(".unique").on("keyup" , function(){
-        inputValue = $(this).val();
-        inputName = $(this).attr("name");
-        servletName = $(this).attr("data-servlet");
-        thisInput = $(this);
-        $.ajax({
-            type: "GET",
-            url: servletName,
-            data:{ "inputValue" : inputValue , "inputName" : inputName},
-            dataType: "json",
-            success: function(data) {
-                console.log(data.isUnique);
-                if(data.isUnique == "true"){
-                    thisInput.removeClass("not-unique").addClass("unique");
-                    thisInput.next().addClass("hidden");
-                }else{
-                    thisInput.addClass("unique").removeClass("not-unique");
-                    thisInput.next().removeClass("hidden");
-                }
-            },
-            error: function (xhr, ajaxOptions, thrownError) {
-                console.log(xhr.status);
-                console.log(thrownError);
-            }
-        });
-    });
-});
-
-</script>
 </body>
 </html>

@@ -126,4 +126,35 @@ $(document).ready(function() {
 		$(this).stop(true, true).switchClass('hover', 'normal', 300);
 	});
 
+    /*---------AJAX SECTION---------*/
+
+    //unique check
+    $(".unique").on("keyup" , function(){
+        inputValue = $(this).val();
+        inputName = $(this).attr("name");
+        servletName = $(this).attr("data-servlet");
+        thisInput = $(this);
+        $.ajax({
+            type: "GET",
+            url: servletName,
+            data:{ "inputValue" : inputValue , "inputName" : inputName},
+            dataType: "json",
+            success: function(data) {
+                console.log(data.isUnique);
+                if(data.isUnique == "true"){
+                    thisInput.removeClass("not-unique").addClass("unique");
+                    thisInput.next().addClass("hidden");
+                }else{
+                    thisInput.addClass("unique").removeClass("not-unique");
+                    thisInput.next().removeClass("hidden");
+                }
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                console.log(xhr.status);
+                console.log(thrownError);
+            }
+        });
+    });
+
+
 });

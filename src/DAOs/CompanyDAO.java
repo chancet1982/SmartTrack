@@ -20,19 +20,11 @@ public class CompanyDAO {
             ResultSet rs ;
             Statement statement = connection.createStatement();
 
-            //add new company to the index database
-            PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO indexDB.companiesTable(companyName) VALUES (?)");
-            preparedStatement.setString(1, company.getCompanyName());
-            preparedStatement.executeUpdate();
+            String newCompanyName = company.getCompanyName();
 
-            //get new company ID
-            int newCompanyID = 0;
-            rs = statement.executeQuery("SELECT MAX(companyID) FROM indexDB.companiesTable");
-            if (rs.next()) {newCompanyID = rs.getInt(1);}
-//          statement.executeUpdate("GRANT ALL PRIVILEGES ON *.* TO admin@localhost WITH GRANT OPTION");
-            statement.executeUpdate("CREATE DATABASE IF NOT EXISTS company" + newCompanyID);
-            statement.executeUpdate("CREATE TABLE IF NOT EXISTS company"+ newCompanyID + ".projectTable(projectID int(11) NOT NULL AUTO_INCREMENT,projectName varchar(45) DEFAULT NULL UNIQUE,projectVersion decimal(4,2), PRIMARY KEY (projectID)) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;");
-            statement.executeUpdate("CREATE TABLE IF NOT EXISTS company"+ newCompanyID + ".projectAssign(userID int(11) NOT NULL , PRIMARY KEY (userID)) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;");
+            statement.executeUpdate("CREATE DATABASE IF NOT EXISTS " + newCompanyName);
+            statement.executeUpdate("CREATE TABLE IF NOT EXISTS "+ newCompanyName + ".projectTable(projectID int(11) NOT NULL AUTO_INCREMENT,projectName varchar(45) DEFAULT NULL UNIQUE,projectVersion decimal(4,2), PRIMARY KEY (projectID)) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;");
+            statement.executeUpdate("CREATE TABLE IF NOT EXISTS "+ newCompanyName + ".projectAssign(userID int(11) NOT NULL , PRIMARY KEY (userID)) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;");
 
             //populate the projectAssign table with all existing users
             //TODO filter out users that do not belong to the existing company
@@ -40,7 +32,7 @@ public class CompanyDAO {
             List<UserBean> users = userDAO.getAllUsers();
             for(int i=0; i<users.size(); i++){
                 int thisUserID = (users.get(i)).getUserid();
-                statement.executeUpdate("INSERT INTO company"+ newCompanyID +".projectAssign(userID) VALUES("+ thisUserID +")");
+                statement.executeUpdate("INSERT INTO "+ newCompanyName +".projectAssign(userID) VALUES("+ thisUserID +")");
             }
 
         } catch (SQLException e) {
