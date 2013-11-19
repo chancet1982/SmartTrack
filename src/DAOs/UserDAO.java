@@ -106,9 +106,9 @@ public class UserDAO {
                 user.setFirstname(rs.getString("firstName"));
                 user.setLastname(rs.getString("lastName"));
                 user.setUseremail(rs.getString("userEmail"));
-                user.setIshandler(rs.getBoolean("isHandler"));
-                user.setIsmanager(rs.getBoolean("isManager"));
-                user.setIsreporter(rs.getBoolean("isReporter"));
+                user.setIshandler(rs.getBoolean("handler"));
+                user.setIsmanager(rs.getBoolean("manager"));
+                user.setIsreporter(rs.getBoolean("reporter"));
             }
         } catch (SQLException e) {
             e.printStackTrace();

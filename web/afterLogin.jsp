@@ -9,10 +9,7 @@
         <div id="site-navigation" class="clearfix">
             <ul>
                 <li><a href="afterLogin.jsp">Home</a></li>
-                <li><a href="UserServlet?action=ListUsers">Maintain Users</a></li>
-                <li><a href="inviteUsers.jsp">Invite Users</a></li>
                 <li><a href="ProjectServlet?action=ListProjects">Maintain Projects</a></li>
-                <li><a href="Mail?to=chancet1982@gmail.com&companyName=Samlines">Send Mail</a></li>
             </ul>
         </div>
     </div>
@@ -26,7 +23,8 @@
         <h1>You are now logged in</h1>
         <div class="box color-light round-corners shadow padding" style="padding:8px;">
             <p>What would you like to do next?</p>
-            <a href="Mail?to=chancet1982@gmail.com&companyName=Samlines">Invite users via mail</a>
+            <a href="inviteUsers.jsp" class="button">Invite Users</a>
+            <a href="UserServlet?action=ListUsers" class="button">Maintain Users</a>
         </div>
     </div>
 </div>
