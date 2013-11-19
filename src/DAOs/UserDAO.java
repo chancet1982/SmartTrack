@@ -30,13 +30,15 @@ public class UserDAO {
             preparedStatement.setString(3, user.getLastname());
             preparedStatement.setString(4, user.getUseremail());
             preparedStatement.setString(5, user.getUserpassword());
-
             preparedStatement.executeUpdate();
 
             //add to projectAssign table
             //TODO For SAM: test this with the email invite
-            Statement statement = connection.createStatement();
-            statement.executeUpdate("INSERT INTO " + user.getCompanyName() + ".projectassign userID='"+ user.getUserid() +"''" );
+            //TODO For MN: fix this shit!
+            System.out.print("USERID- " + user.getUserid());
+            connection.prepareStatement("INSERT INTO " + user.getCompanyName() + ".projectassign (userID) VALUES (?)" );
+            preparedStatement.setInt(1, user.getUserid());
+            preparedStatement.executeUpdate();
 
         } catch (SQLException e) {
             e.printStackTrace();

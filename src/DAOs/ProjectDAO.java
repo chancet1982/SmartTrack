@@ -24,7 +24,7 @@ public class ProjectDAO {
 
             Statement statement = connection.createStatement();
             ResultSet rs = statement.executeQuery("SELECT max(projectID) FROM "+ companyName +".projecttable ");
-            int newProjectID = 0;
+
             if(rs.next()){
                 projectID = "projectId" + rs.getInt(1);
             }
