@@ -37,10 +37,6 @@ public class UserDAO {
 
         } catch (SQLException e) {
             e.printStackTrace();
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-        } catch (InvalidKeySpecException e) {
-            e.printStackTrace();
         }
     }
 
@@ -72,10 +68,6 @@ public class UserDAO {
             preparedStatement.setInt(8, user.getUserid());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-        } catch (InvalidKeySpecException e) {
             e.printStackTrace();
         }
     }
@@ -135,9 +127,11 @@ public class UserDAO {
 
             if (rs.next()) {
                 user.setUserid(rs.getInt("id"));
+                user.setCompanyName(rs.getString("companyName"));
                 user.setFirstname(rs.getString("firstName"));
                 user.setLastname(rs.getString("lastName"));
                 user.setUseremail(rs.getString("userEmail"));
+                user.setUserpassword(rs.getString("userPassword"));
             }
         } catch (SQLException e) {
             e.printStackTrace();

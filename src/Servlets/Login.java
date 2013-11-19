@@ -11,6 +11,7 @@ import java.sql.SQLException;
 import javax.servlet.ServletException;
 import javax.servlet.http.*;
 
+import Beans.UserBean;
 import DAOs.*;
 import DB.*;
 import Utilities.PasswordHash;
@@ -79,36 +80,29 @@ public class Login extends HttpServlet {
         String password = request.getParameter("userPassword");
         String hashedDBPassword = "" ;
         HttpSession session = request.getSession();
+        UserDAO userDAO = new UserDAO();
+        UserBean user = userDAO.getUserByEmail(email);
 
-        //Fetch password from DB
-        try {
-            PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM indexdb.usersTable WHERE userEmail=?");
-            preparedStatement.setString(1,email);
-            ResultSet rs = preparedStatement.executeQuery();
-            if (rs.next()) {
-                hashedDBPassword = rs.getString("userPassword");
-            } else {
-                hashedDBPassword = null;
-            }
-        }
-        catch (SQLException e) {e.printStackTrace();}
 
         //Validate password
         try {
-            if (password!=null && hashedDBPassword != null) {
-                if( passwordHash.validatePassword(password, hashedDBPassword) ){
+            if ( password!=null && user.getUserpassword() != null ) {
+                if( passwordHash.validatePassword(password, user.getUserpassword()) ){
                     System.out.println("Success - password correct");
                     Cookie emailCookie = new Cookie("uid" , email);
-                    Cookie pwdCookie = new Cookie( "pwd" , hashedDBPassword );
+                    Cookie pwdCookie = new Cookie( "pwd" , user.getUserpassword() );
+                    Cookie cid = new Cookie("cid", user.getCompanyName());
 
                     emailCookie.setMaxAge(60*60*24); //1day cookie
                     pwdCookie.setMaxAge(60*60*24);
+                    cid.setMaxAge(60*60*24);
                     response.addCookie(emailCookie);
                     response.addCookie(pwdCookie);
+                    response.addCookie(cid);
                     response.sendRedirect("afterLogin.jsp");
 
                 }else{
-                    System.out.println("Fail - password incorrect");
+                    System.out.println("Fail - password incorrect "+ user.getUserpassword());
                     response.sendRedirect("login.jsp?message='Passwords Mismatch'");
                 }
             } else {
