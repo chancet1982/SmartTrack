@@ -2,7 +2,6 @@ package Servlets;
 
 // File Name SendEmail.java
 import java.io.*;
-import java.util.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import java.util.Properties;
@@ -14,7 +13,7 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
-public class Mail extends HttpServlet{
+public class MailServlet extends HttpServlet{
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -27,7 +26,7 @@ public class Mail extends HttpServlet{
         //String to = "chancet1982@gmail.com";
         Properties props = new Properties();
 
-        InputStream inputStream = Mail.class.getClassLoader().getResourceAsStream("/mail.properties");
+        InputStream inputStream = MailServlet.class.getClassLoader().getResourceAsStream("/mail.properties");
         props.load(inputStream);
 
         final String username = props.getProperty("username");

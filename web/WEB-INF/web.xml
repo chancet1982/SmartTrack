@@ -24,9 +24,9 @@
         <servlet-class>Servlets.Login</servlet-class>
     </servlet>
     <servlet>
-        <display-name>Mail</display-name>
-        <servlet-name>Mail</servlet-name>
-        <servlet-class>Servlets.Mail</servlet-class>
+        <display-name>MailServlet</display-name>
+        <servlet-name>MailServlet</servlet-name>
+        <servlet-class>Servlets.MailServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>UserServlet</servlet-name>
@@ -41,7 +41,7 @@
         <url-pattern>/Login</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>Mail</servlet-name>
-        <url-pattern>/Mail</url-pattern>
+        <servlet-name>MailServlet</servlet-name>
+        <url-pattern>/MailServlet</url-pattern>
     </servlet-mapping>
 </web-app>

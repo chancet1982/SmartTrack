@@ -10,6 +10,7 @@
             <ul>
                 <li><a href="afterLogin.jsp">Home</a></li>
                 <li><a href="UserServlet?action=ListUsers">Maintain Users</a></li>
+                <li><a href="inviteUsers.jsp">Invite Users</a></li>
                 <li><a href="ProjectServlet?action=ListProjects">Maintain Projects</a></li>
                 <li><a href="Mail?to=chancet1982@gmail.com&companyName=Samlines">Send Mail</a></li>
             </ul>

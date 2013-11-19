@@ -1,12 +1,6 @@
 package Beans;
 
-import Utilities.PasswordHash;
-
-import java.security.NoSuchAlgorithmException;
-import java.security.spec.InvalidKeySpecException;
-
 public class UserBean {
-    PasswordHash passwordHash = new PasswordHash();
     private int userid;
 
     public int getUserid() {
@@ -41,9 +35,8 @@ public class UserBean {
         this.useremail = useremail;
     }
 
-    public String getUserpassword() throws InvalidKeySpecException, NoSuchAlgorithmException {
-        String hash = passwordHash.createHash(userpassword);
-        return hash;
+    public String getUserpassword() {
+        return userpassword;
     }
 
     public void setUserpassword(String userpassword) {

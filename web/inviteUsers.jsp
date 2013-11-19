@@ -17,8 +17,12 @@
     <div class="site-width clearfix">
         <h1>Invite user to organization</h1>
         <div class="box color-light round-corners shadow padding">
-            <form action="UserServlet" method="POST">
+            <form action="MailServlet" method="GET">
                 <ul>
+                    <li>
+                        <label>Company Name (should get the current user's company via AJAX and use that)</label>
+                        <input type="text" name="companyName">
+                    </li>
                     <li>
                         <label>Type in E-mail address</label>
                         <input type="text" name="userEmail" class="required">
