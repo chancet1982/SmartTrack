@@ -2,10 +2,8 @@ package DAOs;
 
 import Beans.*;
 import DB.UserDB;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.sql.Statement;
+
+import java.sql.*;
 
 public class ProjectDAO {
     private Connection connection;
@@ -22,13 +20,18 @@ public class ProjectDAO {
             preparedStatement.setString(2, project.getProjectVersion());
             preparedStatement.executeUpdate();
 
+
             Statement statement = connection.createStatement();
-            statement.executeQuery("ALTER TABLE "+companyName+".projecttable ADD "+ project.getProjectName()+ " VARCHAR(200)");
+            ResultSet rs = statement.executeQuery("SELECT max(projectID) FROM "+ companyName +".projecttable ");
+            int newProjectID = 0;
+            if(rs.next()){
+                newProjectID = rs.getInt(1);
+            }
+            statement.executeUpdate("ALTER TABLE " + companyName + ".projectassign ADD `" + newProjectID + "` int(10)");
 
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
-
 }
