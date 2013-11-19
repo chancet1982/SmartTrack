@@ -33,6 +33,11 @@ public class UserDAO {
 
             preparedStatement.executeUpdate();
 
+            //add to projectAssign table
+            //TODO For SAM: test this with the email invite
+            Statement statement = connection.createStatement();
+            statement.executeUpdate("INSERT INTO " + user.getCompanyName() + ".projectassign userID='"+ user.getUserid() +"''" );
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
