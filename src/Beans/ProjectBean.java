@@ -1,18 +1,17 @@
 package Beans;
 
 public class ProjectBean {
-    private String projectID;
+    private int projectID;
     private String projectName;
     private String projectVersion;
 
-    public String getProjectID() {
+    public int getProjectID() {
         return projectID;
     }
 
-    public void setProjectID(String projectID) {
+    public void setProjectID(int projectID) {
         this.projectID = projectID;
     }
-
 
     public String getProjectName() {
         return projectName;
@@ -21,7 +20,6 @@ public class ProjectBean {
     public void setProjectName(String projectName) {
         this.projectName = projectName;
     }
-
 
     public String getProjectVersion() {
         return projectVersion;

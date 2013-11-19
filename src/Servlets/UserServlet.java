@@ -35,26 +35,26 @@ public class UserServlet extends HttpServlet {
         String forward="";
         String action = request.getParameter("action");
 
-        if (action.equalsIgnoreCase("delete")){
+        if (action.equalsIgnoreCase("delete")){  //Delete Single
             int userId = Integer.parseInt(request.getParameter("userId"));
             dao.deleteUser(userId);
             forward = LIST_USER;
             request.setAttribute("users", dao.getAllUsers());
             RequestDispatcher view = request.getRequestDispatcher(forward);
             view.forward(request, response);
-        } else if (action.equalsIgnoreCase("edit")){
+        } else if (action.equalsIgnoreCase("edit")){ //Edit Single
             forward = EDIT;
             int userId = Integer.parseInt(request.getParameter("userId"));
             UserBean user = dao.getUserById(userId);
             request.setAttribute("user", user);
             RequestDispatcher view = request.getRequestDispatcher(forward);
             view.forward(request, response);
-        } else if (action.equalsIgnoreCase("listUsers")){
+        } else if (action.equalsIgnoreCase("listUsers")){ //List All
             forward = LIST_USER;
             request.setAttribute("users", dao.getAllUsers());
             RequestDispatcher view = request.getRequestDispatcher(forward);
             view.forward(request, response);
-        } else if (action.equalsIgnoreCase("verifyUnique")){
+        } else if (action.equalsIgnoreCase("verifyUnique")){ //Check Unique
 
             response.setContentType("application/json");
             PrintWriter out = response.getWriter();

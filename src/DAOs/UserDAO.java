@@ -89,6 +89,7 @@ public class UserDAO {
 
         return users;
     }
+
     public List<UserBean> getAllUsersFromCompany(String companyName) {
         List<UserBean> users = new ArrayList<UserBean>();
         try {

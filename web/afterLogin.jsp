@@ -9,7 +9,6 @@
         <div id="site-navigation" class="clearfix">
             <ul>
                 <li><a href="afterLogin.jsp">Home</a></li>
-                <li><a href="ProjectServlet?action=ListProjects">Maintain Projects</a></li>
             </ul>
         </div>
     </div>
@@ -25,6 +24,8 @@
             <p>What would you like to do next?</p>
             <a href="inviteUsers.jsp" class="button">Invite Users</a>
             <a href="UserServlet?action=ListUsers" class="button">Maintain Users</a>
+            <a href="createProject.jsp" class="button">Create Projects</a>
+            <a href="ProjectServlet?action=ListProjects" class="button">Maintain Projects</a>
         </div>
     </div>
 </div>
