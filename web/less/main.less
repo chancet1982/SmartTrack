@@ -98,6 +98,73 @@ label {
 display:block;
 }
 
+.icon{
+  display:block;
+  width:24px;
+  height:24px;
+  float:left;
+  margin-right:4px;
+  background-image:url("../images/ico-sprites.png");
+  background-repeat:no-repeat;
+
+  &.background {
+    background-color:@color-accent;
+  }
+}
+
+.icon.add{background-position:0px 0px;}
+.icon.add:hover{background-position:-24px 0px;}
+
+.icon.remove{background-position:0px -24px;}
+.icon.remove:hover{background-position:-24px -24px;}
+
+.icon.delete{background-position:0px -48px;}
+.icon.delete:hover{background-position:-24px -48px;}
+
+.icon.comment{background-position:0px -72px;}
+.icon.comment:hover{background-position:-24px -72px;}
+
+.icon.user{background-position:0px -96px;}
+.icon.user:hover{background-position:-24px -96px;}
+
+.icon.users{background-position:0px -117px;}
+.icon.users:hover{background-position:-24px -117px;}
+
+.icon.valid{background-position:0px -144px;}
+.icon.valid:hover{background-position:-24px -144px;}
+
+.icon.invalid{background-position:0px -168px;}
+.icon.invalid:hover{background-position:-24px -168px;}
+
+.icon.search{background-position:0px -192px;}
+.icon.search:hover{background-position:-24px -192px;}
+
+.icon.settings{background-position:0px -216px;}
+.icon.settings:hover{background-position:-24px -216px;}
+
+.icon.projects{background-position:0px -240px;}
+.icon.projects:hover{background-position:-24px -240px;}
+
+.icon.add-user{background-position:0px -264px;}
+.icon.add-user:hover{background-position:-24px -264px;}
+
+.icon.add-project{background-position:0px -288px;}
+.icon.add-project:hover{background-position:-24px -288px;}
+
+.icon.company{background-position:0px -312px;}
+.icon.company:hover{background-position:-24px -312px;}
+
+.icon.bug{background-position:0px -336px;}
+.icon.bug:hover{background-position:-24px -336px;}
+
+.icon.add-bug{background-position:0px -360px;}
+.icon.add-bug:hover{background-position:-24px -360px;}
+
+.icon.logout{background-position:0px -385px;}
+.icon.logout:hover{background-position:-24px -385px;}
+
+.icon.home{background-position:0px -411px;}
+.icon.home:hover{background-position:-24px -410px;}
 /*--- Inputs ---*/
 input {
 	background:@color-white;
@@ -198,7 +265,7 @@ h1, h2, h3, h4 {
 }
 
 h1 {font-size:198%;padding-top:(@padding-base * 1 );padding-bottom:(@padding-base * 2 )}
-h2 {font-size:144%;}
+h2 {font-size:144%;padding-top:(@padding-base * 1 );padding-bottom:(@padding-base * 1 )}
 h3 {font-size:128%;}
 h4 {font-size:125%;padding-bottom:(@padding-base * 2 )}
 
@@ -226,7 +293,7 @@ z-index:2;
 		height:@header-size;
 		line-height:@header-size;
 		margin-right:@padding-base;
-		
+      .icon{margin-top:8px;}
 		ul {
 			float:right;
 			
@@ -282,6 +349,7 @@ z-index:2;
 	left:0px;
 	right:0px;
 	overflow:auto;
+
     table {
       width:100%;
 
@@ -369,7 +437,39 @@ z-index:2;
 			}		
 		}	
 	}
-	
+
+    .users {
+        li.user {
+            display:inline-block;
+            width:64px;
+            line-height:64px;
+            height:64px;
+            cursor:pointer;
+            position:relative;
+
+                .icon{
+                    margin-top:24px;
+                    margin-right:0px;
+                    margin-left:8px;
+                }
+
+            &:nth-child(3n-2) {background:#a6e866;}
+            &:nth-child(3n-1) {background:#f16e86;}
+            &:nth-child(3n) {background:#75e3ea;}
+
+            &:before {content: "";position: absolute;width: 0;height: 0;border-style: solid;top: 0%;left: 0%;border-width: 8px 8px 0px 0px;border-color: #e4eaea transparent transparent transparent;}
+        }
+    }
+
+    .projects {
+        height:80%;
+        overflow:scroll;
+        overflow-x:hidden;
+
+        li.project{background:#e4eaea;line-height:76px;padding:4px;margin-bottom:8px;}
+        li.project:last-child{margin-bottom:0px;}
+    }
+
 	.sidebar {
 		position:fixed;
 		background:darken(@color-secondary, 30%);

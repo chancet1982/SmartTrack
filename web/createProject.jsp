@@ -6,6 +6,7 @@
     <div class="site-width clearfix">
         <div id="site-logo"></div>
         <div id="site-navigation" class="clearfix">
+            <%@include file="includes/navigation.jsp" %>
         </div>
     </div>
 </div>

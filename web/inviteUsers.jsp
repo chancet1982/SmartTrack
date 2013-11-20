@@ -5,11 +5,7 @@
     <div class="site-width clearfix">
         <div id="site-logo"></div>
         <div id="site-navigation" class="clearfix">
-            <ul>
-                <li><a href="afterLogin.jsp">Home</a></li>
-                <li><a href="UserServlet?action=ListUsers">Maintain Users</a></li>
-                <li><a href="ProjectServlet?action=ListProjects">Maintain Projects</a></li>
-            </ul>
+            <%@include file="includes/navigation.jsp" %>
         </div>
     </div>
 </div>
