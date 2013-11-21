@@ -2,6 +2,7 @@ package Servlets;
 
 import Beans.ProjectBean;
 import DAOs.ProjectDAO;
+import DAOs.UserDAO;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -13,11 +14,12 @@ import java.io.IOException;
 
 public class ProjectServlet extends HttpServlet{
     ProjectDAO projectDAO;
+    UserDAO userDAO;
     private static String LIST_PROJECTS = "/listProjects.jsp";
+    private static String ASSIGN_PROJECTS = "/assignUsersToProjects.jsp";
     public ProjectServlet(){
         super();
         projectDAO = new ProjectDAO();
-
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -43,6 +45,13 @@ public class ProjectServlet extends HttpServlet{
         } else if (action.equalsIgnoreCase("listProjects")){ //List All
             forward = LIST_PROJECTS;
             request.setAttribute("projects", projectDAO.getAllProjectsFromCompany(companyName));
+            RequestDispatcher view = request.getRequestDispatcher(forward);
+            view.forward(request, response);
+        } else if (action.equalsIgnoreCase("assignProjects")){ //Assign users to projects
+            forward = ASSIGN_PROJECTS;
+            userDAO = new UserDAO();
+            request.setAttribute("projects", projectDAO.getAllProjectsFromCompany(companyName));
+            request.setAttribute("users", userDAO.getAllUsersFromCompany(companyName));
             RequestDispatcher view = request.getRequestDispatcher(forward);
             view.forward(request, response);
         } else {

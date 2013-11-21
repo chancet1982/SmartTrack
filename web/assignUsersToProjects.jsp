@@ -17,37 +17,18 @@
         <div class="box color-light round-corners shadow padding" style="padding:8px;">
             <h2>users</h2>
                 <ul class="users">
-                    <li class="user ico"><span class="icon user"></span>SM</li>
-                    <li class="user ico"><span class="icon user"></span>MN</li>
-                    <li class="user ico"><span class="icon user"></span>SA</li>
-                    <li class="user ico"><span class="icon user"></span>SR</li>
-                    <li class="user ico"><span class="icon user"></span>RM</li>
-                    <li class="user ico"><span class="icon user"></span>IM</li>
-                    <li class="user ico"><span class="icon user"></span>SR</li>
-                    <li class="user ico"><span class="icon user"></span>SM</li>
-                    <li class="user ico"><span class="icon user"></span>MN</li>
-                    <li class="user ico"><span class="icon user"></span>SA</li>
-                    <li class="user ico"><span class="icon user"></span>SR</li>
-                    <li class="user ico"><span class="icon user"></span>RM</li>
-                    <li class="user ico"><span class="icon user"></span>IM</li>
-                    <li class="user ico"><span class="icon user"></span>SR</li>
-                    <li class="user ico"><span class="icon user"></span>SM</li>
-                    <li class="user ico"><span class="icon user"></span>MN</li>
-                    <li class="user ico"><span class="icon user"></span>SA</li>
-                    <li class="user ico"><span class="icon user"></span>SR</li>
-                    <li class="user ico"><span class="icon user"></span>RM</li>
-                    <li class="user ico"><span class="icon user"></span>RM</li>
-                    <li class="user ico"><span class="icon user"></span>IM</li>
-                    <li class="user ico"><span class="icon user"></span>SR</li>
-                    <li class="user ico"><span class="icon user"></span>IM</li>
-                    <li class="user ico"><span class="icon user"></span>SR</li>
+
+                    <c:forEach items="${users}" var="user">
+                        <li class="user ico">
+                            <span class="icon user"></span><c:out value="${user.firstname}" />
+                        </li>
+                    </c:forEach>
                 </ul>
             <h2>Projects</h2>
                 <ul class="projects">
-                    <li class="project">Project V1</li>
-                    <li class="project">Project V2</li>
-                    <li class="project">Project V3</li>
-                    <li class="project">Project V4</li>
+                    <c:forEach items="${projects}" var="project">
+                        <li class="project"><c:out value="${project.projectName}" /></li>
+                    </c:forEach>
                 </ul>
         </div>
     </div>

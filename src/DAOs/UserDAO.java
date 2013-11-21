@@ -36,9 +36,8 @@ public class UserDAO {
             //TODO For SAM: test this with the email invite
             //TODO For MN: fix this shit!
             System.out.print("USERID- " + user.getUserid());
-            connection.prepareStatement("INSERT INTO " + user.getCompanyName() + ".projectassign (userID) VALUES (?)" );
-            preparedStatement.setInt(1, user.getUserid());
-            preparedStatement.executeUpdate();
+            Statement statement = connection.createStatement();
+            statement.executeUpdate("INSERT INTO " + user.getCompanyName() + ".projectassign (userID) VALUES ("+ user.getUserid() +")" );
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -104,6 +103,8 @@ public class UserDAO {
             ResultSet rs = statement.executeQuery("SELECT * FROM indexdb.usersTable WHERE companyName='" + companyName + "'");
             while (rs.next()) {
                 UserBean user = new UserBean();
+                String initials = rs.getString("firstName").substring(0,1) + rs.getString("lastName").substring(0,1);
+                rs.getString("lastName");
                 user.setUserid(rs.getInt("id"));
                 user.setFirstname(rs.getString("firstName"));
                 user.setLastname(rs.getString("lastName"));

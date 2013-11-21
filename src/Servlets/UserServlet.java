@@ -113,8 +113,8 @@ public class UserServlet extends HttpServlet {
             response.addCookie(passwordCookie);
 
             response.sendRedirect("afterLogin.jsp");
-            dao.addUser(user);
             companydao.addCompany(company);
+            dao.addUser(user);
         } else {
             System.out.print("Trying to update user");
             user.setUserid(Integer.parseInt(userid));
