@@ -52,7 +52,7 @@
             <h2>Projects</h2>
                 <ul class="projects">
                     <c:forEach items="${projects}" var="project">
-                        <li class="project clearfix">
+                        <li class="project clearfix" data-project-id='<c:out value="${project.projectID}"/>' >
                             <span class="project-name"><c:out value="${project.projectName}" /></span>
                             <span class="project-users">
                                 <ul></ul>
@@ -64,6 +64,32 @@
     </div>
 </div>
 <script type="text/javascript">
+
+    $(document).ready(function(){
+
+        $("ul.projects li.project").each(function(){
+            projectID = $(this).attr("data-project-id");
+            this2 = $(this);
+
+
+            $.ajax({
+                type: "GET",
+                url: "/ProjectServlet?action=getAssigned",
+                data:{ "projectID" : projectID },
+                dataType: "text",
+                async: false,
+                success: function(data) {
+                    this2.find(".project-users ul").append(data);
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    console.log(xhr.status);
+                    console.log(thrownError);
+                }
+            });
+        });
+
+    });
+
     draggable= ".users li";
     sortable = ".projects .project-users ul";
 
@@ -79,6 +105,25 @@
         helper: "original",
         receive: function( event, ui ) {
             removeDuplicateUsers($(this));
+
+            projectID = $(this).parent().parent().attr("data-project-id");
+            assignedUsers = "";
+            $(this).find("li").each(function(){
+                thisUserId = $(this).attr("data-user-id");
+                assignedUsers = assignedUsers + ":" +thisUserId;
+            });
+
+            $.ajax({
+                type: "GET",
+                url: "/ProjectServlet?action=setAssigned",
+                data:{ "projectID" : projectID , "assignedUsers" : assignedUsers },
+                success: function(data) {},
+                error: function (xhr, ajaxOptions, thrownError) {
+                    console.log(xhr.status);
+                    console.log(thrownError);
+                }
+            });
+
         }
     });
 

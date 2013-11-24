@@ -37,7 +37,7 @@ public class UserDAO {
             //TODO For MN: fix this shit!
             System.out.print("USERID- " + user.getUserid());
             Statement statement = connection.createStatement();
-            statement.executeUpdate("INSERT INTO " + user.getCompanyName() + ".projectassign (userID) VALUES ("+ user.getUserid() +")" );
+            statement.executeUpdate("INSERT INTO " + user.getCompanyName() + ".projectassign (userID) VALUES ("+ user.getUserid()+ 1 +")" );
 
         } catch (SQLException e) {
             e.printStackTrace();

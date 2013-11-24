@@ -1,6 +1,7 @@
 package Servlets;
 
 import Beans.ProjectBean;
+import Beans.UserBean;
 import DAOs.ProjectDAO;
 import DAOs.UserDAO;
 
@@ -11,6 +12,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ProjectServlet extends HttpServlet{
     ProjectDAO projectDAO;
@@ -54,6 +58,32 @@ public class ProjectServlet extends HttpServlet{
             request.setAttribute("users", userDAO.getAllUsersFromCompany(companyName));
             RequestDispatcher view = request.getRequestDispatcher(forward);
             view.forward(request, response);
+        } else if (action.equalsIgnoreCase("getAssigned")){ //get user assigned to specific project
+
+            response.setContentType("text/html");
+            int projectID = Integer.parseInt(request.getParameter("projectID"));
+            List<UserBean> users = projectDAO.getUsersAssigned(companyName , projectID);
+            PrintWriter out = response.getWriter();
+
+            for(int i=0; i<users.size(); i++){
+                out.write("<li class='user ico ui-draggable' data-user-id='"+users.get(i).getUserid()+"'>"+
+                        "<span class='icon user'></span>" +
+                         users.get(i).getFirstname() + "</li>");
+            }
+
+        }else if (action.equalsIgnoreCase("setAssigned")){ //set users assigned to specific project
+
+            int projectID = Integer.parseInt(request.getParameter("projectID"));
+            String[] assignedUsers = request.getParameter("assignedUsers").split(":");
+
+            projectDAO.emptyProjectAssignment(companyName , projectID);
+            for(int i=1; i<assignedUsers.length; i++){
+                projectDAO.assignUser(companyName , projectID , Integer.parseInt(assignedUsers[i]) );
+            }
+
+            PrintWriter out = response.getWriter();
+
+
         } else {
             forward = "";
             RequestDispatcher view = request.getRequestDispatcher(forward);

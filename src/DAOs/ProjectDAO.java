@@ -26,7 +26,7 @@ public class ProjectDAO {
             ResultSet rs = statement.executeQuery("SELECT max(projectID) FROM "+ companyName +".projecttable ");
 
             if(rs.next()){
-                projectID = "projectId" + rs.getInt(1);
+                projectID = "" + rs.getInt(1);
             }
             statement.executeUpdate("ALTER TABLE " + companyName + ".projectassign ADD `" + projectID + "` BOOLEAN NOT NULL DEFAULT false");
 
@@ -70,4 +70,43 @@ public class ProjectDAO {
 
         return projects;
     }
-}
+
+    public List<UserBean> getUsersAssigned(String companyName , int projectID) {
+        List<UserBean> users = new ArrayList<UserBean>();
+        UserDAO userDAO = new UserDAO();
+
+        try {
+            Statement statement = connection.createStatement();
+            ResultSet rs = statement.executeQuery("SELECT * FROM "+companyName+".projectassign WHERE `"+ projectID +"`='1'");
+            while (rs.next()) {
+                UserBean user = new UserBean();
+                user = userDAO.getUserById(rs.getInt("userID"));
+                users.add(user);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return users;
+    }
+
+    public void assignUser(String companyName , int projectID , int userID){
+        try {
+            Statement statement = connection.createStatement();
+            statement.executeUpdate("UPDATE "+ companyName +".`projectassign` SET `"+projectID+"`='1' WHERE `userID`='"+ userID +"'");
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    public void emptyProjectAssignment(String companyName , int projectID ){
+        try {
+            Statement statement = connection.createStatement();
+            statement.executeUpdate("UPDATE "+ companyName +".`projectassign` SET `"+projectID+"`='0'");
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    }
