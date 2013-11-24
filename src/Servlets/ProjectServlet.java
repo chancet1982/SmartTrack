@@ -78,6 +78,7 @@ public class ProjectServlet extends HttpServlet{
 
             projectDAO.emptyProjectAssignment(companyName , projectID);
             for(int i=1; i<assignedUsers.length; i++){
+                //TODO FIGURE OUT WHY THERE'S AN EXCEPTION HERE (although program works)
                 projectDAO.assignUser(companyName , projectID , Integer.parseInt(assignedUsers[i]) );
             }
 

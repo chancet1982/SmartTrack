@@ -25,6 +25,7 @@
         margin-left: 8px;
     }
     #site-content li.user { background: #a6e866; }
+    .delete-sortable{background-color:#ff0000 !important;}
 
 
 </style>
@@ -101,11 +102,19 @@
 
     $(sortable).sortable({
         revert: "100",
-        cancel: "li",
+       // cancel: "li",
         helper: "original",
-        receive: function( event, ui ) {
-            removeDuplicateUsers($(this));
-
+        connectWith: '.delete-sortable',
+        over: function () {
+            removeIntent = false;
+        },
+        out: function () {
+            removeIntent = true;
+        },
+        beforeStop: function (event, ui) {
+            if(removeIntent == true){
+                ui.item.remove();
+            }
             projectID = $(this).parent().parent().attr("data-project-id");
             assignedUsers = "";
             $(this).find("li").each(function(){
@@ -118,11 +127,31 @@
                 url: "/ProjectServlet?action=setAssigned",
                 data:{ "projectID" : projectID , "assignedUsers" : assignedUsers },
                 success: function(data) {},
-                error: function (xhr, ajaxOptions, thrownError) {
-                    console.log(xhr.status);
-                    console.log(thrownError);
-                }
+                error: function (xhr, ajaxOptions, thrownError) {console.log(xhr.status+ " " +thrownError);}
             });
+        },
+
+        update: function( event, ui ) {
+            projectID = $(this).parent().parent().attr("data-project-id");
+            assignedUsers = "";
+            $(this).find("li").each(function(){
+                thisUserId = $(this).attr("data-user-id");
+                assignedUsers = assignedUsers + ":" +thisUserId;
+            });
+
+            $.ajax({
+                type: "GET",
+                url: "/ProjectServlet?action=setAssigned",
+                data:{ "projectID" : projectID , "assignedUsers" : assignedUsers },
+                success: function(data) {},
+                error: function (xhr, ajaxOptions, thrownError) {console.log(xhr.status+ " " +thrownError);}
+            });
+
+        },
+
+        receive: function( event, ui ) {
+            removeDuplicateUsers($(this));
+
 
         }
     });
