@@ -34,7 +34,7 @@ public class UserDAO {
 
             //add to projectAssign table
             //TODO For SAM: test this with the email invite
-            //TODO For MN: fix this shit!
+            //TODO the user id should be fetched from the database not from the userbean
             System.out.print("USERID- " + user.getUserid());
             Statement statement = connection.createStatement();
             statement.executeUpdate("INSERT INTO " + user.getCompanyName() + ".projectassign (userID) VALUES ("+ user.getUserid()+ 1 +")" );

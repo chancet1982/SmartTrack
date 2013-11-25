@@ -132,6 +132,13 @@
         },
 
         update: function( event, ui ) {
+
+
+        },
+
+        receive: function( event, ui ) {
+            removeDuplicateUsers($(this));
+
             projectID = $(this).parent().parent().attr("data-project-id");
             assignedUsers = "";
             $(this).find("li").each(function(){
@@ -146,12 +153,6 @@
                 success: function(data) {},
                 error: function (xhr, ajaxOptions, thrownError) {console.log(xhr.status+ " " +thrownError);}
             });
-
-        },
-
-        receive: function( event, ui ) {
-            removeDuplicateUsers($(this));
-
 
         }
     });

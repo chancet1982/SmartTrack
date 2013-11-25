@@ -77,8 +77,10 @@ public class ProjectServlet extends HttpServlet{
             String[] assignedUsers = request.getParameter("assignedUsers").split(":");
 
             projectDAO.emptyProjectAssignment(companyName , projectID);
+            System.out.println("user assigned currently ");
             for(int i=1; i<assignedUsers.length; i++){
                 //TODO FIGURE OUT WHY THERE'S AN EXCEPTION HERE (although program works)
+                System.out.print(Integer.parseInt(assignedUsers[i]) + "\n");
                 projectDAO.assignUser(companyName , projectID , Integer.parseInt(assignedUsers[i]) );
             }
 
