@@ -25,9 +25,6 @@
         margin-left: 8px;
     }
     #site-content li.user { background: #a6e866; }
-    .delete-sortable{background-color:#ff0000 !important;}
-
-
 </style>
 <div id="site-header">
     <div class="site-width clearfix">
