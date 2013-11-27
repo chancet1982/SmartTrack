@@ -21,7 +21,7 @@ public class UserServlet extends HttpServlet {
     private static String EDIT = "/editUser.jsp";
     private static String LIST_USER = "/assignUserRoles.jsp";
     private static String INSERT = "/afterLogin.jsp";
-    private static String LOGOUT = "/Login.jsp";
+    private static String LOGOUT = "/login.jsp";
 
     private UserDAO dao;
     private CompanyDAO companydao;

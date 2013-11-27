@@ -2,30 +2,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
-<%
-    System.out.println("making sure there is a cookie");
-    String pwd = null, uid = null;
-    Cookie cookie = null;
-    Cookie[] cookies = null;
-    cookies = request.getCookies();
-    if( cookies != null )  {
-        for (int i = 0; i < cookies.length; i++) {
-            if (cookies[i].getName().equals("uid")) {
-                System.out.println("there is a UID cookie");
-                uid = cookies[i].getValue();
-            }
-            if (cookies[i].getName().equals("pwd")) {
-                System.out.println("there is a PWD cookie");
-                pwd = cookies[i].getValue();
-            }
-        }
-    } else {
-        System.out.println("Could not find cookies - must go to login.jsp");
-    }
-    if (uid == null || pwd == null ) {
-        response.sendRedirect("login.jsp");
-    }
-%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>

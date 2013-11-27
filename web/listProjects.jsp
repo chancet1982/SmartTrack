@@ -1,3 +1,4 @@
+<%@include file="includes/validateCookie.jsp" %>
 <%@include file="includes/documentHead.jsp" %>
 
 <body>

@@ -27,7 +27,7 @@ public class Login extends HttpServlet {
     public Login() {
         super();
         dao = new UserDAO();
-        connection = DB.DB.getConnection();
+        connection = DB.getConnection();
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
