@@ -1,7 +1,7 @@
 package DAOs;
 
 import Beans.*;
-import DB.UserDB;
+import DB.DB;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -11,7 +11,7 @@ public class ProjectDAO {
     private Connection connection;
 
     public ProjectDAO() {
-        connection = UserDB.getConnection();
+        connection = DB.getConnection();
     }
 
     public void addProject( String companyName , ProjectBean project)  {

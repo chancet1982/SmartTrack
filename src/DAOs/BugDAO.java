@@ -1,6 +1,7 @@
 package DAOs;
 
-import DB.UserDB;
+import DB.DB;
+
 import java.sql.*;
 import Beans.BugBean;
 
@@ -8,7 +9,7 @@ public class BugDAO {
     private Connection connection;
 
     public BugDAO() {
-        connection= UserDB.getConnection();
+        connection= DB.getConnection();
     }
 
     //TODO REMEMBER, this method is horsepucky , SO IMPLEMENT IT !!!

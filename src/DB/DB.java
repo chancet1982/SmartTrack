@@ -9,19 +9,19 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Properties;
 
-public class UserDB {
+public class DB {
 
     private static Connection connection = null;
 
     public static Connection getConnection() {
-        UserDB userDB = new UserDB();
+        DB db = new DB();
 
         if (connection != null)
             return connection;
         else {
             try {
                 Properties prop = new Properties();
-                InputStream inputStream = UserDB.class.getClassLoader().getResourceAsStream("/db.properties");
+                InputStream inputStream = DB.class.getClassLoader().getResourceAsStream("/db.properties");
                 prop.load(inputStream);
                 String driver = prop.getProperty("driver");
                 String url = prop.getProperty("url");
@@ -29,7 +29,7 @@ public class UserDB {
                 String password = prop.getProperty("password");
                 Class.forName(driver);
                 connection = DriverManager.getConnection(url, user, password);
-                userDB.createDatabase();
+                db.createDatabase();
 
             } catch (ClassNotFoundException e) {
                 e.printStackTrace();

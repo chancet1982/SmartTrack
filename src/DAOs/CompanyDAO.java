@@ -12,7 +12,7 @@ public class CompanyDAO {
     private Connection connection;
 
     public CompanyDAO() {
-        connection= CompanyDB.getConnection();
+        connection= DB.getConnection();
     }
 
     public void addCompany(CompanyBean company)  {
@@ -63,7 +63,7 @@ public class CompanyDAO {
     public boolean isFieldUnique(String inputValue, String inputName) {
         boolean isUnique = false;
         try {
-            connection= CompanyDB.getConnection();
+            connection= DB.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM indexdb.companiesTable WHERE "+inputName+"=?");
             preparedStatement.setString(1 , inputValue);
             ResultSet rs = preparedStatement.executeQuery();
