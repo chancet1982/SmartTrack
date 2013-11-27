@@ -1,6 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
     <%
-    System.out.println("Im in the index.jsp");
+    System.out.println("Index.jsp: Looking for cookies");
     String pwd = null, uid = null;
     Cookie cookie = null;
     Cookie[] cookies = null;

@@ -1,6 +1,31 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+
+<%
+    System.out.println("making sure there is a cookie");
+    String pwd = null, uid = null;
+    Cookie cookie = null;
+    Cookie[] cookies = null;
+    cookies = request.getCookies();
+    if( cookies != null )  {
+        for (int i = 0; i < cookies.length; i++) {
+            if (cookies[i].getName().equals("uid")) {
+                System.out.println("there is a UID cookie");
+                uid = cookies[i].getValue();
+            }
+            if (cookies[i].getName().equals("pwd")) {
+                System.out.println("there is a PWD cookie");
+                pwd = cookies[i].getValue();
+            }
+        }
+    } else {
+        System.out.println("Could not find cookies - must go to login.jsp");
+    }
+    if (uid == null || pwd == null ) {
+        response.sendRedirect("login.jsp");
+    }
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -49,4 +74,27 @@
 
     <title>Title of the document</title>
 
+    <style type="text/css">
+
+	#new-bug > ul > li {margin-top:30px;}
+    #new-bug > ul > li > label{width:99%;display:block;}
+
+    .step {margin-top:10px;}
+    .step li label,
+    .step li .remove-step{float:left;}
+    .step li:first-child{height:20px;}
+
+    .remove-step {
+        height:20px;
+        width:20px;
+        background-color:#00afba;
+        background-image:url(images/ico-sprites.png);
+        background-position:22px -50px;
+        margin-right:5px
+    }
+
+    textarea {margin-bottom:10px}
+    .step label {cursor:move}
+
+    </style>
 </head>

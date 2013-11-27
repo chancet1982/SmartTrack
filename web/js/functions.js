@@ -1,5 +1,32 @@
 /*------------General Functions------------*/
 var mouse_is_inside = false;
+var ulIndex;
+var ulElement;
+var temp = null;
+var textAreaValue = $("#8 ul textarea").val();
+
+serverError = " #2 , #3 , #4 , #6 , #7 , #8";
+frontEnd = " #2 , #3 , #4 , #5 , #7 , #8";
+textual = " #2 , #3 , #4 , #9";
+other = " #2 , #3 , #4 , #6 , #5 , #7 , #8";
+
+//Readjust steps
+function adjustSteps() {
+    $('li#8 > ul.step').each(function(){
+        index = $(this).index();
+        index++;
+        $(this).attr( "id" , "step" + index )
+        $(this).find("label").text("Step " + index );
+        console.log('adjusted');
+    });
+}
+function disableUndo(){
+    temp = null;
+    $("#undoDelete").addClass("inactive").attr("disabled", "disabled");
+}
+function enableUndo(){
+    $("#undoDelete").removeClass("inactive").removeAttr("disabled");
+}
 
 function validateForm() {
 	$('form').each(function() {
@@ -21,6 +48,83 @@ $(window).resize(function() {
 
 /*------------Do things on document ready------------*/
 $(document).ready(function() {
+    //Step Addition
+    $("#addStep").click(function(){
+        adjustSteps();
+        stepID =  $('li#8 > ul.step').size();
+        stepID++;
+        step = $('<ul class="step" id="step' + stepID + '"> '+
+            '<li><div class="remove-step"></div><label>Step '+ stepID +'</label></li> '+
+            '<li><textarea rows="2" cols="65"></textarea></li></ul>');
+
+        $(step).insertBefore(this);
+        temp = null;
+        disableUndo();
+    });
+
+    //Step removal
+    $(document).on("click","div.remove-step",function(){
+        ulIndex = $(this).parent().parent().index() ;
+        ulIndex++;
+        ulElement = $(this).parent().parent();
+        temp = null;
+
+        if ( temp == null ){
+            temp = $( ulElement ).detach();
+            adjustSteps();
+        }
+        enableUndo();
+    });
+
+    //UNDO delete
+    $("#undoDelete").click(function(){
+        if ( temp != null ) {
+            if(ulIndex == 1){
+                temp.insertBefore( "li#8 > ul.step:eq(0)" );
+            }else{
+                temp.insertAfter( "li#8 > ul.step:nth-child(" + ulIndex  + ")" );
+            }
+            disableUndo();
+            console.log(ulIndex);
+            adjustSteps();
+        }
+    });
+
+    //Category select
+    $("#new-bug #bug-category").change(function(){
+        selectedOption = $("#new-bug #bug-category option:selected" );
+        console.log(selectedOption.val());
+        $(this).parent().parent().children().not(":first-child").addClass("hidden");
+
+        if (selectedOption.val() == 'server-error'){
+            $(serverError).removeClass("hidden");
+        }else if (selectedOption.val() == 'front-end'){
+            $(frontEnd).removeClass("hidden");
+        }else if (selectedOption.val() == 'textual'){
+            $(textual).removeClass("hidden");
+        }else if (selectedOption.val() == 'other'){
+            $(other).removeClass("hidden");
+        }
+    });
+    $('textarea').on('blur' , function(){
+        textAreaValue = $(this).val();console.log('blur')
+    });
+    $( "#8" ).sortable({
+        revert: false,
+        stop: function() { adjustSteps(); },
+        start: function() {  }
+    });
+    $( ".step" ).draggable({
+        connectToSortable: "#8",
+        revert: false,
+        cursor: "move",
+        containment: "parent",
+        snap: "#8",
+        delay: 100,
+        //stack: ".step",
+        axis: "y"
+    });
+
 	//toggling things
 	$('.toggleable .toggle').on( 'click', function() {
 		if ( $(this).hasClass('collapse')) {

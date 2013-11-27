@@ -4,7 +4,8 @@
     <li><a href="ProjectServlet?action=ListProjects" class="ico"><span class="icon projects"></span>Maintain Projects</a></li>
     <li><a href="inviteUsers.jsp" class="ico"><span class="icon add-user"></span>Invite Users</a></li>
     <li><a href="createProject.jsp" class="ico"><span class="icon add-project"></span>Create Projects</a></li>
-    <li><a href="createProject.jsp" class="ico"><span class="icon logout"></span>Logout</a></li>
+    <li><a href="createBug.jsp" class="ico"><span class="icon add-bug"></span>Create a bug</a></li>
+    <li><a href="UserServlet?action=LogoutUser" class="ico"><span class="icon logout"></span>Logout</a></li>
 </ul>
 
 

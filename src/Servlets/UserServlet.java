@@ -21,6 +21,8 @@ public class UserServlet extends HttpServlet {
     private static String EDIT = "/editUser.jsp";
     private static String LIST_USER = "/assignUserRoles.jsp";
     private static String INSERT = "/afterLogin.jsp";
+    private static String LOGOUT = "/Login.jsp";
+
     private UserDAO dao;
     private CompanyDAO companydao;
     PasswordHash passwordHash = new PasswordHash();
@@ -55,7 +57,6 @@ public class UserServlet extends HttpServlet {
             RequestDispatcher view = request.getRequestDispatcher(forward);
             view.forward(request, response);
         } else if (action.equalsIgnoreCase("verifyUnique")){ //Check Unique
-
             response.setContentType("application/json");
             PrintWriter out = response.getWriter();
             if( dao.isFieldUnique(request.getParameter("inputValue") , request.getParameter("inputName")) == true ){
@@ -65,7 +66,22 @@ public class UserServlet extends HttpServlet {
                 String temp = "{\"isUnique\":\"false\"}";
                 out.write(temp);
             }
+        } else if (action.equalsIgnoreCase("LogoutUser")){ //Logout
+            forward = LOGOUT;
 
+            //removing all cookies
+            Cookie[] cookies = request.getCookies();
+            if (cookies != null) {
+                for (int i = 0; i < cookies.length; i++) {
+                    cookies[i].setValue("");
+                    cookies[i].setPath("/");
+                    cookies[i].setMaxAge(0);
+                    response.addCookie(cookies[i]);
+                }
+            }
+
+            RequestDispatcher view = request.getRequestDispatcher(forward);
+            view.forward(request, response);
         }else{
             forward = EDIT;
             RequestDispatcher view = request.getRequestDispatcher(forward);
