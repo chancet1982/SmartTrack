@@ -3,27 +3,7 @@
 
 <body>
 <style>
-    .project {display:block;}
-    .project span{ display:block; float:left; }
-    .project .project-name {background:#ffffff;  width:10%; }
-    .project .project-users {background:#f0f0f0; width:90%; height:76px; }
-    .project .project-users ul { height:100%; }
-    .project .project-users ul li { margin: 3px 3px 3px 0; padding: 1px; float: left;  }
 
-    #site-content li.user {
-        display: inline-block;
-        width: 64px;
-        line-height: 64px;
-        height: 64px;
-        cursor: pointer;
-        position: relative;
-    }
-    #site-content li.user .icon {
-        margin-top: 24px;
-        margin-right: 0px;
-        margin-left: 8px;
-    }
-    #site-content li.user { background: #a6e866; }
 </style>
 <div id="site-header">
     <div class="site-width clearfix">
@@ -60,107 +40,5 @@
         </div>
     </div>
 </div>
-<script type="text/javascript">
-
-    $(document).ready(function(){
-
-        $("ul.projects li.project").each(function(){
-            projectID = $(this).attr("data-project-id");
-            this2 = $(this);
-
-
-            $.ajax({
-                type: "GET",
-                url: "/ProjectServlet?action=getAssigned",
-                data:{ "projectID" : projectID },
-                dataType: "text",
-                async: false,
-                success: function(data) {
-                    this2.find(".project-users ul").append(data);
-                },
-                error: function (xhr, ajaxOptions, thrownError) {
-                    console.log(xhr.status);
-                    console.log(thrownError);
-                }
-            });
-        });
-
-    });
-
-    draggable= ".users li";
-    sortable = ".projects .project-users ul";
-
-    $(draggable).draggable({
-        helper: "clone",
-        revert: false,
-        connectToSortable: $(sortable)
-    });
-
-    $(sortable).sortable({
-        revert: "100",
-       // cancel: "li",
-        helper: "original",
-        connectWith: '.delete-sortable',
-        over: function () {
-            removeIntent = false;
-        },
-        out: function () {
-            removeIntent = true;
-        },
-        beforeStop: function (event, ui) {
-            if(removeIntent == true){
-                ui.item.remove();
-            }
-            projectID = $(this).parent().parent().attr("data-project-id");
-            assignedUsers = "";
-            $(this).find("li").each(function(){
-                thisUserId = $(this).attr("data-user-id");
-                assignedUsers = assignedUsers + ":" +thisUserId;
-            });
-
-            $.ajax({
-                type: "GET",
-                url: "/ProjectServlet?action=setAssigned",
-                data:{ "projectID" : projectID , "assignedUsers" : assignedUsers },
-                success: function(data) {},
-                error: function (xhr, ajaxOptions, thrownError) {console.log(xhr.status+ " " +thrownError);}
-            });
-        },
-
-        update: function( event, ui ) {
-
-
-        },
-
-        receive: function( event, ui ) {
-            removeDuplicateUsers($(this));
-
-            projectID = $(this).parent().parent().attr("data-project-id");
-            assignedUsers = "";
-            $(this).find("li").each(function(){
-                thisUserId = $(this).attr("data-user-id");
-                assignedUsers = assignedUsers + ":" +thisUserId;
-            });
-
-            $.ajax({
-                type: "GET",
-                url: "/ProjectServlet?action=setAssigned",
-                data:{ "projectID" : projectID , "assignedUsers" : assignedUsers },
-                success: function(data) {},
-                error: function (xhr, ajaxOptions, thrownError) {console.log(xhr.status+ " " +thrownError);}
-            });
-
-        }
-    });
-
-    function removeDuplicateUsers(obj){
-        var seen = {};
-        obj.find("li").each(function(){
-            id = $(this).attr("data-user-id");
-            if (seen[id]){$(this).remove();}else{seen[id] = true;}
-        });
-    }
-
-</script>
 </body>
 </html>

@@ -72,5 +72,28 @@
     textarea {margin-bottom:10px}
     .step label {cursor:move}
 
+    /*--- assign user to project page ---*/
+    .project {display:block;}
+    .project span{ display:block; float:left; }
+    .project .project-name {background:#ffffff;  width:10%; }
+    .project .project-users {background:#f0f0f0; width:90%; height:76px; }
+    .project .project-users ul { height:100%; }
+    .project .project-users ul li { margin: 3px 3px 3px 0; padding: 1px; float: left;  }
+
+    #site-content li.user {
+        display: inline-block;
+        width: 64px;
+        line-height: 64px;
+        height: 64px;
+        cursor: pointer;
+        position: relative;
+    }
+    #site-content li.user .icon {
+        margin-top: 24px;
+        margin-right: 0px;
+        margin-left: 8px;
+    }
+    #site-content li.user { background: #a6e866; }
+
     </style>
 </head>

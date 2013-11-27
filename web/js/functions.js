@@ -48,6 +48,52 @@ $(window).resize(function() {
 
 /*------------Do things on document ready------------*/
 $(document).ready(function() {
+
+    /*--- assignUsersToProjects.jsp ---*/
+
+    //Load assigned users from database
+    $("ul.projects li.project").each(function(){
+        projectID = $(this).attr("data-project-id");
+        this2 = $(this);
+
+        $.ajax({
+            type: "GET",
+            url: "/ProjectServlet?action=getAssigned",
+            data:{ "projectID" : projectID },
+            dataType: "text",
+            async: false,
+            success: function(data) {
+                this2.find(".project-users ul").append(data);
+            },
+            error: function (xhr, ajaxOptions, thrownError) {console.log(xhr.status+ " " +thrownError);}
+        });
+    });
+
+    //create dragables and sortables
+    draggable= "ul.users li.user";
+    sortable = "ul.projects li.project span.project-users ul";
+
+    $(draggable).draggable({
+        helper: "clone",
+        revert: false,
+        connectToSortable: $(sortable)
+    });
+
+    $(sortable).sortable({
+        revert: "100",
+        helper: "original",
+        over: function () {removeIntent = false;},
+        out:  function () {removeIntent = true;},
+        beforeStop: function (event, ui) {
+            if(removeIntent == true){ui.item.remove();}
+            assignUsers($(this));
+        },
+        receive: function( event, ui ) {
+            removeDuplicateUsers($(this));
+            assignUsers($(this));
+        }
+    });
+
     //Step Addition
     $("#addStep").click(function(){
         adjustSteps();
@@ -231,6 +277,32 @@ $(document).ready(function() {
 	});
 
     /*---------AJAX SECTION---------*/
+
+    //assignUsersToProjects.jsp
+    function removeDuplicateUsers(obj){
+        var seen = {};
+        obj.find("li").each(function(){
+            id = $(this).attr("data-user-id");
+            if (seen[id]){$(this).remove();}else{seen[id] = true;}
+        });
+    }
+
+    function assignUsers(obj){
+        projectID = obj.parent().parent().attr("data-project-id");
+        assignedUsers = "";
+        obj.find("li").each(function(){
+            thisUserId = $(this).attr("data-user-id");
+            assignedUsers = assignedUsers + ":" +thisUserId;
+        });
+
+        $.ajax({
+            type: "GET",
+            url: "/ProjectServlet?action=setAssigned",
+            data:{ "projectID" : projectID , "assignedUsers" : assignedUsers },
+            success: function(data) {},
+            error: function (xhr, ajaxOptions, thrownError) {console.log(xhr.status+ " " +thrownError);}
+        });
+    }
 
     //unique check
     $(".unique").on("keyup" , function(){

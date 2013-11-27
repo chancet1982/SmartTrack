@@ -30,7 +30,7 @@ public class UserDAO {
             statement.executeUpdate("CREATE TABLE IF NOT EXISTS indexDB.usersTable(id int(11) NOT NULL AUTO_INCREMENT,`companyName` varchar(45) DEFAULT NULL,`firstName` varchar(45) DEFAULT NULL,`lastName` varchar(45) DEFAULT NULL,`userEmail` varchar(100) DEFAULT NULL,`userPassword` varchar(105) DEFAULT NULL,`handler` int(1) NOT NULL DEFAULT 0,`manager` int(1) NOT NULL DEFAULT 0,`reporter` int(1) NOT NULL DEFAULT 0, PRIMARY KEY (`id`)) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;");
             statement.close();
 
-            //Add user to database
+            //Add user to index database
             preparedStatement = connection.prepareStatement("INSERT INTO indexdb.usersTable(companyName , firstName , lastName , userEmail , userPassword) VALUES (?,?,?,?,?)");
             preparedStatement.setString(1, user.getCompanyName());
             preparedStatement.setString(2, user.getFirstname());
@@ -40,13 +40,12 @@ public class UserDAO {
             preparedStatement.executeUpdate();
             preparedStatement.close();
 
-            //add to projectAssign table
-            //TODO For SAM: test this with the email invite
-            //TODO the user id should be fetched from the database not from the userbean
-            System.out.print("USERID- " + user.getUserid());
-
+            //Add to projectAssign table
             statement = connection.createStatement();
-            statement.executeUpdate("INSERT INTO " + user.getCompanyName() + ".projectassign (userID) VALUES (" + user.getUserid() + 1 + ")");
+            rs = statement.executeQuery("SELECT max(id) FROM indexdb.usersTable");
+            int newUserID = 1;
+            if(rs.next()){newUserID = rs.getInt(1);}
+            statement.executeUpdate("INSERT INTO " + user.getCompanyName() + ".projectassign (userID) VALUES (" + newUserID + ")");
             statement.close();
 
         } catch (SQLException e) {
