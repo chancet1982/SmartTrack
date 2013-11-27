@@ -13,6 +13,9 @@ import DB.*;
 public class UserDAO {
 
     private Connection connection;
+    private Statement statement;
+    private PreparedStatement preparedStatement;
+    private ResultSet rs;
 
     public UserDAO() {
         connection = DB.getConnection();
@@ -20,24 +23,31 @@ public class UserDAO {
 
     public void addUser(UserBean user)  {
         try {
+            //Creating database if not there...
+            statement = connection.createStatement();
+            statement.executeUpdate("CREATE DATABASE IF NOT EXISTS indexDB;");
+            //statement.executeUpdate("use indexDB;");
+            statement.executeUpdate("CREATE TABLE IF NOT EXISTS indexDB.usersTable(id int(11) NOT NULL AUTO_INCREMENT,`companyName` varchar(45) DEFAULT NULL,`firstName` varchar(45) DEFAULT NULL,`lastName` varchar(45) DEFAULT NULL,`userEmail` varchar(100) DEFAULT NULL,`userPassword` varchar(105) DEFAULT NULL,`handler` int(1) NOT NULL DEFAULT 0,`manager` int(1) NOT NULL DEFAULT 0,`reporter` int(1) NOT NULL DEFAULT 0, PRIMARY KEY (`id`)) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;");
+            statement.close();
 
-            PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO indexdb.usersTable(companyName , firstName , lastName , userEmail , userPassword) VALUES (?,?,?,?,?)");
-
-            // Parameters start with 1
-            System.out.println( user.getUserpassword() );
+            //Add user to database
+            preparedStatement = connection.prepareStatement("INSERT INTO indexdb.usersTable(companyName , firstName , lastName , userEmail , userPassword) VALUES (?,?,?,?,?)");
             preparedStatement.setString(1, user.getCompanyName());
             preparedStatement.setString(2, user.getFirstname());
             preparedStatement.setString(3, user.getLastname());
             preparedStatement.setString(4, user.getUseremail());
             preparedStatement.setString(5, user.getUserpassword());
             preparedStatement.executeUpdate();
+            preparedStatement.close();
 
             //add to projectAssign table
             //TODO For SAM: test this with the email invite
             //TODO the user id should be fetched from the database not from the userbean
             System.out.print("USERID- " + user.getUserid());
-            Statement statement = connection.createStatement();
+
+            statement = connection.createStatement();
             statement.executeUpdate("INSERT INTO " + user.getCompanyName() + ".projectassign (userID) VALUES (" + user.getUserid() + 1 + ")");
+            statement.close();
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -46,11 +56,10 @@ public class UserDAO {
 
     public void deleteUser(int userId) {
         try {
-            PreparedStatement preparedStatement = connection
-                    .prepareStatement("DELETE FROM indexdb.usersTable WHERE id=?");
-            // Parameters start with 1
+            preparedStatement = connection.prepareStatement("DELETE FROM indexdb.usersTable WHERE id=?");
             preparedStatement.setInt(1, userId);
             preparedStatement.executeUpdate();
+            preparedStatement.close();
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -59,9 +68,7 @@ public class UserDAO {
 
     public void updateUser(UserBean user) {
         try {
-            PreparedStatement preparedStatement = connection
-                    .prepareStatement("UPDATE indexdb.usersTable SET firstName=?, lastName=?, userEmail=?, userPassword=?, handler=?, manager=?, reporter=? WHERE id=?");
-            // Parameters start with 1
+            preparedStatement = connection.prepareStatement("UPDATE indexdb.usersTable SET firstName=?, lastName=?, userEmail=?, userPassword=?, handler=?, manager=?, reporter=? WHERE id=?");
             preparedStatement.setString(1, user.getFirstname());
             preparedStatement.setString(2, user.getLastname());
             preparedStatement.setString(3, user.getUseremail());
@@ -71,6 +78,7 @@ public class UserDAO {
             preparedStatement.setBoolean(7, user.isIsreporter());
             preparedStatement.setInt(8, user.getUserid());
             preparedStatement.executeUpdate();
+            preparedStatement.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -79,8 +87,8 @@ public class UserDAO {
     public List<UserBean> getAllUsers() {
         List<UserBean> users = new ArrayList<UserBean>();
         try {
-            Statement statement = connection.createStatement();
-            ResultSet rs = statement.executeQuery("SELECT * FROM indexdb.usersTable");
+            statement = connection.createStatement();
+            rs = statement.executeQuery("SELECT * FROM indexdb.usersTable");
             while (rs.next()) {
                 UserBean user = new UserBean();
                 user.setUserid(rs.getInt("id"));
@@ -89,21 +97,22 @@ public class UserDAO {
                 user.setUseremail(rs.getString("userEmail"));
                 users.add(user);
             }
+            statement.close();
+            rs.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
         return users;
     }
 
     public List<UserBean> getAllUsersFromCompany(String companyName) {
         List<UserBean> users = new ArrayList<UserBean>();
         try {
-            Statement statement = connection.createStatement();
-            ResultSet rs = statement.executeQuery("SELECT * FROM indexdb.usersTable WHERE companyName='" + companyName + "'");
+            statement = connection.createStatement();
+            rs = statement.executeQuery("SELECT * FROM indexdb.usersTable WHERE companyName='" + companyName + "'");
             while (rs.next()) {
                 UserBean user = new UserBean();
-                String initials = rs.getString("firstName").substring(0,1) + rs.getString("lastName").substring(0,1);
+                //String initials = rs.getString("firstName").substring(0,1) + rs.getString("lastName").substring(0,1);
                 rs.getString("lastName");
                 user.setUserid(rs.getInt("id"));
                 user.setFirstname(rs.getString("firstName"));
@@ -111,20 +120,20 @@ public class UserDAO {
                 user.setUseremail(rs.getString("userEmail"));
                 users.add(user);
             }
+            statement.close();
+            rs.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
         return users;
     }
 
     public UserBean getUserById(int userId) {
         UserBean user = new UserBean();
         try {
-            PreparedStatement preparedStatement = connection.
-                    prepareStatement("SELECT * FROM indexdb.usersTable WHERE id=?");
+            preparedStatement = connection.prepareStatement("SELECT * FROM indexdb.usersTable WHERE id=?");
             preparedStatement.setInt(1, userId);
-            ResultSet rs = preparedStatement.executeQuery();
+            rs = preparedStatement.executeQuery();
 
             if (rs.next()) {
                 user.setUserid(rs.getInt("id"));
@@ -136,20 +145,20 @@ public class UserDAO {
                 user.setIsmanager(rs.getBoolean("manager"));
                 user.setIsreporter(rs.getBoolean("reporter"));
             }
+            preparedStatement.close();
+            rs.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
         return user;
     }
 
     public UserBean getUserByEmail(String email) {
         UserBean user = new UserBean();
         try {
-            PreparedStatement preparedStatement = connection.
-                    prepareStatement("SELECT * FROM indexdb.usersTable WHERE userEmail=?");
+            preparedStatement = connection.prepareStatement("SELECT * FROM indexdb.usersTable WHERE userEmail=?");
             preparedStatement.setString(1, email);
-            ResultSet rs = preparedStatement.executeQuery();
+            rs = preparedStatement.executeQuery();
 
             if (rs.next()) {
                 user.setUserid(rs.getInt("id"));
@@ -159,23 +168,25 @@ public class UserDAO {
                 user.setUseremail(rs.getString("userEmail"));
                 user.setUserpassword(rs.getString("userPassword"));
             }
+            preparedStatement.close();
+            rs.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
         return user;
     }
 
         public boolean isFieldUnique(String inputValue, String inputName) {
         boolean isUnique = false;
         try {
-            PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM indexdb.usersTable WHERE "+inputName+"=?");
+            preparedStatement = connection.prepareStatement("SELECT * FROM indexdb.usersTable WHERE "+inputName+"=?");
             preparedStatement.setString(1 , inputValue);
-            ResultSet rs = preparedStatement.executeQuery();
+            rs = preparedStatement.executeQuery();
             if ( !rs.next() ) {
                 isUnique = true;
             }
-
+            preparedStatement.close();
+            rs.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
