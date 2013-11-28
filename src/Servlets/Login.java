@@ -3,10 +3,7 @@ package Servlets;
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.*;
@@ -24,6 +21,10 @@ public class Login extends HttpServlet {
     PasswordHash passwordHash = new PasswordHash();
 
     private Connection connection;
+    private Statement statement;
+    private PreparedStatement preparedStatement;
+    private ResultSet rs;
+
     public Login() {
         super();
         dao = new UserDAO();
@@ -55,11 +56,16 @@ public class Login extends HttpServlet {
 
             //Fetch password from DB
             try {
-                PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM indexdb.usersTable WHERE userEmail=?");
-                preparedStatement.setString(1,email);
-                ResultSet rs = preparedStatement.executeQuery();
-                if (rs.next()) {hashedDBPassword = rs.getString("userPassword");} else {
-                    System.out.println("username cannot be found");
+                statement = connection.createStatement();
+                rs = statement.executeQuery("SHOW DATABASES LIKE 'indexdb'");
+                if (rs.next() ) {
+                    rs.close();
+                    preparedStatement = connection.prepareStatement("SELECT * FROM indexdb.usersTable WHERE userEmail=?");
+                    preparedStatement.setString(1,email);
+                    rs = preparedStatement.executeQuery();
+                    if (rs.next()) {hashedDBPassword = rs.getString("userPassword");} else {
+                        System.out.println("username cannot be found");
+                    }
                 }
             }
             catch (SQLException e) {e.printStackTrace();}

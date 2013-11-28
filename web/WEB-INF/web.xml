@@ -33,6 +33,11 @@
         <servlet-name>ProjectServlet</servlet-name>
         <servlet-class>Servlets.ProjectServlet</servlet-class>
     </servlet>
+    <servlet>
+        <display-name>BugServlet</display-name>
+        <servlet-name>BugServlet</servlet-name>
+        <servlet-class>Servlets.BugServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>UserServlet</servlet-name>
         <url-pattern>/UserServlet</url-pattern>
@@ -52,5 +57,9 @@
     <servlet-mapping>
         <servlet-name>ProjectServlet</servlet-name>
         <url-pattern>/ProjectServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>BugServlet</servlet-name>
+        <url-pattern>/BugServlet</url-pattern>
     </servlet-mapping>
 </web-app>

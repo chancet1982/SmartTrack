@@ -19,7 +19,7 @@
 				<ul id="bug-report">
 					<li id="1">
 						<label>What seems to be the problem?</label>
-						<select id="bug-category">
+						<select id="bug-category" name="bugCategory">
 						  <option value="no-value">-</option>				
 						  <option value="server-error">Something crashed</option>
 						  <option value="front-end">It doesnt look correct</option>
@@ -30,22 +30,22 @@
 					
 					<li id="2" class="hidden">
 						<label>Title</label>
-						<input type="text" name="bugCategory" >
+						<input type="text" name="bugTitle" class="required">
 					</li>
 					
 					<li id="3" class="hidden">
 						<label>Short description of the issue</label>
-						<textarea rows="4" cols="70"></textarea>
+						<textarea rows="4" cols="70" class="required" name="bugDescription"></textarea>
 					</li>					
 						
 					<li id="4" class="hidden">
 						<label>URL for problem (the thing in the top of the browser)</label>
-						<input type="text" name="bugUrl">
+						<input type="text" name="bugURL">
 					</li>
 
 					<li id="5" class="hidden">
 						<label>Screenshot</label>
-						<input type="file" name="datafile" size="40">
+						<input type="file" name="screenshotURL" size="40">
 					</li>
 						
 					<li id="6" class="hidden">
@@ -80,7 +80,10 @@
 						<label>To</label>
 						<input type="text" name="to-text" size="40">
 					</li>
-					
+
+                    <li id="0">
+                        <input type="submit" value="Submit">
+                    </li>
 				</ul>
 				</form>			
 			</div>

@@ -28,7 +28,6 @@ public class UserDAO {
             statement.executeUpdate("CREATE DATABASE IF NOT EXISTS indexDB;");
             //statement.executeUpdate("use indexDB;");
             statement.executeUpdate("CREATE TABLE IF NOT EXISTS indexDB.usersTable(id int(11) NOT NULL AUTO_INCREMENT,`companyName` varchar(45) DEFAULT NULL,`firstName` varchar(45) DEFAULT NULL,`lastName` varchar(45) DEFAULT NULL,`userEmail` varchar(100) DEFAULT NULL,`userPassword` varchar(105) DEFAULT NULL,`handler` int(1) NOT NULL DEFAULT 0,`manager` int(1) NOT NULL DEFAULT 0,`reporter` int(1) NOT NULL DEFAULT 0, PRIMARY KEY (`id`)) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;");
-            statement.close();
 
             //Add user to index database
             preparedStatement = connection.prepareStatement("INSERT INTO indexdb.usersTable(companyName , firstName , lastName , userEmail , userPassword) VALUES (?,?,?,?,?)");
@@ -38,7 +37,6 @@ public class UserDAO {
             preparedStatement.setString(4, user.getUseremail());
             preparedStatement.setString(5, user.getUserpassword());
             preparedStatement.executeUpdate();
-            preparedStatement.close();
 
             //Add to projectAssign table
             statement = connection.createStatement();
@@ -46,7 +44,10 @@ public class UserDAO {
             int newUserID = 1;
             if(rs.next()){newUserID = rs.getInt(1);}
             statement.executeUpdate("INSERT INTO " + user.getCompanyName() + ".projectassign (userID) VALUES (" + newUserID + ")");
+            statement.executeUpdate("INSERT INTO " + user.getCompanyName() + ".bugsassign (userID) VALUES (" + newUserID + ")");
+
             statement.close();
+            preparedStatement.close();
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -58,6 +59,7 @@ public class UserDAO {
             preparedStatement = connection.prepareStatement("DELETE FROM indexdb.usersTable WHERE id=?");
             preparedStatement.setInt(1, userId);
             preparedStatement.executeUpdate();
+
             preparedStatement.close();
 
         } catch (SQLException e) {
@@ -77,7 +79,9 @@ public class UserDAO {
             preparedStatement.setBoolean(7, user.isIsreporter());
             preparedStatement.setInt(8, user.getUserid());
             preparedStatement.executeUpdate();
+
             preparedStatement.close();
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -96,8 +100,10 @@ public class UserDAO {
                 user.setUseremail(rs.getString("userEmail"));
                 users.add(user);
             }
-            statement.close();
+
             rs.close();
+            statement.close();
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -119,8 +125,10 @@ public class UserDAO {
                 user.setUseremail(rs.getString("userEmail"));
                 users.add(user);
             }
-            statement.close();
+
             rs.close();
+            statement.close();
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -144,8 +152,10 @@ public class UserDAO {
                 user.setIsmanager(rs.getBoolean("manager"));
                 user.setIsreporter(rs.getBoolean("reporter"));
             }
-            preparedStatement.close();
+
             rs.close();
+            preparedStatement.close();
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -167,25 +177,38 @@ public class UserDAO {
                 user.setUseremail(rs.getString("userEmail"));
                 user.setUserpassword(rs.getString("userPassword"));
             }
-            preparedStatement.close();
+
             rs.close();
+            preparedStatement.close();
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return user;
     }
 
-        public boolean isFieldUnique(String inputValue, String inputName) {
+    public boolean isFieldUnique(String inputValue, String inputName) {
         boolean isUnique = false;
         try {
-            preparedStatement = connection.prepareStatement("SELECT * FROM indexdb.usersTable WHERE "+inputName+"=?");
-            preparedStatement.setString(1 , inputValue);
-            rs = preparedStatement.executeQuery();
-            if ( !rs.next() ) {
+            statement = connection.createStatement();
+            rs = statement.executeQuery("SHOW DATABASES LIKE 'indexdb'");
+            if (rs.next() ) {
+                rs.close();
+
+                preparedStatement = connection.prepareStatement("SELECT * FROM indexdb.usersTable WHERE "+inputName+"=?");
+                preparedStatement.setString(1 , inputValue);
+
+                rs = preparedStatement.executeQuery();
+                preparedStatement.close();
+                if ( !rs.next() ) {
+                    isUnique = true;
+                }
+            } else {
                 isUnique = true;
             }
-            preparedStatement.close();
+
             rs.close();
+
         } catch (SQLException e) {
             e.printStackTrace();
         }

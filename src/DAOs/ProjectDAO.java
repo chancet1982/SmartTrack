@@ -9,6 +9,9 @@ import java.util.List;
 
 public class ProjectDAO {
     private Connection connection;
+    private Statement statement;
+    private PreparedStatement preparedStatement;
+    private ResultSet rs;
 
     public ProjectDAO() {
         connection = DB.getConnection();
@@ -17,36 +20,41 @@ public class ProjectDAO {
     public void addProject( String companyName , ProjectBean project)  {
         try {
             String projectID = null;
-            PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO "+ companyName +".projecttable(projectName , projectVersion) VALUES (?,?)");
+            preparedStatement = connection.prepareStatement("INSERT INTO "+ companyName +".projecttable(projectName , projectVersion) VALUES (?,?)");
             preparedStatement.setString(1, project.getProjectName());
             preparedStatement.setString(2, project.getProjectVersion());
             preparedStatement.executeUpdate();
 
-            Statement statement = connection.createStatement();
-            ResultSet rs = statement.executeQuery("SELECT max(projectID) FROM "+ companyName +".projecttable ");
+            statement = connection.createStatement();
+            rs = statement.executeQuery("SELECT max(projectID) FROM "+ companyName +".projecttable ");
 
             if(rs.next()){
                 projectID = "" + rs.getInt(1);
             }
             statement.executeUpdate("ALTER TABLE " + companyName + ".projectassign ADD `" + projectID + "` BOOLEAN NOT NULL DEFAULT false");
 
+            rs.close();
+            statement.close();
+            preparedStatement.close();
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
 
-    public void deleteProject( String companyName , int projectId ) {
-        String projectIDString = "projectId" + projectId;
-        try {
-            PreparedStatement preparedStatement = connection
-                    .prepareStatement("DELETE FROM "+companyName+".projecttable WHERE projectID=?");
+    public void deleteProject( String companyName , int projectID ) {
 
-            preparedStatement.setInt(1, projectId);
+        try {
+            preparedStatement = connection.prepareStatement("DELETE FROM "+companyName+".projecttable WHERE projectID=?");
+            preparedStatement.setInt(1, projectID);
             preparedStatement.executeUpdate();
 
-            Statement statement = connection.createStatement();
-            statement.executeUpdate("ALTER TABLE "+companyName+".projectassign DROP COLUMN "+projectIDString);
+            statement = connection.createStatement();
+            statement.executeUpdate("ALTER TABLE "+companyName+".projectassign DROP COLUMN `"+projectID+"`");
+
+            statement.close();
+            preparedStatement.close();
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -55,8 +63,9 @@ public class ProjectDAO {
     public List<ProjectBean> getAllProjectsFromCompany(String companyName) {
         List<ProjectBean> projects = new ArrayList<ProjectBean>();
         try {
-            Statement statement = connection.createStatement();
-            ResultSet rs = statement.executeQuery("SELECT * FROM "+companyName+".projecttable");
+            statement = connection.createStatement();
+            rs = statement.executeQuery("SELECT * FROM "+companyName+".projecttable");
+
             while (rs.next()) {
                 ProjectBean project = new ProjectBean();
                 project.setProjectID(rs.getInt("ProjectID"));
@@ -64,10 +73,13 @@ public class ProjectDAO {
                 project.setProjectVersion(rs.getString("ProjectVersion"));
                 projects.add(project);
             }
+
+            rs.close();
+            statement.close();
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
         return projects;
     }
 
@@ -76,37 +88,45 @@ public class ProjectDAO {
         UserDAO userDAO = new UserDAO();
 
         try {
-            Statement statement = connection.createStatement();
-            ResultSet rs = statement.executeQuery("SELECT * FROM "+companyName+".projectassign WHERE `"+ projectID +"`='1'");
+            statement = connection.createStatement();
+            rs = statement.executeQuery("SELECT * FROM "+companyName+".projectassign WHERE `"+ projectID +"`='1'");
+
             while (rs.next()) {
                 UserBean user = new UserBean();
                 user = userDAO.getUserById(rs.getInt("userID"));
                 users.add(user);
             }
+
+            rs.close();
+            statement.close();
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
         return users;
     }
 
     public void assignUser(String companyName , int projectID , int userID){
         try {
-            Statement statement = connection.createStatement();
+            statement = connection.createStatement();
             statement.executeUpdate("UPDATE "+ companyName +".`projectassign` SET `"+projectID+"`='1' WHERE `userID`='"+ userID +"'");
 
+            statement.close();
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
+
     public void emptyProjectAssignment(String companyName , int projectID ){
         try {
-            Statement statement = connection.createStatement();
+            statement = connection.createStatement();
             statement.executeUpdate("UPDATE "+ companyName +".`projectassign` SET `"+projectID+"`='0'");
+
+            statement.close();
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
-
-    }
+}

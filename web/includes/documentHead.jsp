@@ -52,9 +52,6 @@
 
     <style type="text/css">
 
-	#new-bug > ul > li {margin-top:30px;}
-    #new-bug > ul > li > label{width:99%;display:block;}
-
     .step {margin-top:10px;}
     .step li label,
     .step li .remove-step{float:left;}

@@ -10,6 +10,9 @@ import java.util.List;
 public class CompanyDAO {
 
     private Connection connection;
+    private Statement statement;
+    private PreparedStatement preparedStatement;
+    private ResultSet rs;
 
     public CompanyDAO() {
         connection= DB.getConnection();
@@ -17,15 +20,17 @@ public class CompanyDAO {
 
     public void addCompany(CompanyBean company)  {
         try {
-            ResultSet rs ;
-            Statement statement = connection.createStatement();
+            statement = connection.createStatement();
 
             String newCompanyName = company.getCompanyName();
 
             statement.executeUpdate("CREATE DATABASE IF NOT EXISTS " + newCompanyName);
-            statement.executeUpdate("CREATE TABLE IF NOT EXISTS "+ newCompanyName + ".projectTable(projectID int(11) NOT NULL AUTO_INCREMENT,projectName varchar(45) DEFAULT NULL UNIQUE,projectVersion varchar(10), PRIMARY KEY (projectID)) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;");
+            statement.executeUpdate("CREATE TABLE IF NOT EXISTS "+ newCompanyName + ".projectTable(projectID int(11) NOT NULL AUTO_INCREMENT,projectName varchar(45) DEFAULT NULL,projectVersion varchar(10), PRIMARY KEY (projectID)) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;");
             statement.executeUpdate("CREATE TABLE IF NOT EXISTS "+ newCompanyName + ".projectAssign(userID int(11) NOT NULL , PRIMARY KEY (userID)) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;");
+            statement.executeUpdate("CREATE TABLE IF NOT EXISTS "+ newCompanyName + ".bugsTable(bugID int(11) NOT NULL AUTO_INCREMENT, projectID int(11) DEFAULT NULL, bugCategory varchar(45) DEFAULT NULL, bugTitle varchar(45) DEFAULT NULL, bugDescription varchar(400) DEFAULT NULL,bugStatus varchar(45) DEFAULT NULL,bugPriority int(1) DEFAULT NULL,reportedPriority varchar(45) DEFAULT NULL,bugURL varchar(100) DEFAULT NULL,screenshotURL varchar(100) DEFAULT NULL,bugPCInfo varchar(100) DEFAULT NULL,bugErrorCode varchar(45) DEFAULT NULL,textFromTo varchar(45) DEFAULT NULL,stepsToRecreate varchar(1000) DEFAULT NULL, bugTimeStamp DATETIME DEFAULT NULL, created DATETIME DEFAULT NULL,modified DATETIME DEFAULT NULL, PRIMARY KEY (bugID)) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;");
+            statement.executeUpdate("CREATE TABLE IF NOT EXISTS "+ newCompanyName + ".bugsAssign(userID int(11) NOT NULL , PRIMARY KEY (userID)) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;");
 
+            statement.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -34,11 +39,16 @@ public class CompanyDAO {
     public List<String> getAllCompaniesNames()  {
         List<String> companyNames = new ArrayList<String>();
         try {
-            Statement statement = connection.createStatement();
-            ResultSet rs = statement.executeQuery("SELECT * FROM indexDB.companiesTable");
+            statement = connection.createStatement();
+            rs = statement.executeQuery("SELECT * FROM indexDB.companiesTable");
+
             while (rs.next()) {
                 companyNames.add(rs.getString("companyName"));
             }
+
+            rs.close();
+            statement.close();
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -48,12 +58,16 @@ public class CompanyDAO {
     public List<String> getAllCompaniesIDs()  {
         List<String> companyIDs = new ArrayList<String>();
         try {
-            Statement statement = connection.createStatement();
+            statement = connection.createStatement();
+            rs = statement.executeQuery("SELECT * FROM indexDB.companiesTable");
 
-            ResultSet rs = statement.executeQuery("SELECT * FROM indexDB.companiesTable");
             while (rs.next()) {
                 companyIDs.add(rs.getString("companyID"));
             }
+
+            rs.close();
+            statement.close();
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -63,13 +77,24 @@ public class CompanyDAO {
     public boolean isFieldUnique(String inputValue, String inputName) {
         boolean isUnique = false;
         try {
-            connection= DB.getConnection();
-            PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM indexdb.companiesTable WHERE "+inputName+"=?");
-            preparedStatement.setString(1 , inputValue);
-            ResultSet rs = preparedStatement.executeQuery();
-            if ( !rs.next() ) {
+            statement = connection.createStatement();
+            rs = statement.executeQuery("SHOW DATABASES LIKE 'indexdb'");
+            if (rs.next() ) {
+                rs.close();
+
+                preparedStatement = connection.prepareStatement("SELECT * FROM indexdb.companiesTable WHERE "+inputName+"=?");
+                preparedStatement.setString(1 , inputValue);
+                rs = preparedStatement.executeQuery();
+                preparedStatement.close();
+
+                if ( !rs.next() ) {
+                    isUnique = true;
+                }
+            } else {
                 isUnique = true;
             }
+
+            rs.close();
 
         } catch (SQLException e) {
             e.printStackTrace();

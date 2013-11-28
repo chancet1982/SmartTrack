@@ -17,8 +17,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ProjectServlet extends HttpServlet{
+
     ProjectDAO projectDAO;
     UserDAO userDAO;
+
     private static String LIST_PROJECTS = "/listProjects.jsp";
     private static String ASSIGN_PROJECTS = "/assignUsersToProjects.jsp";
     public ProjectServlet(){
@@ -78,14 +80,19 @@ public class ProjectServlet extends HttpServlet{
 
             projectDAO.emptyProjectAssignment(companyName , projectID);
             System.out.println("user assigned currently ");
-            for(int i=1; i<assignedUsers.length; i++){
-                //TODO FIGURE OUT WHY THERE'S AN EXCEPTION HERE (although program works)
-                System.out.print(Integer.parseInt(assignedUsers[i]) + "\n");
-                projectDAO.assignUser(companyName , projectID , Integer.parseInt(assignedUsers[i]) );
+            try {
+                if (assignedUsers.length >0) {
+                    for(int i=1; i<assignedUsers.length; i++){
+                        System.out.println(assignedUsers[i].toString());
+                        projectDAO.assignUser(companyName , projectID , Integer.parseInt(assignedUsers[i]) );
+                    }
+                }
+            } catch (NumberFormatException e) {
+                System.out.print("SOMETHING IS NOT DEFINED");
             }
 
-            PrintWriter out = response.getWriter();
 
+            PrintWriter out = response.getWriter();
 
         } else {
             forward = "";
