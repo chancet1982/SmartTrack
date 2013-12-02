@@ -282,6 +282,12 @@ $(document).ready(function() {
 		$(this).stop(true, true).switchClass('hover', 'normal', 300);
 	});
 
+    // Message settings
+    $("#site-footer .message a.close").click(function() {
+       $(this).parent().removeClass("success").removeClass("error").removeClass("info").hide();
+        $("#site-footer .message p").remove()
+    });
+
     /*---------AJAX SECTION---------*/
     $('#uploadFile').click(function() {
         $.ajax({
