@@ -18,14 +18,10 @@
 				<form id="new-bug" action="BugServlet" method="POST">
 
                 <ul id="bug-report">
-                    <li id="10" class="">
+                    <li id="11" class="">
                         <label>Project Name</label>
-                        <select id="reportedPriority" name="reportedPriority">
-                            <option value="no-value">Who Cares</option>
-                            <option value="Minor">Minor</option>
-                            <option value="Average">Average</option>
-                            <option value="Major">Major</option>
-                            <option value="Chuck Norris">Chuck Norris</option>
+                        <select id="projectName" name="reportedPriority">
+                            <option value="no-value">-</option>
                         </select>
                     </li>
 
