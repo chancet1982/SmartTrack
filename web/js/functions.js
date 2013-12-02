@@ -282,6 +282,23 @@ $(document).ready(function() {
 
     /*---------AJAX SECTION---------*/
 
+    $('#uploadFile').click(function() {
+        alert("trying to post using AJAX");
+        $.ajax({
+            type: "POST",
+            url: "/UploadServlet",
+            async: true,
+            data: $("#file").serialize(),
+            contentType: 'multipart/form-data',
+            success: function(msg) {
+                $("message").show();
+            },
+            error: function(msg) {
+                alert("Couldnt upload file");
+            }
+        });
+    });
+
     //assignUsersToProjects.jsp
     function removeDuplicateUsers(obj){
         var seen = {};

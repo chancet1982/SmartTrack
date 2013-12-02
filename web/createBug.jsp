@@ -64,8 +64,8 @@
 
 					<li id="5" class="hidden">
 						<label>Screenshot</label>
-						<input type="file" name="screenshotURL" size="40">
-                        <a class="button"><span class="icon upload"></span> Upload</a>
+						<input id="file" type="file" name="screenshotURL" size="40">
+                        <a id="uploadFile" class="button"><span class="icon upload"></span> Upload</a>
 					</li>
 						
 					<li id="6" class="hidden">
@@ -111,6 +111,8 @@
 		</div>
 	</div>
 </div>
+
+<%@include file="includes/documentFooter.jsp" %>
 <script type="text/javascript">
 
 </script>
