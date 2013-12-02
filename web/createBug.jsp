@@ -58,27 +58,24 @@
 						<input type="radio" name="localPC" value="true">Yes
 						<input type="radio" name="localPC" value="false">No
 					</li>
-					<li><p>Steps for re-creating the error</p></li>
+					<li class="hidden"><p>Steps for re-creating the error</p></li>
 					<li id="8" class="hidden">
 						<ul class="step" id="step1">
 							<li><div class="remove-step"></div><label>Step 1</label></li>
-							<li><textarea rows="2" cols="65"></textarea></li>
+							<li><textarea name="stepContent1" rows="2" cols="65"></textarea></li>
 							
 						</ul>
 						<a id="addStep" class="button" style="color:white ">Add step...</a>
 						<a id="undoDelete" class="button inactive" style="color:white ">undo delete</a>
-						<!--
-						<button type="button" id="addStep" class="button">Add step...</button> 
-						<button type="button" id="undoDelete" class="button">Undo last action</button> 
-						-->
+
 					</li>
 					
 					<li id="9" class="hidden">
 						<p>Specify change</p>
 						<label>From</label>
-						<input type="text" name="from-text" size="40">
+						<input type="text" name="textFrom" size="40">
 						<label>To</label>
-						<input type="text" name="to-text" size="40">
+						<input type="text" name="textTo" size="40">
 					</li>
 
                     <li id="0">
@@ -90,5 +87,8 @@
 		</div>
 	</div>
 </div>
+<script type="text/javascript">
+
+</script>
 </body>
 </html> 

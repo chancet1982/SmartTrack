@@ -24,11 +24,23 @@ public class BugDAO {
         try {
             String bugID = null;
 
-            preparedStatement = connection.prepareStatement("INSERT INTO "+ companyName +".bugsTable(bugCategory, bugTitle, bugDescription) VALUES (?,?,?)");
+            preparedStatement =
+            connection.prepareStatement("INSERT INTO "+ companyName +
+                    ".bugsTable(bugCategory,bugTitle,bugDescription,bugStatus,reportedPriority,bugURL,screenshotURL,bugPCInfo,bugErrorCode,textFromTo,stepsToRecreate,bugTimeStamp) " +
+                    "VALUES (?,?,?,?,?,?,?,?,?,?,?,?)");
 
             preparedStatement.setString(1, bug.getBugCategory());
             preparedStatement.setString(2, bug.getBugTitle());
             preparedStatement.setString(3, bug.getBugDescription());
+            preparedStatement.setString(4, "unassigned");
+            preparedStatement.setString(5, bug.getReportedPriority());
+            preparedStatement.setString(6, bug.getBugURL());
+            preparedStatement.setString(7, bug.getScreenshotURL());
+            preparedStatement.setString(8, bug.getBugPCInfo());
+            preparedStatement.setString(9, bug.getBugErrorCode());
+            preparedStatement.setString(10, bug.getTextFromTo());
+            preparedStatement.setString(11, bug.getStepsToRecreate());
+            preparedStatement.setString(12, bug.getBugTimeStamp());
             preparedStatement.executeUpdate();
 
             statement = connection.createStatement();

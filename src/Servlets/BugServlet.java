@@ -99,6 +99,15 @@ public class BugServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         BugBean bug = new BugBean();
 
+        //put Steps to recreate error into one string
+        String stepsToRecreate = null;
+        for(int i=1;i<10;i++){
+            String param = request.getParameter("stepContent" + i);
+            if(param !=null){
+                stepsToRecreate = stepsToRecreate + "~" +param;
+            }
+        }
+
         System.out.println("SERVLET - bugCategory: "+ request.getParameter("bugCategory"));
         System.out.println("SERVLET - bugTitle: "+ request.getParameter("bugTitle"));
         System.out.println("SERVLET - bugDescription: "+ request.getParameter("bugDescription"));
@@ -106,13 +115,14 @@ public class BugServlet extends HttpServlet {
         bug.setBugCategory(request.getParameter("bugCategory"));
         bug.setBugTitle(request.getParameter("bugTitle"));
         bug.setBugDescription(request.getParameter("bugDescription"));
-        bug.setBugStatus(request.getParameter("bugStatus"));
         bug.setReportedPriority(request.getParameter("reportedPriority"));
         bug.setBugURL(request.getParameter("bugURL"));
         bug.setScreenshotURL(request.getParameter("screenshotURL"));
-        bug.setBugPCInfo(request.getParameter("bugPCInfo"));
+        bug.setBugPCInfo(request.getHeader("User-Agent"));
         bug.setBugErrorCode(request.getParameter("bugErrorCode"));
-        bug.setTextFromTo(request.getParameter("textFromTo"));
+        bug.setTextFromTo(request.getParameter("textFrom")+ "~" + request.getParameter("textTo"));
+        bug.setStepsToRecreate(stepsToRecreate);
+
 
         //get company name from cookie
         Cookie[] cookies ;

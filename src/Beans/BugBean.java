@@ -14,6 +14,24 @@ public class BugBean {
     private String bugPCInfo;
     private String bugErrorCode;
     private String textFromTo;
+    private String bugTimeStamp;
+    private String stepsToRecreate;
+
+    public String getStepsToRecreate() {
+        return stepsToRecreate;
+    }
+
+    public void setStepsToRecreate(String stepsToRecreate) {
+        this.stepsToRecreate = stepsToRecreate;
+    }
+
+    public String getBugTimeStamp() {
+        return bugTimeStamp;
+    }
+
+    public void setBugTimeStamp(String bugTimeStamp) {
+        this.bugTimeStamp = bugTimeStamp;
+    }
 
     public int getBugID() {
         return bugID;

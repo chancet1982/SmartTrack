@@ -17,6 +17,7 @@ function adjustSteps() {
         index++;
         $(this).attr( "id" , "step" + index )
         $(this).find("label").text("Step " + index );
+        $(this).find("textarea").attr( "name" , "stepContent" + index );
         console.log('adjusted');
     });
 }
@@ -101,7 +102,7 @@ $(document).ready(function() {
         stepID++;
         step = $('<ul class="step" id="step' + stepID + '"> '+
             '<li><div class="remove-step"></div><label>Step '+ stepID +'</label></li> '+
-            '<li><textarea rows="2" cols="65"></textarea></li></ul>');
+            '<li><textarea name="stepContent'+ stepID +'" rows="2" cols="65"></textarea></li></ul>');
 
         $(step).insertBefore(this);
         temp = null;
@@ -120,15 +121,16 @@ $(document).ready(function() {
             adjustSteps();
         }
         enableUndo();
+        stepID--;
     });
 
     //UNDO delete
     $("#undoDelete").click(function(){
         if ( temp != null ) {
-            if(ulIndex == 1){
-                temp.insertBefore( "li#8 > ul.step:eq(0)" );
+            if(ulIndex <= $("#8").children().length - 2 ){
+                temp.insertBefore( "li#8 > ul.step:nth-child(" + ulIndex  + ")" );
             }else{
-                temp.insertAfter( "li#8 > ul.step:nth-child(" + ulIndex  + ")" );
+                temp.insertBefore( "#addStep" );
             }
             disableUndo();
             console.log(ulIndex);
@@ -152,8 +154,8 @@ $(document).ready(function() {
             $(other).removeClass("hidden");
         }
     });
-    $('textarea').on('blur' , function(){
-        textAreaValue = $(this).val();console.log('blur')
+    $('.step textarea').on('blur' , function(){
+        textAreaValue = $(this).val();
     });
     $( "#8" ).sortable({
         revert: false,
