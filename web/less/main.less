@@ -52,6 +52,10 @@ body, input, select, option, ul, li, p, button {
 	color:@content-text;
 }
 
+p {
+padding-bottom:@padding-base;
+}
+
 strong{font-weight:bold;}
 .small_text{font-size:0.750em;}
 
@@ -251,49 +255,48 @@ display:block;
 .icon.archive:hover{background-position:-24px -1080px;}
 
 /*--- Inputs ---*/
+.ui-dialog input[type=text],
+.ui-dialog input[type=password],
+.ui-dialog input[type=file] {
+  width:100%;
+}
+
 input {
-  background:@color-white;
-  border:solid 1px lighten(@color-info, 10%);
-  .round-corners;
-  padding-left:@round-corners-size;
-  padding-right:@round-corners-size;
-  margin-bottom:5px;
+  margin-bottom:@padding-base;
+
+  &[type=text],
+  &[type=password],
+  &[type=file] {
+    padding:8px;
+    background:@color-white;
+    outline-color:#eeeeee;
+    outline-style:solid;
+    outline-width:3px;
+    border-color:@color-info;
+    border-style:solid;
+    border-width:1px;
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+  }
+
+  &.required {
+    border-color:@color-required;
+  }
 
   &:focus {
-      background:@color-white !important;
-      border:solid 1px darken(@color-info, 10%);
+    border-width: 3px;
+    outline-width:0;
+    border-color:@color-info;
+    .shadow
   }
 
-  &.invalid {
-      background:lighten(@color-error, 20%);
-      border:solid 1px @color-error;
+  &.invalid,
+  &.invalid:focus{
+    border-color:@color-error;
   }
 
-  &.invalid:focus {
-      background:@color-white !important;
-      border:solid 1px @color-error !important;
-  }
-
-  &.valid {
-      background:lighten(@color-success, 20%);
-      border:solid 1px @color-success;
-  }
-
-  &.valid:focus {
-      background:@color-white !important;
-      border:solid 1px @color-success !important;
-  }
-
-  &.normal{
-      height:20px;
-      line-height:20px;
-      width:200px;
-  }
-
-  &.hover {
-      height:25px;
-      line-height:25px;
-      width:210px;
+  &.valid,
+  &.valid:focus{
+    border-color:@color-success;
   }
 }
 
@@ -322,20 +325,21 @@ a {
 a.button,
 input[type="submit"],
 button {
-  background-color:@color-accent;
+  .round-corners;
   text-decoration:none !important;
-  color:@color-white !important;
   white-space:nowrap !important;
   display:inline-block;
-  .round-corners;
-  border:solid 1px darken(@color-accent,10%);
   background-image: url("../images/texture-gradient-up-light.png");
-  background-position:0px 100%;
+  color:darken(@color-white,10%);
+  background-color:@color-accent;
+  background-position:0px 80%;
+  border:solid 1px darken(@color-accent,10%);
   line-height:24px;
 
   &:hover {
-      background-color:lighten(@color-accent,20%);
-      color:@color-white;
+      color:@color-white !important;
+      background-color:lighten(@color-accent,10%);
+      background-position:0px 100%;
       border:solid 1px darken(@color-accent,10%);
   }
 
@@ -459,23 +463,18 @@ h4 {font-size:125%;padding-bottom:(@padding-base * 2 )}
 	.box {
 		padding:1%;
 		position:relative;
-		p, a, li {color:darken(@color-secondary,40%);}
-		
-		a {
-			text-decoration:underline;
-			&:hover {text-decoration:none;}
-		}
+		p, li {color:darken(@color-secondary,40%);}
 		
 		&.color-light{
 			background:@color-white;
 			h1, h2, h3, h4 {color:@content-headlines;}
-			p, a, li {color:@content-text;}
+			p, li {color:@content-text;}
 		}
 
 		&.color-dark{
 			background:darken(@color-secondary, 50%);
 			h1, h2, h3, h4 {color:@content-headlines-inverted;}
-			p, a, li {color:@content-text-inverted;}
+			p, li {color:@content-text-inverted;}
 		}		
 
 	}

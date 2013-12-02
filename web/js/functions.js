@@ -10,6 +10,19 @@ frontEnd =      "#1,#2,#3,#4,#5,#7,#8,#0,#10";
 textual =       "#1,#2,#3,#4,#9,#0,#10";
 other =         "#1,#2,#3,#4,#6,#5,#7,#8,#0,#10";
 
+//Input effects
+function inputTitles() {
+    $("input[type=text], input[type=password], input[type=file]").each(function() {
+        $(this).val($(this).attr("title"));
+    });
+
+    $("input[type=text], input[type=password], input[type=file]").focus(function() {
+        if ($(this).val()==$(this).attr("title")) { $(this).val(""); }
+    }).blur(function() {
+            if ($(this).val()=="") { $(this).val($(this).attr("title")); }
+        });
+}
+
 //Readjust steps
 function adjustSteps() {
     $('li#8 > ul.step').each(function(){
@@ -55,7 +68,9 @@ $(window).resize(function() {
 
 /*------------Do things on document ready------------*/
 $(document).ready(function() {
-    if ($("select#projectName")) {
+    inputTitles();
+
+    if ($("select#projectName").length > 0) {
         loadProjects();
     }
 
@@ -233,9 +248,9 @@ $(document).ready(function() {
     });
 
 	//Add invalid to empty required inputs
-	$('input').each(function() {
+	/*$('input').each(function() {
 		if (!$(this).val() && $(this).hasClass('required')) $(this).addClass('invalid');
-	});
+	});  */
 	
 	//Initial form validation
 	validateForm();
@@ -292,30 +307,14 @@ $(document).ready(function() {
 		}
 	});
 
-	//Input effects
-	$('input[type="text"] , input[type="password"]').addClass('normal');	
-	$('input[type="text"] , input[type="password"]').hover(function(){ 
-		$(this).stop(true, true).switchClass('normal', 'hover', 300);
-	},function(){
-		if (!$(this).is(':focus')) $(this).stop(true, true).switchClass('hover', 'normal', 300);
-	});
-
-	$('input[type="text"] , input[type="password"]').focusin(function(){ 
-		$(this).stop(true, true).switchClass('normal', 'hover', 300);
-	});
-
-	$('input[type="text"] , input[type="password"]').focusout(function(){ 
-		$(this).stop(true, true).switchClass('hover', 'normal', 300);
-	});
-
     // Message settings
-    $("#site-footer .message a.close").click(function() {
+    $('#site-footer .message a.close').click(function() {
         removeMessage();
     });
 
     function removeMessage() {
-        $("#site-footer .message p").remove();
-        $("#site-footer .message").removeClass("success").removeClass("error").removeClass("info").hide();
+        $('#site-footer .message p').remove();
+        $('#site-footer .message').removeClass("success").removeClass("error").removeClass("info").hide();
     }
 
     /*---------AJAX SECTION---------*/
