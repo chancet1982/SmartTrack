@@ -17,17 +17,17 @@
                     <h2>Already have an Account?</h2>
                     <form method="POST" action="Login">
                         <ul>
-                            <li><label>Username</label></li>
+                            <li><label>E-mail</label></li>
                             <li><input type="text" name="userEmail" class="required"></li>
                             <li><label>Password</label></li>
                             <li><input type="password" name="userPassword" class="required"></li>
-                            <li><input type="submit" value="Submit"></li>
+                            <li><input type="submit" value="Login"></li>
                         </ul>
                     </form>
                 </div>
                 <div class="item column-2">
                     <h2>Don't have an Account?</h2>
-                    <a href="createUser.jsp" class="button round-corners">Create new user</a>
+                    <a href="createUser.jsp" class="button round-corners"><span class="icon add-user"></span>Create new user</a>
                 </div>
             </div>
         </div>

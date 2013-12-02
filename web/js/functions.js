@@ -5,10 +5,10 @@ var ulElement;
 var temp = null;
 var textAreaValue = $("#8 ul textarea").val();
 
-serverError = " #2, #3, #4, #6, #7, #8, #0";
-frontEnd = " #2, #3, #4, #5, #7, #8, #0";
-textual = " #2, #3, #4, #9, #0";
-other = " #2, #3, #4, #6, #5, #7, #8, #0";
+serverError = " #2, #3, #4, #6, #7, #8, #0, #10";
+frontEnd = " #2, #3, #4, #5, #7, #8, #0, #10";
+textual = " #2, #3, #4, #9, #0, #10";
+other = " #2, #3, #4, #6, #5, #7, #8, #0, #10";
 
 //Readjust steps
 function adjustSteps() {

@@ -123,7 +123,6 @@ public class BugServlet extends HttpServlet {
         bug.setTextFromTo(request.getParameter("textFrom")+ "~" + request.getParameter("textTo"));
         bug.setStepsToRecreate(stepsToRecreate);
 
-
         //get company name from cookie
         Cookie[] cookies ;
         String companyName = null;
@@ -132,6 +131,7 @@ public class BugServlet extends HttpServlet {
             Cookie cookie = cookies[i];
             if(cookie.getName().equals("cid")){ companyName = cookie.getValue(); }
         }
+
         System.out.println("BUG has been added");
         bugDAO.addBug(companyName, bug);
         response.sendRedirect("afterLogin.jsp");

@@ -16,7 +16,19 @@
             <div class="box color-light round-corners shadow padding">
 				<h1>Report Issue</h1>
 				<form id="new-bug" action="BugServlet" method="POST">
-				<ul id="bug-report">
+
+                <ul id="bug-report">
+                    <li id="10" class="">
+                        <label>Project Name</label>
+                        <select id="reportedPriority" name="reportedPriority">
+                            <option value="no-value">Who Cares</option>
+                            <option value="Minor">Minor</option>
+                            <option value="Average">Average</option>
+                            <option value="Major">Major</option>
+                            <option value="Chuck Norris">Chuck Norris</option>
+                        </select>
+                    </li>
+
 					<li id="1">
 						<label>What seems to be the problem?</label>
 						<select id="bug-category" name="bugCategory">
@@ -36,8 +48,19 @@
 					<li id="3" class="hidden">
 						<label>Short description of the issue</label>
 						<textarea rows="4" cols="70" class="required" name="bugDescription"></textarea>
-					</li>					
-						
+					</li>
+
+                    <li id="10" class="hidden">
+                        <label>Bug Priority</label>
+                        <select id="reportedPriority" name="reportedPriority">
+                            <option value="no-value">Who Cares</option>
+                            <option value="Minor">Minor</option>
+                            <option value="Average">Average</option>
+                            <option value="Major">Major</option>
+                            <option value="Chuck Norris">Chuck Norris</option>
+                        </select>
+                    </li>
+
 					<li id="4" class="hidden">
 						<label>URL for problem (the thing in the top of the browser)</label>
 						<input type="text" name="bugURL">
@@ -46,6 +69,7 @@
 					<li id="5" class="hidden">
 						<label>Screenshot</label>
 						<input type="file" name="screenshotURL" size="40">
+                        <a class="button"><span class="icon upload"></span> Upload</a>
 					</li>
 						
 					<li id="6" class="hidden">
@@ -58,6 +82,7 @@
 						<input type="radio" name="localPC" value="true">Yes
 						<input type="radio" name="localPC" value="false">No
 					</li>
+
 					<li class="hidden"><p>Steps for re-creating the error</p></li>
 					<li id="8" class="hidden">
 						<ul class="step" id="step1">
