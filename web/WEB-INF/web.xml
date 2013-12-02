@@ -38,6 +38,10 @@
         <servlet-name>BugServlet</servlet-name>
         <servlet-class>Servlets.BugServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>UploadServlet</servlet-name>
+        <servlet-class>Servlets.UploadServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>UserServlet</servlet-name>
         <url-pattern>/UserServlet</url-pattern>
@@ -62,4 +66,13 @@
         <servlet-name>BugServlet</servlet-name>
         <url-pattern>/BugServlet</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UploadServlet</servlet-name>
+        <url-pattern>/UploadServlet</url-pattern>
+    </servlet-mapping>
+    <context-param>
+        <description>Location to store uploaded file</description>
+        <param-name>file-upload</param-name>
+        <param-value>c:\apache-tomcat-5.5.29\webapps\data\</param-value>
+    </context-param>
 </web-app>
