@@ -13,7 +13,7 @@
 <div id="site-content">
 	<div class="site-width clearfix">
 		<div class="items-row cols-1 clearfix">
-            <div class="box color-light round-corners shadow padding">
+            <div id="createBug" class="box color-light round-corners shadow padding">
 				<h1>Report Issue</h1>
 				<form id="new-bug" action="BugServlet" method="POST">
 
