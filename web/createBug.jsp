@@ -113,8 +113,5 @@
 </div>
 
 <%@include file="includes/documentFooter.jsp" %>
-<script type="text/javascript">
-
-</script>
 </body>
 </html> 

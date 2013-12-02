@@ -353,5 +353,17 @@ $(document).ready(function() {
         });
     });
 
+    //Load projects into dropdown
+    $.ajax({
+        type: "GET",
+        url: "/BugServlet?action=getProjectsInDropdown",
+        dataType: "text",
+        async: false,
+        success: function(data) {
+            $("#projectName").append(data);
+        },
+        error: function (xhr, ajaxOptions, thrownError) {console.log(xhr.status+ " " +thrownError);}
+    });
+
 
 });

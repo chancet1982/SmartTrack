@@ -62,6 +62,15 @@ public class BugServlet extends HttpServlet {
             request.setAttribute("users", userDAO.getAllUsersFromCompany(companyName));
             RequestDispatcher view = request.getRequestDispatcher(forward);
             view.forward(request, response);
+        }else if (action.equalsIgnoreCase("getProjectsInDropdown")){ //get bugs in dropdown
+            response.setContentType("text/html");
+            PrintWriter out = response.getWriter();
+            ProjectDAO projectDAO = new ProjectDAO();
+            List<ProjectBean> projects = projectDAO.getAllProjectsFromCompany(companyName) ;
+            for(int i=0; i<projects.size(); i++){
+                out.write("<option>"+ projects.get(i).getProjectName() +"</option>");
+            }
+
         } else if (action.equalsIgnoreCase("getAssigned")){ //get user assigned to specific bug
             response.setContentType("text/html");
             int bugID = Integer.parseInt(request.getParameter("bugID"));
