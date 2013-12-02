@@ -5,10 +5,10 @@ var ulElement;
 var temp = null;
 var textAreaValue = $("#8 ul textarea").val();
 
-serverError = " #2, #3, #4, #6, #7, #8, #0, #10";
-frontEnd = " #2, #3, #4, #5, #7, #8, #0, #10";
-textual = " #2, #3, #4, #9, #0, #10";
-other = " #2, #3, #4, #6, #5, #7, #8, #0, #10";
+serverError =   "#1,#2,#3,#4,#6,#7,#8,#0,#10";
+frontEnd =      "#1,#2,#3,#4,#5,#7,#8,#0,#10";
+textual =       "#1,#2,#3,#4,#9,#0,#10";
+other =         "#1,#2,#3,#4,#6,#5,#7,#8,#0,#10";
 
 //Readjust steps
 function adjustSteps() {
@@ -105,8 +105,10 @@ $(document).ready(function() {
         stepID =  $('li#8 > ul.step').size();
         stepID++;
         step = $('<ul class="step" id="step' + stepID + '"> '+
-            '<li><div class="remove-step"></div><label>Step '+ stepID +'</label></li> '+
-            '<li><textarea name="stepContent'+ stepID +'" rows="2" cols="65"></textarea></li></ul>');
+            '<li><label>Step '+ stepID +'</label> '+
+            '<textarea name="stepContent'+ stepID +'" rows="2" cols="65"></textarea>' +
+            '<a class="remove-step button"><span class="icon remove"></span></a>' +
+            '</li></ul>');
 
         $(step).insertBefore(this);
         temp = null;
@@ -114,7 +116,7 @@ $(document).ready(function() {
     });
 
     //Step removal
-    $(document).on("click","div.remove-step",function(){
+    $(document).on("click","a.remove-step",function(){
         ulIndex = $(this).parent().parent().index() ;
         ulIndex++;
         ulElement = $(this).parent().parent();
