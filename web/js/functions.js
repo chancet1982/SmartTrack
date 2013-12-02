@@ -21,6 +21,12 @@ function adjustSteps() {
         console.log('adjusted');
     });
 }
+//get URL parameters
+function getUrlVar(key){
+    var result = new RegExp(key + "=([^&]*)", "i").exec(window.location.search);
+    return result && result[1] || "";
+}
+
 function disableUndo(){
     temp = null;
     $("#undoDelete").addClass("inactive").attr("disabled", "disabled");
@@ -50,6 +56,20 @@ $(window).resize(function() {
 /*------------Do things on document ready------------*/
 $(document).ready(function() {
     $(".site-footer .message").hide();
+    if (getUrlVar('message-success')) {
+        removeMessage();
+        $("#site-footer .message").prepend('<p>'+getUrlVar('message')+'</p>').addClass("success").show();
+    }
+
+    if (getUrlVar('message-error')) {
+        removeMessage();
+        $("#site-footer .message").prepend('<p>'+getUrlVar('message')+'</p>').addClass("error").show();
+    }
+
+    if (getUrlVar('message-info')) {
+        removeMessage();
+        $("#site-footer .message").prepend('<p>'+getUrlVar('message')+'</p>').addClass("info").show();
+    }
 
     $('#datepicker').datetimepicker({
         controlType: 'select',
@@ -286,9 +306,13 @@ $(document).ready(function() {
 
     // Message settings
     $("#site-footer .message a.close").click(function() {
-       $(this).parent().removeClass("success").removeClass("error").removeClass("info").hide();
-        $("#site-footer .message p").remove()
+        removeMessage();
     });
+
+    function removeMessage() {
+        $("#site-footer .message p").remove();
+        $("#site-footer .message").removeClass("success").removeClass("error").removeClass("info").hide();
+    }
 
     /*---------AJAX SECTION---------*/
     $('#uploadFile').click(function() {
@@ -299,9 +323,11 @@ $(document).ready(function() {
             data: $("#file").serialize(),
             contentType: 'multipart/form-data',
             success: function(msg) {
+                removeMessage();
                 $("#site-footer .message").prepend('<p>File Upload Success!</p>').addClass("success").show();
             },
             error: function(msg) {
+                removeMessage();
                 $("#site-footer .message").prepend('<p>Upload Error!</p>').addClass("error").show();
             }
         });
@@ -328,8 +354,14 @@ $(document).ready(function() {
             type: "GET",
             url: "/ProjectServlet?action=setAssigned",
             data:{ "projectID" : projectID , "assignedUsers" : assignedUsers },
-            success: function(data) {},
-            error: function (xhr, ajaxOptions, thrownError) {console.log(xhr.status+ " " +thrownError);}
+            success: function(msg) {
+                $("#site-footer .message p").remove();
+                $("#site-footer .message").prepend('<p>Assignment Changes Saved!</p>').addClass("success").show();
+            },
+            error: function(msg) {
+                $("#site-footer .message p").remove();
+                $("#site-footer .message").prepend('<p>Update Error!</p>').addClass("error").show();
+            }
         });
     }
 
@@ -348,10 +380,10 @@ $(document).ready(function() {
                 console.log(data.isUnique);
                 if(data.isUnique == "true"){
                     thisInput.removeClass("not-unique").addClass("unique");
-                    thisInput.next().addClass("hidden");
+                    $("#site-footer .message").prepend('<p>Update Error!</p>').addClass("error").show();
                 }else{
                     thisInput.addClass("unique").removeClass("not-unique");
-                    thisInput.next().removeClass("hidden");
+                    removeMessage();
                 }
             },
             error: function (xhr, ajaxOptions, thrownError) {

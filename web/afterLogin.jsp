@@ -22,5 +22,7 @@
         </div>
     </div>
 </div>
+
+<%@include file="includes/footerMessage.jsp" %>
 </body>
 </html>

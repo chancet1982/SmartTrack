@@ -47,17 +47,20 @@
         </div>
     </div>
 </div>
+
+<%@include file="includes/footerMessage.jsp" %>
+
 <script type="text/javascript">
-$(document).ready(function(){
+    $(document).ready(function(){
 
-    $.urlParam = function(name){
-        var results = new RegExp('[\\?&]' + name + '=([^&#]*)').exec(window.location.href);
-        return results[1] || 0;
-    }
+        $.urlParam = function(name){
+            var results = new RegExp('[\\?&]' + name + '=([^&#]*)').exec(window.location.href);
+            return results[1] || 0;
+        }
 
-    $( "input[name='companyName']" ).val($.urlParam('companyName')).attr('readonly','readonly');
-    $( "input[name='userEmail']" ).val($.urlParam('userEmail')).attr('readonly','readonly');
-});
+        $( "input[name='companyName']" ).val($.urlParam('companyName')).attr('readonly','readonly');
+        $( "input[name='userEmail']" ).val($.urlParam('userEmail')).attr('readonly','readonly');
+    });
 
 </script>
 </body>
