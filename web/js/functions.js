@@ -49,9 +49,11 @@ $(window).resize(function() {
 
 /*------------Do things on document ready------------*/
 $(document).ready(function() {
-
+    $('#datepicker').datetimepicker({
+        controlType: 'select',
+        timeFormat: 'hh:mm tt'
+    });
     /*--- assignUsersToProjects.jsp ---*/
-
     //Load assigned users from database
     $("ul.projects li.project").each(function(){
         projectID = $(this).attr("data-project-id");

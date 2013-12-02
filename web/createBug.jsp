@@ -69,8 +69,8 @@
 					</li>
 						
 					<li id="6" class="hidden">
-						<label>Timestamp(when did the error happen?)</label>
-						<input type="text" name="timeStamp" >
+						<label>When did you encounter the error?</label>
+						<input type="text" name="timeStamp" id="datepicker">
 					</li>
 						
 					<li id ="7" class="hidden">
