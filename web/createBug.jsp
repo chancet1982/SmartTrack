@@ -20,7 +20,7 @@
                 <ul id="bug-report">
                     <li id="11" class="">
                         <label>Project Name</label>
-                        <select id="projectName" name="reportedPriority">
+                        <select id="projectName" name="projectID">
                             <option value="no-value">-</option>
                         </select>
                     </li>

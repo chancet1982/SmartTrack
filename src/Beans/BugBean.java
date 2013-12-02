@@ -3,6 +3,7 @@ package Beans;
 public class BugBean {
 
     private int bugID;
+    private int projectID;
     private String bugCategory;
     private String bugTitle;
     private String bugDescription;
@@ -16,6 +17,14 @@ public class BugBean {
     private String textFromTo;
     private String bugTimeStamp;
     private String stepsToRecreate;
+
+    public int getProjectID() {
+        return projectID;
+    }
+
+    public void setProjectID(int projectID) {
+        this.projectID = projectID;
+    }
 
     public String getStepsToRecreate() {
         return stepsToRecreate;

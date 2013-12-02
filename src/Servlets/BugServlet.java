@@ -68,7 +68,7 @@ public class BugServlet extends HttpServlet {
             ProjectDAO projectDAO = new ProjectDAO();
             List<ProjectBean> projects = projectDAO.getAllProjectsFromCompany(companyName) ;
             for(int i=0; i<projects.size(); i++){
-                out.write("<option>"+ projects.get(i).getProjectName() +"</option>");
+                out.write("<option value='"+ projects.get(i).getProjectID() +"'>"+ projects.get(i).getProjectName() +"</option>");
             }
 
         } else if (action.equalsIgnoreCase("getAssigned")){ //get user assigned to specific bug
@@ -109,7 +109,7 @@ public class BugServlet extends HttpServlet {
         BugBean bug = new BugBean();
 
         //put Steps to recreate error into one string
-        String stepsToRecreate = null;
+        String stepsToRecreate = "";
         for(int i=1;i<10;i++){
             String param = request.getParameter("stepContent" + i);
             if(param !=null){
@@ -117,16 +117,14 @@ public class BugServlet extends HttpServlet {
             }
         }
 
-        System.out.println("SERVLET - bugCategory: "+ request.getParameter("bugCategory"));
-        System.out.println("SERVLET - bugTitle: "+ request.getParameter("bugTitle"));
-        System.out.println("SERVLET - bugDescription: "+ request.getParameter("bugDescription"));
-
+        bug.setProjectID(Integer.parseInt(request.getParameter("projectID")));
         bug.setBugCategory(request.getParameter("bugCategory"));
         bug.setBugTitle(request.getParameter("bugTitle"));
         bug.setBugDescription(request.getParameter("bugDescription"));
         bug.setReportedPriority(request.getParameter("reportedPriority"));
         bug.setBugURL(request.getParameter("bugURL"));
         bug.setScreenshotURL(request.getParameter("screenshotURL"));
+        bug.setBugTimeStamp(request.getParameter("timeStamp"));
         bug.setBugPCInfo(request.getHeader("User-Agent"));
         bug.setBugErrorCode(request.getParameter("bugErrorCode"));
         bug.setTextFromTo(request.getParameter("textFrom")+ "~" + request.getParameter("textTo"));

@@ -26,8 +26,8 @@ public class BugDAO {
 
             preparedStatement =
             connection.prepareStatement("INSERT INTO "+ companyName +
-                    ".bugsTable(bugCategory,bugTitle,bugDescription,bugStatus,reportedPriority,bugURL,screenshotURL,bugPCInfo,bugErrorCode,textFromTo,stepsToRecreate,bugTimeStamp) " +
-                    "VALUES (?,?,?,?,?,?,?,?,?,?,?,?)");
+                    ".bugsTable(bugCategory,bugTitle,bugDescription,bugStatus,reportedPriority,bugURL,screenshotURL,bugPCInfo,bugErrorCode,textFromTo,stepsToRecreate,bugTimeStamp,projectID) " +
+                    "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)");
 
             preparedStatement.setString(1, bug.getBugCategory());
             preparedStatement.setString(2, bug.getBugTitle());
@@ -41,6 +41,7 @@ public class BugDAO {
             preparedStatement.setString(10, bug.getTextFromTo());
             preparedStatement.setString(11, bug.getStepsToRecreate());
             preparedStatement.setString(12, bug.getBugTimeStamp());
+            preparedStatement.setInt(13, bug.getProjectID());
             preparedStatement.executeUpdate();
 
             statement = connection.createStatement();
