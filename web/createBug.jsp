@@ -82,12 +82,15 @@
 					<li class="hidden"><p>Steps for re-creating the error</p></li>
 					<li id="8" class="hidden">
 						<ul class="step" id="step1">
-							<li><div class="remove-step"></div><label>Step 1</label></li>
-							<li><textarea name="stepContent1" rows="2" cols="65"></textarea></li>
+						<li>
+                            <label>Step 1</label>
+							<textarea name="stepContent1" rows="2" cols="65"></textarea>
+                            <a class="remove-step button"><span class="icon remove"></span></a>
+                        </li>
 							
 						</ul>
-						<a id="addStep" class="button" style="color:white ">Add step...</a>
-						<a id="undoDelete" class="button inactive" style="color:white ">undo delete</a>
+						<a id="addStep" class="button"><span class="icon add"></span></a>
+						<a id="undoDelete" class="button inactive" style="color:white "><span class="icon undo"></span></a>
 
 					</li>
 					

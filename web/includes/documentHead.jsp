@@ -52,23 +52,6 @@
 
     <style type="text/css">
 
-    .step {margin-top:10px;}
-    .step li label,
-    .step li .remove-step{float:left;}
-    .step li:first-child{height:20px;}
-
-    .remove-step {
-        height:20px;
-        width:20px;
-        background-color:#00afba;
-        background-image:url(images/ico-sprites.png);
-        background-position:22px -50px;
-        margin-right:5px
-    }
-
-    textarea {margin-bottom:10px}
-    .step label {cursor:move}
-
     /*--- assign user to project page ---*/
     .project {display:block;}
     .project span{ display:block; float:left; }
