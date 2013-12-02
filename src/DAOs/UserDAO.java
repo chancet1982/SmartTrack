@@ -192,26 +192,29 @@ public class UserDAO {
         try {
             statement = connection.createStatement();
             rs = statement.executeQuery("SHOW DATABASES LIKE 'indexdb'");
-            if (rs.next() ) {
-                rs.close();
 
+            if (rs.next()) {
                 preparedStatement = connection.prepareStatement("SELECT * FROM indexdb.usersTable WHERE "+inputName+"=?");
                 preparedStatement.setString(1 , inputValue);
 
                 rs = preparedStatement.executeQuery();
-                preparedStatement.close();
                 if ( !rs.next() ) {
                     isUnique = true;
                 }
+
+                preparedStatement.close();
+
             } else {
                 isUnique = true;
             }
 
             rs.close();
+            statement.close();
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
         return isUnique;
     }
 }

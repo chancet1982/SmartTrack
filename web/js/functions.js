@@ -55,20 +55,24 @@ $(window).resize(function() {
 
 /*------------Do things on document ready------------*/
 $(document).ready(function() {
+    if ($("select#projectName")) {
+        loadProjects();
+    }
+
     $(".site-footer .message").hide();
     if (getUrlVar('message-success')) {
         removeMessage();
-        $("#site-footer .message").prepend('<p>'+getUrlVar('message')+'</p>').addClass("success").show();
+        $("#site-footer .message").prepend('<p>'+decodeURIComponent(getUrlVar('message-success'))+'</p>').addClass("success").show();
     }
 
     if (getUrlVar('message-error')) {
         removeMessage();
-        $("#site-footer .message").prepend('<p>'+getUrlVar('message')+'</p>').addClass("error").show();
+        $("#site-footer .message").prepend('<p>'+decodeURIComponent(getUrlVar('message-error'))+'</p>').addClass("error").show();
     }
 
     if (getUrlVar('message-info')) {
         removeMessage();
-        $("#site-footer .message").prepend('<p>'+getUrlVar('message')+'</p>').addClass("info").show();
+        $("#site-footer .message").prepend('<p>'+decodeURIComponent(getUrlVar('message-info'))+'</p>').addClass("info").show();
     }
 
     $('#datepicker').datetimepicker({
@@ -380,10 +384,12 @@ $(document).ready(function() {
                 console.log(data.isUnique);
                 if(data.isUnique == "true"){
                     thisInput.removeClass("not-unique").addClass("unique");
-                    $("#site-footer .message").prepend('<p>Update Error!</p>').addClass("error").show();
+                    removeMessage();
+                    $("#site-footer .message").prepend('<p>Value is unique</p>').addClass("success").show();
                 }else{
                     thisInput.addClass("unique").removeClass("not-unique");
                     removeMessage();
+                    $("#site-footer .message").prepend('<p>Value is already being used</p>').addClass("error").show();
                 }
             },
             error: function (xhr, ajaxOptions, thrownError) {
@@ -394,16 +400,17 @@ $(document).ready(function() {
     });
 
     //Load projects into dropdown
-    $.ajax({
-        type: "GET",
-        url: "/BugServlet?action=getProjectsInDropdown",
-        dataType: "text",
-        async: false,
-        success: function(data) {
-            $("#projectName").append(data);
-        },
-        error: function (xhr, ajaxOptions, thrownError) {console.log(xhr.status+ " " +thrownError);}
-    });
-
+    function loadProjects() {
+        $.ajax({
+            type: "GET",
+            url: "/BugServlet?action=getProjectsInDropdown",
+            dataType: "text",
+            async: false,
+            success: function(data) {
+                $("#projectName").append(data);
+            },
+            error: function (xhr, ajaxOptions, thrownError) {console.log(xhr.status+ " " +thrownError);}
+        });
+    }
 
 });

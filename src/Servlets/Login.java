@@ -105,14 +105,14 @@ public class Login extends HttpServlet {
                     response.addCookie(emailCookie);
                     response.addCookie(pwdCookie);
                     response.addCookie(cid);
-                    response.sendRedirect("afterLogin.jsp");
+                    response.sendRedirect("afterLogin.jsp?message-info=Welcome back");
 
                 }else{
                     System.out.println("Fail - password incorrect "+ user.getUserpassword());
-                    response.sendRedirect("login.jsp?message='Passwords Mismatch'");
+                    response.sendRedirect("login.jsp?message-error=Email/Password Mismatch");
                 }
             } else {
-                response.sendRedirect("login.jsp?message='No Password'");
+                response.sendRedirect("login.jsp?message-error=No such user in the system");
             }
 
         }
