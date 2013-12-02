@@ -49,6 +49,8 @@ $(window).resize(function() {
 
 /*------------Do things on document ready------------*/
 $(document).ready(function() {
+    $(".site-footer .message").hide();
+
     $('#datepicker').datetimepicker({
         controlType: 'select',
         timeFormat: 'hh:mm tt'
@@ -281,9 +283,7 @@ $(document).ready(function() {
 	});
 
     /*---------AJAX SECTION---------*/
-
     $('#uploadFile').click(function() {
-        alert("trying to post using AJAX");
         $.ajax({
             type: "POST",
             url: "/UploadServlet",
@@ -291,10 +291,10 @@ $(document).ready(function() {
             data: $("#file").serialize(),
             contentType: 'multipart/form-data',
             success: function(msg) {
-                $("message").show();
+                $("#site-footer .message").prepend('<p>File Upload Success!</p>').addClass("success").show();
             },
             error: function(msg) {
-                alert("Couldnt upload file");
+                $("#site-footer .message").prepend('<p>Upload Error!</p>').addClass("error").show();
             }
         });
     });

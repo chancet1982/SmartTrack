@@ -478,56 +478,6 @@ h4 {font-size:125%;padding-bottom:(@padding-base * 2 )}
 			p, a, li {color:@content-text-inverted;}
 		}		
 
-		&.message {
-			p {color:@color-white !important;}
-			margin-top:10px;
-			&:before {
-				content: "";
-				position: absolute;
-				width: 0;
-				height: 0;
-				border-style: solid;
-				top:0%;
-				left:0%;
-				border-width: @csstip-size @csstip-size 0px 0px;
-				border-color: @color-secondary transparent transparent transparent;
-			}
-
-			&:after {
-				content: "";
-				position: absolute;
-				width: 0;
-				height: 0;
-				border-style: solid;
-				top:0%;
-				left:0%;
-				border-width:0px 0px @csstip-size @csstip-size;
-			}		
-			
-			&.success {
-				background:@color-success;
-
-				&:after {
-					border-color: transparent transparent darken(@color-success, 20%) transparent ;
-				}				
-			}
-				
-			&.error {
-				background:@color-error;
-
-				&:after {
-					border-color: transparent transparent darken(@color-error, 20%) transparent ;
-				}				
-			}			
-				
-			&.info {
-				background:@color-info;
-
-				&:after {
-					border-color: transparent transparent darken(@color-info, 20%) transparent ;
-				}				
-			}		
-		}	
 	}
 
     .users {
@@ -672,18 +622,56 @@ background:darken(@color-secondary, 50%);
 clear:both;
 position:fixed;
 bottom:0px;
-height:@footer-size;
+height:auto;
 width:100%;
 z-index:2;
 
-	.site-width {
-		padding-top:5px;
-		padding-bottom:5px;
-	}
-	
-	input, select, option, ul, li, p, button {
-		color:lighten(@color-secondary,40%);
-	}
+  .message {
+    position:relative;
+    p {color:@color-white !important;}
+
+    &.success,
+    &.error,
+    &.info {
+      height:24px;
+      padding-top:5px;
+      padding-bottom:5px;
+    }
+    &.success {
+      background:@color-success;
+
+      a.close {
+        border-left:solid 1px darken(@color-success,20%);
+      }
+    }
+
+    &.error {
+      background:@color-error;
+
+      a.close {
+        border-left:solid 1px darken(@color-error,20%);
+      }
+    }
+
+    &.info {
+      background:@color-info;
+
+      a.close {
+        border-left:solid 1px darken(@color-info,20%);
+      }
+    }
+
+    a.close {
+      display:block;
+      width:24px;
+      height:24px;
+      position:absolute;
+      right:24px;
+      top:50%;
+      margin-top:-12px;
+    }
+  }
+
 }
 
 /* css for timepicker */

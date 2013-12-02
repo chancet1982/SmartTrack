@@ -34,6 +34,6 @@
     </div>
 </div>
 
-<%@include file="includes/documentFooter.jsp" %>
+<%@include file="includes/footerMessage.jsp" %>
 </body>
 </html>
