@@ -627,36 +627,39 @@ z-index:2;
 
   .message {
     position:relative;
-    p {color:@color-white !important;}
+    p {color:@color-white !important;line-height:24px;}
 
     &.success,
     &.error,
     &.info {
       height:24px;
-      padding-top:5px;
-      padding-bottom:5px;
+      padding:5px;
     }
+
     &.success {
       background:@color-success;
 
-      a.close {
-        border-left:solid 1px darken(@color-success,20%);
+      a.close:hover {
+          background:lighten(@color-success,5%);
+          border-color:darken(@color-success,10%);
       }
     }
 
     &.error {
       background:@color-error;
 
-      a.close {
-        border-left:solid 1px darken(@color-error,20%);
+      a.close:hover {
+        background:lighten(@color-error,5%);
+        border-color:darken(@color-error,10%);
       }
     }
 
     &.info {
       background:@color-info;
 
-      a.close {
-        border-left:solid 1px darken(@color-info,20%);
+      a.close:hover {
+        background:lighten(@color-info,5%);
+        border-color:darken(@color-info,10%);
       }
     }
 
@@ -665,9 +668,13 @@ z-index:2;
       width:24px;
       height:24px;
       position:absolute;
-      right:24px;
+      right:12px;
       top:50%;
       margin-top:-12px;
+      .round-corners;
+      border-style:solid;
+      border-width:1px;
+      border-color:transparent;
     }
   }
 
