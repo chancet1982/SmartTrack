@@ -14,7 +14,7 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
 public class MailServlet extends HttpServlet{
-    private static String INVITE_USER = "/UserServlet?action=listUsers&message-success=Invitation sent success";
+    private static String INVITE_USER = "/UserServlet?action=listUsers&message-info=Invitation(E-mail) sent..";
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String from = "info@smarttrack.com";

@@ -58,9 +58,9 @@
         $("#dialog").dialog({
             bgiframe: true,
             autoOpen: false,
-            width: 530,
+            width: (0.7*$( window ).width()),
             modal: true,
-            height:700
+            height:(0.9*$( window ).height())
         });
     });
 </script>

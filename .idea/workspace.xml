@@ -1,44 +1,70 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1970cc3f-af84-40d3-8ff1-0a3d74cec46d" name="Default" comment="cleanup">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Servlets/BugServlet.java" afterPath="$PROJECT_DIR$/src/Servlets/BugServlet.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/createBug.jsp" afterPath="$PROJECT_DIR$/web/createBug.jsp" />
+    <list default="true" id="1970cc3f-af84-40d3-8ff1-0a3d74cec46d" name="Default" comment="better redirects and better validation, on top of that modal box size is now relative to the window size...">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Servlets/MailServlet.java" afterPath="$PROJECT_DIR$/src/Servlets/MailServlet.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/createProjectForm.jsp" afterPath="$PROJECT_DIR$/web/createProjectForm.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/createUserForm.jsp" afterPath="$PROJECT_DIR$/web/createUserForm.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/js/functions.js" afterPath="$PROJECT_DIR$/web/js/functions.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/inviteUsersForm.jsp" afterPath="$PROJECT_DIR$/web/inviteUsersForm.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/listBugs.jsp" afterPath="$PROJECT_DIR$/web/listBugs.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/listProjects.jsp" afterPath="$PROJECT_DIR$/web/listProjects.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/listUsers.jsp" afterPath="$PROJECT_DIR$/web/listUsers.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/less/parameters.less" afterPath="$PROJECT_DIR$/web/less/parameters.less" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="SmartTrack.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="1970cc3f-af84-40d3-8ff1-0a3d74cec46d" time="1386004705776" ignored="false" />
-    <file path="/index.jsp" changelist="1970cc3f-af84-40d3-8ff1-0a3d74cec46d" time="1384262207123" ignored="false" />
-    <file path="/UserBean.java" changelist="1970cc3f-af84-40d3-8ff1-0a3d74cec46d" time="1383665747727" ignored="false" />
-    <file path="/UserDAO.java" changelist="1970cc3f-af84-40d3-8ff1-0a3d74cec46d" time="1385565236534" ignored="false" />
+    <file path="/Dummy.txt" changelist="1970cc3f-af84-40d3-8ff1-0a3d74cec46d" time="1386086617638" ignored="false" />
+    <file path="/index.jsp" changelist="1970cc3f-af84-40d3-8ff1-0a3d74cec46d" time="1384966625884" ignored="false" />
+    <file path="/UserBean.java" changelist="1970cc3f-af84-40d3-8ff1-0a3d74cec46d" time="1384857099186" ignored="false" />
+    <file path="/UserDAO.java" changelist="1970cc3f-af84-40d3-8ff1-0a3d74cec46d" time="1386007818974" ignored="false" />
     <file path="/UserDB.java" changelist="1970cc3f-af84-40d3-8ff1-0a3d74cec46d" time="1383666155756" ignored="false" />
     <file path="/db.properties" changelist="1970cc3f-af84-40d3-8ff1-0a3d74cec46d" time="1383670475583" ignored="false" />
-    <file path="/UserServlet.java" changelist="1970cc3f-af84-40d3-8ff1-0a3d74cec46d" time="1384198991077" ignored="false" />
+    <file path="/UserServlet.java" changelist="1970cc3f-af84-40d3-8ff1-0a3d74cec46d" time="1386077257818" ignored="false" />
     <file path="/create-user.jsp" changelist="1970cc3f-af84-40d3-8ff1-0a3d74cec46d" time="1383671016252" ignored="false" />
-    <file path="/web.xml" changelist="1970cc3f-af84-40d3-8ff1-0a3d74cec46d" time="1384348309751" ignored="false" />
-    <file path="/CompanyDB.java" changelist="1970cc3f-af84-40d3-8ff1-0a3d74cec46d" time="1384700459768" ignored="false" />
-    <file path="/Login.java" changelist="1970cc3f-af84-40d3-8ff1-0a3d74cec46d" time="1384527840451" ignored="false" />
+    <file path="/web.xml" changelist="1970cc3f-af84-40d3-8ff1-0a3d74cec46d" time="1386003253496" ignored="false" />
+    <file path="/CompanyDB.java" changelist="1970cc3f-af84-40d3-8ff1-0a3d74cec46d" time="1384176878548" ignored="false" />
+    <file path="/Login.java" changelist="1970cc3f-af84-40d3-8ff1-0a3d74cec46d" time="1385661996973" ignored="false" />
     <file path="/PasswordHash.java" changelist="1970cc3f-af84-40d3-8ff1-0a3d74cec46d" time="1384184072466" ignored="false" />
-    <file path="/afterLogin.jsp" changelist="1970cc3f-af84-40d3-8ff1-0a3d74cec46d" time="1384529314214" ignored="false" />
+    <file path="/afterLogin.jsp" changelist="1970cc3f-af84-40d3-8ff1-0a3d74cec46d" time="1385566399597" ignored="false" />
     <file path="/AssignUserRoles.jsp" changelist="1970cc3f-af84-40d3-8ff1-0a3d74cec46d" time="1384199434835" ignored="false" />
-    <file path="/documentHead.jsp" changelist="1970cc3f-af84-40d3-8ff1-0a3d74cec46d" time="1385566882835" ignored="false" />
+    <file path="/documentHead.jsp" changelist="1970cc3f-af84-40d3-8ff1-0a3d74cec46d" time="1385565683522" ignored="false" />
     <file path="/injection.groovy" changelist="1970cc3f-af84-40d3-8ff1-0a3d74cec46d" time="1384195597047" ignored="false" />
     <file path="/Dummy.regexp" changelist="1970cc3f-af84-40d3-8ff1-0a3d74cec46d" time="1384195597047" ignored="false" />
-    <file path="/login.jsp" changelist="1970cc3f-af84-40d3-8ff1-0a3d74cec46d" time="1384214154361" ignored="false" />
-    <file path="/main.less" changelist="1970cc3f-af84-40d3-8ff1-0a3d74cec46d" time="1384215023284" ignored="false" />
-    <file path="/assignUserRoles.jsp" changelist="1970cc3f-af84-40d3-8ff1-0a3d74cec46d" time="1384214885731" ignored="false" />
+    <file path="/login.jsp" changelist="1970cc3f-af84-40d3-8ff1-0a3d74cec46d" time="1385999031588" ignored="false" />
+    <file path="/main.less" changelist="1970cc3f-af84-40d3-8ff1-0a3d74cec46d" time="1386004817070" ignored="false" />
+    <file path="/assignUserRoles.jsp" changelist="1970cc3f-af84-40d3-8ff1-0a3d74cec46d" time="1384873895529" ignored="false" />
     <file path="/createUser.jsp" changelist="1970cc3f-af84-40d3-8ff1-0a3d74cec46d" time="1384244590589" ignored="false" />
     <file path="/addUser.jsp" changelist="1970cc3f-af84-40d3-8ff1-0a3d74cec46d" time="1384244657229" ignored="false" />
     <file path="/SendEMail.java" changelist="1970cc3f-af84-40d3-8ff1-0a3d74cec46d" time="1384271363045" ignored="false" />
-    <file path="/Mail.java" changelist="1970cc3f-af84-40d3-8ff1-0a3d74cec46d" time="1384528938654" ignored="false" />
-    <file path="/invitedUser.jsp" changelist="1970cc3f-af84-40d3-8ff1-0a3d74cec46d" time="1384529119813" ignored="false" />
-    <file path="/CompanyDAO.java" changelist="1970cc3f-af84-40d3-8ff1-0a3d74cec46d" time="1384801931489" ignored="false" />
-    <file path="/assignUsersToProjects.jsp" changelist="1970cc3f-af84-40d3-8ff1-0a3d74cec46d" time="1385567536555" ignored="false" />
-    <file path="/ProjectServlet.java" changelist="1970cc3f-af84-40d3-8ff1-0a3d74cec46d" time="1385394174374" ignored="false" />
-    <file path="/createBug.jsp" changelist="1970cc3f-af84-40d3-8ff1-0a3d74cec46d" time="1386003426215" ignored="false" />
-    <file path="/BugServlet.java" changelist="1970cc3f-af84-40d3-8ff1-0a3d74cec46d" time="1386004007334" ignored="false" />
+    <file path="/Mail.java" changelist="1970cc3f-af84-40d3-8ff1-0a3d74cec46d" time="1384779935393" ignored="false" />
+    <file path="/invitedUser.jsp" changelist="1970cc3f-af84-40d3-8ff1-0a3d74cec46d" time="1384860338189" ignored="false" />
+    <file path="/editUser.jsp" changelist="1970cc3f-af84-40d3-8ff1-0a3d74cec46d" time="1384862619438" ignored="false" />
+    <file path="/inviteUsers.jsp" changelist="1970cc3f-af84-40d3-8ff1-0a3d74cec46d" time="1384863399429" ignored="false" />
+    <file path="/Encryption.java" changelist="1970cc3f-af84-40d3-8ff1-0a3d74cec46d" time="1384954341327" ignored="false" />
+    <file path="/MailServlet.java" changelist="1970cc3f-af84-40d3-8ff1-0a3d74cec46d" time="1386077361898" ignored="false" />
+    <file path="/ProjectServlet.java" changelist="1970cc3f-af84-40d3-8ff1-0a3d74cec46d" time="1386077415609" ignored="false" />
+    <file path="/ProjectDAO.java" changelist="1970cc3f-af84-40d3-8ff1-0a3d74cec46d" time="1385653420065" ignored="false" />
+    <file path="/ProjectBean.java" changelist="1970cc3f-af84-40d3-8ff1-0a3d74cec46d" time="1384873677642" ignored="false" />
+    <file path="/listProjects.jsp" changelist="1970cc3f-af84-40d3-8ff1-0a3d74cec46d" time="1384874986129" ignored="false" />
+    <file path="/Encode.java" changelist="1970cc3f-af84-40d3-8ff1-0a3d74cec46d" time="1384956765775" ignored="false" />
+    <file path="/navigation.jsp" changelist="1970cc3f-af84-40d3-8ff1-0a3d74cec46d" time="1385657229328" ignored="false" />
+    <file path="/parameters.less" changelist="1970cc3f-af84-40d3-8ff1-0a3d74cec46d" time="1386085154015" ignored="false" />
+    <file path="/assignUserToProjects.jsp" changelist="1970cc3f-af84-40d3-8ff1-0a3d74cec46d" time="1384966113536" ignored="false" />
+    <file path="/assignUsersToProjects.jsp" changelist="1970cc3f-af84-40d3-8ff1-0a3d74cec46d" time="1384964996736" ignored="false" />
+    <file path="/fragment.java" changelist="1970cc3f-af84-40d3-8ff1-0a3d74cec46d" time="1385382983177" ignored="false" />
+    <file path="/BugBean.java" changelist="1970cc3f-af84-40d3-8ff1-0a3d74cec46d" time="1385382850567" ignored="false" />
+    <file path="/createBug2.jsp" changelist="1970cc3f-af84-40d3-8ff1-0a3d74cec46d" time="1385564647452" ignored="false" />
+    <file path="/createBug.jsp" changelist="1970cc3f-af84-40d3-8ff1-0a3d74cec46d" time="1386005058459" ignored="false" />
+    <file path="/BugDAO.java" changelist="1970cc3f-af84-40d3-8ff1-0a3d74cec46d" time="1385660440665" ignored="false" />
+    <file path="/CompanyDAO.java" changelist="1970cc3f-af84-40d3-8ff1-0a3d74cec46d" time="1385661015640" ignored="false" />
+    <file path="/assignUsersToBugs.jsp" changelist="1970cc3f-af84-40d3-8ff1-0a3d74cec46d" time="1385653810328" ignored="false" />
+    <file path="/listBugs.jsp" changelist="1970cc3f-af84-40d3-8ff1-0a3d74cec46d" time="1386086496072" ignored="false" />
+    <file path="/BugServlet.java" changelist="1970cc3f-af84-40d3-8ff1-0a3d74cec46d" time="1386077404473" ignored="false" />
+    <file path="/functions.js" changelist="1970cc3f-af84-40d3-8ff1-0a3d74cec46d" time="1386009913889" ignored="false" />
+    <file path="/footerMessage.jsp" changelist="1970cc3f-af84-40d3-8ff1-0a3d74cec46d" time="1386004019964" ignored="false" />
+    <file path="/createUserForm.jsp" changelist="1970cc3f-af84-40d3-8ff1-0a3d74cec46d" time="1386085547349" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,6 +89,7 @@
     <sortChildren value="false" />
   </component>
   <component name="DebuggerManager">
+    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_any default_suspend_policy="SuspendAll" default_condition_enabled="true">
       <breakpoint>
         <option name="NOTIFY_CAUGHT" value="true" />
@@ -99,7 +126,6 @@
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
     </breakpoint_any>
-    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_rules />
     <ui_properties />
   </component>
@@ -109,19 +135,28 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="functions.js" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/web/js/functions.js">
+      <file leaf-file-name="createUserForm.jsp" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/web/createUserForm.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="333" column="69" selection-start="10498" selection-end="10498" vertical-scroll-proportion="0.11890244">
+            <state line="30" column="0" selection-start="1345" selection-end="1376" vertical-scroll-proportion="0.21480145">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="createBug.jsp" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/createBug.jsp">
+      <file leaf-file-name="createProjectForm.jsp" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/createProjectForm.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="114" column="48" selection-start="4168" selection-end="4168" vertical-scroll-proportion="-19.0">
+            <state line="53" column="7" selection-start="2357" selection-end="2357" vertical-scroll-proportion="-21.961538">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="inviteUsersForm.jsp" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/inviteUsersForm.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="31" column="31" selection-start="1402" selection-end="1402" vertical-scroll-proportion="-20.26923">
               <folding />
             </state>
           </provider>
@@ -130,10 +165,53 @@
       <file leaf-file-name="BugServlet.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Servlets/BugServlet.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="64" column="64" selection-start="2525" selection-end="2546" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state line="143" column="0" selection-start="6367" selection-end="6367" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="createBugForm.jsp" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/createBugForm.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="10" column="24" selection-start="414" selection-end="414" vertical-scroll-proportion="99.38461">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="listBugs.jsp" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/listBugs.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="60" column="44" selection-start="1938" selection-end="1963" vertical-scroll-proportion="-12.807693">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="listProjects.jsp" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/listProjects.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="60" column="44" selection-start="2054" selection-end="2054" vertical-scroll-proportion="-13.730769">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="listUsers.jsp" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/listUsers.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="63" column="24" selection-start="2178" selection-end="2178" vertical-scroll-proportion="-12.153846">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MailServlet.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Servlets/MailServlet.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="32" column="129" selection-start="1117" selection-end="1117" vertical-scroll-proportion="0.0">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -156,33 +234,30 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/web/WEB-INF/web.xml" />
         <option value="$PROJECT_DIR$/web/invitedUser.jsp" />
-        <option value="$PROJECT_DIR$/src/Servlets/Mail.java" />
-        <option value="$PROJECT_DIR$/web/afterLogin.jsp" />
-        <option value="$PROJECT_DIR$/src/Servlets/UserServlet.java" />
-        <option value="$PROJECT_DIR$/src/DB/CompanyDB.java" />
-        <option value="$PROJECT_DIR$/src/DB/UserDB.java" />
-        <option value="$PROJECT_DIR$/src/DAOs/CompanyDAO.java" />
-        <option value="$PROJECT_DIR$/src/Servlets/ProjectServlet.java" />
+        <option value="$PROJECT_DIR$/web/inviteUsers.jsp" />
         <option value="$PROJECT_DIR$/src/Servlets/Login.java" />
         <option value="$PROJECT_DIR$/src/DAOs/UserDAO.java" />
-        <option value="$PROJECT_DIR$/web/includes/documentHead.jsp" />
-        <option value="$PROJECT_DIR$/web/assignUsersToProjects.jsp" />
         <option value="$PROJECT_DIR$/src/Servlets/BugServlet.java" />
+        <option value="$PROJECT_DIR$/src/Servlets/ProjectServlet.java" />
+        <option value="$PROJECT_DIR$/src/Servlets/UserServlet.java" />
+        <option value="$PROJECT_DIR$/web/less/parameters.less" />
         <option value="$PROJECT_DIR$/web/js/functions.js" />
-        <option value="$PROJECT_DIR$/web/createBug.jsp" />
+        <option value="$PROJECT_DIR$/web/createUserForm.jsp" />
+        <option value="$PROJECT_DIR$/web/inviteUsersForm.jsp" />
+        <option value="$PROJECT_DIR$/web/createProjectForm.jsp" />
+        <option value="$PROJECT_DIR$/src/Servlets/MailServlet.java" />
+        <option value="$PROJECT_DIR$/web/listBugs.jsp" />
+        <option value="$PROJECT_DIR$/web/listProjects.jsp" />
+        <option value="$PROJECT_DIR$/web/listUsers.jsp" />
       </list>
     </option>
   </component>
-  <component name="MavenProjectNavigator">
-    <treeState />
-  </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1936" />
-    <option name="height" value="1056" />
+    <option name="x" value="-9" />
+    <option name="y" value="-9" />
+    <option name="width" value="1938" />
+    <option name="height" value="1050" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -212,6 +287,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -258,60 +334,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="web" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="less" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SmartTrack" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SmartTrack" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="includes" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SmartTrack" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SmartTrack" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="css" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SmartTrack" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SmartTrack" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -334,63 +356,8 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SmartTrack" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SmartTrack" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="DB" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SmartTrack" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SmartTrack" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="DAOs" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SmartTrack" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SmartTrack" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Beans" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
     </panes>
   </component>
@@ -402,10 +369,11 @@
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="MemberChooser.sorted" value="false" />
     <property name="recentsLimit" value="5" />
-    <property name="options.lastSelected" value="project.propVCSSupport.Mappings" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/web/WEB-INF/lib/mail.jar!/" />
+    <property name="options.lastSelected" value="editor" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/web/WEB-INF/lib/commons-io-2.4.jar!/" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="MemberChooser.copyJavadoc" value="false" />
+    <property name="Database.TableEditor.Splitter" value="0.9" />
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="restartRequiresConfirmation" value="true" />
@@ -416,11 +384,173 @@
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
     <property name="Downloaded.Files.Path" value="C:\Projects\SmartTrack" />
+    <property name="dynamic.classpath" value="false" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="DAOs" />
+      <recent name="Beans" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\sm\IdeaProjects\SmartTrack\web" />
+      <recent name="C:\Users\sm\IdeaProjects\SmartTrack\web\WEB-INF" />
+      <recent name="C:\Users\sm\IdeaProjects\SmartTrack\web\WEB-INF\lib" />
+      <recent name="C:\Users\sm\IdeaProjects\SmartTrack\src" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\sm\IdeaProjects\SmartTrack\web" />
+      <recent name="C:\Users\sm\IdeaProjects\SmartTrack\SmartTrack" />
+    </key>
+  </component>
+  <component name="RestoreUpdateTree">
+    <UpdateInfo date="Moments ago" ActionInfo="_Update">
+      <UpdatedFiles>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Updated from server" />
+          <option name="myStatusName" value="Changed on server" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="CHANGED_ON_SERVER" />
+          <FILE-GROUP>
+            <option name="myUpdateName" value="Updated" />
+            <option name="myStatusName" value="Changed" />
+            <option name="mySupportsDeletion" value="false" />
+            <option name="myCanBeAbsent" value="false" />
+            <option name="myId" value="UPDATED" />
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/src/Servlets/UserServlet.java</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/web/afterLogin.jsp</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/web/css/jquery-ui/jquery-ui-1.10.3.custom.css</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/web/css/jquery-ui/jquery-ui-1.10.3.custom.min.css</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/web/includes/navigation.jsp</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/web/js/functions.js</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/web/less/main.less</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/web/less/parameters.less</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/web/listBugs.jsp</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/web/listProjects.jsp</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/web/login.jsp</PATH>
+          </FILE-GROUP>
+          <FILE-GROUP>
+            <option name="myUpdateName" value="Created" />
+            <option name="myStatusName" value="Created" />
+            <option name="mySupportsDeletion" value="false" />
+            <option name="myCanBeAbsent" value="false" />
+            <option name="myId" value="CREATED" />
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/web/createBugForm.jsp</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/web/createProjectForm.jsp</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/web/createUserForm.jsp</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/web/css/jquery-ui/images/ui-bg_flat_0_aaaaaa_40x100.png</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/web/css/jquery-ui/images/ui-bg_flat_100_323A3E_40x100.png</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/web/css/jquery-ui/images/ui-bg_flat_55_fcefa1_40x100.png</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/web/css/jquery-ui/images/ui-bg_flat_75_ffffff_40x100.png</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/web/css/jquery-ui/images/ui-bg_glass_95_fef1ec_1x400.png</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/web/css/jquery-ui/images/ui-bg_highlight-soft_0_aaaaaa_1x100.png</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/web/css/jquery-ui/images/ui-bg_highlight-soft_75_b73073_1x100.png</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/web/css/jquery-ui/images/ui-bg_highlight-soft_75_d04a8d_1x100.png</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/web/css/jquery-ui/images/ui-bg_highlight-soft_75_ffffff_1x100.png</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/web/css/jquery-ui/images/ui-icons_323A3E_256x240.png</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/web/css/jquery-ui/images/ui-icons_eeeeee_256x240.png</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/web/inviteUsersForm.jsp</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/web/listUsers.jsp</PATH>
+          </FILE-GROUP>
+          <FILE-GROUP>
+            <option name="myUpdateName" value="Deleted" />
+            <option name="myStatusName" value="Deleted" />
+            <option name="mySupportsDeletion" value="false" />
+            <option name="myCanBeAbsent" value="true" />
+            <option name="myId" value="REMOVED_FROM_REPOSITORY" />
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/web/assignUserRoles.jsp</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/web/createBug.jsp</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/web/createProject.jsp</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/web/createUser.jsp</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/web/css/jquery-ui/images/ui-bg_diagonals-thick_18_b81900_40x40.png</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/web/css/jquery-ui/images/ui-bg_diagonals-thick_20_666666_40x40.png</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/web/css/jquery-ui/images/ui-bg_flat_10_000000_40x100.png</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/web/css/jquery-ui/images/ui-bg_gloss-wave_35_f6a828_500x100.png</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/web/css/jquery-ui/images/ui-icons_228ef1_256x240.png</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/web/css/jquery-ui/images/ui-icons_ef8c08_256x240.png</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/web/css/jquery-ui/images/ui-icons_ffd27a_256x240.png</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/web/inviteUsers.jsp</PATH>
+          </FILE-GROUP>
+          <FILE-GROUP>
+            <option name="myUpdateName" value="Restored" />
+            <option name="myStatusName" value="Will be restored" />
+            <option name="mySupportsDeletion" value="false" />
+            <option name="myCanBeAbsent" value="false" />
+            <option name="myId" value="RESTORED" />
+          </FILE-GROUP>
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Modified" />
+          <option name="myStatusName" value="Modified" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="MODIFIED" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Skipped" />
+          <option name="myStatusName" value="Skipped" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="SKIPPED" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Merged with conflicts" />
+          <option name="myStatusName" value="Will be merged with conflicts" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="MERGED_WITH_CONFLICTS" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Merged with tree conflicts" />
+          <option name="myStatusName" value="Merged with tree conflicts" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="MERGED_WITH_TREE_CONFLICT" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Merged with property conflicts" />
+          <option name="myStatusName" value="Will be merged with property conflicts" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="MERGED_WITH_PROPERTY_CONFLICT" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Merged" />
+          <option name="myStatusName" value="Will be merged" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="MERGED" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Not in repository" />
+          <option name="myStatusName" value="Not in repository" />
+          <option name="mySupportsDeletion" value="true" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="UNKNOWN" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Locally added" />
+          <option name="myStatusName" value="Locally added" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="LOCALLY_ADDED" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Locally removed" />
+          <option name="myStatusName" value="Locally removed" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="LOCALLY_REMOVED" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Switched" />
+          <option name="myStatusName" value="Switched" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="SWITCHED" />
+        </FILE-GROUP>
+      </UpdatedFiles>
+    </UpdateInfo>
   </component>
   <component name="RunManager" selected="Tomcat Server.Tomcat 7.0">
     <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
@@ -521,6 +651,13 @@
       <patterns />
       <method />
     </configuration>
+    <configuration default="true" type="JavascriptDebugSession" factoryName="Local" singleton="true">
+      <JSDebuggerConfigurationSettings>
+        <option name="engineId" value="embedded" />
+        <option name="fileUrl" />
+      </JSDebuggerConfigurationSettings>
+      <method />
+    </configuration>
     <configuration default="true" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local">
       <deployment />
       <server-settings />
@@ -530,6 +667,12 @@
       <predefined_log_file id="Tomcat Host Manager" enabled="false" />
       <predefined_log_file id="Tomcat Localhost Access" enabled="false" />
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <method />
+    </configuration>
+    <configuration default="true" type="com.intellij.persistence.run.ConsoleRunConfigurationType" factoryName="Query Language Console">
+      <option name="VM_PARAMETERS" value="" />
+      <option name="USER_CFG_CLASS" />
+      <option name="CONTEXT_PROVIDER" />
       <method />
     </configuration>
     <configuration default="false" name="Tomcat 7.0" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 7.0">
@@ -686,27 +829,127 @@
       <created>1384528461654</created>
       <updated>1384528461654</updated>
     </task>
-    <task id="LOCAL-00011" summary="cleanup">
-      <created>1384721268052</created>
-      <updated>1384721268052</updated>
+    <task id="LOCAL-00011" summary="Mail is now in place as a method, need an SMTP server for sending...">
+      <created>1384529780227</created>
+      <updated>1384529780227</updated>
     </task>
-    <task id="LOCAL-00012" summary="*not tested* add user to assigntable">
-      <created>1384877683864</created>
-      <updated>1384877683864</updated>
+    <task id="LOCAL-00012" summary="Mail is now in place it works. need to make an AJAX call to make sure it works with a form such as invite users atc...">
+      <created>1384780434553</created>
+      <updated>1384780434553</updated>
     </task>
-    <task id="LOCAL-00013" summary="jquery, frontend on assign-user-project">
-      <created>1385134429379</created>
-      <updated>1385134429379</updated>
+    <task id="LOCAL-00013" summary="Made some cleanup for the projecrt, if it stops working please revert to one version before.">
+      <created>1384781153717</created>
+      <updated>1384781153717</updated>
     </task>
-    <task id="LOCAL-00014" summary="bugfixing">
-      <created>1385395248419</created>
-      <updated>1385395248419</updated>
+    <task id="LOCAL-00014" summary="Edit User now works, still a problem with loading the vlaues of the booleans correctly. should be solved tomorrow.">
+      <created>1384790979290</created>
+      <updated>1384790979290</updated>
     </task>
-    <task id="LOCAL-00015" summary="*bugfix* - new users are correctly added to the projectAssign table; moving styling/scripts from .jsp files">
-      <created>1385568862413</created>
-      <updated>1385568862413</updated>
+    <task id="LOCAL-00015" summary="Mail is now in place as a method, need an SMTP server for sending...">
+      <created>1384857564641</created>
+      <updated>1384857564641</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Fixing Company related cookie">
+      <created>1384858239919</created>
+      <updated>1384858239919</updated>
+    </task>
+    <task id="LOCAL-00017" summary="invites working fully, we should see how it works on a larger scale.">
+      <created>1384860497527</created>
+      <updated>1384860497527</updated>
+    </task>
+    <task id="LOCAL-00018" summary="Multiple invites now covered. Everything needed for maintaining users is now working.">
+      <created>1384863688974</created>
+      <updated>1384863688974</updated>
+    </task>
+    <task id="LOCAL-00019" summary="Mail is now in place as a method, need an SMTP server for sending...">
+      <created>1384875818247</created>
+      <updated>1384875818247</updated>
+    </task>
+    <task id="LOCAL-00020" summary="Project CRUD alomst in place!">
+      <created>1384879600714</created>
+      <updated>1384879600714</updated>
+    </task>
+    <task id="LOCAL-00021" summary="Mail is now in place as a method, need an SMTP server for sending...">
+      <created>1384966436044</created>
+      <updated>1384966436044</updated>
+    </task>
+    <task id="LOCAL-00022" summary="one DB connection to rule them all :)">
+      <created>1385543802707</created>
+      <updated>1385543802707</updated>
+    </task>
+    <task id="LOCAL-00023" summary="one DB connection to rule them all :)">
+      <created>1385544514324</created>
+      <updated>1385544514324</updated>
+    </task>
+    <task id="LOCAL-00024" summary="cleaned up  DB connection and USERDAO">
+      <created>1385561032543</created>
+      <updated>1385561032543</updated>
+    </task>
+    <task id="LOCAL-00025" summary="cookie validation added + logout function should now work">
+      <created>1385565905215</created>
+      <updated>1385565905215</updated>
+    </task>
+    <task id="LOCAL-00026" summary="fixed the logout function and added cookie validation to all restricted pages.">
+      <created>1385566623385</created>
+      <updated>1385566623385</updated>
+    </task>
+    <task id="LOCAL-00027" summary="More icons">
+      <created>1385644347248</created>
+      <updated>1385644347248</updated>
+    </task>
+    <task id="LOCAL-00028" summary="Bugs can be created, overall fixes for exceptions, added icons, and much much more...">
+      <created>1385662465422</created>
+      <updated>1385662465422</updated>
+    </task>
+    <task id="LOCAL-00029" summary="Added the ground work for File Uploading servlet">
+      <created>1385993422989</created>
+      <updated>1385993422989</updated>
+    </task>
+    <task id="LOCAL-00030" summary="More minor fixes.">
+      <created>1385999547443</created>
+      <updated>1385999547443</updated>
+    </task>
+    <task id="LOCAL-00031" summary="cleaned up  DB connection and USERDAO">
+      <created>1386000253659</created>
+      <updated>1386000253659</updated>
+    </task>
+    <task id="LOCAL-00032" summary="cleaned up  DB connection and USERDAO">
+      <created>1386000788482</created>
+      <updated>1386000788482</updated>
+    </task>
+    <task id="LOCAL-00033" summary="cleaned up  DB connection and USERDAO">
+      <created>1386000878326</created>
+      <updated>1386000878326</updated>
+    </task>
+    <task id="LOCAL-00034" summary="cleaned up  DB connection and USERDAO">
+      <created>1386001633783</created>
+      <updated>1386001633783</updated>
+    </task>
+    <task id="LOCAL-00035" summary="cleaned up  DB connection and USERDAO">
+      <created>1386003416279</created>
+      <updated>1386003416279</updated>
+    </task>
+    <task id="LOCAL-00036" summary="cleaned up  DB connection and USERDAO">
+      <created>1386005077978</created>
+      <updated>1386005077978</updated>
+    </task>
+    <task id="LOCAL-00037" summary="cleaned up  DB connection and USERDAO">
+      <created>1386005492739</created>
+      <updated>1386005492739</updated>
+    </task>
+    <task id="LOCAL-00038" summary="cleaned up  DB connection and USERDAO">
+      <created>1386007489458</created>
+      <updated>1386007489458</updated>
+    </task>
+    <task id="LOCAL-00039" summary="adding bugs works now!!!">
+      <created>1386010195626</created>
+      <updated>1386010195626</updated>
+    </task>
+    <task id="LOCAL-00040" summary="cleaned up  DB connection and USERDAO">
+      <created>1386077485763</created>
+      <updated>1386077485763</updated>
+    </task>
+    <option name="localTasksCounter" value="41" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -730,30 +973,30 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
+    <frame x="-9" y="-9" width="1938" height="1050" extended-state="6" />
+    <editor active="false" />
     <layout>
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24916574" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32986537" sideWeight="0.75635105" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32925338" sideWeight="0.75635105" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.249694" sideWeight="0.75635105" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24930362" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.055496264" sideWeight="0.6839729" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2413793" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.1278409" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32986537" sideWeight="0.75635105" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.21975583" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32925472" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="CDI" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32986537" sideWeight="0.75635105" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3964365" sideWeight="0.28652322" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32925472" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2792793" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32732734" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="CDI" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3964365" sideWeight="0.28652322" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32882884" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32986537" sideWeight="0.75635105" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32925472" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.14461046" sideWeight="0.7586207" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2413793" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32925472" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.13233724" sideWeight="0.6839729" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.31602708" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -803,7 +1046,7 @@
     <option name="WRAP_WHEN_TYPING_REACHES_RIGHT_MARGIN" value="false" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="*bugfix* - new users are correctly added to the projectAssign table; moving styling/scripts from .jsp files" />
+    <option name="LAST_COMMIT_MESSAGE" value="better redirects and better validation, on top of that modal box size is now relative to the window size..." />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -817,7 +1060,6 @@
     <option name="UPDATE_FILTER_BY_SCOPE" value="false" />
     <option name="SHOW_FILE_HISTORY_AS_TREE" value="false" />
     <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.6" />
-    <MESSAGE value="added document head include for all meta tags. be sure to include it in future work" />
     <MESSAGE value="stuff happened" />
     <MESSAGE value="It Works mothefucka!!!!" />
     <MESSAGE value="Made some cleanup and found the source of the problem. JSTL libraries not working as they should." />
@@ -825,130 +1067,146 @@
     <MESSAGE value="Solution not crashing now if no cookie exist and not crashing if a database is missing when adding a user." />
     <MESSAGE value="Fixed Solution crashing when no user exists in database, also added some ground work for sending invitations." />
     <MESSAGE value="Added some Jars to the project GIT for implementation of mail sending." />
-    <MESSAGE value="cleanup" />
-    <MESSAGE value="*not tested* add user to assigntable" />
-    <MESSAGE value="jquery, frontend on assign-user-project" />
-    <MESSAGE value="bugfixing" />
-    <MESSAGE value="*bugfix* - new users are correctly added to the projectAssign table; moving styling/scripts from .jsp files" />
+    <MESSAGE value="Mail is now in place it works. need to make an AJAX call to make sure it works with a form such as invite users atc..." />
+    <MESSAGE value="Made some cleanup for the projecrt, if it stops working please revert to one version before." />
+    <MESSAGE value="Edit User now works, still a problem with loading the vlaues of the booleans correctly. should be solved tomorrow." />
+    <MESSAGE value="Fixing Company related cookie" />
+    <MESSAGE value="invites working fully, we should see how it works on a larger scale." />
+    <MESSAGE value="Multiple invites now covered. Everything needed for maintaining users is now working." />
+    <MESSAGE value="Project CRUD alomst in place!" />
+    <MESSAGE value="Mail is now in place as a method, need an SMTP server for sending..." />
+    <MESSAGE value="one DB connection to rule them all :)" />
+    <MESSAGE value="cookie validation added + logout function should now work" />
+    <MESSAGE value="fixed the logout function and added cookie validation to all restricted pages." />
+    <MESSAGE value="More icons" />
+    <MESSAGE value="Bugs can be created, overall fixes for exceptions, added icons, and much much more..." />
+    <MESSAGE value="Added the ground work for File Uploading servlet" />
+    <MESSAGE value="More minor fixes." />
+    <MESSAGE value="adding bugs works now!!!" />
+    <MESSAGE value="cleaned up  DB connection and USERDAO" />
+    <MESSAGE value="better redirects and better validation, on top of that modal box size is now relative to the window size..." />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <option name="time" value="1" />
-    </breakpoint-manager>
+    <breakpoint-manager />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/Beans/UserBean.java">
+    <entry file="file://$PROJECT_DIR$/src/Servlets/CompanyServlet.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="21" selection-start="109" selection-end="115" vertical-scroll-proportion="0.1557252">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/htmlbackup/MihaiBugReportv2.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="166" column="25" selection-start="5239" selection-end="5244" vertical-scroll-proportion="0.6486486" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/DB/DB.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="13" selection-start="239" selection-end="239" vertical-scroll-proportion="0.11785095">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Beans/ProjectBean.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="13" selection-start="29" selection-end="29" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/DAOs/CompanyDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="216" selection-start="776" selection-end="776" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/DAOs/ProjectDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="32" column="84" selection-start="1144" selection-end="1144" vertical-scroll-proportion="0.0">
+        <state line="24" column="25" selection-start="723" selection-end="723" vertical-scroll-proportion="0.61678004">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Servlets/Login.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="33" column="57" selection-start="943" selection-end="943" vertical-scroll-proportion="0.0">
-          <folding />
+        <state line="111" column="0" selection-start="4464" selection-end="4464" vertical-scroll-proportion="0.0">
+          <folding>
+            <marker date="1386008282386" expanded="true" signature="-1:-1" placeholder="SHOW DATABAS..." />
+            <marker date="1386008282386" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..usersTable..." />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/assignUserRoles.jsp">
+    <entry file="file://$PROJECT_DIR$/src/Servlets/UploadServlet.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/includes/documentHead.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="51" column="53" selection-start="2236" selection-end="2236" vertical-scroll-proportion="0.19175911">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/DAOs/UserDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="46" selection-start="523" selection-end="523" vertical-scroll-proportion="0.10559006">
+        <state line="24" column="28" selection-start="787" selection-end="787" vertical-scroll-proportion="0.44523808">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Servlets/ProjectServlet.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="113" column="42" selection-start="4864" selection-end="4870" vertical-scroll-proportion="0.6474074">
+        <state line="119" column="0" selection-start="5150" selection-end="5150" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/assignUsersToProjects.jsp">
+    <entry file="file://$PROJECT_DIR$/src/Servlets/UserServlet.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="24" selection-start="1024" selection-end="1024" vertical-scroll-proportion="0.5023112">
+        <state line="128" column="22" selection-start="5423" selection-end="5423" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Servlets/UploadServlet.java">
+    <entry file="file://$PROJECT_DIR$/web/less/parameters.less">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="31" column="58" selection-start="1069" selection-end="1069" vertical-scroll-proportion="0.45333335">
+        <state line="9" column="36" selection-start="231" selection-end="231" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/createProjectForm.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="53" column="7" selection-start="2357" selection-end="2357" vertical-scroll-proportion="-21.961538">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/inviteUsersForm.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="31" column="31" selection-start="1402" selection-end="1402" vertical-scroll-proportion="-20.26923">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Servlets/MailServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="32" column="129" selection-start="1117" selection-end="1117" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Servlets/BugServlet.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="64" column="64" selection-start="2525" selection-end="2546" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state line="143" column="0" selection-start="6367" selection-end="6367" vertical-scroll-proportion="0.0">
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/createBug.jsp">
+    <entry file="file://$PROJECT_DIR$/web/createBugForm.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="114" column="48" selection-start="4168" selection-end="4168" vertical-scroll-proportion="-19.0">
+        <state line="10" column="24" selection-start="414" selection-end="414" vertical-scroll-proportion="99.38461">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/listBugs.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="60" column="44" selection-start="1938" selection-end="1963" vertical-scroll-proportion="-12.807693">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/listProjects.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="60" column="44" selection-start="2054" selection-end="2054" vertical-scroll-proportion="-13.730769">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/listUsers.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="63" column="24" selection-start="2178" selection-end="2178" vertical-scroll-proportion="-12.153846">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web/js/functions.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="333" column="69" selection-start="10498" selection-end="10498" vertical-scroll-proportion="0.11890244">
+        <state line="2" column="12" selection-start="87" selection-end="87" vertical-scroll-proportion="0.05862069">
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/createUserForm.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="30" column="0" selection-start="1345" selection-end="1376" vertical-scroll-proportion="0.21480145">
           <folding />
         </state>
       </provider>

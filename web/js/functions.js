@@ -19,11 +19,11 @@ function inputTitles() {
     $("input[type=text], input[type=password], input[type=file],textarea").focus(function() {
         if ($(this).val()==$(this).attr("title")) { $(this).val(""); }
     }).blur(function() {
-            if ($(this).val()=="") { $(this).val($(this).attr("title")); }
-        });
+        if ($(this).val()=="") { $(this).val($(this).attr("title")); }
+    });
 }
 
-//Readjust steps
+//Readjust Leftovers from the Bug form
 function adjustSteps() {
     $('li#8 > ul.step').each(function(){
         index = $(this).index();
@@ -34,11 +34,6 @@ function adjustSteps() {
         console.log('adjusted');
     });
 }
-//get URL parameters
-function getUrlVar(key){
-    var result = new RegExp(key + "=([^&]*)", "i").exec(window.location.search);
-    return result && result[1] || "";
-}
 
 function disableUndo(){
     temp = null;
@@ -46,6 +41,12 @@ function disableUndo(){
 }
 function enableUndo(){
     $("#undoDelete").removeClass("inactive").removeAttr("disabled");
+}
+
+//get URL parameters
+function getUrlVar(key){
+    var result = new RegExp(key + "=([^&]*)", "i").exec(window.location.search);
+    return result && result[1] || "";
 }
 
 function validateForm() {
@@ -168,7 +169,7 @@ $(document).ready(function() {
 	validateForm();
 
 	//On every keypress validate the value of the input if required, validate the form as well
-	$('input').keyup(function() {
+	$('input:focus').keyup(function() {
 		if ($(this).hasClass('required')) {
 			if ($(this).hasClass('password')) {//Password validation
 				if($(this).val().length > 4) {
