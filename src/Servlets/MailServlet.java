@@ -14,12 +14,9 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
 public class MailServlet extends HttpServlet{
+    private static String INVITE_USER = "/UserServlet?action=listUsers&message-success=Invitation sent success";
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-        //final String username = "chancet1982@gmail.com";
-        //final String password = "SMRI19820713";
-
         String from = "info@smarttrack.com";
         String toEmail = request.getParameter("userEmail");
         System.out.println("Send to: " + toEmail);
@@ -68,9 +65,7 @@ public class MailServlet extends HttpServlet{
                                 "<a href=http://localhost:8081/invitedUser.jsp?companyName=" + CompanyName + "&userEmail=" + toEmail + ">Click to join us</a>" , "text/html; charset=utf-8");
 
             Transport.send(message);
-
-            System.out.println("Done");
-            response.sendRedirect("afterLogin.jsp?message=Success");
+            response.sendRedirect(INVITE_USER);
 
         } catch (MessagingException e) {
             throw new RuntimeException(e);

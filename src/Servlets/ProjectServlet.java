@@ -23,6 +23,7 @@ public class ProjectServlet extends HttpServlet{
 
     private static String LIST_PROJECTS = "/listProjects.jsp";
     private static String ASSIGN_PROJECTS = "/assignUsersToProjects.jsp";
+    private static String INSERT_PROJECT = "/ProjectServlet?action=listProjects";
     public ProjectServlet(){
         super();
         projectDAO = new ProjectDAO();
@@ -114,8 +115,8 @@ public class ProjectServlet extends HttpServlet{
             Cookie cookie = cookies[i];
             if(cookie.getName().equals("cid")){ companyName = cookie.getValue(); }
         }
-        System.out.println("project has been added");
+
         projectDAO.addProject( companyName , project );
-        response.sendRedirect("afterLogin.jsp");
+        response.sendRedirect(INSERT_PROJECT);
     }
 }

@@ -20,7 +20,8 @@ public class UserServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
     private static String EDIT = "/editUser.jsp";
     private static String LIST_USER = "/listUsers.jsp";
-    private static String INSERT = "/afterLogin.jsp";
+    private static String MODIFY_USER = "/UserServlet?action=listUsers";
+    private static String INSERT_USER = "/afterLogin.jsp?message-success=User was added to the database";
     private static String LOGOUT = "/login.jsp";
 
     private UserDAO dao;
@@ -128,15 +129,13 @@ public class UserServlet extends HttpServlet {
             response.addCookie(companyNameCookie);
             response.addCookie(passwordCookie);
 
-            response.sendRedirect("afterLogin.jsp");
             companydao.addCompany(company);
             dao.addUser(user);
+            response.sendRedirect(INSERT_USER);
         } else {
-            System.out.print("Trying to update user");
             user.setUserid(Integer.parseInt(userid));
             dao.updateUser(user);
-            RequestDispatcher view = request.getRequestDispatcher(INSERT);
-            view.forward(request, response);
+            response.sendRedirect(MODIFY_USER);
         }
     }
 }

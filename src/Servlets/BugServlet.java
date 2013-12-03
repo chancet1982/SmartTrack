@@ -24,6 +24,7 @@ public class BugServlet extends HttpServlet {
 
     private static String LIST_BUGS = "/listBugs.jsp";
     private static String ASSIGN_BUGS = "/assignUsersToBugs.jsp";
+    private static String INSERT_BUG = "/BugServlet?action=listBugs&message-success=Bug created successfully";
 
     public BugServlet(){
         super();
@@ -139,9 +140,8 @@ public class BugServlet extends HttpServlet {
             if(cookie.getName().equals("cid")){ companyName = cookie.getValue(); }
         }
 
-        System.out.println("BUG has been added");
         bugDAO.addBug(companyName, bug);
-        response.sendRedirect("afterLogin.jsp");
+        response.sendRedirect(INSERT_BUG);
     }
 
 }
