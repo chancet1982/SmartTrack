@@ -15,7 +15,7 @@
         <h1>Welcome to Smarttrack</h1>
         <div class="box color-light round-corners shadow padding" style="padding:8px;">
             <p>What would you like to do next?</p>
-            <a href="inviteUsers.jsp" class="button">Invite Users</a>
+            <a href="inviteUsersForm.jsp" class="button">Invite Users</a>
             <a href="UserServlet?action=ListUsers" class="button">Maintain Users</a>
             <a href="createProject.jsp" class="button">Create Projects</a>
             <a href="ProjectServlet?action=ListProjects" class="button">Maintain Projects</a>

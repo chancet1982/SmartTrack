@@ -35,28 +35,36 @@
                 </c:forEach>
                 </tbody>
             </table>
-            <button name="createBug" id="createBug">Add bug</button>
+            <a id="createBug" class="button round-corners"><span class="icon add-bug"></span>Add Bugs</a>
         </div>
     </div>
 </div>
-
-<%@include file="includes/footerMessage.jsp" %>
-
+<div id="dialog" title="add a new Bug"></div>
 <script type="text/javascript">
     $(document).ready(function(){
-        $( "#createBugForm" ).dialog({
-            autoOpen: false,
-            modal: true,
-            width: 600,
-            height: $(window).height() * 0.9,
-            draggable: false
+
+        $.ajax({
+            url: "createBugForm.jsp",
+            success: function(data){
+                $("#dialog").html(data);
+                inputTitles();
+            }
         });
-        $( "#createBug" )
-            .button()
-            .click(function() {
-                $( "#createBugForm" ).dialog( "open" );
+
+        $("#createBug").click(function () {
+            $("#dialog").dialog("open");
+        });
+
+        $("#dialog").dialog({
+            bgiframe: true,
+            autoOpen: false,
+            width: 530,
+            modal: true,
+            height:700
         });
     });
 </script>
+
+<%@include file="includes/footerMessage.jsp" %>
 </body>
 </html>

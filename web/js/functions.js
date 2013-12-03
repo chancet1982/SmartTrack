@@ -12,11 +12,11 @@ other =         "#1,#2,#3,#4,#6,#5,#7,#8,#0,#10";
 
 //Input effects
 function inputTitles() {
-    $("input[type=text], input[type=password], input[type=file]").each(function() {
+    $("input[type=text], input[type=password], input[type=file], textarea").each(function() {
         $(this).val($(this).attr("title"));
     });
 
-    $("input[type=text], input[type=password], input[type=file]").focus(function() {
+    $("input[type=text], input[type=password], input[type=file],textarea").focus(function() {
         if ($(this).val()==$(this).attr("title")) { $(this).val(""); }
     }).blur(function() {
             if ($(this).val()=="") { $(this).val($(this).attr("title")); }
@@ -70,10 +70,6 @@ $(window).resize(function() {
 $(document).ready(function() {
     inputTitles();
 
-    if ($("select#projectName").length > 0) {
-        loadProjects();
-    }
-
     $(".site-footer .message").hide();
     if (getUrlVar('message-success')) {
         removeMessage();
@@ -90,10 +86,6 @@ $(document).ready(function() {
         $("#site-footer .message").prepend('<p>'+decodeURIComponent(getUrlVar('message-info'))+'</p>').addClass("info").show();
     }
 
-    $('#datepicker').datetimepicker({
-        controlType: 'select',
-        timeFormat: 'hh:mm tt'
-    });
     /*--- assignUsersToProjects.jsp ---*/
     //Load assigned users from database
     $("ul.projects li.project").each(function(){
@@ -136,86 +128,6 @@ $(document).ready(function() {
             removeDuplicateUsers($(this));
             assignUsers($(this));
         }
-    });
-
-    //Step Addition
-    $("#addStep").click(function(){
-        adjustSteps();
-        stepID =  $('li#8 > ul.step').size();
-        stepID++;
-        step = $('<ul class="step" id="step' + stepID + '"> '+
-            '<li><label>Step '+ stepID +'</label> '+
-            '<textarea name="stepContent'+ stepID +'" rows="2" cols="65"></textarea>' +
-            '<a class="remove-step button"><span class="icon remove"></span></a>' +
-            '</li></ul>');
-
-        $(step).insertBefore(this);
-        temp = null;
-        disableUndo();
-    });
-
-    //Step removal
-    $(document).on("click","a.remove-step",function(){
-        ulIndex = $(this).parent().parent().index() ;
-        ulIndex++;
-        ulElement = $(this).parent().parent();
-        temp = null;
-
-        if ( temp == null ){
-            temp = $( ulElement ).detach();
-            adjustSteps();
-        }
-        enableUndo();
-        stepID--;
-    });
-
-    //UNDO delete
-    $("#undoDelete").click(function(){
-        if ( temp != null ) {
-            if(ulIndex <= $("#8").children().length - 2 ){
-                temp.insertBefore( "li#8 > ul.step:nth-child(" + ulIndex  + ")" );
-            }else{
-                temp.insertBefore( "#addStep" );
-            }
-            disableUndo();
-            console.log(ulIndex);
-            adjustSteps();
-        }
-    });
-
-    //Category select
-    $("#new-bug #bug-category").change(function(){
-        selectedOption = $("#new-bug #bug-category option:selected" );
-        console.log(selectedOption.val());
-        $(this).parent().parent().children().not(":first-child").addClass("hidden");
-
-        if (selectedOption.val() == 'server-error'){
-            $(serverError).removeClass("hidden");
-        }else if (selectedOption.val() == 'front-end'){
-            $(frontEnd).removeClass("hidden");
-        }else if (selectedOption.val() == 'textual'){
-            $(textual).removeClass("hidden");
-        }else if (selectedOption.val() == 'other'){
-            $(other).removeClass("hidden");
-        }
-    });
-    $('.step textarea').on('blur' , function(){
-        textAreaValue = $(this).val();
-    });
-    $( "#8" ).sortable({
-        revert: false,
-        stop: function() { adjustSteps(); },
-        start: function() {  }
-    });
-    $( ".step" ).draggable({
-        connectToSortable: "#8",
-        revert: false,
-        cursor: "move",
-        containment: "parent",
-        snap: "#8",
-        delay: 100,
-        //stack: ".step",
-        axis: "y"
     });
 
 	//toggling things
@@ -318,24 +230,6 @@ $(document).ready(function() {
     }
 
     /*---------AJAX SECTION---------*/
-    $('#uploadFile').click(function() {
-        $.ajax({
-            type: "POST",
-            url: "/UploadServlet",
-            async: true,
-            data: $("#file").serialize(),
-            contentType: 'multipart/form-data',
-            success: function(msg) {
-                removeMessage();
-                $("#site-footer .message").prepend('<p>File Upload Success!</p>').addClass("success").show();
-            },
-            error: function(msg) {
-                removeMessage();
-                $("#site-footer .message").prepend('<p>Upload Error!</p>').addClass("error").show();
-            }
-        });
-    });
-
     //assignUsersToProjects.jsp
     function removeDuplicateUsers(obj){
         var seen = {};
@@ -363,7 +257,7 @@ $(document).ready(function() {
             },
             error: function(msg) {
                 $("#site-footer .message p").remove();
-                $("#site-footer .message").prepend('<p>Update Error!</p>').addClass("error").show();
+                $("#site-footer .message").prepend('<p>Error: Unable to save changes</p>').addClass("error").show();
             }
         });
     }
@@ -388,7 +282,7 @@ $(document).ready(function() {
                 }else{
                     thisInput.addClass("unique").removeClass("not-unique");
                     removeMessage();
-                    $("#site-footer .message").prepend('<p>Value is already being used</p>').addClass("error").show();
+                    $("#site-footer .message").prepend('<p>Error: Value is already being used</p>').addClass("error").show();
                 }
             },
             error: function (xhr, ajaxOptions, thrownError) {
@@ -397,19 +291,4 @@ $(document).ready(function() {
             }
         });
     });
-
-    //Load projects into dropdown
-    function loadProjects() {
-        $.ajax({
-            type: "GET",
-            url: "/BugServlet?action=getProjectsInDropdown",
-            dataType: "text",
-            async: false,
-            success: function(data) {
-                $("#projectName").append(data);
-            },
-            error: function (xhr, ajaxOptions, thrownError) {console.log(xhr.status+ " " +thrownError);}
-        });
-    }
-
 });

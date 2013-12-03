@@ -19,7 +19,7 @@ import Beans.*;
 public class UserServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
     private static String EDIT = "/editUser.jsp";
-    private static String LIST_USER = "/assignUserRoles.jsp";
+    private static String LIST_USER = "/listUsers.jsp";
     private static String INSERT = "/afterLogin.jsp";
     private static String LOGOUT = "/login.jsp";
 

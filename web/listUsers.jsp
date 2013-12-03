@@ -38,10 +38,34 @@
                 </c:forEach>
                 </tbody>
             </table>
+            <a id="inviteUser" class="button round-corners"><span class="icon add-user"></span>Invite Users</a>
         </div>
     </div>
 </div>
+<div id="dialog" title="invite Users"></div>
+<script type="text/javascript">
+    $(document).ready(function(){
 
+        $.ajax({
+            url: "inviteUsersForm.jsp",
+            success: function(data){
+                $("#dialog").html(data);
+                inputTitles()
+            }
+        });
+
+        $("#inviteUser").click(function () {
+            $("#dialog").dialog("open");
+        });
+
+        $("#dialog").dialog({
+            bgiframe: true,
+            autoOpen: false,
+            width: 530,
+            modal: true
+        });
+    });
+</script>
 <%@include file="includes/footerMessage.jsp" %>
 </body>
 </html>

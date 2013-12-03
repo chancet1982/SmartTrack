@@ -35,10 +35,34 @@
                 </c:forEach>
                 </tbody>
             </table>
+            <a id="createProject" class="button round-corners"><span class="icon add-project"></span>Create new project</a>
         </div>
     </div>
 </div>
+<div id="dialog" title="Create New Project"></div>
+<script type="text/javascript">
+    $(document).ready(function(){
 
+        $.ajax({
+            url: "createProjectForm.jsp",
+            success: function(data){
+                $("#dialog").html(data);
+                inputTitles()
+            }
+        });
+
+        $("#createProject").click(function () {
+            $("#dialog").dialog("open");
+        });
+
+        $("#dialog").dialog({
+            bgiframe: true,
+            autoOpen: false,
+            width: 530,
+            modal: true
+        });
+    });
+</script>
 <%@include file="includes/footerMessage.jsp" %>
 </body>
 </html>

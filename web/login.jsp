@@ -54,7 +54,6 @@
             modal: true
         });
     });
-
 </script>
 <%@include file="includes/footerMessage.jsp" %>
 </body>

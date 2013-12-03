@@ -254,11 +254,55 @@ display:block;
 .icon.archive{background-position:0px -1080px;}
 .icon.archive:hover{background-position:-24px -1080px;}
 
-/*--- Inputs ---*/
-.ui-dialog input[type=text],
-.ui-dialog input[type=password],
-.ui-dialog input[type=file] {
-  width:100%;
+/*--- Modal Box ---*/
+.ui-dialog {
+  input[type=text],
+  input[type=password],
+  input[type=file],
+  textarea,
+  select {
+    width:100%;
+    margin-bottom:@padding-base;
+  }
+
+  .steps li {
+    position: relative;
+    a.button {
+      padding:0;
+    }
+    a.remove-step {
+      position: absolute;
+      right: 5px;
+      top: 50%;
+      margin-top: -16px;
+
+      .icon{
+        margin-right:0;
+      }
+    }
+
+    textarea {
+      padding-right: 10%;
+      width:100%;
+    }
+  }
+
+  #addStep .icon,
+  #undoDelete .icon{
+    margin-right:0;
+  }
+}
+
+/*--- Form elements ---*/
+input,textarea,select {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+textarea {
+  resize:none;
+  overflow:hidden;
 }
 
 input {
