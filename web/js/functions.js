@@ -52,9 +52,10 @@ function getUrlVar(key){
 function validateForm() {
 	$('form').each(function() {
 		var $formValid = true;
-		$(this).find('input.required').each(function (index, element) {
-			if($(element).hasClass("invalid")) $formValid = false;
-		});		
+        $(this).find('input.required').each(function (index, element) {
+            if(! $(element).hasClass("valid")) $formValid = false;
+        });
+
 		if (!$formValid) {
             $(this).find('input[type="submit"]').addClass('inactive').bind('click');
         } else {
@@ -173,7 +174,7 @@ $(document).ready(function() {
 		if ($(this).hasClass('required')) {
 			if ($(this).hasClass('password')) {//Password validation
 				if($(this).val().length > 4) {
-					$(this).removeClass('invalid').addClass('valid');	
+					$(this).removeClass('invalid').addClass('valid');
 				} else {
 					if(!$(this).hasClass('invalid')) $(this).removeClass('valid').addClass('invalid');
 				}
@@ -181,11 +182,11 @@ $(document).ready(function() {
 			} else if($(this).hasClass('repeat-password')) {//Password(Repeat) validation
 				var $pwdvalue = $('input.password').val();
 				if($(this).val() == $pwdvalue) {
-					$(this).removeClass('invalid').addClass('valid');	
+					$(this).removeClass('invalid').addClass('valid');
 				} else {
 					if(!$(this).hasClass('invalid')) $(this).removeClass('valid').addClass('invalid');
 				}
-				
+
 			} else if ($(this).hasClass('email')) {//Email validation
 				var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
 				if(emailReg.test($(this).val()) && $(this).val()) {
@@ -195,16 +196,16 @@ $(document).ready(function() {
 				}
 
 			} else if($(this).val()) {//General validation
-				$(this).removeClass('invalid').addClass('valid');		
+				$(this).removeClass('invalid').addClass('valid');
 			} else {
-				if(!$(this).hasClass('invalid')) $(this).removeClass('valid').addClass('invalid');			
-			}	
+				if(!$(this).hasClass('invalid')) $(this).removeClass('valid').addClass('invalid');
+			}
 		}
 		validateForm();
 	});
 
 	//Add invalid to empty required inputs
-	
+
 	//Deactivate inactive links
 	$('.inactive').click(function(e) {
 		e.preventDefault();
