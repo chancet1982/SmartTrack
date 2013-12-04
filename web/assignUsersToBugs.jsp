@@ -29,7 +29,7 @@
             <h2>Bugs</h2>
                 <ul class="projects">
                     <c:forEach items="${projects}" var="project">
-                        <li class="project clearfix" data-project-id='<c:out value="${bug.bugID}"/>' >
+                        <li class="project clearfix" data-bug-id='<c:out value="${bug.bugID}"/>' >
                             <span class="project-name"><c:out value="${bug.bugTitle}" /></span>
                             <span class="project-users">
                                 <ul></ul>

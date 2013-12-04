@@ -57,7 +57,7 @@ public class BugServlet extends HttpServlet {
             RequestDispatcher view = request.getRequestDispatcher(forward);
             view.forward(request, response);
         } else if (action.equalsIgnoreCase("assignBugs")){ //Assign users to bugs
-            forward = LIST_BUGS;
+            forward = ASSIGN_BUGS;
             userDAO = new UserDAO();
             request.setAttribute("bugs", bugDAO.getAllBugsFromCompany(companyName));
             request.setAttribute("users", userDAO.getAllUsersFromCompany(companyName));
