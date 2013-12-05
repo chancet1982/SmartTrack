@@ -1,7 +1,20 @@
+<style>
+.autocompleteContainter li{padding:5px;}
+.autocompleteContainter li:hover{background:#D6D6D6;cursor:pointer;}
+.autocompleteContainter{
+    float:left;
+    width:100%;
+    border:1px solid #000000;
+    position:absolute;
+    top:30px;
+    background:#f0f0f0;
+}
+</style>
 <form id="new-bug" action="BugServlet" method="POST">
     <h2>Report New Issue</h2>
     <p>In order to create an effective report please fill in the following:</p>
     <ul id="bug-report">
+
         <li id="11" class="">
             <select title="Project Name" id="projectName" name="projectID">
                 <option value="no-value">Project Name</option>
@@ -24,6 +37,12 @@
 
         <li id="3" class="hidden">
             <textarea title="Short description of the issue" class="required" name="bugDescription"></textarea>
+        </li>
+
+        <li id="12" class="hidden" style="position:relative">
+            <input type="text" title="Assign a user to this issue" name="assignUserToBug" class="searchFor" autocomplete="off">
+            <input type="text" name="userID" class="hidden userID">
+            <ul class="autocompleteContainter hidden"></ul>
         </li>
 
         <li id="10" class="hidden">
@@ -80,6 +99,40 @@
 </form>
 
 <script type="text/javascript">
+
+    //AUTOCOMPLETE
+    $(document).on("mousedown",".autocompleteContainter li",function(){
+        $(".searchFor").val($(this).text());
+        $(".userID").val($(this).attr("data-user-id"));
+    });
+
+    $(".searchFor").on("blur", function(){
+        $(".autocompleteContainter").addClass("hidden");
+    });
+
+    $(".searchFor").on("keyup", function(){
+        searchFor = $(this).val();
+        if(searchFor == "" || searchFor==null){
+            $(".autocompleteContainter").addClass("hidden");
+        }else{
+            $(".autocompleteContainter").removeClass("hidden");
+            $.ajax({
+                type: "GET",
+                url: "/BugServlet?action=autocompleteUsers",
+                data:{ "searchFor" : searchFor },
+                success: function(data) {
+                    if(data==""){
+                        $(".autocompleteContainter").addClass("hidden");
+                    }
+                    $(".autocompleteContainter").html(data);
+                },
+                error: function (xhr, ajaxOptions, thrownError) {console.log(xhr.status);console.log(thrownError);}
+            });
+        }
+    });
+    //autocomplete end
+
+
     $(document).ready(function(){
         $.ajax({
             type: "GET",
@@ -111,16 +164,16 @@
                 '<a class="remove-step button"><span class="icon remove"></span></a>' +
                 '</li>');
 
-        $(step).insertBefore(this);
+        $(step).appendTo("li#8 ul.steps");
         temp = null;
         disableUndo();
     });
 
     //Step removal
     $(document).on("click","a.remove-step",function(){
-        ulIndex = $(this).parent().parent().index() ;
+        ulIndex = $(this).parent().index() ;
         ulIndex++;
-        ulElement = $(this).parent().parent();
+        ulElement = $(this).parent();
         temp = null;
 
         if ( temp == null ){
@@ -133,11 +186,12 @@
 
     //UNDO delete
     $("#undoDelete").click(function(){
+        console.log(ulIndex);
         if ( temp != null ) {
-            if(ulIndex <= $("#8").children().length - 2 ){
-                temp.insertBefore( "li#8 > ul.step:nth-child(" + ulIndex  + ")" );
+            if(ulIndex <= $("#8").children().length - 1){
+                temp.insertBefore( "li#8 > ul.steps > li.step:nth-child(" + ulIndex  + ")" );
             }else{
-                temp.insertBefore( "#addStep" );
+                temp.appendTo("li#8 > ul.steps");
             }
             disableUndo();
             console.log(ulIndex);

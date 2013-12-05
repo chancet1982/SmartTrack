@@ -5,10 +5,10 @@ var ulElement;
 var temp = null;
 var textAreaValue = $("#8 ul textarea").val();
 
-serverError =   "#1,#2,#3,#4,#6,#7,#8,#0,#10";
-frontEnd =      "#1,#2,#3,#4,#5,#7,#8,#0,#10";
-textual =       "#1,#2,#3,#4,#9,#0,#10";
-other =         "#1,#2,#3,#4,#6,#5,#7,#8,#0,#10";
+serverError =   "#1,#2,#3,#4,#6,#7,#8,#0,#10,#12";
+frontEnd =      "#1,#2,#3,#4,#5,#7,#8,#0,#10,#12";
+textual =       "#1,#2,#3,#4,#9,#0,#10,#12";
+other =         "#1,#2,#3,#4,#6,#5,#7,#8,#0,#10,#12";
 
 //Input effects
 function inputTitles() {

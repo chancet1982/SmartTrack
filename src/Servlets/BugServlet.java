@@ -83,7 +83,7 @@ public class BugServlet extends HttpServlet {
                         users.get(i).getFirstname() + "</li>");
             }
 
-        }else if (action.equalsIgnoreCase("setAssigned")){ //set users assigned to specific bug
+        } else if (action.equalsIgnoreCase("setAssigned")){ //set users assigned to specific bug
 
             int bugID = Integer.parseInt(request.getParameter("bugID"));
             String[] assignedUsers = request.getParameter("assignedUsers").split(":");
@@ -99,10 +99,16 @@ public class BugServlet extends HttpServlet {
             PrintWriter out = response.getWriter();
 
 
-        } else {
-            forward = "";
-            RequestDispatcher view = request.getRequestDispatcher(forward);
-            view.forward(request, response);
+        }else if (action.equalsIgnoreCase("autocompleteUsers")){
+            response.setContentType("text/html");
+            PrintWriter out = response.getWriter();
+            String searchFor = request.getParameter("searchFor");
+            List<UserBean> users= bugDAO.getUsersAutocomplete(searchFor,companyName) ;
+            for(int i=0; i<users.size(); i++){
+                out.print("<li data-user-id='"+ users.get(i).getUserid() +"'>"+ users.get(i).getFirstname()+" "+ users.get(i).getLastname() +"</li>");
+            }
+
+            } else {
         }
     }
 

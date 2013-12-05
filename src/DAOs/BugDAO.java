@@ -125,6 +125,45 @@ public class BugDAO {
         return users;
     }
 
+    public List<UserBean> getUsersAutocomplete(String searchFor , String companyName) {
+        List<UserBean> users = new ArrayList<UserBean>();
+        UserDAO userDAO = new UserDAO();
+        try {
+            statement = connection.createStatement();
+            rs = statement.executeQuery("SELECT * FROM indexDB.usersTable WHERE firstName LIKE '"+ searchFor + "%' AND companyName='"+companyName+"'");
+            while (rs.next()) {
+                UserBean user = new UserBean();
+                user.setUserid(rs.getInt("id"));
+                user.setFirstname(rs.getString("firstName"));
+                user.setLastname(rs.getString("lastName"));
+                users.add(user);
+            }
+
+            rs = statement.executeQuery("SELECT * FROM indexDB.usersTable WHERE lastName LIKE '"+ searchFor + "%' AND companyName='"+companyName+"'");
+            while (rs.next()) {
+                UserBean user = new UserBean();
+                user.setUserid(rs.getInt("id"));
+                user.setFirstname(rs.getString("firstName"));
+                user.setLastname(rs.getString("lastName"));
+                boolean isUserUnique = true;
+                for(int i=0;i<users.size();i++){
+                    if (user.getUserid() == users.get(i).getUserid() ){
+                        isUserUnique = false;
+                        break;
+                    }
+                }
+                if(isUserUnique == true){users.add(user);}
+            }
+
+            rs.close();
+            statement.close();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return users;
+    }
+
     public void assignUser(String companyName , int bugID , int userID){
         try {
             statement = connection.createStatement();
