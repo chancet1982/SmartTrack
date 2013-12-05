@@ -10,13 +10,12 @@ frontEnd =      "#1,#2,#3,#4,#5,#7,#8,#0,#10,#12";
 textual =       "#1,#2,#3,#4,#9,#0,#10,#12";
 other =         "#1,#2,#3,#4,#6,#5,#7,#8,#0,#10,#12";
 
-//Input effects
 function inputTitles() {
-    $("input[type=text], input[type=password], input[type=file], textarea").each(function() {
+    $('input[type=text], input[type=password], input[type=file], textarea').each(function ()  {
         $(this).val($(this).attr("title"));
     });
 
-    $("input[type=text], input[type=password], input[type=file],textarea").focus(function() {
+    $('input[type=text], input[type=password], input[type=file], textarea').focus(function ()  {
         if ($(this).val()==$(this).attr("title")) { $(this).val(""); }
     }).blur(function() {
         if ($(this).val()=="") { $(this).val($(this).attr("title")); }
@@ -49,6 +48,7 @@ function getUrlVar(key){
     return result && result[1] || "";
 }
 
+// Form validation
 function validateForm() {
 	$('form').each(function() {
 		var $formValid = true;
@@ -64,6 +64,33 @@ function validateForm() {
 	});
 }
 
+// Handling messages
+function showMessages() {
+    if (getUrlVar('message-success')) {
+        removeMessage();
+        $("#site-footer .message").prepend('<p>'+decodeURIComponent(getUrlVar('message-success'))+'</p>').addClass("success").show();
+    } else if (getUrlVar('message-error')) {
+        removeMessage();
+        $("#site-footer .message").prepend('<p>'+decodeURIComponent(getUrlVar('message-error'))+'</p>').addClass("error").show();
+    } else if (getUrlVar('message-info')) {
+        removeMessage();
+        $("#site-footer .message").prepend('<p>'+decodeURIComponent(getUrlVar('message-info'))+'</p>').addClass("info").show();
+    } else {
+        removeMessage();
+    }
+}
+
+function removeMessage() {
+    $('#site-footer .message p').remove();
+    $('#site-footer .message').removeClass("success").removeClass("error").removeClass("info").hide();
+}
+
+/*------------Do things on window resize------------*/
+$(document).on('change', 'form', function(){
+    validateForm();
+    showMessages();
+});
+
 /*------------Do things on window resize------------*/
 $(window).resize(function() {
 });
@@ -71,22 +98,7 @@ $(window).resize(function() {
 /*------------Do things on document ready------------*/
 $(document).ready(function() {
     inputTitles();
-
-    $(".site-footer .message").hide();
-    if (getUrlVar('message-success')) {
-        removeMessage();
-        $("#site-footer .message").prepend('<p>'+decodeURIComponent(getUrlVar('message-success'))+'</p>').addClass("success").show();
-    }
-
-    if (getUrlVar('message-error')) {
-        removeMessage();
-        $("#site-footer .message").prepend('<p>'+decodeURIComponent(getUrlVar('message-error'))+'</p>').addClass("error").show();
-    }
-
-    if (getUrlVar('message-info')) {
-        removeMessage();
-        $("#site-footer .message").prepend('<p>'+decodeURIComponent(getUrlVar('message-info'))+'</p>').addClass("info").show();
-    }
+    $("#ajax-loader").hide();
 
     /*--- assignUsersToProjects.jsp ---*/
     //Load assigned users from database
@@ -137,23 +149,23 @@ $(document).ready(function() {
 		if ( $(this).hasClass('collapse')) {
 			$(this).hide().closest('content').hide();
 			$(this).parent().switchClass('expanded', 'collapsed', 300);
-			$(this).removeClass('collapse').addClass('expand');			
+			$(this).removeClass('collapse').addClass('expand');
 			$(this).show().closest('content').show();
 		} else {
 			$(this).hide().closest('content').hide();
 			$(this).parent().switchClass('collapsed', 'expanded', 300);
-			$(this).removeClass('expand').addClass('collapse');			
-			$(this).show().closest('content').show();			
+			$(this).removeClass('expand').addClass('collapse');
+			$(this).show().closest('content').show();
 		}
 	});
 
-    $('.toggleable').hover(function(){ 
-        mouse_is_inside=true; 
-    }, function(){ 
-        mouse_is_inside=false; 
+    $('.toggleable').hover(function(){
+        mouse_is_inside=true;
+    }, function(){
+        mouse_is_inside=false;
     });
 
-    $("body").mouseup(function(){ 
+    $("body").mouseup(function(){
 		if($('.toggleable').hasClass('expanded')) {
 			if(! mouse_is_inside){
 				$('.toggleable .toggle').trigger('click');
@@ -161,16 +173,14 @@ $(document).ready(function() {
 		}
     });
 
-	//Add invalid to empty required inputs
-	/*$('input').each(function() {
-		if (!$(this).val() && $(this).hasClass('required')) $(this).addClass('invalid');
-	});  */
-	
-	//Initial form validation
-	validateForm();
+    // Message close button
+    $(document).on('click', '#site-footer .message a.close', function ()  {
+        removeMessage();
+    });
 
-	//On every keypress validate the value of the input if required, validate the form as well
-	$('input:focus').keyup(function() {
+	//Field validation (a part of form validation)
+    $(document).on('keyup', 'input:focus', function ()  {
+	//$('input:focus').keyup(function() {
 		if ($(this).hasClass('required')) {
 			if ($(this).hasClass('password')) {//Password validation
 				if($(this).val().length > 4) {
@@ -204,32 +214,20 @@ $(document).ready(function() {
 		validateForm();
 	});
 
-	//Add invalid to empty required inputs
-
-	//Deactivate inactive links
-	$('.inactive').click(function(e) {
+    //Field submit deactivation (a part of form validation)
+    $(document).on('click', '.inactive', function (e)  {
 		e.preventDefault();
 	});
 
 	//Highlight selected
-	$('#site-navigation a').click(function() {
+	/*$('#site-navigation a').click(function() {
 		if (!$(this).hasClass('inactive')) {
 			$(this).parent().parent().each(function(){
 				$('li').removeClass("active");
 			});
 			$(this).parent().addClass('active')
 		}
-	});
-
-    // Message settings
-    $('#site-footer .message a.close').click(function() {
-        removeMessage();
-    });
-
-    function removeMessage() {
-        $('#site-footer .message p').remove();
-        $('#site-footer .message').removeClass("success").removeClass("error").removeClass("info").hide();
-    }
+	});*/
 
     /*---------AJAX SECTION---------*/
     //assignUsersToProjects.jsp
@@ -282,7 +280,7 @@ $(document).ready(function() {
                     removeMessage();
                     $("#site-footer .message").prepend('<p>Value is unique</p>').addClass("success").show();
                 }else{
-                    thisInput.addClass("unique").removeClass("not-unique");
+                    thisInput.removeClass("unique").addClass("not-unique");
                     removeMessage();
                     $("#site-footer .message").prepend('<p>Error: Value is already being used</p>').addClass("error").show();
                 }

@@ -48,7 +48,11 @@
 
         $.ajax({
             url: "inviteUsersForm.jsp",
+            beforeSend: function(){
+                $("#ajax-loader").show();
+            },
             success: function(data){
+                $("#ajax-loader").hide();
                 $("#dialog").html(data);
                 inputTitles()
             }

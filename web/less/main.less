@@ -330,7 +330,7 @@ input {
     border-width: 3px;
     outline-width:0;
     border-color:@color-info;
-    .shadow
+    .shadow;
   }
 
   &.invalid,
@@ -721,7 +721,22 @@ z-index:2;
       border-color:transparent;
     }
   }
+}
 
+/*--- ajax loader ---*/
+#ajax-loader {
+  width: 120px;
+  height: 40px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-top: -40px;
+  margin-left: -80px;
+  background-color: #ffffff;
+  text-align:center;
+  border:solid 3px #eeeeee;
+  padding:20px;
+  .shadow;
 }
 
 /* css for timepicker */
