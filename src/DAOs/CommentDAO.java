@@ -19,12 +19,17 @@ public class CommentDAO {
         connection = DB.getConnection();
     }
 
-    public void addComment( String companyName , CommentBean comment, int userID, int bugID)  {
+    public void addComment( String companyName , CommentBean comment)  {
+        System.out.println("Should create comment (servlet):");
+        System.out.println("comment: " + comment.getCommentContent());
+        System.out.println("bugID: " + comment.getCommentUserID());
+        System.out.println("userID: " + comment.getCommentBugID());
+
         try {
             preparedStatement = connection.prepareStatement("INSERT INTO "+ companyName +".commentstable(commentContent , userID, bugID) VALUES (?,?,?)");
             preparedStatement.setString(1, comment.getCommentContent());
-            preparedStatement.setInt(2, userID);
-            preparedStatement.setInt(3, bugID);
+            preparedStatement.setString(2, comment.getCommentUserID());
+            preparedStatement.setInt(3, comment.getCommentBugID());
             preparedStatement.executeUpdate();
 
             preparedStatement.close();
@@ -58,13 +63,13 @@ public class CommentDAO {
                 CommentBean comment = new CommentBean();
                 comment.setCommentID(rs.getInt("commentID"));
                 comment.setCommentContent(rs.getString("commentContent"));
-                comment.setCommentUserID(rs.getInt("userID"));
+                comment.setCommentUserID(rs.getString("userID"));
                 comment.setCreated(rs.getString("created"));
                 comments.add(comment);
             }
 
             rs.close();
-            statement.close();
+            preparedStatement.close();
 
         } catch (SQLException e) {
             e.printStackTrace();

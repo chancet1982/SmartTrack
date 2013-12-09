@@ -42,6 +42,11 @@
         <servlet-name>UploadServlet</servlet-name>
         <servlet-class>Servlets.UploadServlet</servlet-class>
     </servlet>
+    <servlet>
+        <display-name>CommentServlet</display-name>
+        <servlet-name>CommentServlet</servlet-name>
+        <servlet-class>Servlets.CommentServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>UserServlet</servlet-name>
         <url-pattern>/UserServlet</url-pattern>
@@ -69,6 +74,10 @@
     <servlet-mapping>
         <servlet-name>UploadServlet</servlet-name>
         <url-pattern>/UploadServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CommentServlet</servlet-name>
+        <url-pattern>/CommentServlet</url-pattern>
     </servlet-mapping>
     <context-param>
         <description>Location to store uploaded file</description>

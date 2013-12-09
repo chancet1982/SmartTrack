@@ -85,7 +85,6 @@ public class BugServlet extends HttpServlet {
             for(int i=0; i<projects.size(); i++){
                 out.write("<option value='"+ projects.get(i).getProjectID() +"'>"+ projects.get(i).getProjectName() +" v. " +projects.get(i).getProjectID()+"</option>");
             }
-
         } else if (action.equalsIgnoreCase("getAssigned")){ //get user assigned to specific bug
             response.setContentType("text/html");
             int bugID = Integer.parseInt(request.getParameter("bugID"));

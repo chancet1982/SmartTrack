@@ -1,7 +1,10 @@
 package Servlets;
 
 import Beans.CommentBean;
+import Beans.ProjectBean;
+import DAOs.BugDAO;
 import DAOs.CommentDAO;
+import DAOs.ProjectDAO;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -18,7 +21,7 @@ public class CommentServlet extends HttpServlet{
     CommentDAO commentDAO;
 
     private static String LIST_COMMENTS = "/listProjects.jsp";
-    private static String INSERT_COMMENT = "/ProjectServlet?action=listComments";
+    private static String INSERT_COMMENT = "/BugServlet?action=ListBugs&message-success=Comment added successfully";
 
     public CommentServlet(){
         super();
@@ -33,7 +36,7 @@ public class CommentServlet extends HttpServlet{
         Cookie[] cookies ;
         String companyName = null;
         int bugID = 0;
-        //TODO get bug ID dynamically
+
         cookies = request.getCookies();
         for (int i = 0; i < cookies.length; i++){
             Cookie cookie = cookies[i];
@@ -41,17 +44,23 @@ public class CommentServlet extends HttpServlet{
         }
 
         if (action.equalsIgnoreCase("delete")){  //Delete Single
-            int commentID = Integer.parseInt(request.getParameter("commentID"));
-            commentDAO.deleteComment(companyName, commentID);
+            /*int commentID = Integer.parseInt(request.getParameter("commentID"));
+            comment.deleteComment(companyName, commentID);
             forward = LIST_COMMENTS;
-            request.setAttribute("comments", commentDAO.getAllCommentsForBug(companyName , bugID));
+            request.setAttribute("comments", comment.getAllCommentsForBug(companyName , bugID));
             RequestDispatcher view = request.getRequestDispatcher(forward);
-            view.forward(request, response);
+            view.forward(request, response);*/
         } else if (action.equalsIgnoreCase("listComments")){ //List All
-            forward = LIST_COMMENTS;
-            request.setAttribute("comments", commentDAO.getAllCommentsForBug(companyName , bugID));
-            RequestDispatcher view = request.getRequestDispatcher(forward);
-            view.forward(request, response);
+            bugID = Integer.parseInt(request.getParameter("bugID"));
+            response.setContentType("text/html");
+            PrintWriter out = response.getWriter();
+            List<CommentBean> comments = commentDAO.getAllCommentsForBug(companyName, bugID) ;
+            for(int i=0; i<comments.size(); i++){
+                out.write("<input value='"+ comments.get(i).getCommentBugID() +"'>"+
+                        "<input value='"+ comments.get(i).getCommentUserID() +"'>"+
+                        "<input value='"+ comments.get(i).getCommentContent() +"'>");
+            }
+        } else if (action.equalsIgnoreCase("createComment")){ //List All
 
         } else {
             forward = "";
@@ -61,22 +70,31 @@ public class CommentServlet extends HttpServlet{
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        CommentBean comment = new CommentBean();
-        comment.setCommentContent(request.getParameter("commentContent"));
 
-        //get company name + userID from cookies
+        //get company name from cookie
         Cookie[] cookies ;
         String companyName = null;
-        int userID = 0;
+        String userID = null;
+        int bugID = 0;
+        //TODO get bug ID dynamically
         cookies = request.getCookies();
         for (int i = 0; i < cookies.length; i++){
             Cookie cookie = cookies[i];
             if(cookie.getName().equals("cid")){ companyName = cookie.getValue(); }
-            if(cookie.getName().equals("uid")){  userID = Integer.parseInt(cookie.getValue()); }
+            if(cookie.getName().equals("uid")){  userID = cookie.getValue(); }
         }
 
-        commentDAO.addComment( companyName , comment, userID, userID );
+        System.out.println("Should create comment (servlet):");
+        System.out.println("comment: " + request.getParameter("commentContent"));
+        System.out.println("bugID: " + request.getParameter("bugID"));
+        System.out.println("userID: " + request.getParameter("userID"));
+        CommentBean comment = new CommentBean();
+
+        comment.setCommentContent(request.getParameter("commentContent"));
+        comment.setCommentBugID(Integer.parseInt(request.getParameter("bugID")));
+        comment.setCommentUserID(request.getParameter("userID"));
+
+        commentDAO.addComment( companyName , comment);
         response.sendRedirect(INSERT_COMMENT);
-        //TODO figure out a way to retrieve the bug ID
     }
 }

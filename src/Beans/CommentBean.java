@@ -3,7 +3,7 @@ package Beans;
 public class CommentBean {
     private int commentID;
     private String commentContent;
-    private int commentUserID;
+    private String commentUserID;
     private int commentBugID;
     private String created;
     private String modified;
@@ -32,11 +32,11 @@ public class CommentBean {
         this.commentID = commentID;
     }
 
-    public int getCommentUserID() {
+    public String getCommentUserID() {
         return commentUserID;
     }
 
-    public void setCommentUserID(int commentUserID) {
+    public void setCommentUserID(String commentUserID) {
         this.commentUserID = commentUserID;
     }
 
