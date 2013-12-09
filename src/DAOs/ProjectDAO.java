@@ -93,7 +93,7 @@ public class ProjectDAO {
 
             while (rs.next()) {
                 UserBean user = new UserBean();
-                user = userDAO.getUserById(rs.getInt("userID"));
+                user = userDAO.getUserByID(rs.getInt("userID"));
                 users.add(user);
             }
 

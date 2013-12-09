@@ -1,6 +1,7 @@
 package DAOs;
 
 import Beans.ProjectBean;
+import Beans.BugBean;
 import Beans.UserBean;
 import DB.DB;
 
@@ -79,11 +80,34 @@ public class BugDAO {
         }
     }
 
+    public BugBean getBugByID(String companyName , int bugID) {
+        BugBean bug = new BugBean();
+        try {
+            preparedStatement = connection.prepareStatement("SELECT * FROM " + companyName + ".bugsTable WHERE bugID=?");
+            preparedStatement.setInt(1, bugID);
+            rs = preparedStatement.executeQuery();
+
+            if (rs.next()) {
+                bug.setBugID(rs.getInt("bugID"));
+                bug.setBugCategory(rs.getString("bugCategory"));
+                bug.setBugTitle(rs.getString("bugTitle"));
+                bug.setBugDescription(rs.getString("bugDescription"));
+            }
+
+            rs.close();
+            preparedStatement.close();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return bug;
+    }
+
     public List<BugBean> getAllBugsFromCompany(String companyName) {
         List<BugBean> bugs = new ArrayList<BugBean>();
         try {
             statement = connection.createStatement();
-            rs = statement.executeQuery("SELECT * FROM "+companyName+".bugstable");
+            rs = statement.executeQuery("SELECT * FROM "+companyName+".bugsTable");
 
             while (rs.next()) {
                 BugBean bug = new BugBean();
@@ -102,6 +126,29 @@ public class BugDAO {
         return bugs;
     }
 
+    public List<BugBean> getAllBugsForProject(String companyName, int projectID) {
+        List<BugBean> bugs = new ArrayList<BugBean>();
+        try {
+            preparedStatement = connection.prepareStatement("SELECT * FROM " + companyName + ".bugsTable WHERE projectID=?");
+            preparedStatement.setInt(1, projectID);
+            rs = preparedStatement.executeQuery();
+
+            while (rs.next()) {
+                BugBean bug = new BugBean();
+                bug.setBugID(rs.getInt("bugID"));
+                bug.setBugTitle(rs.getString("bugTitle"));
+                bug.setBugTitle(rs.getString("bugDescription"));
+                bugs.add(bug);
+            }
+
+            rs.close();
+            statement.close();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return bugs;
+    }
     public List<UserBean> getUsersAssigned(String companyName , int bugID) {
         List<UserBean> users = new ArrayList<UserBean>();
         UserDAO userDAO = new UserDAO();
@@ -112,7 +159,7 @@ public class BugDAO {
 
             while (rs.next()) {
                 UserBean user = new UserBean();
-                user = userDAO.getUserById(rs.getInt("userID"));
+                user = userDAO.getUserByID(rs.getInt("userID"));
                 users.add(user);
             }
 

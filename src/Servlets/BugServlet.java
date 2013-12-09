@@ -25,6 +25,7 @@ public class BugServlet extends HttpServlet {
     private static String LIST_BUGS = "/listBugs.jsp";
     private static String ASSIGN_BUGS = "/assignUsersToBugs.jsp";
     private static String INSERT_BUG = "/BugServlet?action=listBugs&message-success=Bug created successfully";
+    private static String EDIT_BUG = "/editBug.jsp";
 
     public BugServlet(){
         super();
@@ -38,6 +39,7 @@ public class BugServlet extends HttpServlet {
         //get company name from cookie
         Cookie[] cookies ;
         String companyName = null;
+        int projectID = 0;
         cookies = request.getCookies();
         for (int i = 0; i < cookies.length; i++){
             Cookie cookie = cookies[i];
@@ -51,9 +53,21 @@ public class BugServlet extends HttpServlet {
             request.setAttribute("bugs", bugDAO.getAllBugsFromCompany(companyName));
             RequestDispatcher view = request.getRequestDispatcher(forward);
             view.forward(request, response);
+        } else if (action.equalsIgnoreCase("edit")){  //edit Single
+            int bugID = Integer.parseInt(request.getParameter("bugID"));
+            BugBean bug = bugDAO.getBugByID(companyName, bugID);
+            forward = EDIT_BUG;
+            request.setAttribute("bug", bug);
+            RequestDispatcher view = request.getRequestDispatcher(forward);
+            view.forward(request, response);
         } else if (action.equalsIgnoreCase("listBugs")){ //List All
             forward = LIST_BUGS;
             request.setAttribute("bugs", bugDAO.getAllBugsFromCompany(companyName));
+            RequestDispatcher view = request.getRequestDispatcher(forward);
+            view.forward(request, response);
+        } else if (action.equalsIgnoreCase("listBugsForProject")){ //List All
+            forward = LIST_BUGS;
+            request.setAttribute("bugs", bugDAO.getAllBugsForProject(companyName, projectID));
             RequestDispatcher view = request.getRequestDispatcher(forward);
             view.forward(request, response);
         } else if (action.equalsIgnoreCase("assignBugs")){ //Assign users to bugs
@@ -69,7 +83,7 @@ public class BugServlet extends HttpServlet {
             ProjectDAO projectDAO = new ProjectDAO();
             List<ProjectBean> projects = projectDAO.getAllProjectsFromCompany(companyName) ;
             for(int i=0; i<projects.size(); i++){
-                out.write("<option value='"+ projects.get(i).getProjectID() +"'>"+ projects.get(i).getProjectName() +"</option>");
+                out.write("<option value='"+ projects.get(i).getProjectID() +"'>"+ projects.get(i).getProjectName() +" v. " +projects.get(i).getProjectID()+"</option>");
             }
 
         } else if (action.equalsIgnoreCase("getAssigned")){ //get user assigned to specific bug

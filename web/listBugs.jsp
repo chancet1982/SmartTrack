@@ -30,6 +30,7 @@
                         <td><c:out value="${bug.bugID}" /></td>
                         <td><c:out value="${bug.bugTitle}" /></td>
                         <td><c:out value="${bug.bugDescription}" /></td>
+                        <td><a href="BugServlet?action=edit&bugID=<c:out value="${bug.bugID}"/>">Edit</a></td>
                         <td><a href="BugServlet?action=delete&bugID=<c:out value="${bug.bugID}"/>">Delete</a></td>
                     </tr>
                 </c:forEach>
@@ -43,22 +44,6 @@
 <script type="text/javascript">
     $(document).ready(function(){
 
-        $.ajax({
-            url: "createBugForm.jsp",
-            beforeSend: function(){
-                $("#ajax-loader").show();
-            },
-            success: function(data){
-                $("#ajax-loader").hide();
-                $("#dialog").html(data);
-                inputTitles();
-            }
-        });
-
-        $("#createBug").click(function () {
-            $("#dialog").dialog("open");
-        });
-
         $("#dialog").dialog({
             bgiframe: true,
             autoOpen: false,
@@ -66,6 +51,24 @@
             modal: true,
             height:(0.9*$( window ).height())
         });
+
+        $("#createBug").click(function () {
+
+            $.ajax({
+                url: "createBugForm.jsp",
+                beforeSend: function(){
+                    $("#ajax-loader").show();
+                },
+                success: function(data){
+                    $("#ajax-loader").hide();
+                    $("#dialog").html(data);
+                    inputTitles();
+                }
+            });
+
+            $("#dialog").dialog("open");
+        });
+
     });
 </script>
 

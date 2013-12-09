@@ -47,8 +47,8 @@ public class UserServlet extends HttpServlet {
             view.forward(request, response);
         } else if (action.equalsIgnoreCase("edit")){ //Edit Single
             forward = EDIT;
-            int userId = Integer.parseInt(request.getParameter("userId"));
-            UserBean user = dao.getUserById(userId);
+            int userID = Integer.parseInt(request.getParameter("userId"));
+            UserBean user = dao.getUserByID(userID);
             request.setAttribute("user", user);
             RequestDispatcher view = request.getRequestDispatcher(forward);
             view.forward(request, response);

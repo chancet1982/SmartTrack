@@ -135,11 +135,11 @@ public class UserDAO {
         return users;
     }
 
-    public UserBean getUserById(int userId) {
+    public UserBean getUserByID(int userID) {
         UserBean user = new UserBean();
         try {
             preparedStatement = connection.prepareStatement("SELECT * FROM indexdb.usersTable WHERE id=?");
-            preparedStatement.setInt(1, userId);
+            preparedStatement.setInt(1, userID);
             rs = preparedStatement.executeQuery();
 
             if (rs.next()) {
