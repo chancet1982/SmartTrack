@@ -99,6 +99,34 @@
 </form>
 
 <script type="text/javascript">
+    var ulIndex;
+    var ulElement;
+    var temp = null;
+    var textAreaValue = $("#8 ul textarea").val();
+
+    serverError =   "#1,#2,#3,#4,#6,#7,#8,#0,#10,#12";
+    frontEnd =      "#1,#2,#3,#4,#5,#7,#8,#0,#10,#12";
+    textual =       "#1,#2,#3,#4,#9,#0,#10,#12";
+    other =         "#1,#2,#3,#4,#6,#5,#7,#8,#0,#10,#12";
+
+    function adjustSteps() {
+        $('li#8 > ul.step').each(function(){
+            index = $(this).index();
+            index++;
+            $(this).attr( "id" , "step" + index )
+            $(this).find("label").text("Step " + index );
+            $(this).find("textarea").attr( "name" , "stepContent" + index );
+            console.log('adjusted');
+        });
+    }
+
+    function disableUndo(){
+        temp = null;
+        $("#undoDelete").addClass("inactive").attr("disabled", "disabled");
+    }
+    function enableUndo(){
+        $("#undoDelete").removeClass("inactive").removeAttr("disabled");
+    }
 
     //AUTOCOMPLETE
     $(document).on("mousedown",".autocompleteContainter li",function(){
@@ -132,28 +160,24 @@
     });
     //autocomplete end
 
+    //Category select
+    $(document).on("change","#new-bug #bug-category",function(){
+        selectedOption = $("#new-bug #bug-category option:selected" );
+        console.log(selectedOption.val());
+        $(this).parent().parent().children().not(":first-child").addClass("hidden");
 
-    $(document).ready(function(){
-        $.ajax({
-            type: "GET",
-            url: "/BugServlet?action=getProjectsInDropdown",
-            dataType: "text",
-            async: false,
-            success: function(data) {
-                $("#projectName").append(data);
-                inputTitles()
-            },
-            error: function () {
-                $("#site-footer .message p").remove();
-                $("#site-footer .message").prepend('<p>Error: Cannot get Project Names</p>').addClass("error").show();
-            }
-        });
-
-        $('#datepicker').datetimepicker({
-            controlType: 'select',
-            timeFormat: 'hh:mm tt'
-        });
+        if (selectedOption.val() == 'server-error'){
+            $(serverError).removeClass("hidden");
+        }else if (selectedOption.val() == 'front-end'){
+            $(frontEnd).removeClass("hidden");
+        }else if (selectedOption.val() == 'textual'){
+            $(textual).removeClass("hidden");
+        }else if (selectedOption.val() == 'other'){
+            $(other).removeClass("hidden");
+        }
     });
+
+
 
     //Step Addition
     $("#addStep").click(function(){
@@ -200,22 +224,7 @@
         }
     });
 
-    //Category select
-    $("#new-bug #bug-category").change(function(){
-        selectedOption = $("#new-bug #bug-category option:selected" );
-        console.log(selectedOption.val());
-        $(this).parent().parent().children().not(":first-child").addClass("hidden");
 
-        if (selectedOption.val() == 'server-error'){
-            $(serverError).removeClass("hidden");
-        }else if (selectedOption.val() == 'front-end'){
-            $(frontEnd).removeClass("hidden");
-        }else if (selectedOption.val() == 'textual'){
-            $(textual).removeClass("hidden");
-        }else if (selectedOption.val() == 'other'){
-            $(other).removeClass("hidden");
-        }
-    });
 
     $('.step textarea').on('blur' , function(){
         textAreaValue = $(this).val();
@@ -260,5 +269,28 @@
         while($(this).outerHeight() < this.scrollHeight + parseFloat($(this).css("borderTopWidth")) + parseFloat($(this).css("borderBottomWidth"))) {
             $(this).height($(this).height()+1);
         };
+    });
+
+    $(document).ready(function(){
+        $.ajax({
+            type: "GET",
+            url: "/BugServlet?action=getProjectsInDropdown",
+            dataType: "text",
+            async: false,
+            success: function(data) {
+                $("#projectName").append(data);
+                inputTitles();
+            },
+            error: function () {
+                $("#site-footer .message p").remove();
+                $("#site-footer .message").prepend('<p>Error: Cannot get Project Names</p>').addClass("error").show();
+            }
+        });
+
+        $('#datepicker').datetimepicker({
+            controlType: 'select',
+            timeFormat: 'hh:mm tt'
+        });
+
     });
 </script>

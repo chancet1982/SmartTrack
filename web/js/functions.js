@@ -1,14 +1,5 @@
 /*------------General Functions------------*/
 var mouse_is_inside = false;
-var ulIndex;
-var ulElement;
-var temp = null;
-var textAreaValue = $("#8 ul textarea").val();
-
-serverError =   "#1,#2,#3,#4,#6,#7,#8,#0,#10,#12";
-frontEnd =      "#1,#2,#3,#4,#5,#7,#8,#0,#10,#12";
-textual =       "#1,#2,#3,#4,#9,#0,#10,#12";
-other =         "#1,#2,#3,#4,#6,#5,#7,#8,#0,#10,#12";
 
 function inputTitles() {
     $('input[type=text], input[type=password], input[type=file], textarea').each(function ()  {
@@ -20,26 +11,6 @@ function inputTitles() {
     }).blur(function() {
         if ($(this).val()=="") { $(this).val($(this).attr("title")); }
     });
-}
-
-//Readjust Leftovers from the Bug form
-function adjustSteps() {
-    $('li#8 > ul.step').each(function(){
-        index = $(this).index();
-        index++;
-        $(this).attr( "id" , "step" + index )
-        $(this).find("label").text("Step " + index );
-        $(this).find("textarea").attr( "name" , "stepContent" + index );
-        console.log('adjusted');
-    });
-}
-
-function disableUndo(){
-    temp = null;
-    $("#undoDelete").addClass("inactive").attr("disabled", "disabled");
-}
-function enableUndo(){
-    $("#undoDelete").removeClass("inactive").removeAttr("disabled");
 }
 
 //get URL parameters
