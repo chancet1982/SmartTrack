@@ -285,6 +285,7 @@
                 $("#site-footer .message p").remove();
                 $("#site-footer .message").prepend('<p>Error: Cannot get Project Names</p>').addClass("error").show();
             }
+
         });
 
         $('#datepicker').datetimepicker({

@@ -657,6 +657,50 @@ h4 {font-size:125%;padding-bottom:(@padding-base * 2 )}
 			}
 		}	
 	}
+  #comments {
+    .comment {
+      &.odd{
+        background-color: @color-accent;
+
+        .user {
+          display:block;
+          width:10%;
+          height:48px;
+          float:left;
+          background-color: @color-error;
+          overflow: hidden;
+        }
+
+        .content {
+          display:block;
+          width:90%;
+          height:auto;
+          float:left;
+        }
+      }
+
+      &.even{
+        background-color: @color-error;
+
+        .user {
+          background-color: @color-accent;
+          display:block;
+          width:10%;
+          height:48px;
+          float:right;
+        }
+
+        .content {
+          display:block;
+          width:90%;
+          height:auto;
+          float:right;
+        }
+      }
+
+
+    }
+  }
 }
 
 /*FOOTER*/

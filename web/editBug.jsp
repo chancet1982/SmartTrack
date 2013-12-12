@@ -18,15 +18,15 @@
             <ul>
                 <li>
                     <label>Bug ID</label>
-                    <input name="userEmail" value="<c:out value="${bug.bugID}"/>" class="required email" readonly="true" />
+                    <input name="userEmail" value="<c:out value="${bug.bugID}"/>" class="required email" readonly="true" >
                 </li>
                 <li>
                     <label>Bug Title</label>
-                    <input name="firstName" value="<c:out value="${bug.bugTitle}"/>" class="required"/>
+                    <input name="firstName" value="<c:out value="${bug.bugTitle}"/>" class="required">
                 </li>
                 <li>
                     <label>Bug description</label>
-                    <input name="lastName" value="<c:out value="${bug.bugDescription}"/>" class="required" />
+                    <input name="lastName" value="<c:out value="${bug.bugDescription}"/>" class="required" >
                 </li>
                 <li>
                     <label>Comments</label>
@@ -36,8 +36,7 @@
                         <input title="bug ID" class="hidden" name="bugID" value="<c:out value="${bug.bugID}"/>">
                         <input title="user ID" id="userID" class="hidden" name="userID" value="">
                         <input title="comment Content" class="" name="commentContent" value="">
-                        <input type="submit" value="Create">
-                        <a id="createComment" class="button round-corners"><span class="icon add-comment"></span>Add Comment</a>
+                        <input type="submit" value="add">
                     </form>
 
                 </li>

@@ -2,9 +2,11 @@ package Servlets;
 
 import Beans.CommentBean;
 import Beans.ProjectBean;
+import Beans.UserBean;
 import DAOs.BugDAO;
 import DAOs.CommentDAO;
 import DAOs.ProjectDAO;
+import DAOs.UserDAO;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -19,6 +21,7 @@ import java.util.List;
 public class CommentServlet extends HttpServlet{
 
     CommentDAO commentDAO;
+    UserDAO userDAO;
 
     private static String LIST_COMMENTS = "/listProjects.jsp";
     private static String INSERT_COMMENT = "/BugServlet?action=ListBugs&message-success=Comment added successfully";
@@ -55,16 +58,21 @@ public class CommentServlet extends HttpServlet{
             response.setContentType("text/html");
             PrintWriter out = response.getWriter();
             List<CommentBean> comments = commentDAO.getAllCommentsForBug(companyName, bugID) ;
+
             for(int i=0; i<comments.size(); i++){
+                System.out.print("Email: " + comments.get(i).getCommentUserID());
+                //TODO get user initials
+                //System.out.print(user.getInitials());
+                //UserBean user = userDAO.getUserByEmail(comments.get(i).getCommentUserID());
                 if (i % 2 == 0) {
                     // even
                     out.write("<li class='comment even clearfix'>"+
-                            "<span class='user'><span class='icon message'></span>"+ comments.get(i).getCommentUserID() +"</span>"+
+                            "<span class='user'><span class='icon user'></span>SM</span>"+
                             "<span class='content'>"+ comments.get(i).getCommentContent() +"</span></li>");
                 } else {
                     // odd
                     out.write("<li class='comment odd clearfix'>"+
-                            "<span class='user'><span class='icon message'></span>"+ comments.get(i).getCommentUserID() +"</span>"+
+                            "<span class='user'><span class='icon user'></span>SM</span>"+
                             "<span class='content'>"+ comments.get(i).getCommentContent() +"</span></li>");
                 }
             }

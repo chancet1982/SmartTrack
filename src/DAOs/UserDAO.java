@@ -117,7 +117,6 @@ public class UserDAO {
             rs = statement.executeQuery("SELECT * FROM indexdb.usersTable WHERE companyName='" + companyName + "'");
             while (rs.next()) {
                 UserBean user = new UserBean();
-                //String initials = rs.getString("firstName").substring(0,1) + rs.getString("lastName").substring(0,1);
                 rs.getString("lastName");
                 user.setUserid(rs.getInt("id"));
                 user.setFirstname(rs.getString("firstName"));
@@ -174,6 +173,7 @@ public class UserDAO {
                 user.setCompanyName(rs.getString("companyName"));
                 user.setFirstname(rs.getString("firstName"));
                 user.setLastname(rs.getString("lastName"));
+                user.setInitials(rs.getString("firstName").substring(0,1) + rs.getString("lastName").substring(0,1));
                 user.setUseremail(rs.getString("userEmail"));
                 user.setUserpassword(rs.getString("userPassword"));
             }

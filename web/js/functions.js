@@ -6,11 +6,11 @@ function inputTitles() {
         $(this).val($(this).attr("title"));
     });
 
-    $('input[type=text], input[type=password], input[type=file], textarea').focus(function ()  {
+    /*$('input[type=text], input[type=password], input[type=file], textarea').focus(function ()  {
         if ($(this).val()==$(this).attr("title")) { $(this).val(""); }
     }).blur(function() {
         if ($(this).val()=="") { $(this).val($(this).attr("title")); }
-    });
+    });*/
 }
 
 //get URL parameters
@@ -69,6 +69,14 @@ $(window).resize(function() {
 /*------------Do things on document ready------------*/
 $(document).ready(function() {
     inputTitles();
+    $(document).on('focus', 'input[type=text], input[type=password], input[type=file], textarea', function() {
+        if ($(this).val()==$(this).attr("title")) { $(this).val(""); }
+    });
+
+    $(document).on('blur', 'input[type=text], input[type=password], input[type=file], textarea', function() {
+        if ($(this).val()=="") { $(this).val($(this).attr("title")); }
+    });
+
     showMessages();
     $("#ajax-loader").hide();
 

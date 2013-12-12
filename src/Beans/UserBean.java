@@ -83,4 +83,14 @@ public class UserBean {
     private boolean ismanager;
     private boolean isreporter;
 
+    public String getInitials() {
+        return initials;
+    }
+
+    public void setInitials(String initials) {
+        this.initials = initials;
+    }
+
+    private String initials;
+
 }
