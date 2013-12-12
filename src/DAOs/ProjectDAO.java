@@ -20,9 +20,11 @@ public class ProjectDAO {
     public void addProject( String companyName , ProjectBean project)  {
         try {
             String projectID = null;
-            preparedStatement = connection.prepareStatement("INSERT INTO "+ companyName +".projecttable(projectName , projectVersion) VALUES (?,?)");
+            preparedStatement = connection.prepareStatement("INSERT INTO "+ companyName +".projecttable(projectName , projectVersion, startDate , endDate) VALUES (?,?,?,?)");
             preparedStatement.setString(1, project.getProjectName());
             preparedStatement.setString(2, project.getProjectVersion());
+            preparedStatement.setString(3, project.getStartDate());
+            preparedStatement.setString(4, project.getEndDate());
             preparedStatement.executeUpdate();
 
             statement = connection.createStatement();

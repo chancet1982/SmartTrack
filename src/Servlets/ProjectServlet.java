@@ -106,6 +106,8 @@ public class ProjectServlet extends HttpServlet{
         ProjectBean project = new ProjectBean();
         project.setProjectName(request.getParameter("projectName"));
         project.setProjectVersion(request.getParameter("projectVersion"));
+        project.setStartDate(request.getParameter("startDate"));
+        project.setEndDate(request.getParameter("endDate"));
 
         //get company name from cookie
         Cookie[] cookies ;
