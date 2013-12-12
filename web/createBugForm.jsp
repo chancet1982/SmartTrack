@@ -141,6 +141,7 @@
             async: false,
             success: function(data) {
                 $("#projectName").append(data);
+                inputTitles()
             },
             error: function () {
                 $("#site-footer .message p").remove();
@@ -215,6 +216,7 @@
             $(other).removeClass("hidden");
         }
     });
+
     $('.step textarea').on('blur' , function(){
         textAreaValue = $(this).val();
     });

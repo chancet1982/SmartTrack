@@ -33,8 +33,8 @@
                     <ul id="comments">
                     </ul>
                     <form action="CommentServlet" method="POST">
-                        <input title="bug ID" class="" name="bugID" value="<c:out value="${bug.bugID}"/>">
-                        <input title="user ID" id="userID" class="" name="userID" value="">
+                        <input title="bug ID" class="hidden" name="bugID" value="<c:out value="${bug.bugID}"/>">
+                        <input title="user ID" id="userID" class="hidden" name="userID" value="">
                         <input title="comment Content" class="" name="commentContent" value="">
                         <input type="submit" value="Create">
                         <a id="createComment" class="button round-corners"><span class="icon add-comment"></span>Add Comment</a>

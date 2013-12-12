@@ -56,9 +56,17 @@ public class CommentServlet extends HttpServlet{
             PrintWriter out = response.getWriter();
             List<CommentBean> comments = commentDAO.getAllCommentsForBug(companyName, bugID) ;
             for(int i=0; i<comments.size(); i++){
-                out.write("<input value='"+ comments.get(i).getCommentBugID() +"'>"+
-                        "<input value='"+ comments.get(i).getCommentUserID() +"'>"+
-                        "<input value='"+ comments.get(i).getCommentContent() +"'>");
+                if (i % 2 == 0) {
+                    // even
+                    out.write("<li class='comment even clearfix'>"+
+                            "<span class='user'><span class='icon message'></span>"+ comments.get(i).getCommentUserID() +"</span>"+
+                            "<span class='content'>"+ comments.get(i).getCommentContent() +"</span></li>");
+                } else {
+                    // odd
+                    out.write("<li class='comment odd clearfix'>"+
+                            "<span class='user'><span class='icon message'></span>"+ comments.get(i).getCommentUserID() +"</span>"+
+                            "<span class='content'>"+ comments.get(i).getCommentContent() +"</span></li>");
+                }
             }
         } else if (action.equalsIgnoreCase("createComment")){ //List All
 
@@ -76,7 +84,6 @@ public class CommentServlet extends HttpServlet{
         String companyName = null;
         String userID = null;
         int bugID = 0;
-        //TODO get bug ID dynamically
         cookies = request.getCookies();
         for (int i = 0; i < cookies.length; i++){
             Cookie cookie = cookies[i];

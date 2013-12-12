@@ -98,6 +98,7 @@ $(window).resize(function() {
 /*------------Do things on document ready------------*/
 $(document).ready(function() {
     inputTitles();
+    showMessages();
     $("#ajax-loader").hide();
 
     /*--- assignUsersToProjects.jsp ---*/
