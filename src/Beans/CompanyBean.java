@@ -1,6 +1,8 @@
 package Beans;
 
-public class CompanyBean {
+import java.io.Serializable;
+
+public class CompanyBean implements Serializable {
     private String companyName;
     private String companyID;
 

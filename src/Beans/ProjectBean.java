@@ -1,6 +1,8 @@
 package Beans;
 
-public class ProjectBean {
+import java.io.Serializable;
+
+public class ProjectBean implements Serializable {
     private int projectID;
     private String projectName;
     private String projectVersion;

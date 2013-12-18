@@ -1,6 +1,8 @@
 package Beans;
 
-public class BugBean {
+import java.io.Serializable;
+
+public class BugBean implements Serializable {
 
     private int bugID;
     private int projectID;

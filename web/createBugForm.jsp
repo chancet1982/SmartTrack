@@ -229,11 +229,13 @@
     $('.step textarea').on('blur' , function(){
         textAreaValue = $(this).val();
     });
+
     $( "#8" ).sortable({
         revert: false,
         stop: function() { adjustSteps(); },
         start: function() {  }
     });
+
     $( ".step" ).draggable({
         connectToSortable: "#8",
         revert: false,
@@ -243,6 +245,11 @@
         delay: 100,
         //stack: ".step",
         axis: "y"
+    });
+
+    $('#datepicker').datetimepicker({
+        controlType: 'select',
+        timeFormat: 'hh:mm tt'
     });
 
     //File Upload
@@ -285,13 +292,6 @@
                 $("#site-footer .message p").remove();
                 $("#site-footer .message").prepend('<p>Error: Cannot get Project Names</p>').addClass("error").show();
             }
-
         });
-
-        $('#datepicker').datetimepicker({
-            controlType: 'select',
-            timeFormat: 'hh:mm tt'
-        });
-
     });
 </script>
