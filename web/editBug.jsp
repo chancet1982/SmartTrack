@@ -18,16 +18,111 @@
             <ul>
                 <li>
                     <label>Bug ID</label>
-                    <input name="userEmail" value="<c:out value="${bug.bugID}"/>" class="required email" readonly="true" >
+                    <span><c:out value="${bug.bugID}"/></span>
+                </li>
+                <li>
+                    <label>Project ID</label>
+                    <span><c:out value="${bug.projectID}"/></span>
+                </li>
+                <li>
+                    <label>Bug Category</label>
+                    <span><c:out value="${bug.bugCategory}"/></span>
                 </li>
                 <li>
                     <label>Bug Title</label>
-                    <input name="firstName" value="<c:out value="${bug.bugTitle}"/>" class="required">
+                    <span><c:out value="${bug.bugTitle}"/></span>
                 </li>
                 <li>
-                    <label>Bug description</label>
-                    <input name="lastName" value="<c:out value="${bug.bugDescription}"/>" class="required" >
+                    <label>Bug Description</label>
+                    <span><c:out value="${bug.bugDescription}"/></span>
                 </li>
+
+                <li>
+                    <label>Bug Status(TODO change to dropdown)</label>
+                    <span><c:out value="${bug.bugStatus}"/></span>
+                </li>
+
+                <c:if test="${not empty bug.bugPriority}">
+                <li>
+                    <label>Priority</label>
+                    <span><c:out value="${bug.bugPriority}"/></span>
+                </li>
+                </c:if>
+
+                <c:if test="${not empty bug.reportedPriority}">
+                <li>
+                    <label>Reported Priority</label>
+                    <span><c:out value="${bug.reportedPriority}"/></span>
+                </li>
+                </c:if>
+
+                <c:if test="${not empty bug.bugURL}">
+                <li>
+                    <label>Bug URL</label>
+                    <span><c:out value="${bug.bugURL}"/></span>
+                </li>
+                </c:if>
+
+                <c:if test="${not empty bug.screenshotURL}">
+                <li>
+                    <label>Screenshot</label>
+                    <span><c:out value="${bug.screenshotURL}"/></span>
+                </li>
+                </c:if>
+
+                <c:if test="${not empty bug.bugPCInfo}">
+                <li>
+                    <label>Additional PC information</label>
+                    <span><c:out value="${bug.bugPCInfo}"/></span>
+                </li>
+                </c:if>
+
+                <c:if test="${not empty bug.bugErrorCode}">
+                <li>
+                    <label>Error Code</label>
+                    <span><c:out value="${bug.bugErrorCode}"/></span>
+                </li>
+                </c:if>
+
+                <c:if test="${not empty bug.textFromTo}">
+                <li>
+                    <label>Change text From To</label>
+                    <span><c:out value="${bug.textFromTo}"/></span>
+                </li>
+                </c:if>
+
+                <c:if test="${not empty bug.bugTimeStamp}">
+                <li>
+                    <label>Bug TimeStamp</label>
+                    <span><c:out value="${bug.bugTimeStamp}"/></span>
+                </li>
+                </c:if>
+
+                <li>
+                    <label>steps To Recreate (TODO - make it nicer)</label>
+                    <span><c:out value="${bug.stepsToRecreate}"/></span>
+                </li>
+
+                <li>
+                    <label>Created Date</label>
+                    <span><c:out value="${bug.created}"/></span>
+                </li>
+                <li>
+                    <label>Modified Date</label>
+                    <span><c:out value="${bug.modified}"/></span>
+                </li>
+                <li>
+                    <label>Active ?</label>
+                    <c:choose>
+                        <c:when test="${bug.active}">
+                            <span>Yes</span>
+                        </c:when>
+                        <c:otherwise>
+                            <span>No</span>
+                        </c:otherwise>
+                    </c:choose>
+                </li>
+
                 <li>
                     <label>Comments</label>
                     <ul id="comments">

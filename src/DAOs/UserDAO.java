@@ -95,6 +95,7 @@ public class UserDAO {
             while (rs.next()) {
                 UserBean user = new UserBean();
                 user.setUserid(rs.getInt("id"));
+                System.out.print("In the DAO: ID is: " + rs.getInt("id"));
                 user.setFirstname(rs.getString("firstName"));
                 user.setLastname(rs.getString("lastName"));
                 user.setUseremail(rs.getString("userEmail"));

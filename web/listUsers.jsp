@@ -28,12 +28,12 @@
                 <tbody>
                 <c:forEach items="${users}" var="user">
                     <tr>
-                        <td><c:out value="${user.userID}" /></td>
+                        <td><c:out value="${user.userid}" /></td>
                         <td><c:out value="${user.firstname}" /></td>
                         <td><c:out value="${user.lastname}" /></td>
                         <td><c:out value="${user.useremail}" /></td>
-                        <td><a href="UserServlet?action=edit&userID=<c:out value="${user.userID}"/>">Edit</a></td>
-                        <td><a href="UserServlet?action=delete&userID=<c:out value="${user.userID}"/>">Delete</a></td>
+                        <td><a href="UserServlet?action=edit&userID=<c:out value="${user.userid}"/>">Edit</a></td>
+                        <td><a href="UserServlet?action=delete&userID=<c:out value="${user.userid}"/>">Delete</a></td>
                     </tr>
                 </c:forEach>
                 </tbody>

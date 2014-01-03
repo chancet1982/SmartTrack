@@ -1,6 +1,5 @@
 package DAOs;
 
-import Beans.ProjectBean;
 import Beans.BugBean;
 import Beans.UserBean;
 import DB.DB;
@@ -8,8 +7,6 @@ import DB.DB;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-
-import Beans.BugBean;
 
 public class BugDAO {
     private Connection connection;
@@ -89,9 +86,22 @@ public class BugDAO {
 
             if (rs.next()) {
                 bug.setBugID(rs.getInt("bugID"));
+                bug.setProjectID(rs.getInt("projectID"));
                 bug.setBugCategory(rs.getString("bugCategory"));
                 bug.setBugTitle(rs.getString("bugTitle"));
                 bug.setBugDescription(rs.getString("bugDescription"));
+                bug.setBugStatus(rs.getString("bugStatus"));
+                bug.setBugPriority(rs.getString("bugPriority"));
+                bug.setReportedPriority(rs.getString("reportedPriority"));
+                bug.setBugURL(rs.getString("bugURL"));
+                bug.setScreenshotURL(rs.getString("screenshotURL"));
+                bug.setBugPCInfo(rs.getString("bugPCInfo"));
+                bug.setBugErrorCode(rs.getString("bugErrorCode"));
+                bug.setStepsToRecreate(rs.getString("stepsToRecreate"));
+                bug.setBugTimeStamp(rs.getString("bugTimeStamp"));
+                bug.setCreated(String.format("%1$TD %1$TT", rs.getTimestamp("created")));
+                bug.setModified(String.format("%1$TD %1$TT", rs.getTimestamp("modified")));
+                bug.setActive(rs.getBoolean("active"));
             }
 
             rs.close();
@@ -112,8 +122,22 @@ public class BugDAO {
             while (rs.next()) {
                 BugBean bug = new BugBean();
                 bug.setBugID(rs.getInt("bugID"));
+                bug.setProjectID(rs.getInt("projectID"));
+                bug.setBugCategory(rs.getString("bugCategory"));
                 bug.setBugTitle(rs.getString("bugTitle"));
-                bug.setBugTitle(rs.getString("bugDescription"));
+                bug.setBugDescription(rs.getString("bugDescription"));
+                bug.setBugStatus(rs.getString("bugStatus"));
+                bug.setBugPriority(rs.getString("bugPriority"));
+                bug.setReportedPriority(rs.getString("reportedPriority"));
+                bug.setBugURL(rs.getString("bugURL"));
+                bug.setScreenshotURL(rs.getString("screenshotURL"));
+                bug.setBugPCInfo(rs.getString("bugPCInfo"));
+                bug.setBugErrorCode(rs.getString("bugErrorCode"));
+                bug.setStepsToRecreate(rs.getString("stepsToRecreate"));
+                bug.setBugTimeStamp(rs.getString("bugTimeStamp"));
+                bug.setCreated(String.format("%1$TD %1$TT", rs.getTimestamp("created")));
+                bug.setModified(String.format("%1$TD %1$TT", rs.getTimestamp("modified")));
+                bug.setActive(rs.getBoolean("active"));
                 bugs.add(bug);
             }
 
@@ -136,8 +160,22 @@ public class BugDAO {
             while (rs.next()) {
                 BugBean bug = new BugBean();
                 bug.setBugID(rs.getInt("bugID"));
+                bug.setProjectID(rs.getInt("projectID"));
+                bug.setBugCategory(rs.getString("bugCategory"));
                 bug.setBugTitle(rs.getString("bugTitle"));
-                bug.setBugTitle(rs.getString("bugDescription"));
+                bug.setBugDescription(rs.getString("bugDescription"));
+                bug.setBugStatus(rs.getString("bugStatus"));
+                bug.setBugPriority(rs.getString("bugPriority"));
+                bug.setReportedPriority(rs.getString("reportedPriority"));
+                bug.setBugURL(rs.getString("bugURL"));
+                bug.setScreenshotURL(rs.getString("screenshotURL"));
+                bug.setBugPCInfo(rs.getString("bugPCInfo"));
+                bug.setBugErrorCode(rs.getString("bugErrorCode"));
+                bug.setStepsToRecreate(rs.getString("stepsToRecreate"));
+                bug.setBugTimeStamp(rs.getString("bugTimeStamp"));
+                bug.setCreated(String.format("%1$TD %1$TT", rs.getTimestamp("created")));
+                bug.setModified(String.format("%1$TD %1$TT", rs.getTimestamp("modified")));
+                bug.setActive(rs.getBoolean("active"));
                 bugs.add(bug);
             }
 
@@ -149,6 +187,45 @@ public class BugDAO {
         }
         return bugs;
     }
+
+    public List<BugBean> getAllActiveBugsForProject(String companyName, int projectID) {
+        List<BugBean> bugs = new ArrayList<BugBean>();
+        try {
+            preparedStatement = connection.prepareStatement("SELECT * FROM " + companyName + ".bugsTable WHERE projectID=? AND active=1");
+            preparedStatement.setInt(1, projectID);
+            rs = preparedStatement.executeQuery();
+
+            while (rs.next()) {
+                BugBean bug = new BugBean();
+                bug.setBugID(rs.getInt("bugID"));
+                bug.setProjectID(rs.getInt("projectID"));
+                bug.setBugCategory(rs.getString("bugCategory"));
+                bug.setBugTitle(rs.getString("bugTitle"));
+                bug.setBugDescription(rs.getString("bugDescription"));
+                bug.setBugStatus(rs.getString("bugStatus"));
+                bug.setBugPriority(rs.getString("bugPriority"));
+                bug.setReportedPriority(rs.getString("reportedPriority"));
+                bug.setBugURL(rs.getString("bugURL"));
+                bug.setScreenshotURL(rs.getString("screenshotURL"));
+                bug.setBugPCInfo(rs.getString("bugPCInfo"));
+                bug.setBugErrorCode(rs.getString("bugErrorCode"));
+                bug.setStepsToRecreate(rs.getString("stepsToRecreate"));
+                bug.setBugTimeStamp(rs.getString("bugTimeStamp"));
+                bug.setCreated(String.format("%1$TD %1$TT", rs.getTimestamp("created")));
+                bug.setModified(String.format("%1$TD %1$TT", rs.getTimestamp("modified")));
+                bug.setActive(rs.getBoolean("active"));
+                bugs.add(bug);
+            }
+
+            rs.close();
+            statement.close();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return bugs;
+    }
+
     public List<UserBean> getUsersAssigned(String companyName , int bugID) {
         List<UserBean> users = new ArrayList<UserBean>();
         UserDAO userDAO = new UserDAO();

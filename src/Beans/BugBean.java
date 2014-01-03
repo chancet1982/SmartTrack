@@ -1,6 +1,7 @@
 package Beans;
 
 import java.io.Serializable;
+import java.sql.Timestamp;
 
 public class BugBean implements Serializable {
 
@@ -9,18 +10,32 @@ public class BugBean implements Serializable {
     private String bugCategory;
     private String bugTitle;
     private String bugDescription;
+
     private String bugStatus;
     private String bugPriority;
     private String reportedPriority;
+
     private String bugURL;
     private String screenshotURL;
     private String bugPCInfo;
+
     private String bugErrorCode;
     private String textFromTo;
     private String bugTimeStamp;
+
     private String stepsToRecreate;
     private String created;
     private String modified;
+
+    private boolean active;
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
+    }
 
     public String getCreated() {
         return created;
