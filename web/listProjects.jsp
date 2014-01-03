@@ -41,6 +41,10 @@
 </div>
 <div id="dialog" title="Create New Project"></div>
 <script type="text/javascript">
+
+    $.cookie("pid", "3");
+    menuHighlight();
+
     $(document).ready(function(){
 
         $.ajax({

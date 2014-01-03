@@ -28,7 +28,7 @@
                 <tbody>
                 <c:forEach items="${users}" var="user">
                     <tr>
-                        <td><c:out value="${user.userid}" /></td>
+                        <td><c:out value="${user.userID}" /></td>
                         <td><c:out value="${user.firstname}" /></td>
                         <td><c:out value="${user.lastname}" /></td>
                         <td><c:out value="${user.useremail}" /></td>
@@ -45,6 +45,9 @@
 <div id="dialog" title="invite Users"></div>
 <script type="text/javascript">
     $(document).ready(function(){
+
+        $.cookie("pid", "2");
+        menuHighlight();
 
         $.ajax({
             url: "inviteUsersForm.jsp",

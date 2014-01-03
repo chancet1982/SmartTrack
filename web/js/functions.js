@@ -1,6 +1,22 @@
 /*------------General Functions------------*/
 var mouse_is_inside = false;
 
+//Highlight selected
+function menuHighlight() {
+    var pid = $.cookie("pid");
+    $('#site-navigation li').each(function() {
+        id = $(this).attr("id");
+        if (pid == id) {
+            $(this).addClass("active");
+        } else {
+            if ($(this).hasClass("active")) {
+                $(this).removeClass("active");
+            }
+        }
+    });
+}
+
+//Input titles
 function inputTitles() {
     $('input[type=text], input[type=password], input[type=file], textarea').each(function ()  {
         $(this).val($(this).attr("title"));
@@ -198,16 +214,6 @@ $(document).ready(function() {
     $(document).on('click', '.inactive', function (e)  {
 		e.preventDefault();
 	});
-
-	//Highlight selected
-	/*$('#site-navigation a').click(function() {
-		if (!$(this).hasClass('inactive')) {
-			$(this).parent().parent().each(function(){
-				$('li').removeClass("active");
-			});
-			$(this).parent().addClass('active')
-		}
-	});*/
 
     /*---------AJAX SECTION---------*/
     //assignUsersToProjects.jsp

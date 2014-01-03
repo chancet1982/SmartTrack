@@ -659,41 +659,67 @@ h4 {font-size:125%;padding-bottom:(@padding-base * 2 )}
 	}
   #comments {
     .comment {
-      &.odd{
-        background-color: @color-accent;
+      margin-top: 10px;
+      background-color: @color-secondary;
 
+      .user {
+        position: relative;
+        display:block;
+        width:10%;
+        height:48px;
+        background-color: @color-error;
+        overflow: hidden;
+      }
+
+      .content {
+        display:block;
+        width:10%;
+        height:auto;
+        background-color: @color-secondary;
+      }
+
+      &.odd{
         .user {
-          display:block;
-          width:10%;
-          height:48px;
           float:left;
-          background-color: @color-error;
-          overflow: hidden;
+
+          &:after {
+            content: "";
+            position: absolute;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            bottom:0px;
+            bottom: 0%;
+            right: 0%;
+            border-width:0px 0px @csstip-size*2 @csstip-size*2;
+            border-color:transparent transparent @color-secondary transparent ;
+          }
         }
 
         .content {
-          display:block;
-          width:90%;
-          height:auto;
           float:left;
         }
       }
 
       &.even{
-        background-color: @color-error;
-
         .user {
-          background-color: @color-accent;
-          display:block;
-          width:10%;
-          height:48px;
           float:right;
+
+          &:after {
+            content: "";
+            position: absolute;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            bottom:0px;
+            bottom: 0%;
+            left: 0%;
+            border-width:@csstip-size*2 0px 0px  @csstip-size*2;
+            border-color: transparent  transparent  transparent @color-secondary;
+          }
         }
 
         .content {
-          display:block;
-          width:90%;
-          height:auto;
           float:right;
         }
       }

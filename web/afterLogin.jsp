@@ -22,6 +22,8 @@
 
 <%@include file="includes/footerMessage.jsp" %>
 <script type="text/javascript">
+    $.cookie("pid", "1");
+    menuHighlight();
     google.setOnLoadCallback(drawChart);
 
     function drawChart() {

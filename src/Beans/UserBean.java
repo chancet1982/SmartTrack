@@ -3,14 +3,24 @@ package Beans;
 import java.io.Serializable;
 
 public class UserBean implements Serializable{
-    private int userid;
+    private int userID;
+    private String firstname;
+    private String lastname;
+    private String useremail;
+    private String userpassword;
+    private String companyName;
+    private String initials;
+
+    private boolean ishandler;
+    private boolean ismanager;
+    private boolean isreporter;
 
     public int getUserid() {
-        return userid;
+        return userID;
     }
 
     public void setUserid(int userid) {
-        this.userid = userid;
+        this.userID = userid;
     }
 
     public String getFirstname() {
@@ -76,15 +86,6 @@ public class UserBean implements Serializable{
         this.companyName = usercompany;
     }
 
-    private String firstname;
-    private String lastname;
-    private String useremail;
-    private String userpassword;
-    private String companyName;
-    private boolean ishandler;
-    private boolean ismanager;
-    private boolean isreporter;
-
     public String getInitials() {
         return initials;
     }
@@ -92,7 +93,5 @@ public class UserBean implements Serializable{
     public void setInitials(String initials) {
         this.initials = initials;
     }
-
-    private String initials;
 
 }
