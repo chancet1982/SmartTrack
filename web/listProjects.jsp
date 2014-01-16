@@ -1,6 +1,6 @@
 <%@include file="includes/validateCookie.jsp" %>
 <%@include file="includes/documentHead.jsp" %>
-
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <body>
 
 <div id="site-header">
@@ -15,6 +15,7 @@
     <div class="site-width clearfix">
         <h1>Project Management</h1>
         <div class="box color-light round-corners shadow padding clearfix">
+            <c:if test="${fn:length(projects) gt 0}">
             <table>
                 <thead>
                 <tr>
@@ -25,16 +26,20 @@
                 </tr>
                 </thead>
                 <tbody>
-                <c:forEach items="${projects}" var="project">
-                    <tr>
-                        <td><c:out value="${project.projectID}" /></td>
-                        <td><c:out value="${project.projectName}" /></td>
-                        <td><c:out value="${project.projectVersion}" /></td>
-                        <td><a href="ProjectServlet?action=delete&projectId=<c:out value="${project.projectID}"/>">Delete</a></td>
-                    </tr>
-                </c:forEach>
+                    <c:forEach items="${projects}" var="project">
+                        <tr>
+                            <td><c:out value="${project.projectID}" /></td>
+                            <td><c:out value="${project.projectName}" /></td>
+                            <td><c:out value="${project.projectVersion}" /></td>
+                            <td><a href="ProjectServlet?action=delete&projectId=<c:out value="${project.projectID}"/>">Delete</a></td>
+                        </tr>
+                    </c:forEach>
                 </tbody>
             </table>
+            </c:if>
+            <c:if test="${fn:length(projects) lt 1}">
+                <h2>You dont have any active projects... how about creating some?</h2>
+            </c:if>
             <a id="createProject" class="button round-corners"><span class="icon add-project"></span>Create new project</a>
         </div>
     </div>

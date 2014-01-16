@@ -1,6 +1,6 @@
 <%@include file="includes/validateCookie.jsp" %>
 <%@include file="includes/documentHead.jsp" %>
-
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <body>
 
 <div id="site-header">
@@ -15,6 +15,7 @@
     <div class="site-width clearfix">
         <h1>Bugs...</h1>
         <div class="box color-light round-corners shadow padding clearfix">
+            <c:if test="${fn:length(bugs) gt 0}">
             <table>
                 <thead>
                 <tr>
@@ -36,6 +37,10 @@
                 </c:forEach>
                 </tbody>
             </table>
+            </c:if>
+            <c:if test="${fn:length(bugs) lt 1}">
+                <h2>There are no bugs in the system... would you like to report one?</h2>
+            </c:if>
             <a id="createBug" class="button round-corners"><span class="icon add-bug"></span>Add Bugs</a>
         </div>
     </div>
