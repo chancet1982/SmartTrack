@@ -37,12 +37,19 @@ public class UserServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String forward="";
         String action = request.getParameter("action");
-
         if (action.equalsIgnoreCase("delete")){  //Delete Single
             int userId = Integer.parseInt(request.getParameter("userId"));
             dao.deleteUser(userId);
             forward = LIST_USER;
-            request.setAttribute("users", dao.getAllUsers());
+            //get company name from cookie
+            Cookie[] cookies ;
+            String companyName = null;
+            cookies = request.getCookies();
+            for (int i = 0; i < cookies.length; i++){
+                Cookie cookie = cookies[i];
+                if(cookie.getName().equals("cid")){ companyName = cookie.getValue(); }
+            }
+            request.setAttribute("users", dao.getAllUsersFromCompany(companyName));
             RequestDispatcher view = request.getRequestDispatcher(forward);
             view.forward(request, response);
         } else if (action.equalsIgnoreCase("edit")){ //Edit Single
@@ -54,7 +61,15 @@ public class UserServlet extends HttpServlet {
             view.forward(request, response);
         } else if (action.equalsIgnoreCase("listUsers")){ //List All
             forward = LIST_USER;
-            request.setAttribute("users", dao.getAllUsers());
+            //get company name from cookie
+            Cookie[] cookies ;
+            String companyName = null;
+            cookies = request.getCookies();
+            for (int i = 0; i < cookies.length; i++){
+                Cookie cookie = cookies[i];
+                if(cookie.getName().equals("cid")){ companyName = cookie.getValue(); }
+            }
+            request.setAttribute("users", dao.getAllUsersFromCompany(companyName));
             RequestDispatcher view = request.getRequestDispatcher(forward);
             view.forward(request, response);
         } else if (action.equalsIgnoreCase("verifyUnique")){ //Check Unique
