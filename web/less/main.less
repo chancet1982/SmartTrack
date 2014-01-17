@@ -54,10 +54,13 @@ body, input, select, option, ul, li, p, button {
 
 p {
 padding-bottom:@padding-base;
+  &.no-padding {
+    padding-bottom:0;
+  }
 }
 
 strong{font-weight:bold;}
-.small_text{font-size:0.750em;}
+.small-text{font-size:0.9em;}
 
 .site-width {width:100%;margin:0 auto;max-width:@max-width;padding-left:@padding-base;padding-right:@padding-base;}
 img {max-width: 100%;}
@@ -545,7 +548,16 @@ h4 {font-size:125%;padding-bottom:(@padding-base * 2 )}
             &:before {content: "";position: absolute;width: 0;height: 0;border-style: solid;top: 0%;left: 0%;border-width: 8px 8px 0px 0px;border-color: #e4eaea transparent transparent transparent;}
         }
     }
+    #viewBugForm {
+        li {
+          margin-bottom:5px;
+        }
 
+        label,
+        span.title {
+          color:@color-accent;
+        }
+    }
     .projects {
         height:80%;
         overflow:scroll;
@@ -666,16 +678,22 @@ h4 {font-size:125%;padding-bottom:(@padding-base * 2 )}
         position: relative;
         display:block;
         width:10%;
-        height:48px;
-        background-color: @color-error;
-        overflow: hidden;
+        height:100%;
+        min-height:48px;
+        background-color: @color-primary;
+        color:@color-white;
+        overflow:hidden;
+        text-align:center;
+        line-height:48px;
       }
 
       .content {
         display:block;
-        width:10%;
+        text-align:left;
         height:auto;
         background-color: @color-secondary;
+        padding-left:5px;
+        padding-right:5px;
       }
 
       &.odd{
@@ -720,7 +738,7 @@ h4 {font-size:125%;padding-bottom:(@padding-base * 2 )}
         }
 
         .content {
-          float:right;
+          float:left;
         }
       }
 

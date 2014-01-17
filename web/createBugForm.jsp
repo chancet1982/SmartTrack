@@ -51,7 +51,7 @@
                 <option value="Minor">Minor</option>
                 <option value="Average">Average</option>
                 <option value="Major">Major</option>
-                <option value="Chuck Norris">Chuck Norris</option>
+                <option value="Blocker">Blocker</option>
             </select>
         </li>
 

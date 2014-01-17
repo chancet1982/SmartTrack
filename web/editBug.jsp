@@ -14,104 +14,173 @@
 <div id="site-content">
     <div class="site-width clearfix">
         <h1>Edit Bug Details</h1>
-        <div class="box color-light round-corners shadow padding clearfix">
+        <div id="viewBugForm" class="box color-light round-corners shadow padding clearfix">
             <ul>
-                <li>
-                    <label>Bug ID</label>
-                    <span><c:out value="${bug.bugID}"/></span>
+                <li id="1" class="clearfix">
+                    <p class="small-text no-padding">
+                        <span class="title">ID: </span><c:out value="${bug.bugID}"/>
+                        <span class="title">Project ID: </span><c:out value="${bug.projectID}"/>
+                    </p>
+                    <p class="small-text no-padding"><span class="title">Created: </span><c:out value="${bug.created}"/></p>
+                    <p class="small-text no-padding"><span class="title">Modified: </span><c:out value="${bug.modified}"/></p>
                 </li>
-                <li>
-                    <label>Project ID</label>
-                    <span><c:out value="${bug.projectID}"/></span>
-                </li>
-                <li>
-                    <label>Bug Category</label>
-                    <span><c:out value="${bug.bugCategory}"/></span>
-                </li>
-                <li>
-                    <label>Bug Title</label>
+                <li id="4" class="clearfix">
+                    <label>Title: </label>
                     <span><c:out value="${bug.bugTitle}"/></span>
                 </li>
-                <li>
-                    <label>Bug Description</label>
-                    <span><c:out value="${bug.bugDescription}"/></span>
+                <li id="5" class="clearfix">
+                    <label>Description: </label>
+                    <p class="no-padding"><c:out value="${bug.bugDescription}"/></p>
                 </li>
-
-                <li>
-                    <label>Bug Status(TODO change to dropdown)</label>
-                    <span><c:out value="${bug.bugStatus}"/></span>
+                <li id="3" class="clearfix">
+                    <span><span class="title">Category: </span><c:out value="${bug.bugCategory}"/></span>
                 </li>
-
-                <c:if test="${not empty bug.bugPriority}">
-                <li>
-                    <label>Priority</label>
-                    <span><c:out value="${bug.bugPriority}"/></span>
+                <form action="bugServlet" method="POST">
+                <li id="6" class="clearfix">
+                    <span class="title">Status: </span>
+                    <select id="bugStatus" name="bugStatus">
+                    <c:choose>
+                        <c:when test="${bug.bugStatus == unassigned}">
+                            <option value="unassigned" selected="selected">Unassigned</option>
+                            <option value="pending">Pending</option>
+                            <option value="inProgress">In-Progress</option>
+                            <option value="readyForTest">Ready for Test</option>
+                            <option value="Resolved">Resolved</option>
+                        </c:when>
+                        <c:when test="${bug.bugStatus == pending}">
+                            <option value="unassigned">Unassigned</option>
+                            <option value="pending" selected="selected">Pending</option>
+                            <option value="inProgress">In-Progress</option>
+                            <option value="readyForTest">Ready for Test</option>
+                            <option value="Resolved">Resolved</option>
+                        </c:when>
+                        <c:when test="${bug.bugStatus == inProgress}">
+                            <option value="unassigned">Unassigned</option>
+                            <option value="pending">Pending</option>
+                            <option value="inProgress" selected="selected">In-Progress</option>
+                            <option value="readyForTest">Ready for Test</option>
+                            <option value="Resolved">Resolved</option>
+                        </c:when>
+                        <c:when test="${bug.bugStatus == readyForTest}">
+                            <option value="unassigned">Unassigned</option>
+                            <option value="pending">Pending</option>
+                            <option value="inProgress">In-Progress</option>
+                            <option value="readyForTest" selected="selected">Ready for Test</option>
+                            <option value="Resolved">Resolved</option>
+                        </c:when>
+                        <c:when test="${bug.bugStatus == Resolved}">
+                            <option value="unassigned">Unassigned</option>
+                            <option value="pending">Pending</option>
+                            <option value="inProgress">In-Progress</option>
+                            <option value="readyForTest">Ready for Test</option>
+                            <option value="Resolved" selected="selected">Resolved</option>
+                        </c:when>
+                        <c:otherwise>
+                            <option value="unassigned" selected="selected">Unassigned</option>
+                            <option value="pending">Pending</option>
+                            <option value="inProgress">In-Progress</option>
+                            <option value="readyForTest">Ready for Test</option>
+                            <option value="Resolved">Resolved</option>
+                        </c:otherwise>
+                    </c:choose>
+                    </select>
                 </li>
-                </c:if>
+                </form>
+                <form action="bugServlet" method="POST">
+                <li id="7" class="clearfix">
+                    <span class="title">Priority: </span>
+                    <select id="bugPriority" name="bugPriority">
+                    <c:choose>
+                        <c:when test="${bug.bugPriority == Minor}">
+                            <option value="no-value">Bug Priority</option>
+                            <option value="Minor" selected="selected">Minor</option>
+                            <option value="Average">Average</option>
+                            <option value="Major">Major</option>
+                            <option value="Blocker">Chuck Norris</option>
+                        </c:when>
+                        <c:when test="${bug.bugPriority == Average}">
+                            <option value="no-value">Bug Priority</option>
+                            <option value="Minor">Minor</option>
+                            <option value="Average" selected="selected">Average</option>
+                            <option value="Major">Major</option>
+                            <option value="Blocker">Chuck Norris</option>
+                        </c:when>
+                        <c:when test="${bug.bugPriority == Major}">
+                            <option value="no-value">Bug Priority</option>
+                            <option value="Minor">Minor</option>
+                            <option value="Average">Average</option>
+                            <option value="Major" selected="selected">Major</option>
+                            <option value="Blocker">Chuck Norris</option>
+                        </c:when>
+                        <c:when test="${bug.bugPriority == Blocker}">
+                            <option value="no-value">Bug Priority</option>
+                            <option value="Minor">Minor</option>
+                            <option value="Average">Average</option>
+                            <option value="Major">Major</option>
+                            <option value="Blocker" selected="selected">Chuck Norris</option>
+                        </c:when>
+                        <c:otherwise>
+                            <option value="no-value" selected="selected">Bug Priority</option>
+                            <option value="Minor">Minor</option>
+                            <option value="Average">Average</option>
+                            <option value="Major">Major</option>
+                            <option value="Blocker">Chuck Norris</option>
+                        </c:otherwise>
+                    </c:choose>
+                    </select>
+                </li>
+                </form>
 
                 <c:if test="${not empty bug.reportedPriority}">
-                <li>
-                    <label>Reported Priority</label>
-                    <span><c:out value="${bug.reportedPriority}"/></span>
+                <li id="8" class="clearfix">
+                    <span><span class="title">Reported Priority: </span><c:out value="${bug.reportedPriority}"/></span>
                 </li>
                 </c:if>
 
                 <c:if test="${not empty bug.bugURL}">
-                <li>
-                    <label>Bug URL</label>
-                    <span><c:out value="${bug.bugURL}"/></span>
+                <li id="9" class="clearfix">
+                    <span><span class="title">URL: </span><c:out value="${bug.bugURL}"/></span>
                 </li>
                 </c:if>
 
                 <c:if test="${not empty bug.screenshotURL}">
-                <li>
-                    <label>Screenshot</label>
+                <li id="10" class="clearfix">
+                    <label>Screenshot: </label>
                     <span><c:out value="${bug.screenshotURL}"/></span>
                 </li>
                 </c:if>
 
                 <c:if test="${not empty bug.bugPCInfo}">
-                <li>
-                    <label>Additional PC information</label>
-                    <span><c:out value="${bug.bugPCInfo}"/></span>
+                <li id="11" class="clearfix">
+                    <span><span class="title">PC information: </span><c:out value="${bug.bugPCInfo}"/></span>
                 </li>
                 </c:if>
 
                 <c:if test="${not empty bug.bugErrorCode}">
-                <li>
-                    <label>Error Code</label>
-                    <span><c:out value="${bug.bugErrorCode}"/></span>
+                <li id="12" class="clearfix">
+                    <span><span class="title">Error Code: </span><c:out value="${bug.bugErrorCode}"/></span>
                 </li>
                 </c:if>
 
                 <c:if test="${not empty bug.textFromTo}">
-                <li>
-                    <label>Change text From To</label>
+                <li id="13" class="clearfix">
+                    <label>Change text From To: (Make it nicer)</label>
                     <span><c:out value="${bug.textFromTo}"/></span>
                 </li>
                 </c:if>
 
                 <c:if test="${not empty bug.bugTimeStamp}">
-                <li>
-                    <label>Bug TimeStamp</label>
-                    <span><c:out value="${bug.bugTimeStamp}"/></span>
+                <li id="13" class="clearfix">
+                    <span><span class="title">TimeStamp: </span><c:out value="${bug.bugTimeStamp}"/></span>
                 </li>
                 </c:if>
 
-                <li>
-                    <label>steps To Recreate (TODO - make it nicer)</label>
+                <li id="14" class="clearfix">
+                    <label>steps To Recreate (TODO - make it nicer): </label>
                     <span><c:out value="${bug.stepsToRecreate}"/></span>
                 </li>
 
-                <li>
-                    <label>Created Date</label>
-                    <span><c:out value="${bug.created}"/></span>
-                </li>
-                <li>
-                    <label>Modified Date</label>
-                    <span><c:out value="${bug.modified}"/></span>
-                </li>
-                <li>
+                <li id="16" class="clearfix">
                     <label>Active ?</label>
                     <c:choose>
                         <c:when test="${bug.active}">
@@ -123,7 +192,7 @@
                     </c:choose>
                 </li>
 
-                <li>
+                <li id="17" class="clearfix">
                     <label>Comments</label>
                     <ul id="comments">
                     </ul>
@@ -134,9 +203,6 @@
                         <input type="submit" value="add">
                     </form>
 
-                </li>
-                <li>
-                    <input type="submit" value="Submit">
                 </li>
             </ul>
 

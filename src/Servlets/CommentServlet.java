@@ -65,13 +65,13 @@ public class CommentServlet extends HttpServlet{
                 //System.out.print(user.getInitials());
                 //UserBean user = userDAO.getUserByEmail(comments.get(i).getCommentUserID());
                 if (i % 2 == 0) {
-                    // even
-                    out.write("<li class='comment even clearfix'>"+
+                    // odd
+                    out.write("<li class='comment odd clearfix'>"+
                             "<span class='user'>SM</span>"+
                             "<span class='content'>"+ comments.get(i).getCommentContent() +"</span></li>");
                 } else {
-                    // odd
-                    out.write("<li class='comment odd clearfix'>"+
+                    // even
+                    out.write("<li class='comment even clearfix'>"+
                             "<span class='user'>SM</span>"+
                             "<span class='content'>"+ comments.get(i).getCommentContent() +"</span></li>");
                 }
