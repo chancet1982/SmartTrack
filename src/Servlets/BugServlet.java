@@ -151,7 +151,7 @@ public class BugServlet extends HttpServlet {
         String stepsToRecreate = "";
         for(int i=1;i<10;i++){
             String param = request.getParameter("stepContent" + i);
-            if(param !=null){
+            if(param != null && param != ""){
                 stepsToRecreate = stepsToRecreate + "~" +param;
             }
         }
@@ -166,7 +166,9 @@ public class BugServlet extends HttpServlet {
         bug.setBugTimeStamp(request.getParameter("timeStamp"));
         bug.setBugPCInfo(request.getHeader("User-Agent"));
         bug.setBugErrorCode(request.getParameter("bugErrorCode"));
-        bug.setTextFromTo(request.getParameter("textFrom")+ "~" + request.getParameter("textTo"));
+        if (request.getParameter("textFrom") != "" && request.getParameter("textTo") != ""){
+            bug.setTextFromTo(request.getParameter("textFrom")+ "~" + request.getParameter("textTo"));
+        }
         bug.setStepsToRecreate(stepsToRecreate);
 
         //get company name from cookie
