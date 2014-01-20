@@ -30,6 +30,7 @@ public class BugServlet extends HttpServlet {
     private static String INSERT_BUG = "/BugServlet?action=listBugs&message-success=Bug created successfully";
     private static String DELETE_BUG = "/BugServlet?action=listBugs&message-success=Bug deleted";
     private static String CLOSE_BUG = "/BugServlet?action=listBugs&message-success=Bug closed";
+    private static String OPEN_BUG = "/BugServlet?action=listBugs&message-success=Bug Re-opened";
     private static String EDIT_BUG = "/editBug.jsp";
 
     public BugServlet(){
@@ -63,6 +64,14 @@ public class BugServlet extends HttpServlet {
             int bugID = Integer.parseInt(request.getParameter("bugID"));
             bugDAO.closeBug(companyName, bugID);
             forward = CLOSE_BUG;
+            request.setAttribute("bugs", bugDAO.getAllBugsFromCompany(companyName));
+            RequestDispatcher view = request.getRequestDispatcher(forward);
+            view.forward(request, response);
+
+        } else if (action.equalsIgnoreCase("open")){  //Open Single
+            int bugID = Integer.parseInt(request.getParameter("bugID"));
+            bugDAO.openBug(companyName, bugID);
+            forward = OPEN_BUG;
             request.setAttribute("bugs", bugDAO.getAllBugsFromCompany(companyName));
             RequestDispatcher view = request.getRequestDispatcher(forward);
             view.forward(request, response);
@@ -172,17 +181,6 @@ public class BugServlet extends HttpServlet {
             String bugPriority = request.getParameter("bugPriority");
             int bugID = Integer.parseInt(request.getParameter("bugID"));
             bugDAO.changeBugPriority(companyName,bugPriority, bugID);
-
-        } else if (action.equalsIgnoreCase("setActive")){ //change bug active/inactive
-            response.setContentType("text/html");
-            boolean active;
-            if (request.getParameter("active").equals("true")) {
-                active = true;
-            } else {
-                active = false;
-            }
-            int bugID = Integer.parseInt(request.getParameter("bugID"));
-            bugDAO.setActive(companyName,active, bugID);
 
         } else if (action.equalsIgnoreCase("setAssigned")){ //set users assigned to specific bug
 

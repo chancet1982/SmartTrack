@@ -93,6 +93,20 @@ public class BugDAO {
         }
     }
 
+    public void openBug( String companyName , int bugID ) {
+        try {
+            preparedStatement = connection.prepareStatement("UPDATE " + companyName + ".bugsTable SET active=? WHERE bugID=?");
+            preparedStatement.setBoolean(1, true);
+            preparedStatement.setInt(2, bugID);
+            preparedStatement.executeUpdate();
+
+            preparedStatement.close();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
     public void changeBugStatus( String companyName ,String bugStatus, int bugID ) {
 
         try {
@@ -113,21 +127,6 @@ public class BugDAO {
         try {
             preparedStatement = connection.prepareStatement("UPDATE " + companyName + ".bugsTable SET bugPriority=? WHERE bugID=?");
             preparedStatement.setString(1, bugPriority);
-            preparedStatement.setInt(2, bugID);
-            preparedStatement.executeUpdate();
-
-            preparedStatement.close();
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void setActive( String companyName ,boolean active, int bugID ) {
-
-        try {
-            preparedStatement = connection.prepareStatement("UPDATE " + companyName + ".bugsTable SET active=? WHERE bugID=?");
-            preparedStatement.setBoolean(1, active);
             preparedStatement.setInt(2, bugID);
             preparedStatement.executeUpdate();
 

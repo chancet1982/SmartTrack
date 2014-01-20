@@ -35,7 +35,6 @@
                 <li id="3" class="clearfix">
                     <span><span class="title">Category: </span><c:out value="${bug.bugCategory}"/></span>
                 </li>
-                <form action="bugServlet" method="POST">
                 <li id="6" class="clearfix">
                     <span class="title">Status: </span>
                     <select id="bugStatus" name="bugStatus">
@@ -81,8 +80,6 @@
                         </c:choose>
                     </select>
                 </li>
-                </form>
-                <form action="bugServlet" method="POST">
                 <li id="7" class="clearfix">
                     <span class="title">Priority: </span>
                     <select id="bugPriority" name="bugPriority">
@@ -125,7 +122,6 @@
                     </c:choose>
                     </select>
                 </li>
-                </form>
 
                 <c:if test="${not empty bug.reportedPriority}">
                 <li id="8" class="clearfix">
@@ -172,18 +168,32 @@
                 </c:if>
 
                 <li id="14" class="clearfix">
-                    <label>steps To Recreate (TODO - make it nicer): </label>
-                    <span><c:out value="${bug.stepsToRecreate}"/></span>
+                    <label>steps To Recreate: </label>
+
+                    <ul id="stepsToRecreate">
+                    <script type="text/javascript">
+                        var JSTLString = "<c:out value="${bug.stepsToRecreate}"/>";
+                        var strings = JSTLString.split("~");
+                        for (i = 1; i < strings.length; ++i) {
+                            $("ul#stepsToRecreate").append("<li>" + strings[i] + "</li>");
+                            console.log(strings[i]);
+                        }
+                    </script>
+                    </ul>
+
+
                 </li>
 
                 <li id="16" class="clearfix">
-                    <label>Active ?</label>
+                    <span>Active: </span>
                     <c:choose>
                         <c:when test="${bug.active}">
                             <span>Yes</span>
+                            <a class="button" id="closeBug" href="#">Close Bug</a>
                         </c:when>
                         <c:otherwise>
                             <span>No</span>
+                            <a class="button" id="openBug" href="#">Re-open Bug</a>
                         </c:otherwise>
                     </c:choose>
                 </li>
@@ -267,6 +277,49 @@
                             }
                         });
                     });
+
+                    $('a#closeBug').click(function () {
+                        $.ajax({
+                            type: "GET",
+                            url: "/BugServlet?action=close&bugID=<c:out value="${bug.bugID}"/>",
+                            beforeSend: function(){
+                                $("#ajax-loader").show();
+                            },
+                            success: function(data) {
+                                $("#ajax-loader").hide();
+                                $('select#bugPriority').removeAttr('selected').val(bugPriority);
+                                $("#site-footer .message p").remove();
+                                $("#site-footer .message").prepend('<p>Bug closed</p>').addClass("success").show();
+                            },
+                            error: function () {
+                                $("#ajax-loader").hide();
+                                $("#site-footer .message p").remove();
+                                $("#site-footer .message").prepend('<p>Error: Bug cannot be closed</p>').addClass("error").show();
+                            }
+                        });
+                    });
+
+                    $('a#openBug').click(function () {
+                        $.ajax({
+                            type: "GET",
+                            url: "/BugServlet?action=open&bugID=<c:out value="${bug.bugID}"/>",
+                            beforeSend: function(){
+                                $("#ajax-loader").show();
+                            },
+                            success: function(data) {
+                                $("#ajax-loader").hide();
+                                $('select#bugPriority').removeAttr('selected').val(bugPriority);
+                                $("#site-footer .message p").remove();
+                                $("#site-footer .message").prepend('<p>Bug Re-opened</p>').addClass("success").show();
+                            },
+                            error: function () {
+                                $("#ajax-loader").hide();
+                                $("#site-footer .message p").remove();
+                                $("#site-footer .message").prepend('<p>Error: Bug cannot be re-opened</p>').addClass("error").show();
+                            }
+                        });
+                    });
+
                 });
             </script>
         </div>
