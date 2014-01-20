@@ -21,36 +21,12 @@
 </div>
 
 <%@include file="includes/footerMessage.jsp" %>
-<script type="text/javascript" src="https://www.google.com/jsapi?autoload={'modules':[{'name':'visualization','version':'1','packages':['timeline']}]}"></script>
+
 <script type="text/javascript">
     $.cookie("pid", "1");
     menuHighlight();
-    google.setOnLoadCallback(drawChart);
-
-    function drawChart() {
-        var container = document.getElementById('projectPipeline');
-
-        var chart = new google.visualization.Timeline(container);
-
-        var dataTable = new google.visualization.DataTable();
-
-        dataTable.addColumn({ type: 'string', id: 'projectName' });
-        dataTable.addColumn({ type: 'date', id: 'startDate' });
-        dataTable.addColumn({ type: 'date', id: 'endDate' });
-
-        dataTable.addRows([
-            [ 'Project 1', new Date(1789, 3, 29), new Date(1797, 2, 3) ],
-            [ 'Project 2', new Date(1797, 2, 3),  new Date(1801, 2, 3) ],
-            [ 'Project 3',  new Date(1801, 2, 3),  new Date(1809, 2, 3) ]
-        ]);
-
-        var options = {
-            backgroundColor: '#d0dadf'
-        };
-
-        chart.draw(dataTable);
-    }
 </script>
+
 <div id="example1" style="width: 900px; height: 180px;"></div>
 </body>
 </html>

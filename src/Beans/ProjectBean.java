@@ -8,6 +8,8 @@ public class ProjectBean implements Serializable {
     private String projectVersion;
     private String created;
     private String modified;
+    private String startDate;
+    private String endDate;
 
     public String getStartDate() {
         return startDate;
@@ -24,9 +26,6 @@ public class ProjectBean implements Serializable {
     public void setEndDate(String endDate) {
         this.endDate = endDate;
     }
-
-    private String startDate;
-    private String endDate;
 
     public String getCreated() {
         return created;
