@@ -79,6 +79,20 @@ public class BugDAO {
         }
     }
 
+    public void closeBug( String companyName , int bugID ) {
+        try {
+            preparedStatement = connection.prepareStatement("UPDATE " + companyName + ".bugsTable SET active=? WHERE bugID=?");
+            preparedStatement.setBoolean(1, false);
+            preparedStatement.setInt(2, bugID);
+            preparedStatement.executeUpdate();
+
+            preparedStatement.close();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
     public void changeBugStatus( String companyName ,String bugStatus, int bugID ) {
 
         try {

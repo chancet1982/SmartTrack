@@ -53,6 +53,13 @@ public class BugServlet extends HttpServlet {
             request.setAttribute("bugs", bugDAO.getAllBugsFromCompany(companyName));
             RequestDispatcher view = request.getRequestDispatcher(forward);
             view.forward(request, response);
+        } else if (action.equalsIgnoreCase("close")){  //Close Single
+            int bugID = Integer.parseInt(request.getParameter("bugID"));
+            bugDAO.closeBug(companyName, bugID);
+            forward = LIST_BUGS;
+            request.setAttribute("bugs", bugDAO.getAllBugsFromCompany(companyName));
+            RequestDispatcher view = request.getRequestDispatcher(forward);
+            view.forward(request, response);
         } else if (action.equalsIgnoreCase("edit")){  //edit Single
             int bugID = Integer.parseInt(request.getParameter("bugID"));
             BugBean bug = bugDAO.getBugByID(companyName, bugID);
@@ -111,7 +118,7 @@ public class BugServlet extends HttpServlet {
             if (request.getParameter("active").equals("true")) {
                 active = true;
             } else {
-                active = true;
+                active = false;
             }
             int bugID = Integer.parseInt(request.getParameter("bugID"));
             bugDAO.setActive(companyName,active, bugID);

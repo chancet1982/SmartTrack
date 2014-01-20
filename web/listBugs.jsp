@@ -26,6 +26,7 @@
                     <th>Is open</th>
                     <th></th>
                     <th></th>
+                    <th></th>
                 </tr>
                 </thead>
                 <tbody>
@@ -35,13 +36,14 @@
                         <td><c:out value="${bug.bugTitle}" /></td>
                         <td><c:out value="${bug.bugDescription}" /></td>
                         <td><c:out value="${bug.bugStatus}" /></td>
-                        <c:if test="${bug.active eq true}">
-                            <td>YES</td>
-                        </c:if>
-                        <c:if test="${bug.active eq false}">
-                            <td>NO</td>
-                        </c:if>
+                        <td>
+                            <c:choose>
+                                <c:when test="${bug.active}">Yes</c:when>
+                                <c:otherwise>No</c:otherwise>
+                            </c:choose>
+                        </td>
                         <td><a href="BugServlet?action=edit&bugID=<c:out value="${bug.bugID}"/>">Edit</a></td>
+                        <td><a href="BugServlet?action=close&bugID=<c:out value="${bug.bugID}"/>">Close</a></td>
                         <td><a href="BugServlet?action=delete&bugID=<c:out value="${bug.bugID}"/>">Delete</a></td>
                     </tr>
                 </c:forEach>
