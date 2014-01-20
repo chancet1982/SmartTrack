@@ -73,6 +73,8 @@ public class ProjectDAO {
                 project.setProjectID(rs.getInt("ProjectID"));
                 project.setProjectName(rs.getString("ProjectName"));
                 project.setProjectVersion(rs.getString("ProjectVersion"));
+                project.setStartDate(rs.getString("startDate"));
+                project.setEndDate(rs.getString("endDate"));
                 projects.add(project);
             }
 
