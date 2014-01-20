@@ -95,7 +95,26 @@ public class BugServlet extends HttpServlet {
                         "<span class='icon user'></span>" +
                         users.get(i).getFirstname() + "</li>");
             }
-
+        } else if (action.equalsIgnoreCase("changeBugStatus")){ //get user assigned to specific bug
+            response.setContentType("text/html");
+            String bugStatus = request.getParameter("bugStatus");
+            int bugID = Integer.parseInt(request.getParameter("bugID"));
+            bugDAO.changeBugStatus(companyName,bugStatus, bugID);
+        } else if (action.equalsIgnoreCase("changeBugPriority")){ //get user assigned to specific bug
+            response.setContentType("text/html");
+            String bugPriority = request.getParameter("bugPriority");
+            int bugID = Integer.parseInt(request.getParameter("bugID"));
+            bugDAO.changeBugPriority(companyName,bugPriority, bugID);
+        } else if (action.equalsIgnoreCase("setActive")){ //get user assigned to specific bug
+            response.setContentType("text/html");
+            boolean active;
+            if (request.getParameter("active").equals("true")) {
+                active = true;
+            } else {
+                active = true;
+            }
+            int bugID = Integer.parseInt(request.getParameter("bugID"));
+            bugDAO.setActive(companyName,active, bugID);
         } else if (action.equalsIgnoreCase("setAssigned")){ //set users assigned to specific bug
 
             int bugID = Integer.parseInt(request.getParameter("bugID"));

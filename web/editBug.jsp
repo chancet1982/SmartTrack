@@ -39,50 +39,46 @@
                 <li id="6" class="clearfix">
                     <span class="title">Status: </span>
                     <select id="bugStatus" name="bugStatus">
-                    <c:choose>
-                        <c:when test="${bug.bugStatus == unassigned}">
-                            <option value="unassigned" selected="selected">Unassigned</option>
-                            <option value="pending">Pending</option>
-                            <option value="inProgress">In-Progress</option>
-                            <option value="readyForTest">Ready for Test</option>
-                            <option value="Resolved">Resolved</option>
-                        </c:when>
-                        <c:when test="${bug.bugStatus == pending}">
-                            <option value="unassigned">Unassigned</option>
-                            <option value="pending" selected="selected">Pending</option>
-                            <option value="inProgress">In-Progress</option>
-                            <option value="readyForTest">Ready for Test</option>
-                            <option value="Resolved">Resolved</option>
-                        </c:when>
-                        <c:when test="${bug.bugStatus == inProgress}">
-                            <option value="unassigned">Unassigned</option>
-                            <option value="pending">Pending</option>
-                            <option value="inProgress" selected="selected">In-Progress</option>
-                            <option value="readyForTest">Ready for Test</option>
-                            <option value="Resolved">Resolved</option>
-                        </c:when>
-                        <c:when test="${bug.bugStatus == readyForTest}">
-                            <option value="unassigned">Unassigned</option>
-                            <option value="pending">Pending</option>
-                            <option value="inProgress">In-Progress</option>
-                            <option value="readyForTest" selected="selected">Ready for Test</option>
-                            <option value="Resolved">Resolved</option>
-                        </c:when>
-                        <c:when test="${bug.bugStatus == Resolved}">
-                            <option value="unassigned">Unassigned</option>
-                            <option value="pending">Pending</option>
-                            <option value="inProgress">In-Progress</option>
-                            <option value="readyForTest">Ready for Test</option>
-                            <option value="Resolved" selected="selected">Resolved</option>
-                        </c:when>
-                        <c:otherwise>
-                            <option value="unassigned" selected="selected">Unassigned</option>
-                            <option value="pending">Pending</option>
-                            <option value="inProgress">In-Progress</option>
-                            <option value="readyForTest">Ready for Test</option>
-                            <option value="Resolved">Resolved</option>
-                        </c:otherwise>
-                    </c:choose>
+                        <c:choose>
+                            <c:when test="${bug.bugStatus eq 'unassigned'}">
+                                <option value="unassigned" selected="selected">Unassigned</option>
+                            </c:when>
+                            <c:otherwise>
+                                <option value="unassigned" >Unassigned</option>
+                            </c:otherwise>
+                        </c:choose>
+                        <c:choose>
+                            <c:when test="${bug.bugStatus eq 'pending'}">
+                                <option value="pending" selected="selected">Pending</option>
+                            </c:when>
+                            <c:otherwise>
+                                <option value="pending" >Pending</option>
+                            </c:otherwise>
+                        </c:choose>
+                        <c:choose>
+                            <c:when test="${bug.bugStatus eq 'inProgress'}">
+                                <option value="inProgress" selected="selected">In-Progress</option>
+                            </c:when>
+                            <c:otherwise>
+                                <option value="inProgress" >In-Progress</option>
+                            </c:otherwise>
+                        </c:choose>
+                        <c:choose>
+                            <c:when test="${bug.bugStatus eq 'readyForTest'}">
+                                <option value="readyForTest" selected="selected">Ready for Test</option>
+                            </c:when>
+                            <c:otherwise>
+                                <option value="readyForTest" >Ready for Test</option>
+                            </c:otherwise>
+                        </c:choose>
+                        <c:choose>
+                            <c:when test="${bug.bugStatus eq 'Resolved'}">
+                                <option value="Resolved" selected="selected">Resolved</option>
+                            </c:when>
+                            <c:otherwise>
+                                <option value="Resolved" >Resolved</option>
+                            </c:otherwise>
+                        </c:choose>
                     </select>
                 </li>
                 </form>
@@ -91,40 +87,40 @@
                     <span class="title">Priority: </span>
                     <select id="bugPriority" name="bugPriority">
                     <c:choose>
-                        <c:when test="${bug.bugPriority == Minor}">
+                        <c:when test="${bug.bugPriority eq 'Minor'}">
                             <option value="no-value">Bug Priority</option>
                             <option value="Minor" selected="selected">Minor</option>
                             <option value="Average">Average</option>
                             <option value="Major">Major</option>
-                            <option value="Blocker">Chuck Norris</option>
+                            <option value="Blocker">Blocker</option>
                         </c:when>
-                        <c:when test="${bug.bugPriority == Average}">
+                        <c:when test="${bug.bugPriority eq 'Average'}">
                             <option value="no-value">Bug Priority</option>
                             <option value="Minor">Minor</option>
                             <option value="Average" selected="selected">Average</option>
                             <option value="Major">Major</option>
-                            <option value="Blocker">Chuck Norris</option>
+                            <option value="Blocker">Blocker</option>
                         </c:when>
-                        <c:when test="${bug.bugPriority == Major}">
+                        <c:when test="${bug.bugPriority eq 'Major'}">
                             <option value="no-value">Bug Priority</option>
                             <option value="Minor">Minor</option>
                             <option value="Average">Average</option>
                             <option value="Major" selected="selected">Major</option>
-                            <option value="Blocker">Chuck Norris</option>
+                            <option value="Blocker">Blocker</option>
                         </c:when>
-                        <c:when test="${bug.bugPriority == Blocker}">
+                        <c:when test="${bug.bugPriority eq 'Blocker'}">
                             <option value="no-value">Bug Priority</option>
                             <option value="Minor">Minor</option>
                             <option value="Average">Average</option>
                             <option value="Major">Major</option>
-                            <option value="Blocker" selected="selected">Chuck Norris</option>
+                            <option value="Blocker" selected="selected">Blocker</option>
                         </c:when>
                         <c:otherwise>
                             <option value="no-value" selected="selected">Bug Priority</option>
                             <option value="Minor">Minor</option>
                             <option value="Average">Average</option>
                             <option value="Major">Major</option>
-                            <option value="Blocker">Chuck Norris</option>
+                            <option value="Blocker">Blocker</option>
                         </c:otherwise>
                     </c:choose>
                     </select>
@@ -222,6 +218,54 @@
                             $("#site-footer .message p").remove();
                             $("#site-footer .message").prepend('<p>Error: Cannot get Comments, are you sure these exist?</p>').addClass("error").show();
                         }
+                    });
+
+                    $('select#bugStatus').on('change', function (e) {
+                        var selectedOption = $("option:selected", this);
+                        var bugStatus = this.value;
+
+                        $.ajax({
+                            type: "GET",
+                            url: "/BugServlet?action=changeBugStatus&bugID=<c:out value="${bug.bugID}"/>&bugStatus="+ bugStatus +"",
+                            beforeSend: function(){
+                                $("#ajax-loader").show();
+                            },
+                            success: function(data) {
+                                $("#ajax-loader").hide();
+                                $('select#bugStatus').removeAttr('selected').val(bugStatus);
+                                $("#site-footer .message p").remove();
+                                $("#site-footer .message").prepend('<p>Success: Bug status changed</p>').addClass("success").show();
+                            },
+                            error: function () {
+                                $("#ajax-loader").hide();
+                                $("#site-footer .message p").remove();
+                                $("#site-footer .message").prepend('<p>Error: Cannot change bug status</p>').addClass("error").show();
+                            }
+                        });
+                    });
+
+                    $('select#bugPriority').on('change', function (e) {
+                        var selectedOption = $("option:selected", this);
+                        var bugPriority = this.value;
+
+                        $.ajax({
+                            type: "GET",
+                            url: "/BugServlet?action=changeBugPriority&bugID=<c:out value="${bug.bugID}"/>&bugPriority="+ bugPriority +"",
+                            beforeSend: function(){
+                                $("#ajax-loader").show();
+                            },
+                            success: function(data) {
+                                $("#ajax-loader").hide();
+                                $('select#bugStatus').removeAttr('selected').val(bugStatus);
+                                $("#site-footer .message p").remove();
+                                $("#site-footer .message").prepend('<p>Success: Bug priority changed</p>').addClass("success").show();
+                            },
+                            error: function () {
+                                $("#ajax-loader").hide();
+                                $("#site-footer .message p").remove();
+                                $("#site-footer .message").prepend('<p>Error: Cannot change bug priority</p>').addClass("error").show();
+                            }
+                        });
                     });
                 });
             </script>
