@@ -7,6 +7,7 @@ public class BugBean implements Serializable {
 
     private int bugID;
     private int projectID;
+    private int userID;
     private String bugCategory;
     private String bugTitle;
     private String bugDescription;
@@ -28,6 +29,14 @@ public class BugBean implements Serializable {
     private String modified;
 
     private boolean active;
+
+    public int getUserID() {
+        return userID;
+    }
+
+    public void setUserID(int userID) {
+        this.userID = userID;
+    }
 
     public boolean isActive() {
         return active;

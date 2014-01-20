@@ -170,6 +170,7 @@ public class BugServlet extends HttpServlet {
             bug.setTextFromTo(request.getParameter("textFrom")+ "~" + request.getParameter("textTo"));
         }
         bug.setStepsToRecreate(stepsToRecreate);
+        bug.setUserID( Integer.parseInt(request.getParameter("userID")));
 
         //get company name from cookie
         Cookie[] cookies ;

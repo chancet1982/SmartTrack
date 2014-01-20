@@ -50,6 +50,8 @@ public class BugDAO {
             }
 
             statement.executeUpdate("ALTER TABLE " + companyName + ".bugsAssign ADD `" + bugID + "` BOOLEAN NOT NULL DEFAULT false");
+            assignUser(companyName, Integer.parseInt(bugID) , bug.getUserID() );
+
 
             rs.close();
             statement.close();
