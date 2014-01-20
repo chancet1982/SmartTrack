@@ -44,7 +44,6 @@ public class BugServlet extends HttpServlet {
         //get company name from cookie
         Cookie[] cookies ;
         String companyName = null;
-        int projectID = 0;
         cookies = request.getCookies();
 
         for (int i = 0; i < cookies.length; i++){
@@ -90,14 +89,15 @@ public class BugServlet extends HttpServlet {
 
         } else if (action.equalsIgnoreCase("listBugsForProject")){ //List All For Project
             forward = LIST_BUGS_FOR_PROJECT;
-            int bugID = Integer.parseInt(request.getParameter("projectID"));
+            int projectID = Integer.parseInt(request.getParameter("projectID"));
+            System.out.print("projectID(Servlet): " + projectID);
             request.setAttribute("bugs", bugDAO.getAllBugsForProject(companyName, projectID));
             RequestDispatcher view = request.getRequestDispatcher(forward);
             view.forward(request, response);
 
         } else if (action.equalsIgnoreCase("listOpenBugsForProject")){ //List Open Bugs Only For Project
             forward = LIST_OPEN_BUGS_FOR_PROJECT;
-            int bugID = Integer.parseInt(request.getParameter("projectID"));
+            int projectID = Integer.parseInt(request.getParameter("projectID"));
             request.setAttribute("bugs", bugDAO.getAllOpenBugsForProject(companyName, projectID));
             RequestDispatcher view = request.getRequestDispatcher(forward);
             view.forward(request, response);

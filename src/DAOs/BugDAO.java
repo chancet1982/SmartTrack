@@ -250,8 +250,9 @@ public class BugDAO {
 
     public List<BugBean> getAllBugsForProject(String companyName, int projectID) {
         List<BugBean> bugs = new ArrayList<BugBean>();
+        System.out.print("projectID(BugDAO): " + projectID);
         try {
-            preparedStatement = connection.prepareStatement("SELECT * FROM " + companyName + ".bugsTable WHERE projectID=?");
+            preparedStatement = connection.prepareStatement("SELECT * FROM " + companyName + ".bugsTable WHERE projectID = ?");
             preparedStatement.setInt(1, projectID);
             rs = preparedStatement.executeQuery();
 
@@ -278,7 +279,7 @@ public class BugDAO {
             }
 
             rs.close();
-            statement.close();
+            preparedStatement.close();
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -316,7 +317,7 @@ public class BugDAO {
             }
 
             rs.close();
-            statement.close();
+            preparedStatement.close();
 
         } catch (SQLException e) {
             e.printStackTrace();

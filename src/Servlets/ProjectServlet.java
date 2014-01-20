@@ -43,17 +43,19 @@ public class ProjectServlet extends HttpServlet{
         }
 
         if (action.equalsIgnoreCase("delete")){  //Delete Single
-            int projectId = Integer.parseInt(request.getParameter("projectId"));
+            int projectId = Integer.parseInt(request.getParameter("projectID"));
             projectDAO.deleteProject(companyName, projectId);
             forward = LIST_PROJECTS;
             request.setAttribute("projects", projectDAO.getAllProjectsFromCompany(companyName));
             RequestDispatcher view = request.getRequestDispatcher(forward);
             view.forward(request, response);
+
         } else if (action.equalsIgnoreCase("listProjects")){ //List All
             forward = LIST_PROJECTS;
             request.setAttribute("projects", projectDAO.getAllProjectsFromCompany(companyName));
             RequestDispatcher view = request.getRequestDispatcher(forward);
             view.forward(request, response);
+
         } else if (action.equalsIgnoreCase("assignProjects")){ //Assign users to projects
             forward = ASSIGN_PROJECTS;
             userDAO = new UserDAO();
@@ -61,13 +63,12 @@ public class ProjectServlet extends HttpServlet{
             request.setAttribute("users", userDAO.getAllUsersFromCompany(companyName));
             RequestDispatcher view = request.getRequestDispatcher(forward);
             view.forward(request, response);
-        } else if (action.equalsIgnoreCase("getAssigned")){ //get user assigned to specific project
 
+        } else if (action.equalsIgnoreCase("getAssigned")){ //get user assigned to specific project
             response.setContentType("text/html");
             int projectID = Integer.parseInt(request.getParameter("projectID"));
             List<UserBean> users = projectDAO.getUsersAssigned(companyName , projectID);
             PrintWriter out = response.getWriter();
-
             for(int i=0; i<users.size(); i++){
                 out.write("<li class='user ico ui-draggable' data-user-id='"+users.get(i).getUserid()+"'>"+
                         "<span class='icon user'></span>" +
@@ -75,10 +76,8 @@ public class ProjectServlet extends HttpServlet{
             }
 
         }else if (action.equalsIgnoreCase("setAssigned")){ //set users assigned to specific project
-
             int projectID = Integer.parseInt(request.getParameter("projectID"));
             String[] assignedUsers = request.getParameter("assignedUsers").split(":");
-
             projectDAO.emptyProjectAssignment(companyName , projectID);
             System.out.println("user assigned currently ");
             try {
@@ -91,10 +90,7 @@ public class ProjectServlet extends HttpServlet{
             } catch (NumberFormatException e) {
                 System.out.print("SOMETHING IS NOT DEFINED");
             }
-
-
             PrintWriter out = response.getWriter();
-
         } else {
             forward = "";
             RequestDispatcher view = request.getRequestDispatcher(forward);
