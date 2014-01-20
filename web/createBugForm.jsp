@@ -110,11 +110,11 @@
     other =         "#1,#2,#3,#4,#6,#5,#7,#8,#0,#10,#12";
 
     function adjustSteps() {
-        $('li#8 > ul.step').each(function(){
+        $('li#8 > ul.steps > li.step').each(function(){
             index = $(this).index();
             index++;
-            $(this).attr( "id" , "step" + index )
-            $(this).find("label").text("Step " + index );
+            $(this).attr( "id" , "step" + index );
+            $(this).find("textarea").attr( "title" , "Step " + index );
             $(this).find("textarea").attr( "name" , "stepContent" + index );
             console.log('adjusted');
         });
@@ -181,17 +181,17 @@
 
     //Step Addition
     $("#addStep").click(function(){
-        adjustSteps();
         stepID =  $('li#8 > li.step').size();
         stepID++;
         step = $('<li class="step" id="step' + stepID + '">'+
-                '<textarea name="stepContent'+ stepID +'" title="Step'+ stepID +'" rows="2" cols="65"></textarea>' +
-                '<a class="remove-step button"><span class="icon remove"></span></a>' +
+                '<textarea name="stepContent'+ stepID +'" title="Step '+ stepID +'"></textarea>' +
+                '<a class="remove-step button"><span class="icon delete"></span></a>' +
                 '</li>');
 
         $(step).appendTo("li#8 ul.steps");
         temp = null;
         disableUndo();
+        adjustSteps();
     });
 
     //Step removal
@@ -230,22 +230,22 @@
         textAreaValue = $(this).val();
     });
 
-    $( "#8" ).sortable({
-        revert: false,
-        stop: function() { adjustSteps(); },
-        start: function() {  }
-    });
-
-    $( ".step" ).draggable({
-        connectToSortable: "#8",
-        revert: false,
-        cursor: "move",
-        containment: "parent",
-        snap: "#8",
-        delay: 100,
-        //stack: ".step",
-        axis: "y"
-    });
+//    $( "#8" ).sortable({
+//        revert: false,
+//        stop: function() { adjustSteps(); },
+//        start: function() {  }
+//    });
+//
+//    $( ".step" ).draggable({
+//        connectToSortable: "#8",
+//        revert: false,
+//        cursor: "move",
+//        containment: "parent",
+//        snap: "#8",
+//        delay: 100,
+//        //stack: ".step",
+//        axis: "y"
+//    });
 
     $('#datepicker').datetimepicker({
         controlType: 'select',
