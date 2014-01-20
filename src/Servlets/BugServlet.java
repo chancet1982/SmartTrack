@@ -23,13 +23,13 @@ public class BugServlet extends HttpServlet {
     UserDAO userDAO;
 
     private static String LIST_BUGS = "/listBugs.jsp";
-    private static String DELETE_BUG = "/BugServlet?action=listBugs&message-success=Bug deleted";
-    private static String CLOSE_BUG = "/BugServlet?action=listBugs&message-success=Bug closed";
     private static String LIST_OPEN_BUGS = "/listOpenBugs.jsp";
     private static String LIST_BUGS_FOR_PROJECT = "/listBugsForProject.jsp";
     private static String LIST_OPEN_BUGS_FOR_PROJECT = "/listOpenBugsForProject.jsp";
     private static String ASSIGN_BUGS = "/assignUsersToBugs.jsp";
     private static String INSERT_BUG = "/BugServlet?action=listBugs&message-success=Bug created successfully";
+    private static String DELETE_BUG = "/BugServlet?action=listBugs&message-success=Bug deleted";
+    private static String CLOSE_BUG = "/BugServlet?action=listBugs&message-success=Bug closed";
     private static String EDIT_BUG = "/editBug.jsp";
 
     public BugServlet(){
