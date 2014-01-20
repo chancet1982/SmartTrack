@@ -89,7 +89,19 @@ public class BugServlet extends HttpServlet {
 
         } else if (action.equalsIgnoreCase("listBugsForProject")){ //List All For Project
             forward = LIST_BUGS_FOR_PROJECT;
-            int projectID = Integer.parseInt(request.getParameter("projectID"));
+            int projectID = 0;
+            if (request.getParameter("projectID") != null ) {
+                projectID = Integer.parseInt(request.getParameter("projectID"));
+                Cookie projectCookie = new Cookie("projectID" , request.getParameter("projectID"));
+                projectCookie.setMaxAge(60*60*24); //1day cookie
+                response.addCookie(projectCookie);
+            } else {
+                cookies = request.getCookies();
+                for (int i = 0; i < cookies.length; i++){
+                    Cookie cookie = cookies[i];
+                    if(cookie.getName().equals("projectID")){ projectID = Integer.parseInt(cookie.getValue()); }
+                }
+            }
             System.out.print("projectID(Servlet): " + projectID);
             request.setAttribute("bugs", bugDAO.getAllBugsForProject(companyName, projectID));
             RequestDispatcher view = request.getRequestDispatcher(forward);
@@ -97,7 +109,19 @@ public class BugServlet extends HttpServlet {
 
         } else if (action.equalsIgnoreCase("listOpenBugsForProject")){ //List Open Bugs Only For Project
             forward = LIST_OPEN_BUGS_FOR_PROJECT;
-            int projectID = Integer.parseInt(request.getParameter("projectID"));
+            int projectID = 0;
+            if (request.getParameter("projectID") != null ) {
+                projectID = Integer.parseInt(request.getParameter("projectID"));
+                Cookie projectCookie = new Cookie("projectID" , request.getParameter("projectID"));
+                projectCookie.setMaxAge(60*60*24); //1day cookie
+                response.addCookie(projectCookie);
+            } else {
+                cookies = request.getCookies();
+                for (int i = 0; i < cookies.length; i++){
+                    Cookie cookie = cookies[i];
+                    if(cookie.getName().equals("projectID")){ projectID = Integer.parseInt(cookie.getValue()); }
+                }
+            }
             request.setAttribute("bugs", bugDAO.getAllOpenBugsForProject(companyName, projectID));
             RequestDispatcher view = request.getRequestDispatcher(forward);
             view.forward(request, response);
