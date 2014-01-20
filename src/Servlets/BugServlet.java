@@ -23,6 +23,11 @@ public class BugServlet extends HttpServlet {
     UserDAO userDAO;
 
     private static String LIST_BUGS = "/listBugs.jsp";
+    private static String DELETE_BUG = "/BugServlet?action=listBugs&message-success=Bug deleted";
+    private static String CLOSE_BUG = "/BugServlet?action=listBugs&message-success=Bug closed";
+    private static String LIST_OPEN_BUGS = "/listOpenBugs.jsp";
+    private static String LIST_BUGS_FOR_PROJECT = "/listBugsForProject.jsp";
+    private static String LIST_OPEN_BUGS_FOR_PROJECT = "/listOpenBugsForProject.jsp";
     private static String ASSIGN_BUGS = "/assignUsersToBugs.jsp";
     private static String INSERT_BUG = "/BugServlet?action=listBugs&message-success=Bug created successfully";
     private static String EDIT_BUG = "/editBug.jsp";
@@ -41,6 +46,7 @@ public class BugServlet extends HttpServlet {
         String companyName = null;
         int projectID = 0;
         cookies = request.getCookies();
+
         for (int i = 0; i < cookies.length; i++){
             Cookie cookie = cookies[i];
             if(cookie.getName().equals("cid")){ companyName = cookie.getValue(); }
@@ -49,17 +55,19 @@ public class BugServlet extends HttpServlet {
         if (action.equalsIgnoreCase("delete")){  //Delete Single
             int bugID = Integer.parseInt(request.getParameter("bugID"));
             bugDAO.deleteBug(companyName, bugID);
-            forward = LIST_BUGS;
+            forward = DELETE_BUG;
             request.setAttribute("bugs", bugDAO.getAllBugsFromCompany(companyName));
             RequestDispatcher view = request.getRequestDispatcher(forward);
             view.forward(request, response);
+
         } else if (action.equalsIgnoreCase("close")){  //Close Single
             int bugID = Integer.parseInt(request.getParameter("bugID"));
             bugDAO.closeBug(companyName, bugID);
-            forward = LIST_BUGS;
+            forward = CLOSE_BUG;
             request.setAttribute("bugs", bugDAO.getAllBugsFromCompany(companyName));
             RequestDispatcher view = request.getRequestDispatcher(forward);
             view.forward(request, response);
+
         } else if (action.equalsIgnoreCase("edit")){  //edit Single
             int bugID = Integer.parseInt(request.getParameter("bugID"));
             BugBean bug = bugDAO.getBugByID(companyName, bugID);
@@ -67,16 +75,33 @@ public class BugServlet extends HttpServlet {
             request.setAttribute("bug", bug);
             RequestDispatcher view = request.getRequestDispatcher(forward);
             view.forward(request, response);
+
         } else if (action.equalsIgnoreCase("listBugs")){ //List All
             forward = LIST_BUGS;
             request.setAttribute("bugs", bugDAO.getAllBugsFromCompany(companyName));
             RequestDispatcher view = request.getRequestDispatcher(forward);
             view.forward(request, response);
-        } else if (action.equalsIgnoreCase("listBugsForProject")){ //List All
-            forward = LIST_BUGS;
+
+        } else if (action.equalsIgnoreCase("listOpenBugs")){ //List Open Bugs Only
+            forward = LIST_OPEN_BUGS;
+            request.setAttribute("bugs", bugDAO.getAllOpenBugsFromCompany(companyName));
+            RequestDispatcher view = request.getRequestDispatcher(forward);
+            view.forward(request, response);
+
+        } else if (action.equalsIgnoreCase("listBugsForProject")){ //List All For Project
+            forward = LIST_BUGS_FOR_PROJECT;
+            int bugID = Integer.parseInt(request.getParameter("projectID"));
             request.setAttribute("bugs", bugDAO.getAllBugsForProject(companyName, projectID));
             RequestDispatcher view = request.getRequestDispatcher(forward);
             view.forward(request, response);
+
+        } else if (action.equalsIgnoreCase("listOpenBugsForProject")){ //List Open Bugs Only For Project
+            forward = LIST_OPEN_BUGS_FOR_PROJECT;
+            int bugID = Integer.parseInt(request.getParameter("projectID"));
+            request.setAttribute("bugs", bugDAO.getAllOpenBugsForProject(companyName, projectID));
+            RequestDispatcher view = request.getRequestDispatcher(forward);
+            view.forward(request, response);
+
         } else if (action.equalsIgnoreCase("assignBugs")){ //Assign users to bugs
             forward = ASSIGN_BUGS;
             userDAO = new UserDAO();
@@ -84,6 +109,7 @@ public class BugServlet extends HttpServlet {
             request.setAttribute("users", userDAO.getAllUsersFromCompany(companyName));
             RequestDispatcher view = request.getRequestDispatcher(forward);
             view.forward(request, response);
+
         }else if (action.equalsIgnoreCase("getProjectsInDropdown")){ //get bugs in dropdown
             response.setContentType("text/html");
             PrintWriter out = response.getWriter();
@@ -92,6 +118,7 @@ public class BugServlet extends HttpServlet {
             for(int i=0; i<projects.size(); i++){
                 out.write("<option value='"+ projects.get(i).getProjectID() +"'>"+ projects.get(i).getProjectName() +" v. " +projects.get(i).getProjectID()+"</option>");
             }
+
         } else if (action.equalsIgnoreCase("getAssigned")){ //get user assigned to specific bug
             response.setContentType("text/html");
             int bugID = Integer.parseInt(request.getParameter("bugID"));
@@ -102,17 +129,20 @@ public class BugServlet extends HttpServlet {
                         "<span class='icon user'></span>" +
                         users.get(i).getFirstname() + "</li>");
             }
-        } else if (action.equalsIgnoreCase("changeBugStatus")){ //get user assigned to specific bug
+
+        } else if (action.equalsIgnoreCase("changeBugStatus")){ //change bug status
             response.setContentType("text/html");
             String bugStatus = request.getParameter("bugStatus");
             int bugID = Integer.parseInt(request.getParameter("bugID"));
             bugDAO.changeBugStatus(companyName,bugStatus, bugID);
-        } else if (action.equalsIgnoreCase("changeBugPriority")){ //get user assigned to specific bug
+
+        } else if (action.equalsIgnoreCase("changeBugPriority")){ //change bug priority
             response.setContentType("text/html");
             String bugPriority = request.getParameter("bugPriority");
             int bugID = Integer.parseInt(request.getParameter("bugID"));
             bugDAO.changeBugPriority(companyName,bugPriority, bugID);
-        } else if (action.equalsIgnoreCase("setActive")){ //get user assigned to specific bug
+
+        } else if (action.equalsIgnoreCase("setActive")){ //change bug active/inactive
             response.setContentType("text/html");
             boolean active;
             if (request.getParameter("active").equals("true")) {
@@ -122,6 +152,7 @@ public class BugServlet extends HttpServlet {
             }
             int bugID = Integer.parseInt(request.getParameter("bugID"));
             bugDAO.setActive(companyName,active, bugID);
+
         } else if (action.equalsIgnoreCase("setAssigned")){ //set users assigned to specific bug
 
             int bugID = Integer.parseInt(request.getParameter("bugID"));
@@ -136,7 +167,6 @@ public class BugServlet extends HttpServlet {
             }
 
             PrintWriter out = response.getWriter();
-
 
         }else if (action.equalsIgnoreCase("autocompleteUsers")){
             response.setContentType("text/html");

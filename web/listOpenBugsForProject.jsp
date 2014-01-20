@@ -51,13 +51,12 @@
                     </c:forEach>
                     </tbody>
                 </table>
-                <a id="listMyBugs" class="button round-corners"><span class="icon bug"></span>My Bugs</a>
-                <a id="listOpenBugs" class="button round-corners" href="BugServlet?action=ListOpenBugs"><span class="icon bug"></span>Show only Open Bugs</a>
             </c:if>
             <c:if test="${fn:length(bugs) lt 1}">
-                <h2>There are no bugs in the system... would you like to report one?</h2>
+                <h2>There are no open bugs... would you like to report one?</h2>
             </c:if>
-            <a id="createBug" class="button round-corners"><span class="icon add-bug"></span>Add a Bug</a>
+            <a id="listOpenBugs" class="button round-corners" href="BugServlet?action=listBugsForProject"><span class="icon bug"></span>Show All Bugs</a>
+            <a id="createBug" class="button round-corners"><span class="icon add-bug"></span>Add Bugs</a>
         </div>
     </div>
 </div>

@@ -211,6 +211,43 @@ public class BugDAO {
         return bugs;
     }
 
+    public List<BugBean> getAllOpenBugsFromCompany(String companyName) {
+        List<BugBean> bugs = new ArrayList<BugBean>();
+        try {
+            statement = connection.createStatement();
+            rs = statement.executeQuery("SELECT * FROM "+companyName+".bugsTable WHERE active IS true");
+
+            while (rs.next()) {
+                BugBean bug = new BugBean();
+                bug.setBugID(rs.getInt("bugID"));
+                bug.setProjectID(rs.getInt("projectID"));
+                bug.setBugCategory(rs.getString("bugCategory"));
+                bug.setBugTitle(rs.getString("bugTitle"));
+                bug.setBugDescription(rs.getString("bugDescription"));
+                bug.setBugStatus(rs.getString("bugStatus"));
+                bug.setBugPriority(rs.getString("bugPriority"));
+                bug.setReportedPriority(rs.getString("reportedPriority"));
+                bug.setBugURL(rs.getString("bugURL"));
+                bug.setScreenshotURL(rs.getString("screenshotURL"));
+                bug.setBugPCInfo(rs.getString("bugPCInfo"));
+                bug.setBugErrorCode(rs.getString("bugErrorCode"));
+                bug.setStepsToRecreate(rs.getString("stepsToRecreate"));
+                bug.setBugTimeStamp(rs.getString("bugTimeStamp"));
+                bug.setCreated(String.format("%1$TD %1$TT", rs.getTimestamp("created")));
+                bug.setModified(String.format("%1$TD %1$TT", rs.getTimestamp("modified")));
+                bug.setActive(rs.getBoolean("active"));
+                bugs.add(bug);
+            }
+
+            rs.close();
+            statement.close();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return bugs;
+    }
+
     public List<BugBean> getAllBugsForProject(String companyName, int projectID) {
         List<BugBean> bugs = new ArrayList<BugBean>();
         try {
@@ -249,10 +286,10 @@ public class BugDAO {
         return bugs;
     }
 
-    public List<BugBean> getAllActiveBugsForProject(String companyName, int projectID) {
+    public List<BugBean> getAllOpenBugsForProject(String companyName, int projectID) {
         List<BugBean> bugs = new ArrayList<BugBean>();
         try {
-            preparedStatement = connection.prepareStatement("SELECT * FROM " + companyName + ".bugsTable WHERE projectID=? AND active=1");
+            preparedStatement = connection.prepareStatement("SELECT * FROM " + companyName + ".bugsTable WHERE projectID=? AND active IS true");
             preparedStatement.setInt(1, projectID);
             rs = preparedStatement.executeQuery();
 
