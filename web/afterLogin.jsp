@@ -27,6 +27,5 @@
     menuHighlight();
 </script>
 
-<div id="example1" style="width: 900px; height: 180px;"></div>
 </body>
 </html>
