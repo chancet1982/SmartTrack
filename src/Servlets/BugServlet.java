@@ -126,6 +126,13 @@ public class BugServlet extends HttpServlet {
             RequestDispatcher view = request.getRequestDispatcher(forward);
             view.forward(request, response);
 
+        }else if (action.equalsIgnoreCase("ListMyBugs")){ //List My Bugs   TODO !!!!
+
+            List<BugBean> bugs = bugDAO.getAllBugsFromUser(companyName, 1);
+            for(int i=0;i<bugs.size();i++){
+                System.out.println(bugs.get(i).getBugID());
+            }
+
         } else if (action.equalsIgnoreCase("assignBugs")){ //Assign users to bugs
             forward = ASSIGN_BUGS;
             userDAO = new UserDAO();

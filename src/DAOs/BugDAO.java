@@ -325,6 +325,38 @@ public class BugDAO {
         return bugs;
     }
 
+    public List<BugBean> getAllBugsFromUser (String companyName , int userID){
+        List<BugBean> bugs = new ArrayList<BugBean>();
+        try {
+            preparedStatement = connection.prepareStatement("SELECT * FROM " + companyName + ".bugsAssign WHERE userID=?");
+            preparedStatement.setInt(1,userID);
+            rs = preparedStatement.executeQuery();
+            ResultSetMetaData rsmd = rs.getMetaData();
+            int columnsNumber = rsmd.getColumnCount();
+
+            List<Integer> ListOfBugIDs = new ArrayList<Integer>();
+            while (rs.next()) {
+                ListOfBugIDs.add(42);
+                for (int i=2;i<=columnsNumber;i++){
+                    ListOfBugIDs.add(rs.getInt(i));
+                }
+            }
+
+            for (int i=0;i<ListOfBugIDs.size();i++){
+                if(ListOfBugIDs.get(i) == 1) {
+                    bugs.add(getBugByID(companyName,i));
+                }
+            }
+
+            rs.close();
+            preparedStatement.close();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return bugs;
+    }
+
     public List<UserBean> getUsersAssigned(String companyName , int bugID) {
         List<UserBean> users = new ArrayList<UserBean>();
         UserDAO userDAO = new UserDAO();
