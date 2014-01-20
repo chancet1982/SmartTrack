@@ -22,6 +22,9 @@
                     <th>Bug Id</th>
                     <th>Bug Title</th>
                     <th>Bug Description</th>
+                    <th>Bug Status</th>
+                    <th>Is open</th>
+                    <th></th>
                     <th></th>
                 </tr>
                 </thead>
@@ -31,6 +34,13 @@
                         <td><c:out value="${bug.bugID}" /></td>
                         <td><c:out value="${bug.bugTitle}" /></td>
                         <td><c:out value="${bug.bugDescription}" /></td>
+                        <td><c:out value="${bug.bugStatus}" /></td>
+                        <c:if test="${bug.active eq true}">
+                            <td>YES</td>
+                        </c:if>
+                        <c:if test="${bug.active eq false}">
+                            <td>NO</td>
+                        </c:if>
                         <td><a href="BugServlet?action=edit&bugID=<c:out value="${bug.bugID}"/>">Edit</a></td>
                         <td><a href="BugServlet?action=delete&bugID=<c:out value="${bug.bugID}"/>">Delete</a></td>
                     </tr>

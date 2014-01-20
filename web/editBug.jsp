@@ -88,35 +88,35 @@
                     <select id="bugPriority" name="bugPriority">
                     <c:choose>
                         <c:when test="${bug.bugPriority eq 'Minor'}">
-                            <option value="no-value">Bug Priority</option>
+                            <option value="no-value">unprioritized</option>
                             <option value="Minor" selected="selected">Minor</option>
                             <option value="Average">Average</option>
                             <option value="Major">Major</option>
                             <option value="Blocker">Blocker</option>
                         </c:when>
                         <c:when test="${bug.bugPriority eq 'Average'}">
-                            <option value="no-value">Bug Priority</option>
+                            <option value="no-value">unprioritized</option>
                             <option value="Minor">Minor</option>
                             <option value="Average" selected="selected">Average</option>
                             <option value="Major">Major</option>
                             <option value="Blocker">Blocker</option>
                         </c:when>
                         <c:when test="${bug.bugPriority eq 'Major'}">
-                            <option value="no-value">Bug Priority</option>
+                            <option value="no-value">unprioritized</option>
                             <option value="Minor">Minor</option>
                             <option value="Average">Average</option>
                             <option value="Major" selected="selected">Major</option>
                             <option value="Blocker">Blocker</option>
                         </c:when>
                         <c:when test="${bug.bugPriority eq 'Blocker'}">
-                            <option value="no-value">Bug Priority</option>
+                            <option value="no-value">unprioritized</option>
                             <option value="Minor">Minor</option>
                             <option value="Average">Average</option>
                             <option value="Major">Major</option>
                             <option value="Blocker" selected="selected">Blocker</option>
                         </c:when>
                         <c:otherwise>
-                            <option value="no-value" selected="selected">Bug Priority</option>
+                            <option value="no-value" selected="selected">unprioritized</option>
                             <option value="Minor">Minor</option>
                             <option value="Average">Average</option>
                             <option value="Major">Major</option>
@@ -256,7 +256,7 @@
                             },
                             success: function(data) {
                                 $("#ajax-loader").hide();
-                                $('select#bugStatus').removeAttr('selected').val(bugStatus);
+                                $('select#bugPriority').removeAttr('selected').val(bugPriority);
                                 $("#site-footer .message p").remove();
                                 $("#site-footer .message").prepend('<p>Success: Bug priority changed</p>').addClass("success").show();
                             },
