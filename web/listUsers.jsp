@@ -22,6 +22,9 @@
                     <th>First Name</th>
                     <th>Last Name</th>
                     <th>Email</th>
+                    <th>Reporter</th>
+                    <th>Handler</th>
+                    <th>Manager</th>
                     <th></th>
                 </tr>
                 </thead>
@@ -32,6 +35,36 @@
                         <td><c:out value="${user.firstname}" /></td>
                         <td><c:out value="${user.lastname}" /></td>
                         <td><c:out value="${user.useremail}" /></td>
+                        <td>
+                            <c:choose>
+                                <c:when test="${user.reporter eq true}">
+                                    <span userID="<c:out value="${user.userid}" />" id="isReporter" class="icon role valid"></span>
+                                </c:when>
+                                <c:otherwise>
+                                    <span userID="<c:out value="${user.userid}" />" id="isReporter" class="icon role invalid"></span>
+                                </c:otherwise>
+                            </c:choose>
+                        </td>
+                        <td>
+                            <c:choose>
+                                <c:when test="${user.handler eq true}">
+                                    <span userID="<c:out value="${user.userid}" />" id="isHandler" class="icon role valid"></span>
+                                </c:when>
+                                <c:otherwise>
+                                    <span userID="<c:out value="${user.userid}" />" id="isHandler" class="icon role invalid"></span>
+                                </c:otherwise>
+                            </c:choose>
+                        </td>
+                        <td>
+                            <c:choose>
+                                <c:when test="${user.manager eq true}">
+                                    <span userID="<c:out value="${user.userid}" />" id="isManager" class="icon role valid"></span>
+                                </c:when>
+                                <c:otherwise>
+                                    <span userID="<c:out value="${user.userid}" />" id="isManager" class="icon role invalid"></span>
+                                </c:otherwise>
+                            </c:choose>
+                        </td>
                         <td><a href="UserServlet?action=edit&userID=<c:out value="${user.userid}"/>">Edit</a></td>
                         <td><a href="UserServlet?action=delete&userID=<c:out value="${user.userid}"/>">Delete</a></td>
                     </tr>
@@ -70,6 +103,99 @@
             autoOpen: false,
             width: (0.7*$( window ).width()),
             modal: true
+        });
+
+        $('span#isReporter').on('click', function (e) {
+            var isReporter = false;
+            var userID = $(this).attr('userID');
+
+            if ($(this).hasClass('valid')) {
+                $(this).removeClass('valid').addClass('invalid');
+                isReporter = false;
+            } else {
+                $(this).removeClass('invalid').addClass('valid');
+                isReporter = true;
+            }
+
+            $.ajax({
+                type: "GET",
+                url: "/UserServlet?action=changeReporter&userID="+userID+"&isReporter="+isReporter,
+                beforeSend: function(){
+                    $("#ajax-loader").show();
+                },
+                success: function(data) {
+                    $("#ajax-loader").hide();
+                    $("#site-footer .message p").remove();
+                    $("#site-footer .message").prepend('<p>User role changed</p>').addClass("success").show();
+                },
+                error: function () {
+                    $("#ajax-loader").hide();
+                    $("#site-footer .message p").remove();
+                    $("#site-footer .message").prepend('<p>Error: Cannot change user role</p>').addClass("error").show();
+                }
+            });
+        });
+
+        $('span#isHandler').on('click', function (e) {
+            var isHandler = false;
+            var userID = $(this).attr('userID');
+
+            if ($(this).hasClass('valid')) {
+                $(this).removeClass('valid').addClass('invalid');
+                isHandler = false;
+            } else {
+                $(this).removeClass('invalid').addClass('valid');
+                isHandler = true;
+            }
+
+            $.ajax({
+                type: "GET",
+                url: "/UserServlet?action=changeHandler&userID="+userID+"&isHandler="+isHandler,
+                beforeSend: function(){
+                    $("#ajax-loader").show();
+                },
+                success: function(data) {
+                    $("#ajax-loader").hide();
+                    $("#site-footer .message p").remove();
+                    $("#site-footer .message").prepend('<p>User role changed</p>').addClass("success").show();
+                },
+                error: function () {
+                    $("#ajax-loader").hide();
+                    $("#site-footer .message p").remove();
+                    $("#site-footer .message").prepend('<p>Error: Cannot change user role</p>').addClass("error").show();
+                }
+            });
+        });
+
+        $('span#isManager').on('click', function (e) {
+            var isManager = false;
+            var userID = $(this).attr('userID');
+
+            if ($(this).hasClass('valid')) {
+                $(this).removeClass('valid').addClass('invalid');
+                isManager = false;
+            } else {
+                $(this).removeClass('invalid').addClass('valid');
+                isManager = true;
+            }
+
+            $.ajax({
+                type: "GET",
+                url: "/UserServlet?action=changeManager&userID="+userID+"&isManager="+isManager,
+                beforeSend: function(){
+                    $("#ajax-loader").show();
+                },
+                success: function(data) {
+                    $("#ajax-loader").hide();
+                    $("#site-footer .message p").remove();
+                    $("#site-footer .message").prepend('<p>User role changed</p>').addClass("success").show();
+                },
+                error: function () {
+                    $("#ajax-loader").hide();
+                    $("#site-footer .message p").remove();
+                    $("#site-footer .message").prepend('<p>Error: Cannot change user role</p>').addClass("error").show();
+                }
+            });
         });
     });
 </script>

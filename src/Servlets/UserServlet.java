@@ -24,14 +24,14 @@ public class UserServlet extends HttpServlet {
     private static String INSERT_USER = "/afterLogin.jsp?message-success=User was added to the database";
     private static String LOGOUT = "/login.jsp";
 
-    private UserDAO dao;
-    private CompanyDAO companydao;
+    private UserDAO userDAO;
+    private CompanyDAO companyDAO;
     PasswordHash passwordHash = new PasswordHash();
 
     public UserServlet() {
         super();
-        dao = new UserDAO();
-        companydao = new CompanyDAO();
+        userDAO = new UserDAO();
+        companyDAO = new CompanyDAO();
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -39,7 +39,7 @@ public class UserServlet extends HttpServlet {
         String action = request.getParameter("action");
         if (action.equalsIgnoreCase("delete")){  //Delete Single
             int userId = Integer.parseInt(request.getParameter("userId"));
-            dao.deleteUser(userId);
+            userDAO.deleteUser(userId);
             forward = LIST_USER;
             //get company name from cookie
             Cookie[] cookies ;
@@ -49,16 +49,33 @@ public class UserServlet extends HttpServlet {
                 Cookie cookie = cookies[i];
                 if(cookie.getName().equals("cid")){ companyName = cookie.getValue(); }
             }
-            request.setAttribute("users", dao.getAllUsersFromCompany(companyName));
+            request.setAttribute("users", userDAO.getAllUsersFromCompany(companyName));
             RequestDispatcher view = request.getRequestDispatcher(forward);
             view.forward(request, response);
+
+        } else if (action.equalsIgnoreCase("changeReporter")){ //Change Reporter Role
+            int userID = Integer.parseInt(request.getParameter("userID"));
+            boolean isReporter = Boolean.parseBoolean(request.getParameter("isReporter"));
+            userDAO.changeReporter(userID, isReporter);
+
+        } else if (action.equalsIgnoreCase("changeHandler")){ //Change Handler Role
+            int userID = Integer.parseInt(request.getParameter("userID"));
+            boolean isHandler = Boolean.parseBoolean(request.getParameter("isHandler"));
+            userDAO.changeHandler(userID, isHandler);
+
+        } else if (action.equalsIgnoreCase("changeManager")){ //Change Manager Role
+            int userID = Integer.parseInt(request.getParameter("userID"));
+            boolean isManager = Boolean.parseBoolean(request.getParameter("isManager"));
+            userDAO.changeManager(userID, isManager);
+
         } else if (action.equalsIgnoreCase("edit")){ //Edit Single
             forward = EDIT;
             int userID = Integer.parseInt(request.getParameter("userID"));
-            UserBean user = dao.getUserByID(userID);
+            UserBean user = userDAO.getUserByID(userID);
             request.setAttribute("user", user);
             RequestDispatcher view = request.getRequestDispatcher(forward);
             view.forward(request, response);
+
         } else if (action.equalsIgnoreCase("listUsers")){ //List All
             forward = LIST_USER;
             //get company name from cookie
@@ -69,19 +86,21 @@ public class UserServlet extends HttpServlet {
                 Cookie cookie = cookies[i];
                 if(cookie.getName().equals("cid")){ companyName = cookie.getValue(); }
             }
-            request.setAttribute("users", dao.getAllUsersFromCompany(companyName));
+            request.setAttribute("users", userDAO.getAllUsersFromCompany(companyName));
             RequestDispatcher view = request.getRequestDispatcher(forward);
             view.forward(request, response);
+
         } else if (action.equalsIgnoreCase("verifyUnique")){ //Check Unique
             response.setContentType("application/json");
             PrintWriter out = response.getWriter();
-            if( dao.isFieldUnique(request.getParameter("inputValue") , request.getParameter("inputName")) == true ){
+            if( userDAO.isFieldUnique(request.getParameter("inputValue") , request.getParameter("inputName")) == true ){
                 String temp = "{\"isUnique\":\"true\"}";
                 out.write(temp);
             }else{
                 String temp = "{\"isUnique\":\"false\"}";
                 out.write(temp);
             }
+
         } else if (action.equalsIgnoreCase("LogoutUser")){ //Logout
             forward = LOGOUT;
 
@@ -98,6 +117,7 @@ public class UserServlet extends HttpServlet {
 
             RequestDispatcher view = request.getRequestDispatcher(forward);
             view.forward(request, response);
+
         }else{
             forward = EDIT;
             RequestDispatcher view = request.getRequestDispatcher(forward);
@@ -125,9 +145,9 @@ public class UserServlet extends HttpServlet {
         user.setCompanyName(request.getParameter("companyName"));
         company.setCompanyName(request.getParameter("companyName"));
 
-        user.setIshandler(true);
-        user.setIsmanager(true);
-        user.setIsreporter(true);
+        user.setHandler(true);
+        user.setManager(true);
+        user.setReporter(true);
 
         String userid = request.getParameter("userID");
         if(userid == null || userid.isEmpty()) {
@@ -144,12 +164,12 @@ public class UserServlet extends HttpServlet {
             response.addCookie(companyNameCookie);
             response.addCookie(passwordCookie);
 
-            companydao.addCompany(company);
-            dao.addUser(user);
+            companyDAO.addCompany(company);
+            userDAO.addUser(user);
             response.sendRedirect(INSERT_USER);
         } else {
             user.setUserid(Integer.parseInt(userid));
-            dao.updateUser(user);
+            userDAO.updateUser(user);
             response.sendRedirect(MODIFY_USER);
         }
     }

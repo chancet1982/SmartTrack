@@ -140,8 +140,14 @@ display:block;
 .icon.valid{background-position:0px -144px;}
 .icon.valid:hover{background-position:-24px -144px;}
 
+.icon.role.valid{background-position:0px -144px;background-color:@color-success;border:solid 1px darken(@color-success,10%);.round-corners;}
+.icon.role.valid:hover{background-position:-24px -144px;background-color:lighten(@color-success,10%);border:solid 1px darken(@color-success,20%);.round-corners;}
+
 .icon.invalid{background-position:0px -168px;}
 .icon.invalid:hover{background-position:-24px -168px;}
+
+.icon.role.invalid{background-position:0px -170px;background-color:@color-error;border:solid 1px darken(@color-error,10%);.round-corners;}
+.icon.role.invalid:hover{background-position:-24px -170px;background-color:lighten(@color-error,10%);border:solid 1px darken(@color-error,10%);.round-corners;}
 
 .icon.search{background-position:0px -192px;}
 .icon.search:hover{background-position:-24px -192px;}

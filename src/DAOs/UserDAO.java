@@ -74,9 +74,9 @@ public class UserDAO {
             preparedStatement.setString(2, user.getLastname());
             preparedStatement.setString(3, user.getUseremail());
             preparedStatement.setString(4, user.getUserpassword());
-            preparedStatement.setBoolean(5, user.isIshandler());
-            preparedStatement.setBoolean(6, user.isIsmanager());
-            preparedStatement.setBoolean(7, user.isIsreporter());
+            preparedStatement.setBoolean(5, user.isHandler());
+            preparedStatement.setBoolean(6, user.isManager());
+            preparedStatement.setBoolean(7, user.isReporter());
             preparedStatement.setInt(8, user.getUserid());
             preparedStatement.executeUpdate();
 
@@ -148,9 +148,9 @@ public class UserDAO {
                 user.setFirstname(rs.getString("firstName"));
                 user.setLastname(rs.getString("lastName"));
                 user.setUseremail(rs.getString("userEmail"));
-                user.setIshandler(rs.getBoolean("handler"));
-                user.setIsmanager(rs.getBoolean("manager"));
-                user.setIsreporter(rs.getBoolean("reporter"));
+                user.setHandler(rs.getBoolean("handler"));
+                user.setManager(rs.getBoolean("manager"));
+                user.setReporter(rs.getBoolean("reporter"));
             }
 
             rs.close();
@@ -160,6 +160,54 @@ public class UserDAO {
             e.printStackTrace();
         }
         return user;
+    }
+
+    public void changeReporter(int userID, boolean isReporter) {
+        System.out.println("userID: " + userID);
+        System.out.println("isReporter: " + isReporter);
+        try {
+            preparedStatement = connection.prepareStatement("UPDATE indexdb.usersTable SET reporter=? WHERE id=?");
+            preparedStatement.setBoolean(1, isReporter);
+            preparedStatement.setInt(2, userID);
+            preparedStatement.executeUpdate();
+
+            preparedStatement.close();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+        public void changeHandler(int userID, boolean isHandler) {
+            System.out.println("userID: " + userID);
+            System.out.println("isHandler: " + isHandler);
+        try {
+            preparedStatement = connection.prepareStatement("UPDATE indexdb.usersTable SET handler=? WHERE id=?");
+            preparedStatement.setBoolean(1, isHandler);
+            preparedStatement.setInt(2, userID);
+            preparedStatement.executeUpdate();
+
+            preparedStatement.close();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void changeManager(int userID, boolean isManager) {
+        System.out.println("userID: " + userID);
+        System.out.println("isManager: " + isManager);
+        try {
+            preparedStatement = connection.prepareStatement("UPDATE indexdb.usersTable SET manager=? WHERE id=?");
+            preparedStatement.setBoolean(1, isManager);
+            preparedStatement.setInt(2, userID);
+            preparedStatement.executeUpdate();
+
+            preparedStatement.close();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     public UserBean getUserByEmail(String email) {

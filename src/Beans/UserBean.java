@@ -11,9 +11,41 @@ public class UserBean implements Serializable{
     private String companyName;
     private String initials;
 
-    private boolean ishandler;
-    private boolean ismanager;
-    private boolean isreporter;
+    public int getUserID() {
+        return userID;
+    }
+
+    public void setUserID(int userID) {
+        this.userID = userID;
+    }
+
+    public boolean isHandler() {
+        return handler;
+    }
+
+    public void setHandler(boolean handler) {
+        this.handler = handler;
+    }
+
+    public boolean isManager() {
+        return manager;
+    }
+
+    public void setManager(boolean manager) {
+        this.manager = manager;
+    }
+
+    public boolean isReporter() {
+        return reporter;
+    }
+
+    public void setReporter(boolean reporter) {
+        this.reporter = reporter;
+    }
+
+    private boolean handler;
+    private boolean manager;
+    private boolean reporter;
 
     public int getUserid() {
         return userID;
@@ -55,29 +87,6 @@ public class UserBean implements Serializable{
         this.userpassword = userpassword;
     }
 
-    public boolean isIshandler() {
-        return ishandler;
-    }
-
-    public void setIshandler(boolean ishandler) {
-        this.ishandler = ishandler;
-    }
-
-    public boolean isIsmanager() {
-        return ismanager;
-    }
-
-    public void setIsmanager(boolean ismanager) {
-        this.ismanager = ismanager;
-    }
-
-    public boolean isIsreporter() {
-        return isreporter;
-    }
-
-    public void setIsreporter(boolean isreporter) {
-        this.isreporter = isreporter;
-    }
     public String getCompanyName() {
         return companyName;
     }
@@ -93,5 +102,7 @@ public class UserBean implements Serializable{
     public void setInitials(String initials) {
         this.initials = initials;
     }
+
+
 
 }
