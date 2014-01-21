@@ -26,6 +26,7 @@ public class BugServlet extends HttpServlet {
     private static String LIST_OPEN_BUGS = "/listOpenBugs.jsp";
     private static String LIST_BUGS_FOR_PROJECT = "/listBugsForProject.jsp";
     private static String LIST_OPEN_BUGS_FOR_PROJECT = "/listOpenBugsForProject.jsp";
+    private static String LIST_MY_BUGS = "/listMyBugs.jsp";
     private static String ASSIGN_BUGS = "/assignUsersToBugs.jsp";
     private static String INSERT_BUG = "/BugServlet?action=listBugs&message-success=Bug created successfully";
     private static String DELETE_BUG = "/BugServlet?action=listBugs&message-success=Bug deleted";
@@ -135,12 +136,27 @@ public class BugServlet extends HttpServlet {
             RequestDispatcher view = request.getRequestDispatcher(forward);
             view.forward(request, response);
 
-        }else if (action.equalsIgnoreCase("ListMyBugs")){ //List My Bugs   TODO !!!!
+        }else if (action.equalsIgnoreCase("listMyBugs")){ //List My Bugs   TODO !!!!
+            forward = LIST_MY_BUGS;
+            userDAO = new UserDAO();
+            String userEmail = "";
 
-            List<BugBean> bugs = bugDAO.getAllBugsFromUser(companyName, 1);
+            //get user email
+            for (int i = 0; i < cookies.length; i++){
+                if(cookies[i].getName().equals("uid")){ userEmail=cookies[i].getValue(); }
+            }
+            System.out.println(userEmail);
+            UserBean user = userDAO.getUserByEmail(userEmail);
+            int userID =user.getUserid();
+            List<BugBean> bugs = bugDAO.getAllBugsFromUser(companyName, userID);
             for(int i=0;i<bugs.size();i++){
                 System.out.println(bugs.get(i).getBugID());
             }
+
+            request.setAttribute("bugs", bugs);
+            RequestDispatcher view = request.getRequestDispatcher(forward);
+            view.forward(request, response);
+
 
         } else if (action.equalsIgnoreCase("assignBugs")){ //Assign users to bugs
             forward = ASSIGN_BUGS;
