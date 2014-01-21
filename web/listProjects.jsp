@@ -25,6 +25,7 @@
                         <th>Project Name</th>
                         <th>Project Version</th>
                         <th></th>
+                        <th></th>
                     </tr>
                     </thead>
                     <tbody>

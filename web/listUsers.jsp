@@ -26,6 +26,7 @@
                     <th>Handler</th>
                     <th>Manager</th>
                     <th></th>
+                    <th></th>
                 </tr>
                 </thead>
                 <tbody>
