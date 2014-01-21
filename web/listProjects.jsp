@@ -43,7 +43,9 @@
             <c:if test="${fn:length(projects) lt 1}">
                 <h2>You dont have any active projects... how about creating some?</h2>
             </c:if>
+            <% if(isManager == true){%>
             <a id="createProject" class="button round-corners"><span class="icon add-project"></span>Create new project</a>
+            <%}%>
         </div>
     </div>
 </div>
