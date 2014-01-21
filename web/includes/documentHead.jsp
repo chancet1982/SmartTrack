@@ -24,11 +24,11 @@
     <!-- CSS -->
     <link media="all" href="css/reset.css" rel="stylesheet" type="text/css" />
     <link media="all" href="css/jquery-ui/jquery-ui-1.10.3.custom.css" rel="stylesheet">
-    <link media="screen" href="css/main.css" rel="stylesheet" type="text/css" /> <!-- To be used in the future production version -->
+    <!-- <link media="screen" href="css/main.css" rel="stylesheet" type="text/css" />  To be used in the future production version -->
 
-    <!-- LESS -->
+    <!-- LESS
     <link rel="stylesheet/less" type="text/css" href="less/main.less">
-    <script type="text/javascript" src="js/less.min.js"></script>
+    <script type="text/javascript" src="js/less.min.js"></script> -->
 
     <!-- Web Fonts -->
     <link href='http://fonts.googleapis.com/css?family=Montserrat+Alternates' rel='stylesheet' type='text/css'>
@@ -81,4 +81,15 @@
     #site-content li.user { background: #a6e866; }
 
     </style>
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+            if ($.cookie("css")) {
+                $('head').append('<link href="/css/'+$.cookie("css")+'.css" rel="stylesheet" />');
+            } else {
+                $('head').append('<link href="/css/default.css" rel="stylesheet" id="currentStyle" />');
+                $.cookie("css", "default");
+            }
+        });
+    </script>
 </head>

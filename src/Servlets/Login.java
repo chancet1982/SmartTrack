@@ -95,9 +95,36 @@ public class Login extends HttpServlet {
             if ( password!=null && user.getUserpassword() != null ) {
                 if( passwordHash.validatePassword(password, user.getUserpassword()) ){
                     System.out.println("Success - password correct");
+
                     Cookie emailCookie = new Cookie("uid" , email);
                     Cookie pwdCookie = new Cookie( "pwd" , user.getUserpassword() );
                     Cookie cid = new Cookie("cid", user.getCompanyName());
+                    Cookie ir;
+                    Cookie ih;
+                    Cookie im;
+                    if (user.isReporter()) {
+                        ir = new Cookie("ir" ,"1");
+                    } else {
+                        ir = new Cookie("ir" ,"0");
+                    }
+                    if (user.isHandler()) {
+                        ih = new Cookie("ih" ,"1");
+                    } else {
+                        ih = new Cookie("ih" ,"0");
+                    }
+
+                    if (user.isManager()) {
+                        im = new Cookie("im" ,"1");
+                    } else {
+                        im = new Cookie("im" ,"0");
+                    }
+
+                    ir.setMaxAge(60*60*24); //1day cookie
+                    ih.setMaxAge(60*60*24);
+                    im.setMaxAge(60*60*24);
+                    response.addCookie(ir);
+                    response.addCookie(ih);
+                    response.addCookie(im);
 
                     emailCookie.setMaxAge(60*60*24); //1day cookie
                     pwdCookie.setMaxAge(60*60*24);

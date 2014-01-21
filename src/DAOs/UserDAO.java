@@ -99,6 +99,9 @@ public class UserDAO {
                 user.setFirstname(rs.getString("firstName"));
                 user.setLastname(rs.getString("lastName"));
                 user.setUseremail(rs.getString("userEmail"));
+                user.setHandler(rs.getBoolean("handler"));
+                user.setManager(rs.getBoolean("manager"));
+                user.setReporter(rs.getBoolean("reporter"));
                 users.add(user);
             }
 
@@ -123,6 +126,9 @@ public class UserDAO {
                 user.setFirstname(rs.getString("firstName"));
                 user.setLastname(rs.getString("lastName"));
                 user.setUseremail(rs.getString("userEmail"));
+                user.setHandler(rs.getBoolean("handler"));
+                user.setManager(rs.getBoolean("manager"));
+                user.setReporter(rs.getBoolean("reporter"));
                 users.add(user);
             }
 
@@ -225,6 +231,9 @@ public class UserDAO {
                 user.setInitials(rs.getString("firstName").substring(0,1) + rs.getString("lastName").substring(0,1));
                 user.setUseremail(rs.getString("userEmail"));
                 user.setUserpassword(rs.getString("userPassword"));
+                user.setHandler(rs.getBoolean("handler"));
+                user.setManager(rs.getBoolean("manager"));
+                user.setReporter(rs.getBoolean("reporter"));
             }
 
             rs.close();

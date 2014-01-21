@@ -37,7 +37,7 @@
                         <td><c:out value="${user.useremail}" /></td>
                         <td>
                             <c:choose>
-                                <c:when test="${user.reporter eq true}">
+                                <c:when test="${user.reporter}">
                                     <span userID="<c:out value="${user.userid}" />" id="isReporter" class="icon role valid"></span>
                                 </c:when>
                                 <c:otherwise>
@@ -47,7 +47,7 @@
                         </td>
                         <td>
                             <c:choose>
-                                <c:when test="${user.handler eq true}">
+                                <c:when test="${user.handler}">
                                     <span userID="<c:out value="${user.userid}" />" id="isHandler" class="icon role valid"></span>
                                 </c:when>
                                 <c:otherwise>
@@ -57,7 +57,7 @@
                         </td>
                         <td>
                             <c:choose>
-                                <c:when test="${user.manager eq true}">
+                                <c:when test="${user.manager}">
                                     <span userID="<c:out value="${user.userid}" />" id="isManager" class="icon role valid"></span>
                                 </c:when>
                                 <c:otherwise>
