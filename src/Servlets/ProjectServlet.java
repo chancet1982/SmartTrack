@@ -72,7 +72,9 @@ public class ProjectServlet extends HttpServlet{
             for(int i=0; i<users.size(); i++){
                 out.write("<li class='user ico ui-draggable' data-user-id='"+users.get(i).getUserid()+"'>"+
                         "<span class='icon user'></span>" +
-                         users.get(i).getFirstname() + "</li>");
+                         users.get(i).getFirstname().substring(0,1).toUpperCase() +
+                         users.get(i).getLastname().substring(0,1).toUpperCase() +
+                         "</li>");
             }
 
         }else if (action.equalsIgnoreCase("setAssigned")){ //set users assigned to specific project

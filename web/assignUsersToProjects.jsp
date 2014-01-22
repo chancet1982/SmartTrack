@@ -5,6 +5,7 @@
 <style>
 
 </style>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <div id="site-header">
     <div class="site-width clearfix">
         <div id="site-logo"></div>
@@ -22,7 +23,7 @@
 
                     <c:forEach items="${users}" var="user">
                         <li class="user ico" data-user-id="${user.userid}" >
-                            <span class="icon user"></span><c:out value="${user.firstname}" />
+                            <span class="icon user"></span><c:out value="${fn:toUpperCase(fn:substring(user.firstname,0,1))}" /><c:out value="${fn:toUpperCase(fn:substring(user.lastname,0,1))}" />
                         </li>
                     </c:forEach>
                 </ul>
