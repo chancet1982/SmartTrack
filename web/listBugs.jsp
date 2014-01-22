@@ -71,6 +71,10 @@
 </div>
 <div id="dialog" title="add a new Bug"></div>
 <script type="text/javascript">
+
+    $.cookie("pid", "5");
+    menuHighlight();
+
     $(document).ready(function(){
 
         $("#dialog").dialog({

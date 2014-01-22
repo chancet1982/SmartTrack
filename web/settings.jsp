@@ -12,9 +12,15 @@
 </div>
 <div id="site-content">
     <div class="site-width clearfix">
-        <h1>Welcome to Smarttrack</h1>
+        <h1>Settings</h1>
         <div class="box color-light round-corners shadow padding" style="padding:8px;">
-            <p>Make this page nicer...</p>
+            <h2>Change Application Theme: </h2>
+            <ul>
+                <li><a href="#" class="default css">default.css</a></li>
+                <li><a href="#" class="blue css">blue.css</a></li>
+                <li><a href="#" class="dark css">dark.css</a></li>
+                <li><a href="#" class="sand css">sand.css</a></li>
+            </ul>
         </div>
     </div>
 </div>
@@ -23,7 +29,7 @@
 
 <script type="text/javascript">
 
-    $.cookie("pid", "1");
+    $.cookie("pid", "8");
     menuHighlight();
 
     $(document).ready(function(){

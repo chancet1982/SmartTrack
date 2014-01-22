@@ -42,5 +42,13 @@
 </div>
 
 <%@include file="includes/footerMessage.jsp" %>
+
+<script type="text/javascript">
+
+    $.cookie("pid", "7");
+    menuHighlight();
+
+</script>
+
 </body>
 </html>

@@ -85,11 +85,11 @@
 </div>
 <div id="dialog" title="invite Users"></div>
 <script type="text/javascript">
+
+    $.cookie("pid", "2");
+    menuHighlight();
+
     $(document).ready(function(){
-
-        $.cookie("pid", "2");
-        menuHighlight();
-
         $.ajax({
             url: "inviteUsersForm.jsp",
             beforeSend: function(){
