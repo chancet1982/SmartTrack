@@ -80,6 +80,7 @@
                         </c:choose>
                     </select>
                 </li>
+                <% if(isManager == true){%>
                 <li id="7" class="clearfix">
                     <span class="title">Priority: </span>
                     <select id="bugPriority" name="bugPriority">
@@ -122,7 +123,11 @@
                     </c:choose>
                     </select>
                 </li>
-
+                <%} else {%>
+                <li id="7" class="clearfix">
+                    <span><c:out value="${bug.bugPriority}"/></span>
+                </li>
+                <%}%>
                 <c:if test="${not empty bug.reportedPriority}">
                 <li id="8" class="clearfix">
                     <span><span class="title">Reported Priority: </span><c:out value="${bug.reportedPriority}"/></span>

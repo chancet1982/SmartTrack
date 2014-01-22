@@ -66,8 +66,15 @@
                                 </c:otherwise>
                             </c:choose>
                         </td>
-                        <td><a href="UserServlet?action=edit&userID=<c:out value="${user.userid}"/>">Edit</a></td>
-                        <td><a href="UserServlet?action=delete&userID=<c:out value="${user.userid}"/>">Delete</a></td>
+                        <td>
+
+                            <a class="button" href="UserServlet?action=edit&userID=<c:out value="${user.userid}"/>">Edit</a>
+                            <% if(isManager == true){%>
+                            <a class="button" href="UserServlet?action=delete&userID=<c:out value="${user.userid}"/>">Delete</a>
+                            <%}%>
+
+                        </td>
+                        <td></td>
                     </tr>
                 </c:forEach>
                 </tbody>

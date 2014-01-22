@@ -15,7 +15,9 @@
     <%}%>
     <li id="3"><a href="ProjectServlet?action=ListProjects" class="ico"><span class="icon projects"></span>Projects</a></li>
     <li id="4"><a href="BugServlet?action=ListBugs" class="ico"><span class="icon bugs"></span>Bugs</a></li>
+    <% if(isHandler == true){%>
     <li id="4"><a href="BugServlet?action=ListMyBugs" class="ico"><span class="icon bugs"></span>My Bugs</a></li>
+    <%}%>
     <% if(isManager == true){%>
     <li id="5"><a href="ProjectServlet?action=assignProjects" class="ico"><span class="icon project"></span>Assign Users to Project</a></li>
     <%}%>

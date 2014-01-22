@@ -25,7 +25,6 @@
                         <th>Project Name</th>
                         <th>Project Version</th>
                         <th></th>
-                        <th></th>
                     </tr>
                     </thead>
                     <tbody>
@@ -34,8 +33,13 @@
                                 <td><c:out value="${project.projectID}" /></td>
                                 <td><c:out value="${project.projectName}" /></td>
                                 <td><c:out value="${project.projectVersion}" /></td>
-                                <td><a href="BugServlet?action=listBugsForProject&projectID=<c:out value="${project.projectID}"/>">List Bugs</a></td>
-                                <td><a href="ProjectServlet?action=delete&projectID=<c:out value="${project.projectID}"/>">Delete</a></td>
+                                <td>
+                                    <a class="button" href="BugServlet?action=listBugsForProject&projectID=<c:out value="${project.projectID}"/>">List Bugs</a>
+                                    <% if(isManager == true){%>
+                                    <a class="button" href="ProjectServlet?action=delete&projectID=<c:out value="${project.projectID}"/>">Delete</a>
+                                    <% } %>
+                                </td>
+
                             </tr>
                         </c:forEach>
                     </tbody>

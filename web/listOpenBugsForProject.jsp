@@ -26,8 +26,6 @@
                         <th>Bug Status</th>
                         <th>Is open</th>
                         <th></th>
-                        <th></th>
-                        <th></th>
                     </tr>
                     </thead>
                     <tbody>
@@ -40,23 +38,32 @@
                             <td><c:out value="${bug.bugStatus}" /></td>
                             <td>
                                 <c:choose>
-                                    <c:when test="${bug.active}">Yes</c:when>
-                                    <c:otherwise>No</c:otherwise>
+                                    <c:when test="${bug.active}"><span class="role valid">Yes</span></c:when>
+                                    <c:otherwise><span class="role invalid">No</span></c:otherwise>
                                 </c:choose>
                             </td>
-                            <td><a href="BugServlet?action=edit&bugID=<c:out value="${bug.bugID}"/>">Edit</a></td>
-                            <td><a href="BugServlet?action=close&bugID=<c:out value="${bug.bugID}"/>">Close</a></td>
-                            <td><a href="BugServlet?action=delete&bugID=<c:out value="${bug.bugID}"/>">Delete</a></td>
+                            <td>
+                                <a class="button" href="BugServlet?action=edit&bugID=<c:out value="${bug.bugID}"/>">View</a>
+                                <% if(isManager == true){%>
+                                <a class="button" href="BugServlet?action=close&bugID=<c:out value="${bug.bugID}"/>">Close</a>
+                                <a class="button" href="BugServlet?action=delete&bugID=<c:out value="${bug.bugID}"/>">Delete</a>
+                                <%}%>
+                            </td>
                         </tr>
                     </c:forEach>
                     </tbody>
                 </table>
+                <% if(isHandler == true){%>
+                <a id="listMyBugs" class="button round-corners"><span class="icon bug"></span>My Bugs</a>
+                <%}%>
             </c:if>
             <c:if test="${fn:length(bugs) lt 1}">
                 <h2>There are no open bugs... would you like to report one?</h2>
             </c:if>
             <a id="listOpenBugs" class="button round-corners" href="BugServlet?action=listBugsForProject"><span class="icon bug"></span>Show All Bugs</a>
+            <% if(isReporter == true){%>
             <a id="createBug" class="button round-corners"><span class="icon add-bug"></span>Add Bugs</a>
+            <%}%>
         </div>
     </div>
 </div>
