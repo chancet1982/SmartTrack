@@ -83,7 +83,7 @@
                 </li>
             </ul>
             <a id="addStep" class="button"><span class="icon add"></span></a>
-            <a id="undoDelete" class="button inactive" style="color:white "><span class="icon undo"></span></a>
+            <a id="undoDelete" class="button hidden" style="color:white "><span class="icon undo"></span></a>
         </li>
 
         <li id="9" class="hidden">
@@ -122,10 +122,10 @@
 
     function disableUndo(){
         temp = null;
-        $("#undoDelete").addClass("inactive").attr("disabled", "disabled");
+        $("#undoDelete").addClass("hidden").attr("disabled", "disabled");
     }
     function enableUndo(){
-        $("#undoDelete").removeClass("inactive").removeAttr("disabled");
+        $("#undoDelete").removeClass("hidden").removeAttr("disabled");
     }
 
     //AUTOCOMPLETE

@@ -162,6 +162,7 @@ public class BugDAO {
                 bug.setCreated(String.format("%1$TD %1$TT", rs.getTimestamp("created")));
                 bug.setModified(String.format("%1$TD %1$TT", rs.getTimestamp("modified")));
                 bug.setActive(rs.getBoolean("active"));
+                bug.setTextFromTo(rs.getString("textFromTo"));
             }
 
             rs.close();

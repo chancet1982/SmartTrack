@@ -161,10 +161,24 @@
 
                 <c:if test="${not empty bug.textFromTo}">
                 <li id="13" class="clearfix">
-                    <label>Change text From To: (Make it nicer)</label>
-                    <span><c:out value="${bug.textFromTo}"/></span>
+                    <label>Change text:</label>
+                    <ul id="textFromTo">
+                        <script type="text/javascript">
+                            var textFromTo = "<c:out value="${bug.textFromTo}"/>";
+                            var textFromToStrings = textFromTo.split("~");
+                            for (i = 0; i < textFromToStrings.length; ++i) {
+                                $("ul#textFromTo").append("<li>" + textFromToStrings[i] + "</li>");
+                                console.log(textFromToStrings[i]);
+                            }
+                        </script>
+                    </ul>
                 </li>
                 </c:if>
+                <style>
+                    ol{list-style-type:decimal; margin-left:20px}
+                    #textFromTo li:before{content:'From: '}
+                    #textFromTo li:last-child:before{content:'To: '}
+                </style>
 
                 <c:if test="${not empty bug.bugTimeStamp}">
                 <li id="13" class="clearfix">
@@ -175,16 +189,16 @@
                 <li id="14" class="clearfix">
                     <label>steps To Recreate: </label>
 
-                    <ul id="stepsToRecreate">
+                    <ol id="stepsToRecreate">
                     <script type="text/javascript">
                         var JSTLString = "<c:out value="${bug.stepsToRecreate}"/>";
                         var strings = JSTLString.split("~");
                         for (i = 1; i < strings.length; ++i) {
-                            $("ul#stepsToRecreate").append("<li>" + strings[i] + "</li>");
+                            $("ol#stepsToRecreate").append("<li>" + strings[i] + "</li>");
                             console.log(strings[i]);
                         }
                     </script>
-                    </ul>
+                    </ol>
 
 
                 </li>
