@@ -18,15 +18,16 @@
             <c:if test="${fn:length(bugs) gt 0}">
                 <table>
                     <thead>
-                    <tr>
-                        <th>Bug ID</th>
-                        <th>P. ID</th>
-                        <th>Bug Title</th>
-                        <th>Bug Description</th>
-                        <th>Bug Status</th>
-                        <th>Is open</th>
-                        <th></th>
-                    </tr>
+                        <tr>
+                            <th>ID</th>
+                            <th>PID</th>
+                            <th>Title</th>
+                            <th>Description</th>
+                            <th>Priority</th>
+                            <th>Status</th>
+                            <th>Open?</th>
+                            <th></th>
+                        </tr>
                     </thead>
                     <tbody>
                     <c:forEach items="${bugs}" var="bug">
@@ -35,6 +36,7 @@
                             <td><c:out value="${bug.projectID}" /></td>
                             <td><c:out value="${bug.bugTitle}" /></td>
                             <td><c:out value="${bug.bugDescription}" /></td>
+                            <td><c:out value="${bug.bugPriority}" /></td>
                             <td><c:out value="${bug.bugStatus}" /></td>
                             <td>
                                 <c:choose>
