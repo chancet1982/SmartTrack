@@ -12,9 +12,9 @@
 </div>
 <div id="site-content">
     <div class="site-width clearfix">
-        <h1>Welcome to Smarttrack</h1>
+        <h1>SmartTrack. Simply Smart!</h1>
         <div class="box color-light round-corners shadow padding" style="padding:8px;">
-            <p>Make this page nicer...</p>
+            <h2>Tasks, ideas, and requests are all around you. Use SmartTrack to capture and organize your companies' issues, take action on what's important, all in an easy and efficient way.</h2>
         </div>
     </div>
 </div>

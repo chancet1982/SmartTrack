@@ -33,33 +33,33 @@
                     </li>
                     <li>
                         <label>Does this user manage projects? (this gives access to the maintain projects panel)</label>
-                        <c:if test="${user.ismanager}">
+                        <c:if test="${user.manager}">
                             <input type="radio" name="ismanager" value="true" checked> Yes
                             <input type="radio" name="ismanager" value="false" > No
                         </c:if>
-                        <c:if test="${!user.ismanager}">
+                        <c:if test="${!user.manager}">
                             <input type="radio" name="ismanager" value="true"> Yes
                             <input type="radio" name="ismanager" value="false" checked> No
                         </c:if>
                     </li>
                     <li>
                         <label>Does this user handle bugs? (this gives access to viewing bugs)</label>
-                        <c:if test="${user.ishandler}">
+                        <c:if test="${user.handler}">
                             <input type="radio" name="ishandler" value="true" checked> Yes
                             <input type="radio" name="ishandler" value="false" > No
                         </c:if>
-                        <c:if test="${!user.ishandler}">
+                        <c:if test="${!user.handler}">
                             <input type="radio" name="ishandler" value="true"> Yes
                             <input type="radio" name="ishandler" value="false" checked> No
                         </c:if>
                     </li>
                     <li>
                         <label>Does this user report bugs? (this gives access to "add bugs" option)</label>
-                        <c:if test="${user.isreporter}">
+                        <c:if test="${user.reporter}">
                             <input type="radio" name="isreporter" value="true" checked> Yes
                             <input type="radio" name="isreporter" value="false" > No
                         </c:if>
-                        <c:if test="${!user.isreporter}">
+                        <c:if test="${!user.reporter}">
                             <input type="radio" name="isreporter" value="true"> Yes
                             <input type="radio" name="isreporter" value="false" checked> No
                         </c:if>

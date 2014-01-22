@@ -83,7 +83,7 @@
                 </li>
             </ul>
             <a id="addStep" class="button"><span class="icon add"></span></a>
-            <a id="undoDelete" class="button hidden" style="color:white "><span class="icon undo"></span></a>
+            <a id="undoDelete" class="button hidden" style="color:white "><span class="icon sync"></span></a>
         </li>
 
         <li id="9" class="hidden">
